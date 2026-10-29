@@ -24,12 +24,24 @@ export interface PlaceRepository {
   listPlaces(city?: string): Promise<Place[]>;
   getPlace(slug: string): Promise<Place | null>;
   near(lat: number, lng: number, radiusKm: number): Promise<(Place & { distance_km: number })[]>;
-  addSubmission(s: Omit<Submission, "id" | "status" | "created_at">): Promise<Submission>;
+  addSubmission(s: Omit<Submission, "id" | "status" | "created_at">, ipHash?: string): Promise<Submission>;
   /** Returns null when the admin token is not valid. */
   listSubmissions(token: string): Promise<Submission[] | null>;
   /** Returns "unauthorized" when the admin token is not valid. */
   setSubmissionStatus(token: string, id: string, status: Submission["status"]): Promise<Submission | null | "unauthorized">;
+  cities(): Promise<CityCount[]>;
+  slugs(): Promise<{ slug: string; last_verified: string }[]>;
+  inBbox(w: number, s: number, e: number, n: number, limit?: number): Promise<Place[]>;
+  adminSearch(token: string, q: string): Promise<Place[] | null>;
+  adminUpdate(token: string, id: string, patch: Record<string, unknown>): Promise<Place | null | "unauthorized">;
+  adminDelete(token: string, id: string): Promise<boolean | "unauthorized">;
 }
+
+export class RateLimitError extends Error { constructor() { super("rate_limited"); } }
+export interface CityCount { state: string; city: string; n: number }
+export const citySlug = (c: string) => c.toLowerCase().normalize("NFKD").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+/** Revalidation window for cached place reads. Admin changes also trigger revalidateTag("places") for instant refresh. */
+export const PLACES_TTL = 60;
 
 const DATA = path.join(process.cwd(), "data");
 const QUEUE = path.join(DATA, "queue", "submissions.json");
@@ -85,6 +97,22 @@ class JsonRepository implements PlaceRepository {
       .filter((p) => p.distance_km <= radiusKm)
       .sort((a, b) => a.distance_km - b.distance_km);
   }
+  async cities() {
+    const m = new Map<string, CityCount>();
+    for (const p of await this.all()) { const k = p.state + "|" + p.city; const c = m.get(k) ?? { state: p.state, city: p.city, n: 0 }; c.n++; m.set(k, c); }
+    return [...m.values()];
+  }
+  async slugs() { return (await this.all()).map((p) => ({ slug: p.slug, last_verified: p.last_verified })); }
+  async inBbox(w: number, s: number, e: number, n: number, limit = 2000) {
+    return (await this.all()).filter((p) => p.lat >= s && p.lat <= n && p.lng >= w && p.lng <= e).slice(0, limit);
+  }
+  async adminSearch(token: string, q: string) {
+    if (!isAdmin(token)) return null;
+    const t = q.toLowerCase();
+    return (await this.all()).filter((p) => !t || p.name.toLowerCase().includes(t) || p.id === q).slice(0, 50);
+  }
+  async adminUpdate(): Promise<Place | null | "unauthorized"> { return null; }
+  async adminDelete(): Promise<boolean | "unauthorized"> { return false; }
   private async readQueue(): Promise<Submission[]> {
     try { return JSON.parse(await fs.readFile(QUEUE, "utf8")); } catch { return []; }
   }
@@ -124,42 +152,71 @@ class SupabaseRepository implements PlaceRepository {
   private headers(extra: Record<string, string> = {}) {
     return { apikey: this.key, Authorization: `Bearer ${this.key}`, "content-type": "application/json", ...extra };
   }
-  /** All visible places, cached by Next for 5 minutes and revalidated on admin approval (tag "places"). */
-  private async all(): Promise<Place[]> {
-    const out: Place[] = [];
+  private async get<T>(qs: string, range?: [number, number]): Promise<T[]> {
+    const r = await fetch(`${this.url}/rest/v1/${qs}`, {
+      headers: this.headers(range ? { Range: `${range[0]}-${range[1]}` } : {}),
+      next: { revalidate: PLACES_TTL, tags: ["places"] },
+    });
+    if (!r.ok) throw new Error(`Supabase fetch failed: ${r.status}`);
+    return (await r.json()) as T[];
+  }
+  private async paged<T>(qs: string): Promise<T[]> {
+    const out: T[] = [];
     for (let from = 0; ; from += 1000) {
-      const r = await fetch(`${this.url}/rest/v1/places?select=${PLACE_COLS}&status=eq.verified&order=name.asc`, {
-        headers: this.headers({ Range: `${from}-${from + 999}` }),
-        next: { revalidate: 300, tags: ["places"] },
-      });
-      if (!r.ok) throw new Error(`Supabase places fetch failed: ${r.status}`);
-      const page = (await r.json()) as Place[];
+      const page = await this.get<T>(qs, [from, from + 999]);
       out.push(...page);
       if (page.length < 1000) break;
     }
     return out;
   }
+  private async pubRpc<T>(fn: string, args: Record<string, unknown>): Promise<T> {
+    const r = await fetch(`${this.url}/rest/v1/rpc/${fn}`, {
+      method: "POST", headers: this.headers(), body: JSON.stringify(args),
+      next: { revalidate: PLACES_TTL, tags: ["places"] },
+    });
+    if (!r.ok) throw new Error(`Supabase rpc ${fn} failed: ${r.status}`);
+    return (await r.json()) as T;
+  }
+  /** Places for one city (or all places when no city is given, avoid on large sets). */
   async listPlaces(city?: string) {
-    const all = await this.all();
-    return city ? all.filter((p) => p.city.toLowerCase() === city.toLowerCase()) : all;
+    const f = city ? `&city=eq.${encodeURIComponent(city)}` : "";
+    return this.paged<Place>(`places?select=${PLACE_COLS}&status=eq.verified${f}&order=name.asc`);
   }
   async getPlace(slug: string) {
-    return (await this.all()).find((p) => p.slug === slug) ?? null;
+    const r = await this.get<Place>(`places?select=${PLACE_COLS}&status=eq.verified&slug=eq.${encodeURIComponent(slug)}&limit=1`);
+    return r[0] ?? null;
   }
   async near(lat: number, lng: number, radiusKm: number) {
-    return (await this.all())
-      .map((p) => ({ ...p, distance_km: distanceKm(lat, lng, p.lat, p.lng) }))
-      .filter((p) => p.distance_km <= radiusKm)
-      .sort((a, b) => a.distance_km - b.distance_km);
+    return this.pubRpc<(Place & { distance_km: number })[]>("places_near", { p_lat: lat, p_lng: lng, p_radius_km: Math.min(Math.max(radiusKm, 0.1), 50), p_limit: 500, p_offset: 0 });
   }
-  async addSubmission(s: Omit<Submission, "id" | "status" | "created_at">) {
-    const id = randomUUID();
-    const r = await fetch(`${this.url}/rest/v1/submissions`, {
-      method: "POST", cache: "no-store", headers: this.headers({ Prefer: "return=minimal" }),
-      body: JSON.stringify({ id, kind: s.kind, place_id: s.place_id ?? null, payload: s.payload }),
-    });
-    if (!r.ok) throw new Error(`Supabase submission insert failed: ${r.status}`);
-    return { ...s, id, status: "pending" as const, created_at: new Date().toISOString() };
+  async cities() { return this.pubRpc<CityCount[]>("place_cities", {}); }
+  async slugs() { return this.paged<{ slug: string; last_verified: string }>(`places?select=slug,last_verified&status=eq.verified&order=id.asc`); }
+  async inBbox(w: number, s: number, e: number, n: number, limit = 2000) {
+    return this.pubRpc<Place[]>("places_in_bbox", { p_west: w, p_south: s, p_east: e, p_north: n, p_limit: limit });
+  }
+  async adminSearch(token: string, q: string) {
+    if (!token) return null;
+    const res = await this.rpc("admin_search_places", { p_token: token, p_q: q, p_limit: 100 });
+    return "unauthorized" in res ? null : (res.data as Place[]);
+  }
+  async adminUpdate(token: string, id: string, patch: Record<string, unknown>) {
+    if (!token) return "unauthorized" as const;
+    const res = await this.rpc("admin_update_place", { p_token: token, p_id: id, p: patch });
+    if ("unauthorized" in res) return "unauthorized" as const;
+    const d = res.data as Place | null;
+    return d && d.id ? d : null;
+  }
+  async adminDelete(token: string, id: string) {
+    if (!token) return "unauthorized" as const;
+    const res = await this.rpc("admin_delete_place", { p_token: token, p_id: id });
+    if ("unauthorized" in res) return "unauthorized" as const;
+    return res.data === true;
+  }
+  async addSubmission(s: Omit<Submission, "id" | "status" | "created_at">, ipHash = "") {
+    // Server-only RPC: it checks the server-held admin token, applies the per-IP rate limit and inserts.
+    const res = await this.rpc("server_submit", { p_token: process.env.ADMIN_TOKEN ?? "", p_ip_hash: ipHash, p_kind: s.kind, p_place_id: s.place_id ?? null, p_payload: s.payload, p_max: 5 });
+    if ("unauthorized" in res) throw new Error("server_submit unauthorized: check ADMIN_TOKEN");
+    return { ...s, id: String(res.data), status: "pending" as const, created_at: new Date().toISOString() };
   }
   private async rpc(fn: string, args: Record<string, unknown>) {
     const r = await fetch(`${this.url}/rest/v1/rpc/${fn}`, { method: "POST", cache: "no-store", headers: this.headers(), body: JSON.stringify(args) });
@@ -167,6 +224,7 @@ class SupabaseRepository implements PlaceRepository {
     if (!r.ok) {
       const t = await r.text();
       if (t.includes("unauthorized")) return { unauthorized: true as const };
+      if (t.includes("rate_limited")) throw new RateLimitError();
       throw new Error(`Supabase rpc ${fn} failed: ${r.status} ${t.slice(0, 200)}`);
     }
     return { data: await r.json() };
