@@ -6,7 +6,7 @@ export default async function Submit({ searchParams }: { searchParams: Promise<{
   const googlePlaceId = gpid && /^[A-Za-z0-9_-]{10,300}$/.test(gpid) ? gpid : undefined;
   return (
     <main className="mx-auto max-w-xl space-y-4 p-4">
-      <h1 className="text-2xl font-bold">Add a mosque, dargah or prayer room</h1>
+      <h1 className="page-title">Add a mosque, dargah or prayer room</h1>
       <p className="text-sm text-gray-600">Submissions are reviewed before they appear. Mosque admins can add iqama and Jumu&apos;ah times in the notes.</p>
       <SubmissionForm kind="new_place" googlePlaceId={googlePlaceId} />
     </main>

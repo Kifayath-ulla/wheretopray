@@ -18,18 +18,18 @@ export default async function Share() {
   const qrAdd = await QRCode.toString(`${SITE}/add`, { type: "svg", margin: 1, width: 240 });
   const qrHome = await QRCode.toString(SITE, { type: "svg", margin: 1, width: 240 });
   return (
-    <main className="mx-auto max-w-2xl space-y-5 p-4">
-      <h1 className="text-2xl font-bold">Share with your masjid committee</h1>
+    <main className="mx-auto max-w-2xl space-y-5 px-4 pb-10 pt-8">
+      <h1 className="page-title">Share with your masjid committee</h1>
       <p className="text-sm text-gray-600">Send this on WhatsApp, or print the QR code and put it on the masjid notice board.</p>
-      <pre className="whitespace-pre-wrap rounded-xl border bg-gray-50 p-3 text-sm">{TEXT}</pre>
+      <pre className="card whitespace-pre-wrap p-5 text-sm leading-relaxed">{TEXT}</pre>
       <ShareButtons text={TEXT} />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 print:grid-cols-2">
-        <figure className="rounded-xl border p-3 text-center">
+        <figure className="card p-5 text-center">
           <div className="mx-auto w-60" dangerouslySetInnerHTML={{ __html: qrAdd }} />
           <figcaption className="mt-2 font-medium">Scan to add your masjid</figcaption>
           <p className="text-xs text-gray-500">{SITE.replace("https://", "")}/add</p>
         </figure>
-        <figure className="rounded-xl border p-3 text-center">
+        <figure className="card p-5 text-center">
           <div className="mx-auto w-60" dangerouslySetInnerHTML={{ __html: qrHome }} />
           <figcaption className="mt-2 font-medium">Scan to find a place to pray</figcaption>
           <p className="text-xs text-gray-500">{SITE.replace("https://", "")}</p>

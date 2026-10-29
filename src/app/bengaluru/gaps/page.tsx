@@ -40,18 +40,18 @@ export default async function Gaps() {
   const sorted = [...wards.features].sort((a, b) => a.properties.count! - b.properties.count! || a.properties.name.localeCompare(b.properties.name));
   const zero = sorted.filter((w) => w.properties.count === 0).length;
   return (
-    <main className="mx-auto max-w-5xl space-y-4 p-4">
-      <h1 className="text-2xl font-bold">Bengaluru ward gap map</h1>
+    <main className="mx-auto max-w-5xl space-y-5 px-4 pb-10 pt-8">
+      <h1 className="page-title">Bengaluru ward gap map</h1>
       <p className="text-sm text-gray-600">
         {inside} places listed inside {wards.features.length} BBMP wards. {zero} wards have none listed yet. Pale wards are where we most need help.
-        If you live or work in one, <Link className="text-emerald-800 underline" href="/add">add your local masjid in 30 seconds</Link>.
+        If you live or work in one, <Link className="font-medium text-accent-text hover:underline" href="/add">add your local masjid in 30 seconds</Link>.
       </p>
       <GapMap wards={wards} />
       <section>
         <h2 className="mb-2 text-lg font-bold">Wards with the fewest places</h2>
         <ol className="grid grid-cols-1 gap-1 text-sm sm:grid-cols-2 md:grid-cols-3">
           {sorted.slice(0, 60).map((w) => (
-            <li key={w.properties.no} className="flex justify-between rounded border px-2 py-1">
+            <li key={w.properties.no} className="flex justify-between rounded-xl bg-surface px-3 py-2 shadow-soft">
               <span>{w.properties.no}. {w.properties.name}</span><b>{w.properties.count}</b>
             </li>
           ))}

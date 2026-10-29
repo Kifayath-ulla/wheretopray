@@ -7,6 +7,9 @@ import SubmissionForm from "@/components/SubmissionForm";
 import { compassPoint, qiblaBearing, KAABA } from "@/lib/qibla";
 import { distanceKm } from "@/lib/geo";
 import { SOURCES } from "@/lib/sources";
+import { TYPE_COLOR, TYPE_LABEL } from "@/lib/typeStyle";
+import DistanceFromMe from "@/components/DistanceFromMe";
+import { IconBack, IconChevron, IconCompass, IconDirections } from "@/components/ui/Icons";
 
 export const revalidate = 60;
 export const dynamicParams = true;
@@ -30,50 +33,72 @@ export default async function PlacePage({ params }: Props) {
   if (!p) notFound();
   const qb = qiblaBearing(p.lat, p.lng);
   const srcIds = p.source_ids ?? { [p.source]: [p.source_id] };
+  const kaabaKm = Math.round(distanceKm(p.lat, p.lng, KAABA.lat, KAABA.lng));
+  const color = TYPE_COLOR[p.type];
   return (
-    <main className="mx-auto max-w-2xl space-y-4 p-4">
-      <Link href="/" className="text-sm text-emerald-700">Back to map</Link>
-      <div>
-        <h1 className="text-2xl font-bold">{p.name}</h1>
-        {p.name_local && <p className="text-gray-600">{p.name_local}</p>}
-        <p className="text-sm capitalize text-gray-600">{p.type.replace("_", " ")} - {p.area ? `${p.area}, ` : ""}{p.city}</p>
-        {p.address && <p className="mt-1 text-sm">{p.address}</p>}
-      </div>
-      <div className="flex flex-wrap gap-2 text-sm">
-        <a className="rounded-lg bg-emerald-700 px-3 py-2 text-white" href={`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`} target="_blank" rel="noreferrer">Directions (Google Maps)</a>
-        <a className="rounded-lg border px-3 py-2" href={`https://maps.apple.com/?daddr=${p.lat},${p.lng}&q=${encodeURIComponent(p.name)}`} target="_blank" rel="noreferrer">Apple Maps</a>
-        <a className="rounded-lg border px-3 py-2" href={`https://www.openstreetmap.org/directions?to=${p.lat}%2C${p.lng}`} target="_blank" rel="noreferrer">OSM</a>
-        {p.phone && <a className="rounded-lg border px-3 py-2" href={`tel:${p.phone}`}>Call</a>}
-        {p.website && <a className="rounded-lg border px-3 py-2" href={p.website} target="_blank" rel="noreferrer">Website</a>}
-      </div>
-      <div className="flex items-center gap-4 rounded-xl border p-4" data-testid="qibla">
-        <svg width="64" height="64" viewBox="-32 -32 64 64" aria-label={`Prayer direction ${qb.toFixed(0)} degrees`}>
-          <circle r="30" fill="#ecfdf5" stroke="#047857" />
-          <text y="-20" textAnchor="middle" fontSize="9" fill="#dc2626" fontWeight="bold">N</text>
-          <g transform={`rotate(${qb.toFixed(1)})`}><path d="M0,-24 L6,-10 L2,-10 L2,14 L-2,14 L-2,-10 L-6,-10 Z" fill="#047857" /></g>
+    <main className="mx-auto max-w-2xl space-y-5 px-4 pb-10 pt-4">
+      <Link href="/" className="inline-flex items-center gap-1 text-sm font-medium text-accent-text"><IconBack /> Explore</Link>
+      <section className="card animate-sheet overflow-hidden">
+        <div className="h-1.5" style={{ background: color }} />
+        <div className="space-y-4 p-6">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="chip" style={{ background: `${color}1f`, color }}>{TYPE_LABEL[p.type]}</span>
+            <DistanceFromMe lat={p.lat} lng={p.lng} />
+          </div>
+          <div>
+            <h1 className="text-[2rem] font-bold leading-tight tracking-tight sm:text-4xl">{p.name}</h1>
+            {p.name_local && <p className="mt-1 text-lg text-ink-2">{p.name_local}</p>}
+            <p className="mt-2 text-[15px] text-ink-2">{p.area ? `${p.area}, ` : ""}{p.city}{p.state ? `, ${p.state}` : ""}</p>
+            {p.address && <p className="mt-1 text-sm text-ink-3">{p.address}</p>}
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <a className="btn btn-primary py-3.5 text-base" href={`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`} target="_blank" rel="noreferrer"><IconDirections /> Directions</a>
+            <Link className="btn btn-tinted py-3.5 text-base" href="/qibla"><IconCompass className="h-5 w-5" /> Qibla {qb.toFixed(0)}°</Link>
+          </div>
+          <div className="flex flex-wrap gap-2 text-sm">
+            <a className="chip" href={`https://maps.apple.com/?daddr=${p.lat},${p.lng}&q=${encodeURIComponent(p.name)}`} target="_blank" rel="noreferrer">Apple Maps</a>
+            <a className="chip" href={`https://www.openstreetmap.org/directions?to=${p.lat}%2C${p.lng}`} target="_blank" rel="noreferrer">OpenStreetMap</a>
+            {p.phone && <a className="chip" href={`tel:${p.phone}`}>Call</a>}
+            {p.website && <a className="chip" href={p.website} target="_blank" rel="noreferrer">Website</a>}
+          </div>
+        </div>
+      </section>
+
+      <PrayerTimes lat={p.lat} lng={p.lng} />
+
+      <section className="card flex items-center gap-5 p-5" data-testid="qibla">
+        <svg width="76" height="76" viewBox="-38 -38 76 76" aria-label={`Prayer direction ${qb.toFixed(0)} degrees`} className="shrink-0">
+          <circle r="36" fill="var(--surface-2)" />
+          {Array.from({ length: 36 }, (_, i) => <line key={i} x1="0" y1="-33" x2="0" y2={i % 9 === 0 ? -28 : -31} stroke="var(--text-3)" strokeWidth={i % 9 === 0 ? 1.4 : 0.6} transform={`rotate(${i * 10})`} />)}
+          <text y="-18" textAnchor="middle" fontSize="8" fill="#ff3b30" fontWeight="700">N</text>
+          <g transform={`rotate(${qb.toFixed(1)})`}><path d="M0,-27 L5,-8 L0,-11 L-5,-8 Z" fill="var(--accent)" /><line y1="-8" y2="14" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" /></g>
+          <circle r="2.5" fill="var(--text)" />
         </svg>
         <div className="text-sm">
-          <div className="font-semibold">{p.type === "prayer_room" ? "Prayer direction (qibla)" : "Qibla direction"}: {qb.toFixed(1)}° ({compassPoint(qb)})</div>
-          <div className="text-gray-600">Clockwise from true north. Kaaba is {Math.round(distanceKm(p.lat, p.lng, KAABA.lat, KAABA.lng)).toLocaleString()} km away.</div>
-          {p.type === "prayer_room" && <div className="text-gray-600">Face the arrow when the top of the dial points north.</div>}
-          <Link href="/qibla" className="text-emerald-700 underline">Live compass</Link>
+          <div className="eyebrow">{p.type === "prayer_room" ? "Prayer direction" : "Qibla"}</div>
+          <div className="text-2xl font-semibold tracking-tight">{qb.toFixed(1)}° <span className="text-base font-normal text-ink-2">{compassPoint(qb)}</span></div>
+          <div className="text-ink-2">Clockwise from true north. Kaaba is {kaabaKm.toLocaleString()} km away.</div>
+          {p.type === "prayer_room" && <div className="text-ink-2">Face the arrow when the top of the dial points north.</div>}
+          <Link href="/qibla" className="mt-1 inline-block font-medium text-accent-text">Open live compass</Link>
         </div>
-      </div>
-      <PrayerTimes lat={p.lat} lng={p.lng} />
-      <div className="rounded-xl border p-4 text-sm">
-        <h2 className="mb-2 font-semibold">Facilities</h2>
-        <ul className="grid grid-cols-2 gap-1">
-          <li>Women&apos;s area: {yesNo(p.women_section)}</li><li>Wudu: {yesNo(p.wudu)}</li>
-          <li>Parking: {yesNo(p.parking)}</li><li>Wheelchair: {yesNo(p.wheelchair)}</li>
-          {p.denomination && <li>Denomination: {p.denomination}</li>}
-          {p.jumuah_time && <li>Jumu&apos;ah: {p.jumuah_time}</li>}
-        </ul>
-      </div>
-      <details className="rounded-xl border p-4">
-        <summary className="cursor-pointer font-semibold">Report a fix</summary>
-        <div className="mt-3"><SubmissionForm kind="fix" placeId={p.id} placeName={p.name} /></div>
+      </section>
+
+      <section className="card p-5">
+        <h2 className="mb-3 text-lg font-semibold">Facilities</h2>
+        <dl className="grid grid-cols-2 gap-2 text-sm">
+          {([["Women's area", p.women_section], ["Wudu", p.wudu], ["Parking", p.parking], ["Wheelchair", p.wheelchair]] as const).map(([k, v]) => (
+            <div key={k} className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">{k}</dt><dd className={`font-medium ${v === true ? "text-accent-text" : ""}`}>{yesNo(v)}</dd></div>
+          ))}
+          {p.denomination && <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Denomination</dt><dd className="font-medium">{p.denomination}</dd></div>}
+          {p.jumuah_time && <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Jumu&apos;ah</dt><dd className="font-medium">{p.jumuah_time}</dd></div>}
+        </dl>
+      </section>
+
+      <details className="card group p-5">
+        <summary className="flex cursor-pointer items-center justify-between font-semibold">Report a fix <span className="text-ink-3 transition-transform group-open:rotate-90"><IconChevron /></span></summary>
+        <div className="mt-4"><SubmissionForm kind="fix" placeId={p.id} placeName={p.name} /></div>
       </details>
-      <p className="text-xs text-gray-500">
+      <p className="px-1 text-xs text-ink-3">
         Sources:{" "}
         {Object.entries(srcIds).map(([s, ids], i) => {
           const meta = SOURCES[s] ?? { label: s, license: "", url: () => null };

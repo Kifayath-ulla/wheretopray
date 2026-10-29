@@ -31,15 +31,15 @@ export default function AdminPending() {
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
-        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Admin token" className="w-40 rounded-lg border px-3 py-2 text-sm" />
-        <button onClick={load} className="rounded-lg bg-emerald-700 px-4 py-2 text-sm text-white">Load pending</button>
-        {items && <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter by name, city or state" className="flex-1 rounded-lg border px-3 py-2 text-sm" />}
+        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Admin token" className="h-11 w-40 px-4 text-[15px]" />
+        <button onClick={load} className="btn btn-primary text-sm">Load pending</button>
+        {items && <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter by name, city or state" className="h-11 flex-1 px-4 text-[15px]" />}
       </div>
       {msg && <p className="text-sm text-amber-700">{msg}</p>}
       {items && items.length > 0 && (
         <div className="flex flex-wrap gap-2 text-sm">
-          <button onClick={() => setSel(new Set(shown.map((p) => p.id)))} className="rounded border px-2 py-1">Select all shown ({shown.length})</button>
-          <button onClick={() => setSel(new Set())} className="rounded border px-2 py-1">Clear</button>
+          <button onClick={() => setSel(new Set(shown.map((p) => p.id)))} className="h-9 px-3 text-sm">Select all shown ({shown.length})</button>
+          <button onClick={() => setSel(new Set())} className="h-9 px-3 text-sm">Clear</button>
           <button onClick={() => approve([...sel])} disabled={!sel.size} className="rounded bg-emerald-700 px-3 py-1 text-white disabled:opacity-40">Approve selected ({sel.size})</button>
         </div>
       )}
@@ -50,8 +50,8 @@ export default function AdminPending() {
             <a className="flex-1" href={`https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=18/${p.lat}/${p.lng}`} target="_blank" rel="noreferrer">
               <b>{p.name}</b> <span className="text-xs text-gray-500">{p.type} - {[p.address, p.city, p.state].filter(Boolean).join(", ")}</span>
             </a>
-            <button onClick={() => approve([p.id])} className="rounded border px-2 py-0.5 text-xs">Approve</button>
-            <button onClick={() => del(p)} className="rounded border border-red-300 px-2 py-0.5 text-xs text-red-700">Junk</button>
+            <button onClick={() => approve([p.id])} className="chip">Approve</button>
+            <button onClick={() => del(p)} className="chip bg-red-500/10 text-red-600">Junk</button>
           </li>
         ))}
       </ul>

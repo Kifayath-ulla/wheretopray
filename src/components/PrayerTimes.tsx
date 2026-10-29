@@ -14,19 +14,25 @@ export default function PrayerTimes({ lat, lng }: { lat: number; lng: number }) 
       .then((r) => r.json()).then((j) => setT(j.data.timings)).catch(() => setErr(true));
   }, [lat, lng, school]);
   return (
-    <div className="rounded-xl border p-4">
-      <div className="mb-2 flex items-center justify-between">
-        <h2 className="font-semibold">Prayer times today</h2>
-        <select value={school} onChange={(e) => setSchool(+e.target.value)} className="rounded border px-2 py-1 text-xs" aria-label="Asr method">
-          <option value={1}>Hanafi Asr</option><option value={0}>Shafi&apos;i Asr</option>
-        </select>
+    <section className="card p-5">
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <h2 className="text-lg font-semibold">Prayer times today</h2>
+        <div className="segmented" role="group" aria-label="Asr method">
+          <button aria-pressed={school === 1} onClick={() => setSchool(1)}>Hanafi</button>
+          <button aria-pressed={school === 0} onClick={() => setSchool(0)}>Shafi&apos;i</button>
+        </div>
       </div>
-      {err ? <p className="text-sm text-red-600">Could not load prayer times.</p> : !t ? <p className="text-sm text-gray-500">Loading...</p> : (
-        <dl className="grid grid-cols-3 gap-2 text-center">
-          {NAMES.map((n) => <div key={n} className="rounded-lg bg-emerald-50 p-2"><dt className="text-xs text-gray-600">{n}</dt><dd className="font-semibold">{t[n]}</dd></div>)}
+      {err ? <p className="text-sm text-red-600">Could not load prayer times.</p> : (
+        <dl className="grid grid-cols-3 gap-2 text-center sm:grid-cols-6">
+          {NAMES.map((n) => (
+            <div key={n} className={`rounded-2xl px-2 py-3 ${n === "Sunrise" ? "bg-surface-2/60" : "bg-surface-2"}`}>
+              <dt className="text-xs font-medium text-ink-3">{n}</dt>
+              <dd className="mt-0.5 text-lg font-semibold tabular-nums tracking-tight">{t ? t[n] : <span className="inline-block h-5 w-12 animate-pulse rounded bg-hairline" />}</dd>
+            </div>
+          ))}
         </dl>
       )}
-      <p className="mt-2 text-xs text-gray-500">Calculated start times from Aladhan (Karachi method). Iqama times at this place may differ.</p>
-    </div>
+      <p className="mt-3 text-xs text-ink-3">Calculated start times (Karachi method). Iqama times at this place may differ.</p>
+    </section>
   );
 }

@@ -67,26 +67,26 @@ export default function QuickAdd() {
   if (done) return (
     <div className="space-y-3 rounded-xl border border-emerald-300 bg-emerald-50 p-4">
       <p className="font-medium">JazakAllah khair. &quot;{done}&quot; was sent for review.</p>
-      <button onClick={() => { setDone(""); locate(); }} className="w-full rounded-xl bg-emerald-700 py-3 text-white">Add another</button>
+      <button onClick={() => { setDone(""); locate(); }} className="btn btn-primary w-full py-3.5">Add another</button>
       <a href="/share" className="block text-center text-sm text-emerald-800 underline">Share with your masjid committee</a>
     </div>
   );
-  const inp = "w-full rounded-xl border px-3 py-3 text-base";
+  const inp = "w-full h-12 px-4 text-base";
   return (
     <form onSubmit={submit} className="space-y-3">
       {TS_KEY && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" onLoad={renderTs} />}
-      <div className="rounded-xl bg-gray-50 p-3 text-sm">
+      <div className="rounded-2xl bg-surface-2 p-4 text-sm">
         <p>{geoMsg}</p>
-        {geo && <a className="text-emerald-800 underline" target="_blank" rel="noreferrer" href={`https://www.openstreetmap.org/?mlat=${geo.lat}&mlon=${geo.lng}#map=18/${geo.lat}/${geo.lng}`}>Check the pin</a>}
+        {geo && <a className="font-medium text-accent-text hover:underline" target="_blank" rel="noreferrer" href={`https://www.openstreetmap.org/?mlat=${geo.lat}&mlon=${geo.lng}#map=18/${geo.lat}/${geo.lng}`}>Check the pin</a>}
         <button type="button" onClick={locate} className="ml-3 text-emerald-800 underline">Refresh location</button>
       </div>
       <input required minLength={3} maxLength={150} value={name} onChange={(e) => setName(e.target.value)} placeholder="Name, e.g. Masjid-e-Noor" className={inp} autoFocus />
       <div className="grid grid-cols-2 gap-2">
         {PLACE_TYPES.map((t) => (
-          <button type="button" key={t.value} onClick={() => setType(t.value)} className={`rounded-xl border px-2 py-2 text-sm ${type === t.value ? "border-emerald-700 bg-emerald-700 text-white" : ""}`}>{t.label}</button>
+          <button type="button" key={t.value} onClick={() => setType(t.value)} className={`rounded-2xl px-2 py-3 text-sm font-medium ${type === t.value ? "bg-accent text-white shadow-soft" : "bg-surface-2"}`}>{t.label}</button>
         ))}
       </div>
-      <label className="flex items-center gap-3 rounded-xl border px-3 py-3"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>
+      <label className="flex items-center gap-3 rounded-2xl bg-surface-2 px-4 py-3.5"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>
       <input value={jumuah} onChange={(e) => setJumuah(e.target.value)} maxLength={60} placeholder="Jumu'ah time (optional), e.g. 1:30 PM" className={inp} />
       <details className="text-sm">
         <summary className="cursor-pointer text-gray-600">Address {addr.city ? `(${[addr.area, addr.city].filter(Boolean).join(", ")})` : "(needed if location is off)"}</summary>
@@ -99,7 +99,7 @@ export default function QuickAdd() {
       <input tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} name="website" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
       <div ref={tsEl} />
       {err && <p className="text-sm text-red-700">{err}</p>}
-      <button disabled={busy || (!geo && !addr.address)} className="w-full rounded-xl bg-emerald-700 py-4 text-lg font-medium text-white disabled:opacity-40">{busy ? "Sending..." : "Add this place"}</button>
+      <button disabled={busy || (!geo && !addr.address)} className="btn btn-primary w-full py-4 text-lg">{busy ? "Sending..." : "Add this place"}</button>
       <p className="text-center text-xs text-gray-500">Photos: send them to the masjid page later via &quot;Suggest a fix&quot;. We do not store photos yet.</p>
     </form>
   );

@@ -20,18 +20,18 @@ export default function AdminQueue() {
   return (
     <div className="space-y-4">
       <div className="flex gap-2">
-        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Admin token" className="flex-1 rounded-lg border px-3 py-2 text-sm" />
-        <button onClick={() => load()} className="rounded-lg bg-emerald-700 px-4 py-2 text-sm text-white">Load queue</button>
+        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Admin token" className="h-11 flex-1 px-4 text-[15px]" />
+        <button onClick={() => load()} className="btn btn-primary text-sm">Load queue</button>
       </div>
       {err && <p className="text-sm text-red-600">{err}</p>}
       {items && items.length === 0 && <p className="text-sm text-gray-500">Queue is empty.</p>}
       {items?.map((s) => (
-        <div key={s.id} className="rounded-xl border p-3 text-sm">
+        <div key={s.id} className="card p-4 text-sm">
           <div className="flex justify-between"><b>{s.kind === "fix" ? `Fix for ${s.place_id}` : `New: ${String(s.payload.name ?? "")}`}</b><span className="text-xs uppercase text-gray-500">{s.status}</span></div>
           <pre className="mt-2 overflow-x-auto whitespace-pre-wrap text-xs text-gray-700">{JSON.stringify(s.payload, null, 2)}</pre>
           <div className="mt-2 flex gap-2">
-            <button onClick={() => act(s.id, "approved")} className="rounded bg-emerald-700 px-3 py-1 text-white">Approve</button>
-            <button onClick={() => act(s.id, "rejected")} className="rounded bg-gray-200 px-3 py-1">Reject</button>
+            <button onClick={() => act(s.id, "approved")} className="btn btn-primary py-1.5 text-sm">Approve</button>
+            <button onClick={() => act(s.id, "rejected")} className="btn btn-secondary py-1.5 text-sm">Reject</button>
           </div>
         </div>
       ))}

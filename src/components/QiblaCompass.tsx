@@ -85,45 +85,51 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
   // live: rotate the dial by -heading so N on the dial matches real north; needle sits at the qibla bearing on the dial
   const dialRot = sensor === "on" && heading != null ? -heading : 0;
   const aligned = sensor === "on" && heading != null && bearing != null && Math.abs(((bearing - heading + 540) % 360) - 180) < 5;
-  const size = compact ? 140 : 260;
+  const size = compact ? 160 : 300;
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-5">
       <div className="relative mx-auto" style={{ width: size, height: size }} aria-label="Qibla compass">
-        <div className="absolute inset-0 rounded-full border-4 transition-transform duration-150" style={{ transform: `rotate(${dialRot}deg)`, borderColor: aligned ? "#047857" : "#d1d5db" }} data-testid="dial">
+        <div className={`absolute inset-0 rounded-full transition-shadow duration-500 ${aligned ? "shadow-[0_0_0_10px_var(--accent-soft),0_20px_60px_rgba(11,110,79,.35)]" : "shadow-float"}`} />
+        <svg viewBox="-150 -150 300 300" className="absolute inset-0 h-full w-full transition-transform duration-200 ease-out" style={{ transform: `rotate(${dialRot}deg)` }} data-testid="dial">
+          <circle r="148" fill="var(--surface)" stroke={aligned ? "var(--accent)" : "var(--hairline)"} strokeWidth="2" />
+          {Array.from({ length: 72 }, (_, i) => (
+            <line key={i} x1="0" y1="-140" x2="0" y2={i % 18 === 0 ? -124 : i % 2 === 0 ? -131 : -135} stroke={i % 18 === 0 ? "var(--text)" : "var(--text-3)"} strokeWidth={i % 18 === 0 ? 2.5 : 1} strokeLinecap="round" transform={`rotate(${i * 5})`} />
+          ))}
           {["N", "E", "S", "W"].map((d, i) => (
-            <span key={d} className={`absolute left-1/2 top-1/2 text-xs font-bold ${d === "N" ? "text-red-600" : "text-gray-500"}`}
-              style={{ transform: `rotate(${i * 90}deg) translateY(-${size / 2 - 14}px) rotate(${-i * 90}deg) translate(-50%,-50%)` }}>{d}</span>
+            <text key={d} x="0" y="-102" textAnchor="middle" dominantBaseline="middle" fontSize="18" fontWeight="700" fill={d === "N" ? "#ff3b30" : "var(--text-2)"} transform={`rotate(${i * 90}) rotate(${-i * 90 - dialRot} 0 -102)`}>{d}</text>
           ))}
           {bearing != null && (
-            <div className="absolute left-1/2 top-1/2 origin-bottom" style={{ width: 6, height: size / 2 - 22, marginLeft: -3, marginTop: -(size / 2 - 22), transform: `rotate(${bearing}deg)` }} data-testid="needle">
-              <div className="mx-auto h-full w-1.5 rounded-full bg-emerald-700" />
-              <div className="absolute -top-5 left-1/2 -translate-x-1/2 text-lg">🕋</div>
-            </div>
+            <g transform={`rotate(${bearing})`} data-testid="needle">
+              <path d="M0,-118 L9,-30 L0,-38 L-9,-30 Z" fill="var(--accent)" />
+              <line x1="0" y1="-30" x2="0" y2="40" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" opacity=".35" />
+              <g transform="translate(0,-128)"><rect x="-8" y="-8" width="16" height="16" rx="2.5" fill="var(--text)" /><rect x="-8" y="-3.5" width="16" height="2.5" fill="#d4af37" /></g>
+            </g>
           )}
-        </div>
-        <div className="absolute left-1/2 top-0 h-4 w-0.5 -translate-x-1/2 bg-gray-900" title="Top of your phone" />
-        <div className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-900" />
+          <circle r="7" fill="var(--surface)" stroke="var(--text)" strokeWidth="3" />
+        </svg>
+        <div className="absolute left-1/2 -top-3 h-0 w-0 -translate-x-1/2 border-x-[7px] border-t-[10px] border-x-transparent" style={{ borderTopColor: aligned ? "var(--accent)" : "var(--text)" }} title="Top of your phone" />
       </div>
       {bearing != null ? (
-        <p className="text-center" data-testid="bearing">
-          Qibla: <b>{bearing.toFixed(1)}°</b> from true north ({compassPoint(bearing)}) - Kaaba is <b>{Math.round(dist!).toLocaleString()} km</b> away
-          {!compact && <><br /><span className="text-xs text-gray-500">From {loc!.label}</span></>}
-        </p>
-      ) : <p className="text-center text-sm text-gray-600">Set your location to get the qibla direction.</p>}
+        <div className="text-center" data-testid="bearing">
+          <div className="text-5xl font-bold tabular-nums tracking-tight">{bearing.toFixed(1)}°</div>
+          <div className="mt-1 text-[15px] text-ink-2">{compassPoint(bearing)} from true north · Kaaba {Math.round(dist!).toLocaleString()} km away</div>
+          {!compact && <div className="mt-1 text-xs text-ink-3">From {loc!.label}</div>}
+        </div>
+      ) : <p className="text-center text-sm text-ink-2">Set your location to get the qibla direction.</p>}
       {!compact && (
         <>
-          <p className="text-center text-sm">
-            {sensor === "on" && (aligned ? <b className="text-emerald-700">Facing the qibla</b> : "Turn until the Kaaba is at the top marker.")}
-            {sensor === "needs-permission" && <button onClick={enableIOS} className="rounded-lg bg-emerald-700 px-3 py-2 text-white">Enable live compass</button>}
+          <p className="text-center text-sm text-ink-2">
+            {sensor === "on" && (aligned ? <b className="text-lg text-accent-text">Facing the qibla</b> : "Turn until the Kaaba is at the top marker.")}
+            {sensor === "needs-permission" && <button onClick={enableIOS} className="btn btn-primary">Enable live compass</button>}
             {sensor === "denied" && "Compass access was declined. Use the bearing above with a compass app, or reload to try again."}
             {sensor === "none" && "No compass sensor found (common on laptops). Use the bearing above: it is measured clockwise from true north."}
             {sensor === "idle" && "Starting compass..."}
           </p>
-          <div className="flex justify-center"><button onClick={locate} className="rounded-lg border px-3 py-2 text-sm">Use my location</button></div>
+          <div className="flex justify-center"><button onClick={locate} className="btn btn-tinted">Use my location</button></div>
           <form onSubmit={search} className="flex gap-2">
-            <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Or enter area, city or pincode" className="flex-1 rounded-lg border px-3 py-2 text-sm" />
-            <button className="rounded-lg border px-3 py-2 text-sm">Set</button>
+            <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Or enter area, city or pincode" className="h-11 flex-1 px-4 text-[15px]" />
+            <button className="btn btn-secondary">Set</button>
           </form>
           {msg && <p className="text-center text-xs text-amber-700" role="status">{msg}</p>}
           {sensor === "on" && <p className="text-center text-xs text-gray-500">Keep the phone flat and away from metal. If the direction looks off, move the phone in a figure 8 to calibrate.</p>}

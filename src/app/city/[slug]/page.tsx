@@ -35,12 +35,12 @@ export default async function City({ params }: Props) {
     itemListElement: places.slice(0, 100).map((p, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Mosque", name: p.name, geo: { "@type": "GeoCoordinates", latitude: p.lat, longitude: p.lng } } })),
   };
   return (
-    <main className="mx-auto max-w-3xl p-4">
+    <main className="mx-auto max-w-3xl px-4 pb-10 pt-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <p className="text-xs text-gray-500"><Link href="/directory" className="underline">Directory</Link> / {c.state}</p>
-      <h1 className="text-2xl font-bold">Mosques, dargahs and prayer rooms in {c.city}</h1>
+      <h1 className="page-title">Mosques, dargahs and prayer rooms in {c.city}</h1>
       <p className="mt-2 text-gray-600">{places.length} places listed. {PLACE_TYPES.map((t) => [t, places.filter((p) => p.type === t.value).length] as const).filter(([, n]) => n).map(([t, n]) => `${n} ${t.label.toLowerCase()}`).join(", ")}.</p>
-      <p className="mt-1 text-sm"><Link href="/" className="text-emerald-700 underline">Open the map</Link> - missing a place? <Link href="/submit" className="text-emerald-700 underline">Add it</Link>.</p>
+      <p className="mt-1 text-sm"><Link href="/" className="font-medium text-accent-text hover:underline">Open the map</Link> - missing a place? <Link href="/submit" className="font-medium text-accent-text hover:underline">Add it</Link>.</p>
       {areas.map(([a, ps]) => (
         <section key={a} className="mt-6">
           <h2 className="font-semibold">{a} <span className="text-sm text-gray-500">({ps.length})</span></h2>

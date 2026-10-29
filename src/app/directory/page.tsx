@@ -14,8 +14,8 @@ export default async function Directory({ searchParams }: { searchParams: Promis
   const total = states.reduce((x, s) => x + s.n, 0);
   const shown = sp.state ? states.filter((s) => s.s === sp.state) : states;
   return (
-    <main className="mx-auto max-w-4xl p-4">
-      <h1 className="text-2xl font-bold">Directory</h1>
+    <main className="mx-auto max-w-4xl px-4 pb-10 pt-8">
+      <h1 className="page-title">Directory</h1>
       <p className="mt-1 text-gray-600" data-testid="total">{total.toLocaleString("en-IN")} places in {cities.length.toLocaleString("en-IN")} cities and towns across {states.length} states and territories.</p>
       <nav className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
         {states.map((s) => <Link key={s.s} href={`/directory?state=${encodeURIComponent(s.s)}`} className={`hover:underline ${sp.state === s.s ? "font-bold text-emerald-900" : "text-emerald-800"}`}>{s.s} ({s.n})</Link>)}

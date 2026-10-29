@@ -67,7 +67,7 @@ export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId
   }
 
   if (state === "done") return <p className="rounded-lg bg-emerald-50 p-4 text-emerald-800">Thank you - your {kind === "fix" ? "correction" : "submission"} is in the moderation queue.</p>;
-  const field = "w-full rounded-lg border px-3 py-2 text-sm";
+  const field = "w-full h-11 px-4 text-[15px]";
   const set = (k: keyof typeof loc) => (e: React.ChangeEvent<HTMLInputElement>) => setLoc({ ...loc, [k]: e.target.value });
   return (
     <form onSubmit={onSubmit} className="space-y-3">
@@ -87,7 +87,7 @@ export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId
             <input name="lat" value={loc.lat} onChange={set("lat")} onBlur={() => reverse(loc.lat, loc.lng)} inputMode="decimal" placeholder="Latitude" className={field} />
             <input name="lng" value={loc.lng} onChange={set("lng")} onBlur={() => reverse(loc.lat, loc.lng)} inputMode="decimal" placeholder="Longitude" className={field} />
           </div>
-          <button type="button" onClick={useMyLocation} className="text-xs text-emerald-700 underline">I am here now - use my location</button>
+          <button type="button" onClick={useMyLocation} className="text-xs font-medium text-accent-text">I am here now - use my location</button>
           {geoMsg && <p className="text-xs text-amber-700">{geoMsg}</p>}
           <div className="grid grid-cols-2 gap-2">
             <input name="area" value={loc.area} onChange={set("area")} maxLength={120} placeholder="Area / locality" className={field} />
