@@ -1,3 +1,140 @@
 @import "tailwindcss";
 
-.maplibregl-popup-content { font-family: inherit; }
+/* Apple-style design tokens. Light by default, dark via prefers-color-scheme. */
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --surface-2: #f2f2f5;
+  --text: #1d1d1f;
+  --text-2: #6e6e73;
+  --text-3: #86868b;
+  --hairline: rgba(0, 0, 0, 0.09);
+  --accent: #0b6e4f;
+  --accent-hover: #095c42;
+  --accent-soft: rgba(11, 110, 79, 0.1);
+  --accent-text: #0b6e4f;
+  --glass: rgba(255, 255, 255, 0.72);
+  --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+  --shadow-lg: 0 2px 6px rgba(0,0,0,.05), 0 20px 48px rgba(0,0,0,.12);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --surface: #1c1c1e;
+    --surface-2: #2c2c2e;
+    --text: #f5f5f7;
+    --text-2: #a1a1a6;
+    --text-3: #8e8e93;
+    --hairline: rgba(255, 255, 255, 0.12);
+    --accent: #248a3d;
+    --accent-hover: #2a9d47;
+    --accent-soft: rgba(48, 209, 88, 0.16);
+    --accent-text: #4cd97b;
+    --glass: rgba(28, 28, 30, 0.72);
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    --shadow-lg: 0 2px 6px rgba(0,0,0,.5), 0 20px 48px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+}
+
+/* Remap legacy Tailwind palette classes onto the tokens so every page follows the theme. */
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --color-emerald-50: var(--accent-soft);
+  --color-emerald-100: var(--accent-soft);
+  --color-emerald-600: var(--accent);
+  --color-emerald-700: var(--accent);
+  --color-emerald-800: var(--accent-text);
+  --color-emerald-900: var(--accent-text);
+  --color-gray-50: var(--surface-2);
+  --color-gray-100: var(--surface-2);
+  --color-gray-200: var(--hairline);
+  --color-gray-500: var(--text-3);
+  --color-gray-600: var(--text-2);
+  --color-gray-700: var(--text-2);
+  --color-gray-900: var(--text);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-canvas: var(--bg);
+  --color-ink: var(--text);
+  --color-ink-2: var(--text-2);
+  --color-ink-3: var(--text-3);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-text: var(--accent-text);
+  --color-hairline: var(--hairline);
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.375rem;
+  --shadow-soft: var(--shadow);
+  --shadow-float: var(--shadow-lg);
+}
+
+@layer base {
+  *, ::after, ::before { border-color: var(--hairline); }
+  html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+  body { background: var(--bg); color: var(--text); font-feature-settings: "ss01", "cv11"; letter-spacing: -0.005em; }
+  h1, h2, h3 { letter-spacing: -0.022em; }
+  a, button, summary { transition: transform .18s cubic-bezier(.2,.8,.2,1), background-color .2s, color .2s, opacity .2s, box-shadow .2s; }
+  button:not(:disabled):active, a.btn:active, .press:active { transform: scale(.97); }
+  input:not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea {
+    background: var(--surface-2); color: var(--text); border: 1px solid transparent; border-radius: 0.75rem;
+    transition: box-shadow .2s, border-color .2s, background .2s; outline: none;
+  }
+  input:not([type=checkbox]):not([type=radio]):not([type=range]):focus, select:focus, textarea:focus {
+    background: var(--surface); border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  input::placeholder, textarea::placeholder { color: var(--text-3); }
+  input[type=checkbox], input[type=radio], input[type=range] { accent-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+}
+
+@layer components {
+  .glass { background: var(--glass); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); }
+  .card { background: var(--surface); border-radius: 1.375rem; box-shadow: var(--shadow); border: 1px solid var(--hairline); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; padding: .7rem 1.25rem; font-weight: 600; font-size: .95rem; line-height: 1.1; cursor: pointer; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-secondary { background: var(--surface-2); color: var(--text); }
+  .btn-secondary:hover { filter: brightness(0.97); }
+  .btn-tinted { background: var(--accent-soft); color: var(--accent-text); }
+  .btn:disabled { opacity: .4; cursor: default; }
+  .chip { display: inline-flex; align-items: center; border-radius: 999px; padding: .4rem .85rem; font-size: .8rem; font-weight: 500; background: var(--surface-2); color: var(--text); white-space: nowrap; }
+  .chip[aria-pressed=true], .chip-on { background: var(--text); color: var(--bg); }
+  .segmented { display: inline-flex; padding: 3px; border-radius: 10px; background: var(--surface-2); gap: 2px; }
+  .segmented > button { border-radius: 8px; padding: .35rem .8rem; font-size: .8rem; font-weight: 500; color: var(--text-2); }
+  .segmented > button[aria-pressed=true] { background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--text-3); }
+  .page-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+  .lead { font-size: 1.0625rem; color: var(--text-2); line-height: 1.5; }
+  .link { color: var(--accent-text); }
+  .link:hover { text-decoration: underline; }
+  .list-row { display: block; padding: .9rem 1rem; border-radius: 1rem; }
+  .list-row:hover { background: var(--surface-2); }
+}
+
+@keyframes sheet-up { from { transform: translateY(24px); opacity: 0 } to { transform: none; opacity: 1 } }
+@keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+.animate-sheet { animation: sheet-up .45s cubic-bezier(.2,.8,.2,1) both; }
+.animate-fade { animation: fade-in .4s ease both; }
+.pb-safe { padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* MapLibre polish */
+.maplibregl-map { font-family: inherit; }
+.maplibregl-popup-content { font-family: inherit; background: var(--surface); color: var(--text); border-radius: 16px; padding: 12px 14px; box-shadow: var(--shadow-lg); border: 1px solid var(--hairline); min-width: 180px; }
+.maplibregl-popup-tip { border-top-color: var(--surface) !important; border-bottom-color: var(--surface) !important; }
+.maplibregl-popup-close-button { font-size: 18px; color: var(--text-3); padding: 2px 8px; border-radius: 999px; }
+.maplibregl-ctrl-group { border-radius: 12px !important; overflow: hidden; box-shadow: var(--shadow) !important; border: 1px solid var(--hairline); background: var(--glass) !important; -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.maplibregl-ctrl-attrib { background: var(--glass) !important; border-radius: 10px 0 0 0; font-size: 10px; }
+@media (prefers-color-scheme: dark) {
+  .maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(1); }
+  .wtp-tiles canvas { filter: none; }
+}
+@media print { header, nav.tabbar, footer { display: none !important; } }
