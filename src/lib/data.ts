@@ -156,7 +156,7 @@ class SupabaseRepository implements PlaceRepository {
     const id = randomUUID();
     const r = await fetch(`${this.url}/rest/v1/submissions`, {
       method: "POST", cache: "no-store", headers: this.headers({ Prefer: "return=minimal" }),
-      body: JSON.stringify({ kind: s.kind, place_id: s.place_id ?? null, payload: s.payload }),
+      body: JSON.stringify({ id, kind: s.kind, place_id: s.place_id ?? null, payload: s.payload }),
     });
     if (!r.ok) throw new Error(`Supabase submission insert failed: ${r.status}`);
     return { ...s, id, status: "pending" as const, created_at: new Date().toISOString() };
