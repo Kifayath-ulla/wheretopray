@@ -3,6 +3,9 @@ import { useEffect, useRef } from "react";
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
+// maplibre v6 ships its worker as a separate module; we copy it to /public at build time.
+if (typeof window !== "undefined") maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
+
 export default function GapMap({ wards }: { wards: GeoJSON.FeatureCollection | { features: unknown[] } }) {
   const el = useRef<HTMLDivElement>(null);
   useEffect(() => {
