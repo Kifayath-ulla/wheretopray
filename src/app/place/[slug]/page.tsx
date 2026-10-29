@@ -14,7 +14,7 @@ export const dynamicParams = true;
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return (await repo.listPlaces()).map((p) => ({ slug: p.slug }));
+  return []; // rendered on demand and cached; ~21k pages are too many to prebuild
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
