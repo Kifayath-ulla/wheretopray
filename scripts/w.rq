@@ -1,0 +1,1 @@
+SELECT ?i ?l ?c WHERE { ?i wdt:P31 ?t. ?t wdt:P279* wd:Q1370598. ?i wdt:P17 wd:Q668; wdt:P625 ?c. OPTIONAL{?i rdfs:label ?l FILTER(lang(?l)='en')} }
