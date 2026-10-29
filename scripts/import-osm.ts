@@ -6,10 +6,13 @@
 import { writeFileSync } from "node:fs";
 import type { Place, PlaceType } from "../src/lib/types";
 
-const BBOX = "12.75,77.35,13.20,77.85"; // south,west,north,east (Bengaluru urban + outskirts)
+const BBOX = "12.70,77.30,13.35,77.90"; // Bengaluru Urban + Rural + outskirts
 const ENDPOINTS = [
   "https://overpass-api.de/api/interpreter",
   "https://overpass.kumi.systems/api/interpreter",
+  "https://overpass.private.coffee/api/interpreter",
+  "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+  "https://overpass-api.de/api/interpreter",
 ];
 
 const query = `[out:json][timeout:180];
@@ -17,7 +20,7 @@ const query = `[out:json][timeout:180];
   nwr["amenity"="place_of_worship"]["religion"="muslim"](${BBOX});
   nwr["tomb"="dargah"](${BBOX});
   nwr["historic"="tomb"]["religion"="muslim"](${BBOX});
-  nwr["name"~"dargah|darga|ziyarat|masjid|mosque|musalla|musallah|namaz|prayer room|eidgah|idgah",i](${BBOX});
+  nwr["name"~"dargah|dargha|darga|ziyarat|masjid|masjeed|mosque|musalla|musallah|namaz|prayer room|prayer hall|eidgah|idgah|jamia|jama masjid|madrasa",i](${BBOX});
 );
 out center tags;`;
 
@@ -116,7 +119,7 @@ async function main() {
     if (!dup) out.push(p);
   }
   out.sort((a, b) => a.name.localeCompare(b.name));
-  writeFileSync("data/places.json", JSON.stringify(out, null, 0) + "\n");
+  writeFileSync("data/raw/osm.json", JSON.stringify(out, null, 0) + "\n");
   const counts = out.reduce<Record<string, number>>((a, p) => ((a[p.type] = (a[p.type] ?? 0) + 1), a), {});
   console.log(`Wrote ${out.length} places`, counts);
 }

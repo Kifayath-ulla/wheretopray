@@ -1,0 +1,48 @@
+{
+  "head" : {
+    "vars" : [ "i", "l", "c", "tl" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "i" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25212549"
+      },
+      "c" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.599592 12.920778)"
+      },
+      "tl" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "mosque"
+      },
+      "l" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Masjid-e-Bilal"
+      }
+    }, {
+      "i" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24946655"
+      },
+      "c" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.613297222 12.998641666)"
+      },
+      "tl" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "road"
+      },
+      "l" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mosque Road"
+      }
+    } ]
+  }
+}

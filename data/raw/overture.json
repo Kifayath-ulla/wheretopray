@@ -1,0 +1,8050 @@
+[
+{
+"id": "af2cceb8-212e-4574-9261-b85694bfcde4",
+"name": "Moosa Haroon Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7728198170661926,
+"lat": 12.80188021,
+"lng": 77.39384934,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919900668687",
+"website": null
+},
+{
+"id": "576e39c6-5fdd-49bb-963d-62ab3195acd2",
+"name": "Madrasa e Rahmania Arabia Kambipur Trust",
+"cat": "school",
+"confidence": 0.588146448135376,
+"lat": 12.875885086204265,
+"lng": 77.44399544532153,
+"addr": "Kambipur road  kumbalgudu post  Kengeri hobli Bangalore_560074",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918431614127",
+"website": "https://madrasarahmaniaarabiakambipur.com/"
+},
+{
+"id": "86299c91-b5c4-4e2e-9c92-9f4501393589",
+"name": "Kambipura Masjid",
+"cat": "religious_organization",
+"confidence": 0.5910898447036743,
+"lat": 12.87236265,
+"lng": 77.46196542,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "cb44b2b8-8c67-47fe-a053-975510b99a3b",
+"name": "Kengeri Dargah",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6136497259140015,
+"lat": 12.89084317,
+"lng": 77.48326797,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022352828",
+"website": null
+},
+{
+"id": "7581f05f-3e74-43b3-b861-f952e96cb28e",
+"name": "Dargah Hazrat Syed Akbar Ali Jalal Shah Qadri",
+"cat": "christian_place_of_worship",
+"confidence": 0.20230531692504883,
+"lat": 12.8890909,
+"lng": 77.48329394,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "481c32f5-ff8d-4acb-9ee9-4bd40cd65fb3",
+"name": "Macca Masjid",
+"cat": "religious_organization",
+"confidence": 0.5501360893249512,
+"lat": 12.895331,
+"lng": 77.48491797,
+"addr": "Chattupalya, Kengeri, Hobli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "48da7b30-a01b-4a30-951c-acc9d4e776cd",
+"name": "Masjid-e-Kauser",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6906252503395081,
+"lat": 12.85828236,
+"lng": 77.53054817,
+"addr": "NGS Madrasa Ashraful Banat No. 22-28/1 V.M. Road Cross Thalagattapura Temple Road, Kanakapura Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919845043275",
+"website": null
+},
+{
+"id": "4719f524-f1f8-4af7-b593-a21157ec4b1d",
+"name": "NGS Madrasa Ashraful Banat",
+"cat": "religious_school",
+"confidence": 0.5520057082176208,
+"lat": 12.85795555,
+"lng": 77.53060817,
+"addr": "NGS Madrasa Ashraful Banat No. 22-28/1 V.M. Road Cross Thalagattapura -560062 Temple Road Kanakapura",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919845043275",
+"website": null
+},
+{
+"id": "36011473-fe23-4417-93df-638ec6c37bdd",
+"name": "Masjid-e-Noorani",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8208936452865601,
+"lat": 12.80122238,
+"lng": 77.50790637,
+"addr": "Kanakapura Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a18ad8b4-cb4b-4f07-a2dc-dae763ee82e6",
+"name": "Masjid e Abuhurera",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6134008765220642,
+"lat": 12.8706215,
+"lng": 77.55990115,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b943fa5c-6326-4957-9d6c-23656a9051f5",
+"name": "Masjid-E-Faiz Fayazabad",
+"cat": "muslim_place_of_worship",
+"confidence": 0.687248945236206,
+"lat": 12.90237273,
+"lng": 77.56895262,
+"addr": "Masjid-e-Faiz, 286, 9th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "52e893f8-6893-45d0-b309-e1897dd2b68c",
+"name": "Madina Masjid",
+"cat": "religious_organization",
+"confidence": 0.588510274887085,
+"lat": 12.87700412,
+"lng": 77.57067015,
+"addr": "Kothanoor Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a6c414a0-4057-469e-b77d-b1806de23f95",
+"name": "Mecca Masjid",
+"cat": "religious_organization",
+"confidence": 0.6082637310028076,
+"lat": 12.86252623,
+"lng": 77.56432944,
+"addr": "Amruth Nagar Main Road, Royal Park Residency Layout 2, Jp Nagar 9th Phase, Jp",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "22e2c49d-89d9-4ba0-af6e-104f51bb13e2",
+"name": "Rizwan Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8800930976867676,
+"lat": 12.89883,
+"lng": 77.58877,
+"addr": "22nd Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://rizwanmosque.com/"
+},
+{
+"id": "dfa347d1-d263-42ff-85df-9f02e0242b3a",
+"name": "Mosque",
+"cat": "religious_organization",
+"confidence": 0.29797738790512085,
+"lat": 12.89888234,
+"lng": 77.58861802,
+"addr": "Madarasa Raiadh Masjid, 22th Main Road, Ayodhya Nagar, Jp Nagar, Phase 6",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d8a7ac7a-00a8-4d39-a29e-de2afe4cf447",
+"name": "Masjid E Umme Kulsum",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5556159615516663,
+"lat": 12.88989089,
+"lng": 77.58970633,
+"addr": "376, 4th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+917022456154",
+"website": null
+},
+{
+"id": "7a02af23-9714-4e37-b1fb-54f9bb5b2b03",
+"name": "Burhani Masjid",
+"cat": "religious_organization",
+"confidence": 0.782381534576416,
+"lat": 12.8545823,
+"lng": 77.59131998,
+"addr": "Bohra Layout, Gottigere",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918041312405",
+"website": null
+},
+{
+"id": "c12fb82f-6eb4-4254-b670-edc1ca4ee868",
+"name": "Taj Heritage",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7068180441856384,
+"lat": 12.83629093,
+"lng": 77.57730394,
+"addr": "Taj Heritage, Bannerghatta Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918971441884",
+"website": null
+},
+{
+"id": "8feddc56-e78b-43c8-ab58-4c9a3c8bfa06",
+"name": "Zama Masjid",
+"cat": "religious_organization",
+"confidence": 0.5866897702217102,
+"lat": 12.88986799,
+"lng": 77.60088801,
+"addr": "G Floor, Arekere Main Road, Bg Layout Bg Road, Belikhahalli, Sunder Ram Shetty",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "56f2f53e-b4e2-44e4-a368-5338311ed8ba",
+"name": "Begur Mosque",
+"cat": "religious_organization",
+"confidence": 0.6237097978591919,
+"lat": 12.87405993,
+"lng": 77.62569116,
+"addr": "No 1294/5, Begur Road, Devarachikkanahalli Classic Paradise Layout, Devarachikkana Halli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "aa31cb05-0e12-43c6-9e97-e3652376ee39",
+"name": "Jama Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5369342565536499,
+"lat": 12.90193,
+"lng": 77.62186,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "97f0845b-59ca-4802-9db9-0d4e7106dd9b",
+"name": "Eidgah Bommanahalli",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5206135511398315,
+"lat": 12.89955494,
+"lng": 77.62321835,
+"addr": "3, 1st Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "8690eb29-8c9d-4153-b850-f3415b14306f",
+"name": "Khaja Masjid",
+"cat": "religious_organization",
+"confidence": 0.5346775650978088,
+"lat": 12.90337151,
+"lng": 77.63450326,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "5b96c8f5-40c9-48a2-8d06-7d9a6c1d6ea5",
+"name": "Macca Masjid",
+"cat": "religious_organization",
+"confidence": 0.6347590684890747,
+"lat": 12.90131329,
+"lng": 77.63626109,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "5a5716fc-7e08-444a-9e6f-c2fb3d5ff115",
+"name": "Masjid O Madrasa Saad RA",
+"cat": "religious_organization",
+"confidence": 0.590355634689331,
+"lat": 12.8719688,
+"lng": 77.6370779,
+"addr": "6th Cross, B Block, Subhash Nagar, Aecs C Block, Begur",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "86fbbcee-0d9a-4080-8de2-533eaf4b1f7e",
+"name": "Jamia Mohammadia",
+"cat": "education",
+"confidence": 0.43706053495407104,
+"lat": 12.86471766,
+"lng": 77.63193323,
+"addr": "near Masjid E Aala",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919448345672",
+"website": null
+},
+{
+"id": "556b81d0-afb4-40a5-ba85-6f0489fd3cee",
+"name": "Bingipura Dargah",
+"cat": "christian_place_of_worship",
+"confidence": 0.6451709270477295,
+"lat": 12.83332703,
+"lng": 77.6335482,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "343c1d05-a483-40e6-a084-1fa717786d34",
+"name": "Tilaknagar Mosque",
+"cat": "religious_organization",
+"confidence": 0.8661379218101501,
+"lat": 12.92785461,
+"lng": 77.59402035,
+"addr": "30th B Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "bddda2f8-656a-4a75-b56c-f357e43d0d41",
+"name": "Eidgah Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6751348972320557,
+"lat": 12.92786713,
+"lng": 77.58434992,
+"addr": "30th Cross Road, Block 4, Jayanagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d0b52903-d0cd-4fa3-8de1-f76bf3599560",
+"name": "Masjid E Husha Omdrasa E Avabia Hidavathu Uloom",
+"cat": "religious_organization",
+"confidence": 0.7068688869476318,
+"lat": 12.92878979,
+"lng": 77.5975492,
+"addr": "Srk Garden, Bannerghatta Road, Jayanagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "7123cdbf-47c4-475e-83d5-622c6ecdc847",
+"name": "Bismillah Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7118543386459351,
+"lat": 12.92729131,
+"lng": 77.60246546,
+"addr": "1219/4D, Masjid Road, Bannerghatta Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "7d0c8695-42e5-4934-b416-a97c3bbbe5ec",
+"name": "Acupuncture and Hijama Clinic",
+"cat": "acupuncture",
+"confidence": 0.9054379463195801,
+"lat": 12.92660686,
+"lng": 77.60226783,
+"addr": "3rd Main, Bg Road, Bismillah Nagar, Tavarekere",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918123478073",
+"website": "https://wa.link/ij1rhf"
+},
+{
+"id": "1334d959-e619-4719-be2c-d885e2b23d6d",
+"name": "Madiwala Masjid",
+"cat": "religious_organization",
+"confidence": 0.670503556728363,
+"lat": 12.92488443,
+"lng": 77.61837899,
+"addr": "100 Feet Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "76019540-7971-480d-b8a7-e07877c87551",
+"name": "Masjid E Noor",
+"cat": "religious_organization",
+"confidence": 0.7427841424942017,
+"lat": 12.92489766,
+"lng": 77.61838773,
+"addr": "100 Feet Ring Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "508c2edc-1526-47b2-940c-6b0c3376ec32",
+"name": "Masjid Noor Fathima Bismillah Nagar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6431927680969238,
+"lat": 12.92575889,
+"lng": 77.60418241,
+"addr": "1, 34, 1st Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2f0bd34b-8ebe-46a2-bd3a-05cbd2a55dfa",
+"name": "Masjid-E-Shabab Ul Islam",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7211800813674927,
+"lat": 12.92302209,
+"lng": 77.60214483,
+"addr": "New Gurappana Palya 3rd Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1c804f4a-2532-4c9e-8efd-40742c584919",
+"name": "Madrasa-E-Munawara",
+"cat": "school",
+"confidence": 0.5788649320602417,
+"lat": 12.92413,
+"lng": 77.60411,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ac149424-094c-46b8-837b-2fad8fcd0dd5",
+"name": "Masjid-E-Madrasa Aboobakar Siddiq",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6295161247253418,
+"lat": 12.9226947,
+"lng": 77.6061521,
+"addr": "E Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "800e13fa-1f93-4838-af1e-4ae7811cfd44",
+"name": "Masjid-e-Ar-Rahman",
+"cat": "muslim_place_of_worship",
+"confidence": 0.532516360282898,
+"lat": 12.92252312,
+"lng": 77.6049071,
+"addr": "Madar, E Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3cefec52-3418-4490-8a42-ef14785bea5e",
+"name": "Bilal Masjid",
+"cat": "",
+"confidence": 0.5969465970993042,
+"lat": 12.921748075993692,
+"lng": 77.61821750671925,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "5cb10d91-202a-4a1a-80b9-1570e03b2cb3",
+"name": "Hazrath Rahim Sha Valli Dargah",
+"cat": "religious_organization",
+"confidence": 0.5589956045150757,
+"lat": 12.92007282,
+"lng": 77.62111746,
+"addr": "Hosur Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919341347449",
+"website": null
+},
+{
+"id": "6d7ef24c-ac78-4726-af8e-6f5cc9e0f8a5",
+"name": "Mukarram Masjid",
+"cat": "religious_organization",
+"confidence": 0.6986066102981567,
+"lat": 12.92020708,
+"lng": 77.60462845,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918026682614",
+"website": null
+},
+{
+"id": "846c7e25-5412-490e-bb5d-692ba7031e38",
+"name": "Masjid E Khaif",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5700926780700684,
+"lat": 12.92086478,
+"lng": 77.61377785,
+"addr": "11th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2bd6f245-d3e2-479d-b126-122b07bb665b",
+"name": "Masjid E Salfiya",
+"cat": "religious_organization",
+"confidence": 0.6051285862922668,
+"lat": 12.921149,
+"lng": 77.602119,
+"addr": "Guruppan Palya Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "dd960053-c4b9-4c47-85c2-589deac125ab",
+"name": "Masjid E Bilal Madina Nagar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.85686194896698,
+"lat": 12.92083919,
+"lng": 77.59961579,
+"addr": "6th Main 2nd Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022352828",
+"website": null
+},
+{
+"id": "ed195382-ceb9-4316-888d-c6c2d4df30bd",
+"name": "Masjid-e-Islamia",
+"cat": "muslim_place_of_worship",
+"confidence": 0.818987250328064,
+"lat": 12.920621559278,
+"lng": 77.590599060059,
+"addr": "Tilak Nagar, Jayanagar 4th 'T' Block,",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+911234500000",
+"website": null
+},
+{
+"id": "a8af429d-a960-4de9-9131-580d86fa8324",
+"name": "Masjid E Noorani Complex",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7909205555915833,
+"lat": 12.92052065,
+"lng": 77.59407816,
+"addr": "No 3, 39th Cross, 9th Block, Jayanagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "01effe09-0346-4b8f-bc48-b2e7f459d1e0",
+"name": "Jamia Hazrath Tippu",
+"cat": "muslim_place_of_worship",
+"confidence": 0.3203847408294678,
+"lat": 12.92252805,
+"lng": 77.57098865,
+"addr": "54 24th, A Cross, 7th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919060456487",
+"website": null
+},
+{
+"id": "fafa7759-796b-4076-b1aa-de77a3e47b59",
+"name": "Masjid-e-Khudadad",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6945841312408447,
+"lat": 12.92249017,
+"lng": 77.57072991,
+"addr": "#122, 2nd Stage",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6b3bb6c5-ca65-4082-809e-a0e8dc20e15c",
+"name": "E Quba Masjid",
+"cat": "religious_organization",
+"confidence": 0.6409338116645813,
+"lat": 12.9168741,
+"lng": 77.56747066,
+"addr": "Yarab Nagar, Banashankari 2nd Stage",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0546be13-cdb6-40da-b5db-11e7fd1de5a8",
+"name": "Yarub Nagar Masjid",
+"cat": "religious_organization",
+"confidence": 0.6585917472839355,
+"lat": 12.91683,
+"lng": 77.56771,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "aeebf2b7-4339-4018-9875-31235dcfc81d",
+"name": "Masjidul Huda and Munavirul Islam",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5286552906036377,
+"lat": 12.91751979,
+"lng": 77.56557564,
+"addr": "502, 13th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2729d472-2355-40b7-8aef-5de9b00ba5dd",
+"name": "Noorani Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5882537364959717,
+"lat": 12.917603111166022,
+"lng": 77.56600635531473,
+"addr": "34th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919379299123",
+"website": null
+},
+{
+"id": "11c23244-f871-4275-8e5c-e870743bcbaa",
+"name": "Makkah Moazzama",
+"cat": "muslim_place_of_worship",
+"confidence": 0.542442798614502,
+"lat": 12.91809381,
+"lng": 77.57140141,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "fc0fe446-9af4-41a2-967d-6f41de82544c",
+"name": "Madeena Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5939757227897644,
+"lat": 12.91956432,
+"lng": 77.57247989,
+"addr": "389",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "56a95738-53de-4445-ad3c-ddce36cb690f",
+"name": "Masjid Umar Farooq",
+"cat": "religious_organization",
+"confidence": 0.5773168802261353,
+"lat": 12.91934,
+"lng": 77.61353,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f044f94c-a896-4fab-855c-404f94c42587",
+"name": "Masjid E Abul Khasim",
+"cat": "religious_organization",
+"confidence": 0.5608678460121155,
+"lat": 12.91776174,
+"lng": 77.59609132,
+"addr": "28th Main Road, East End Main Road, Corporation Colony, 9th Block, Jayanagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1880b0f0-c7ce-48d1-b6e6-7e55133783ed",
+"name": "SK Jamal",
+"cat": "real_estate_service",
+"confidence": 0.469242662191391,
+"lat": 12.91736009,
+"lng": 77.60518621,
+"addr": "9th A Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ac4f2e27-779c-4a5c-9549-79da22931ea5",
+"name": "Masjid e Rasoolullah",
+"cat": "religious_organization",
+"confidence": 0.9063305854797363,
+"lat": 12.916874681177362,
+"lng": 77.60674998997689,
+"addr": "43, M Cross, 8th Main Rd, New Gurappana Palya, Bengaluru, Karnataka 560029",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919845744221",
+"website": "http://www.noorifoundation.com/"
+},
+{
+"id": "a07b6989-3f7a-4695-9cae-44e95bbf0dc2",
+"name": "Masjid E Mouazzam",
+"cat": "religious_organization",
+"confidence": 0.7394476532936096,
+"lat": 12.91718376,
+"lng": 77.60641068,
+"addr": "100 Feet Ring Road, 1st Stage, Btm Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ad8c914e-130d-4330-ad1c-b86f0bd53337",
+"name": "Masjid-e-Eidgah Bilal",
+"cat": "muslim_place_of_worship",
+"confidence": 0.864246129989624,
+"lat": 12.9169583,
+"lng": 77.6002645,
+"addr": "Bannerghatta road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f54ef99f-89e9-4c37-ae06-7ed10668eebc",
+"name": "Ilaahi Masjid",
+"cat": "religious_organization",
+"confidence": 0.6406370401382446,
+"lat": 12.915812,
+"lng": 77.5718873,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "49cd1c72-fb20-48ae-8a78-9ab8e4964e4b",
+"name": "Masjid E Allahu Akbar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5147274732589722,
+"lat": 12.91544875,
+"lng": 77.57080145,
+"addr": "303",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "23f10e81-0048-4c84-8641-c80f1d881c07",
+"name": "Mosque",
+"cat": "religious_organization",
+"confidence": 0.2304285615682602,
+"lat": 12.91541334,
+"lng": 77.57130183,
+"addr": "Sarbanda Palya, Omarbagh Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "882a2165-4c60-4c38-833d-247246ff6650",
+"name": "Jama Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5800960063934326,
+"lat": 12.91506,
+"lng": 77.56529,
+"addr": "Kadirenahalli Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a8c361c4-349c-43db-9b26-39360d8a53cc",
+"name": "Masjid E Aqsa",
+"cat": "muslim_place_of_worship",
+"confidence": 0.39987102150917053,
+"lat": 12.91173761,
+"lng": 77.62852875,
+"addr": "1st Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "788d6858-210a-4ea8-bbab-998b00bdc75d",
+"name": "Relief Hijama Centre",
+"cat": "naturopathic_medicine",
+"confidence": 0.8144376277923584,
+"lat": 12.91152,
+"lng": 77.57307,
+"addr": "13 80 Feet Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919986604441",
+"website": "https://www.reliefhijamacentre.in/"
+},
+{
+"id": "6f4c4583-7227-43bc-a899-ec5f7ba7706f",
+"name": "Masjid UL Taqwa",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7246896028518677,
+"lat": 12.91055799,
+"lng": 77.5697363,
+"addr": "No 248, Umar Bagh, 100Ft Road, Jp",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2512586c-5fed-4a7e-9bba-6e99a06f47dc",
+"name": "Masjid E Minhaj",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6000869870185852,
+"lat": 12.91105321,
+"lng": 77.56215055,
+"addr": "158, 3rd Main",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022352828",
+"website": null
+},
+{
+"id": "c1778f17-1487-4841-924b-7f8822e247c2",
+"name": "Bismillah Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5987871289253235,
+"lat": 12.91227632,
+"lng": 77.59381089,
+"addr": "Block-5, 3rd Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9986c455-5009-4315-81ed-e365480153b0",
+"name": "Masjid E Mohammedia",
+"cat": "religious_organization",
+"confidence": 0.3871998190879822,
+"lat": 12.91226319,
+"lng": 77.5791446,
+"addr": "16th Main, Jp Nagar 3rd Cross",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "12ef5825-d017-4e66-9809-e54c893b667d",
+"name": "Madrasa E Islamia Mohammedia",
+"cat": "school",
+"confidence": 0.3669580817222595,
+"lat": 12.91285326,
+"lng": 77.57995115,
+"addr": "No 1, 5th Cross, 32nd C Main, Tmcs Layout, Jp Nagar 1st Phase",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c9d5decd-ea8b-4e09-b706-5f729d10b44b",
+"name": "Eidga Faiz-E-Umar Anjuman-E-Eslamia",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5480746030807495,
+"lat": 12.91301,
+"lng": 77.56495,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a4cb677c-c5ca-4300-b993-06d5f17b7aa0",
+"name": "Manashankari Eidgah",
+"cat": "religious_organization",
+"confidence": 0.5525822639465332,
+"lat": 12.91266998,
+"lng": 77.56483744,
+"addr": "2nd Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b5633b54-648a-4732-b1cf-2c3d82c9a7d0",
+"name": "Jamia Masjid Kengeri",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8907436728477478,
+"lat": 12.91069724,
+"lng": 77.48379069,
+"addr": "NH 275",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919535648052",
+"website": null
+},
+{
+"id": "2fa6d89b-c4c1-42de-96d5-93c6b0a30d7a",
+"name": "Eid Mubark Masjid",
+"cat": "religious_organization",
+"confidence": 0.5387450456619263,
+"lat": 12.9106149,
+"lng": 77.4840346,
+"addr": "Kengeri Bus Stand, Mysore Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6734957c-eb8f-4e02-a74d-7d098219863e",
+"name": "Baitussalam Masjid Islamabad",
+"cat": "religious_school",
+"confidence": 0.7079917192459106,
+"lat": 12.90821,
+"lng": 77.50942,
+"addr": "Near Garden City Phase 7, Bahria Town",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://www.baitussalam.org/"
+},
+{
+"id": "eb03bf22-f6a9-406b-a8a3-fc1be8f27d3b",
+"name": "Masjid E Quba",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7089245319366455,
+"lat": 12.90811063,
+"lng": 77.61351051,
+"addr": "604, 29th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918884478786",
+"website": null
+},
+{
+"id": "78ce4dea-8ddd-4421-b510-8ce66e6008fb",
+"name": "Madeena Masjid",
+"cat": "religious_organization",
+"confidence": 0.7036566734313965,
+"lat": 12.90746881,
+"lng": 77.63199108,
+"addr": "Madina Masjid Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918904583223",
+"website": null
+},
+{
+"id": "70355c86-4500-473a-a156-783f96027087",
+"name": "Jamia Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8208521008491516,
+"lat": 12.90544975,
+"lng": 77.62735654,
+"addr": "8th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919341622401",
+"website": null
+},
+{
+"id": "4a92cd63-2cab-46dd-a6ce-da694a6757de",
+"name": "Masjid-e-Ayesha",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8140846490859985,
+"lat": 12.90457478,
+"lng": 77.63659528,
+"addr": "mangammana palya, 2nd Main Rd, near Ayesha masjid",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2ac46a26-5a73-4a7d-b181-395f903bfe48",
+"name": "Jamiya Masjid Ahle Sunnath Ul Jama\u2019at, Bommanahalli.",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5963690876960754,
+"lat": 12.90441926109155,
+"lng": 77.6261980340473,
+"addr": "Begur Road, Bommanahalli.",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919844000773",
+"website": null
+},
+{
+"id": "d198a951-8cfe-4610-ab86-77a836c28d78",
+"name": "Masjid E Rizwan",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4353369176387787,
+"lat": 12.75744029,
+"lng": 77.81173062,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0e453e0e-b5dd-4f46-ba44-6b3cf348547e",
+"name": "Masjid E Zaithoon",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4091424345970154,
+"lat": 12.75383199,
+"lng": 77.80193735,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "770081c6-3d96-4d0e-8ffa-6e8a694abbce",
+"name": "Dargah Hazrat Imam Shah Wali Qadri",
+"cat": "christian_place_of_worship",
+"confidence": 0.4605084955692291,
+"lat": 12.77629632,
+"lng": 77.77733454,
+"addr": "NHAI Toll Booth - Karnataka",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "44a9b0bd-5aff-45ae-8c1d-b8fd2f6aa079",
+"name": "Masjid E Bilal",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4531806707382202,
+"lat": 12.78048149,
+"lng": 77.79781466,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918675552675",
+"website": null
+},
+{
+"id": "f7c04335-f471-4c5d-8bc8-a97942768d7b",
+"name": "Masjid E Ameer Hamza",
+"cat": "muslim_place_of_worship",
+"confidence": 0.45932236313819885,
+"lat": 12.77311202,
+"lng": 77.64948824,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "965a6a74-9b5f-438b-9620-12d8ff386f1a",
+"name": "Masjid E-Nooraini",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7184062004089355,
+"lat": 12.825945,
+"lng": 77.683658,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "8dd0c24d-0143-452d-8835-f6e77a4e3e68",
+"name": "Makkah Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7670241594314575,
+"lat": 12.83594749,
+"lng": 77.65384133,
+"addr": "Makkah Masjid Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "551224bd-ae6a-40d6-91b4-3a4fc3a44fdc",
+"name": "Al falah trust Jamia masjid shikaripalya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.654631495475769,
+"lat": 12.83418772,
+"lng": 77.65470696,
+"addr": "Shikaripalya Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "32ef0b58-aa3a-48d9-b1e4-264cc4afa42b",
+"name": "Shikari Palya Mosque",
+"cat": "religious_organization",
+"confidence": 0.521274209022522,
+"lat": 12.83386369,
+"lng": 77.65549357,
+"addr": "Gollahalli Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "cce8ba49-52d8-4a4a-a942-85f17e6b3bb0",
+"name": "Masjid Maimun O Shams",
+"cat": "religious_organization",
+"confidence": 0.6956066489219666,
+"lat": 12.8483698,
+"lng": 77.67193978,
+"addr": "Service Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a7cbf463-97e9-434a-b57a-7f0d5c5edce1",
+"name": "Muzdalifa Hajj, Umrah and Ziyarat",
+"cat": "tour_operator",
+"confidence": 0.31805023550987244,
+"lat": 12.8772976,
+"lng": 77.63895077,
+"addr": "NO.23, 5, Manipal County Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919164134673",
+"website": null
+},
+{
+"id": "6af6f917-fc82-4602-aa55-d6b04943db18",
+"name": "Masjid e Mohammadi",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7254827618598938,
+"lat": 12.89778409,
+"lng": 77.64145935,
+"addr": "12, 2nd Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919901957961",
+"website": null
+},
+{
+"id": "f96486cf-3338-4e7d-9c44-81e9f2575b16",
+"name": "Mosque Sommadundrapalya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7131757140159607,
+"lat": 12.8947408,
+"lng": 77.6514032,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "308270d0-169f-4498-8bba-519c7a1cad2e",
+"name": "Masjid E Usman E Ghani",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6714638471603394,
+"lat": 12.90106689,
+"lng": 77.66207073,
+"addr": "117, Orchids School Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b0a586d4-6906-4379-be68-a14232dddf72",
+"name": "Madrasa Gasmeeriyya",
+"cat": "vocational_and_technical_school",
+"confidence": 0.37669914960861206,
+"lat": 12.90101451,
+"lng": 77.66219364,
+"addr": "Reliable Lifestyle Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "eeccf570-2cb0-4ff7-aa2a-8d2710ec68e4",
+"name": "Markaz Juma Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5242801308631897,
+"lat": 12.90624,
+"lng": 77.64512,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "59d8c4e0-a8eb-4240-8048-6ab5552e2d19",
+"name": "Masjid-E-Hussainia",
+"cat": "muslim_place_of_worship",
+"confidence": 0.587310791015625,
+"lat": 12.90975121,
+"lng": 77.65033605,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919916033292",
+"website": null
+},
+{
+"id": "a28f4143-779a-4c35-80f0-2bd715d5fb93",
+"name": "Jamia Hamdard University",
+"cat": "college_university",
+"confidence": 0.8758458495140076,
+"lat": 12.909871336355,
+"lng": 77.64347076416,
+"addr": "guru rabidas marg",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://www.jamiahamdard.ac.in/"
+},
+{
+"id": "e08ced2a-e225-4a18-bfc4-c37219bd860b",
+"name": "Masjid-E-Noorani",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5385206341743469,
+"lat": 12.92354917,
+"lng": 77.64973588,
+"addr": "24th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3e210ec0-5897-4b21-bf4c-6a705f75fa34",
+"name": "Masjid-E-Mahmoodia",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5519717335700989,
+"lat": 13.02120497,
+"lng": 77.52636892,
+"addr": "12th Main, Peenya 3rd Stage, 3rd Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c6f6b618-d4d3-43b2-a311-ab0788f05268",
+"name": "Masjid E Noorul Islam",
+"cat": "muslim_place_of_worship",
+"confidence": 0.20318031311035156,
+"lat": 13.01536285,
+"lng": 77.51068979,
+"addr": "10th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c32d6584-a67e-4b87-a6a9-8cd63ef59e4c",
+"name": "Masjid e Elahi Ahele Sunnat wal jamat",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4468211233615875,
+"lat": 13.01628513,
+"lng": 77.51198288,
+"addr": "174, 3rd Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "56ddfd55-73bb-44a3-97f3-89e981de6501",
+"name": "Madarsa and Masjid Darul Uloom Mubaraka",
+"cat": "religious_organization",
+"confidence": 0.6541823744773865,
+"lat": 13.01400228,
+"lng": 77.48812296,
+"addr": "Tigalarapalya",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "da6a4606-935e-43d3-9933-ee58c5d73784",
+"name": "Jamia Masjid Ahale Sunnathul Jamat",
+"cat": "religious_organization",
+"confidence": 0.8167298436164856,
+"lat": 13.00633658,
+"lng": 77.50465617,
+"addr": "Peenya",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "cb5c6843-6ad7-41a3-8dec-d96500c5f6a6",
+"name": "Masjid E Elahi",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8606802225112915,
+"lat": 12.99924654,
+"lng": 77.53128328,
+"addr": "77, 2nd Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "https://www.masjideelahi.com/"
+},
+{
+"id": "76d35520-6c58-4a83-9703-80a663b0cf48",
+"name": "Yajamana Automation Technologies",
+"cat": "auto_parts_store",
+"confidence": 0.5946125984191895,
+"lat": 12.99973998,
+"lng": 77.49345491,
+"addr": "16 14th Cross Peenya",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918044010942",
+"website": null
+},
+{
+"id": "91732a48-fbaf-4a37-80e6-7c53f7bfc6a1",
+"name": "Masjid E Aqsa \u0645\u0633\u062c\u062f\u0650 \u0627\u0642\u0635\u06cc\u0670",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5172320008277893,
+"lat": 12.9977262,
+"lng": 77.52679991,
+"addr": "1st Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "494cfaed-bea9-44af-a8e7-19bda3e94e0f",
+"name": "Masjid-E-Mohammadiya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6195880174636841,
+"lat": 12.9695552,
+"lng": 77.5283344,
+"addr": "87, 3rd Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ab9c34ee-1e0e-45b5-aa99-f802fd0c5eb3",
+"name": "Makkah Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7647292613983154,
+"lat": 12.95292847,
+"lng": 77.52556096,
+"addr": "Mecca Mosque Building, 139, 6th Cross Rd, 5th main, Ahmed Nagar, BDA Layout, Gangondanahalli, Makka Masjid Road, 6th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3fd2ced7-83eb-4cbc-97e3-2b12e938d748",
+"name": "Muslim Mahdavia Arabi Madrasa-E-Sufiya",
+"cat": "elementary_school",
+"confidence": 0.5636825561523438,
+"lat": 12.953075406316406,
+"lng": 77.5265591491357,
+"addr": "7th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9eee9328-dd31-4fff-a971-b473c59e8b43",
+"name": "Madrasa-E-Usman-E-Ghani",
+"cat": "elementary_school",
+"confidence": 0.5977416038513184,
+"lat": 12.95326,
+"lng": 77.52743,
+"addr": "1st Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "db35869b-9f11-4a59-8bf5-e901a6d044d8",
+"name": "Masjid Ul Ansaar Ahle Hadees",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5880426168441772,
+"lat": 12.95218193,
+"lng": 77.52735217,
+"addr": "14th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a25ad53d-7c51-416e-9379-a38297b57d59",
+"name": "Madrasa-e-Maryam",
+"cat": "education",
+"confidence": 0.3852652609348297,
+"lat": 12.95105273,
+"lng": 77.52623658,
+"addr": "Khan Manzil, 7, 4th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "20d75fa0-05e1-4b95-b4ef-4a6702c76703",
+"name": "Masjid e Siddique",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7560882568359375,
+"lat": 12.94907634,
+"lng": 77.52690712,
+"addr": "Gangagondana Halli Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "077010ea-6e69-48ba-9493-b50e81a881ce",
+"name": "Masjid E Husain Mohammed Abbas",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7255767583847046,
+"lat": 12.94925091,
+"lng": 77.52804656,
+"addr": "8 & 9, 3rd Cross Gangondanahalli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919986352312",
+"website": null
+},
+{
+"id": "0db4c8e5-79ce-4423-b3da-d1cd6c2000d4",
+"name": "Masjid Umar Farooq",
+"cat": "religious_organization",
+"confidence": 0.7075096964836121,
+"lat": 12.94574338,
+"lng": 77.5236845,
+"addr": "No C-89, 4th Main Road, Metro Layout, Nayandahalli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+14162813666",
+"website": "http://www.masjidomarfarooq.com/"
+},
+{
+"id": "7bba4148-c5d9-4714-b5d2-d4cde4ff5f24",
+"name": "Himadali Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6141055226325989,
+"lat": 12.94456,
+"lng": 77.47347,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1e359032-e696-4bcc-a48a-e4b14f923825",
+"name": "Masjid E Ali",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6673544645309448,
+"lat": 12.94203518,
+"lng": 77.47409795,
+"addr": "Ualla Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919036085786",
+"website": null
+},
+{
+"id": "0afd3054-9eda-4f79-ac7d-21a07bec96a6",
+"name": "Madrasa-e-Fathima",
+"cat": "muslim_place_of_worship",
+"confidence": 0.39002370834350586,
+"lat": 13.1060699,
+"lng": 77.37991126,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919900017864",
+"website": null
+},
+{
+"id": "f2e503ee-526f-450f-9045-03ad36b1cf36",
+"name": "Dargah Hazrath Syed Sadruddin Shah Hussaini Chisty RA",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5024155974388123,
+"lat": 13.09771232,
+"lng": 77.39295658,
+"addr": "near Madeena masjid, next to Bus stand",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "be0aaaea-0280-47cb-887f-01d37a0505df",
+"name": "Madeena Masjid",
+"cat": "religious_organization",
+"confidence": 0.38225698471069336,
+"lat": 13.07045688,
+"lng": 77.52538677,
+"addr": "Srikrupa Layout, Abbigere",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "11637536-2b6a-4d53-a5b0-782310e05d5a",
+"name": "Masjid AL Jabbar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7656197547912598,
+"lat": 13.0714142,
+"lng": 77.51215698,
+"addr": "Medarahalli Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f6f2fadd-cf5b-4ea8-9dca-4ac3aab1ae2f",
+"name": "Sri Rajamath Enterprises",
+"cat": "shopping",
+"confidence": 0.2680341601371765,
+"lat": 13.06093799,
+"lng": 77.50045366,
+"addr": "No 610, 6th Cross, Mei Layout, Bagalgunte",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c79cb756-4aa7-4e10-af39-fa5c1e861a5f",
+"name": "Masjid E Mohammadiya Jamiya Masjid",
+"cat": "religious_organization",
+"confidence": 0.6545204520225525,
+"lat": 13.04454481,
+"lng": 77.51240246,
+"addr": "No 374, Kk Road, T",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1bef10de-224a-4585-b7aa-91a22abc4508",
+"name": "Masjid Ibrahim",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5548776388168335,
+"lat": 13.040479462786642,
+"lng": 77.51586541129173,
+"addr": "7th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "583049bd-4588-4cae-b2eb-c7a4c129ef19",
+"name": "Roshan Mosque and Dargah Hazzath Sadiq",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5853697657585144,
+"lat": 12.95346449,
+"lng": 77.54245872,
+"addr": "Mysore Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918026753408",
+"website": null
+},
+{
+"id": "62d96e2e-59b3-430b-aca5-6e99efe03195",
+"name": "Masjid E Khudadad",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5245397686958313,
+"lat": 12.96066798,
+"lng": 77.54234857,
+"addr": "81, 1st Main Rd, near Kudarathu Masjid Sharmana Graden",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "75a6d8e0-32be-40ae-877e-9778f67c281c",
+"name": "Masjid E Aamir Kaleemi [ Ahle Sunnat Wa Jamat ]",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7192813158035278,
+"lat": 12.96060679,
+"lng": 77.54565152,
+"addr": "Sunni Chowk, 76, Pipeline Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "757312ef-d42a-4754-9278-b8048607fc07",
+"name": "Old Guddadahalli Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6723796725273132,
+"lat": 12.96065913,
+"lng": 77.54649612,
+"addr": "No 67, 5th Cross, Nehru Road, Old Guddadahalli, Mysore Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "03fbd987-bc46-4563-938e-bb811926e67b",
+"name": "Jamaal Enterprises",
+"cat": "shopping",
+"confidence": 0.23658648133277893,
+"lat": 12.9607636,
+"lng": 77.54405581,
+"addr": "No 1, 2nd Main Road, Shamanna Garden, New Guddadahalli, Mysore Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b59c74de-4c27-4b0a-8997-07e4ea86fc12",
+"name": "Masjid-E-Tippu Shamanna Nagar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8013664484024048,
+"lat": 12.96203102857318,
+"lng": 77.54318314285787,
+"addr": "Masjid-E-Tippu, Shamanna Nagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919449611837",
+"website": null
+},
+{
+"id": "501ca72b-57d1-4167-bc00-9418cc1405c9",
+"name": "Arfath Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6990447640419006,
+"lat": 12.962908047894484,
+"lng": 77.54613905950949,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0657d8e2-bad3-456e-a953-23afb232168a",
+"name": "Masjid-e-Rehmaniya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6857506632804871,
+"lat": 12.96307803,
+"lng": 77.54990459,
+"addr": "36, 9th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "5f2f090a-13bb-47a9-af4a-7e338808db55",
+"name": "Masjid-e-Quba",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7091047167778015,
+"lat": 12.96094548,
+"lng": 77.55008399,
+"addr": "Old Guddadahalli Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919535586793",
+"website": null
+},
+{
+"id": "e66f366f-d7d0-49b8-8d34-0d220ec8a605",
+"name": "Masjid e Ghosiya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5554316639900208,
+"lat": 12.96114439,
+"lng": 77.54862921,
+"addr": "6th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0f8a2f3a-56c6-4a1b-95d1-de22e6d0d4a1",
+"name": "Masjid e Ayesha Siddiqa",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8923588991165161,
+"lat": 12.95932049,
+"lng": 77.54864827,
+"addr": "Old Guddadahalli Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "307ef0ed-3b25-4d0d-b620-10a22147a287",
+"name": "Masjid E Siddiqiya",
+"cat": "religious_organization",
+"confidence": 0.5784123539924622,
+"lat": 12.95245726,
+"lng": 77.55118005,
+"addr": "Mysore Road, Anche Palya, Kastruba",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d288a798-ff4b-4336-8298-4f73658ac992",
+"name": "Tipunagar Masjid",
+"cat": "religious_organization",
+"confidence": 0.489646315574646,
+"lat": 12.96176829,
+"lng": 77.56615186,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "61414e13-c3d8-4731-8f71-c8589947b1b0",
+"name": "Dargah Hazrat Khwaja Nazar Aulia",
+"cat": "christian_place_of_worship",
+"confidence": 0.455633282661438,
+"lat": 12.96299288,
+"lng": 77.56706446,
+"addr": "Mysore Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "42a15cc2-c582-448f-9735-e4f4ee0f2ae5",
+"name": "Barline Masjid",
+"cat": "religious_organization",
+"confidence": 0.6324465870857239,
+"lat": 12.96311246,
+"lng": 77.56775727,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "bda3f022-18f0-46b1-a479-4ce558d0392e",
+"name": "Dargah Hazrat Safdar Ali Shah Qadri",
+"cat": "christian_place_of_worship",
+"confidence": 0.27439188957214355,
+"lat": 12.96076274,
+"lng": 77.56990419,
+"addr": "Dargah Hazrath Syed Safdar Ali Shah Khadri (RA)Tippu Sultan Summar Palace Road Royan Circle Chamrajpet Bangalore 18",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "https://youtube.com/@safdaralidigitalmedia?si=Y27npibURYCVrH-7"
+},
+{
+"id": "87c1aa0c-e5d9-4804-af7e-4ed9448c5007",
+"name": "Masjid e Khadeejatul Kubra",
+"cat": "muslim_place_of_worship",
+"confidence": 0.560507595539093,
+"lat": 12.95807744,
+"lng": 77.57577619,
+"addr": "Fort F St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "322c409b-dd98-41c1-9ce5-39fd5469828e",
+"name": "Masjid E Aala",
+"cat": "religious_organization",
+"confidence": 0.5287529230117798,
+"lat": 12.95507127,
+"lng": 77.57534391,
+"addr": "No 24/17, 2nd Main Road, Masjid Road, Parvathi Puram",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "4a63aa25-9665-440f-b981-5a2432347f34",
+"name": "Qutbi Masjid, Bangalore (Dawoodi Bohra)",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6889195442199707,
+"lat": 12.95636585,
+"lng": 77.57672327,
+"addr": "32",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a0fa790b-5d38-4500-951f-0471c038c4ca",
+"name": "Madrasa E Furqaniya",
+"cat": "school",
+"confidence": 0.46833184361457825,
+"lat": 12.95485112,
+"lng": 77.58252709,
+"addr": "Lalbagh Fort Road, Doddanavalli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "699786e4-1358-425d-b388-d60d1cf7a775",
+"name": "Madrasa-E-Noorul Quran",
+"cat": "school",
+"confidence": 0.5765519142150879,
+"lat": 12.95861,
+"lng": 77.58476,
+"addr": "1st Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "83a45d50-12bd-4db5-a1ca-38f8d0c1cb54",
+"name": "Jamauth E Lababeen Association",
+"cat": "government_office",
+"confidence": 0.24486514925956726,
+"lat": 12.96012216,
+"lng": 77.58073294,
+"addr": "No 20/1, 4th Cross, Kalasipalyam New Extension, Kalasipalyam",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918041475427",
+"website": null
+},
+{
+"id": "54342e22-bf61-4db5-95a5-b334db0b815b",
+"name": "Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6095659732818604,
+"lat": 12.95938793,
+"lng": 77.58059555,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ffb461bc-9c8c-4cbe-bfe2-8e6b3ec05962",
+"name": "Mahbooba Masjid",
+"cat": "religious_organization",
+"confidence": 0.3076084852218628,
+"lat": 12.95724488,
+"lng": 77.59126938,
+"addr": "8 8th Cross, Sudhama",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "887bffc4-cca8-462b-9d04-6f0b3ce5378d",
+"name": "Masjid-e-Umar Farooq",
+"cat": "muslim_place_of_worship",
+"confidence": 0.43736928701400757,
+"lat": 12.95142569,
+"lng": 77.59264636,
+"addr": "5, 1st Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "08e04df2-950e-40d1-b590-d93cdb330951",
+"name": "Masjid-e-Meraj",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6850879192352295,
+"lat": 12.9545734,
+"lng": 77.58777996,
+"addr": "Bada Makan, Siddaiah Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "7034a628-974f-44a0-930d-5db236dda734",
+"name": "Masjid e Abul Qasim",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7688689827919006,
+"lat": 12.95462229,
+"lng": 77.58249615,
+"addr": "86, Lalbagh Fort Rd, near mavalli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918026572906",
+"website": null
+},
+{
+"id": "f348ad16-ef86-41cb-8f75-6365541703cc",
+"name": "Ahmadiyya Masjid",
+"cat": "religious_organization",
+"confidence": 0.6000869870185852,
+"lat": 12.950175,
+"lng": 77.59309,
+"addr": "Manjul Nilaya, 1 3rd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2078d953-e129-498e-8fc6-95dc14cdaab3",
+"name": "Madrasa Riyazul Uloom",
+"cat": "school",
+"confidence": 0.5538251399993896,
+"lat": 12.94427,
+"lng": 77.58909,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a25c2c8f-628e-4694-8d23-3ccc1020b5af",
+"name": "Masjid Abu Bakr Raa",
+"cat": "religious_organization",
+"confidence": 0.45321956276893616,
+"lat": 12.942977,
+"lng": 77.592821,
+"addr": "7th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b9a408e3-fb38-4311-bddd-be3208154971",
+"name": "Madrasa E Arabia Misbahul Uloom",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5737094283103943,
+"lat": 12.942832215206963,
+"lng": 77.59272129011859,
+"addr": "7th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "51f16258-a68e-4635-94ba-de0e2ae86b35",
+"name": "Jama the studio",
+"cat": "music_venue",
+"confidence": 0.9203441143035889,
+"lat": 12.94013801869,
+"lng": 77.583925391801,
+"addr": "Madhavan Parkashirwad Building, 2 9th A Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919845848545",
+"website": "https://www.jamathestudio.com/"
+},
+{
+"id": "492c496a-4e2a-46b2-baf7-ea55518b76e7",
+"name": "Jamia Masjid Islamabad",
+"cat": "religious_organization",
+"confidence": 0.6366395354270935,
+"lat": 12.94025326,
+"lng": 77.5791346,
+"addr": "Khazi Street, Basavanagudi",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "29e4cc53-7953-4460-9bb6-cef0a1669dd6",
+"name": "Masjid E Umar Farooq",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6290391683578491,
+"lat": 12.93324016,
+"lng": 77.59125721,
+"addr": "14, 4th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b57a2e62-0187-4958-9b33-743f7ca303f8",
+"name": "Madrasa Thalimulislam",
+"cat": "school",
+"confidence": 0.6070303320884705,
+"lat": 12.96390473,
+"lng": 77.55060393,
+"addr": "8th Cross, Hosahalli Main Road, Padarayanapura",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1ecbab70-7584-4ae1-9a31-cbbbba63dde2",
+"name": "Shafi Masjid Complex",
+"cat": "party_and_event_planning",
+"confidence": 0.573089599609375,
+"lat": 12.96450671,
+"lng": 77.55353725,
+"addr": "C Chowdappa Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e022a3fc-e861-475e-b527-be20422d7e97",
+"name": "Masjid E Mamoor Complex",
+"cat": "party_and_event_planning",
+"confidence": 0.600509524345398,
+"lat": 12.96504127,
+"lng": 77.55055817,
+"addr": "14th Cross Road, Rayapuram, Jagajeevanram",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "abe224f7-2173-407d-b0b4-3596076b19af",
+"name": "Noorani Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.565320611000061,
+"lat": 12.96564156,
+"lng": 77.55155813,
+"addr": "8th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "74913703-7557-46a2-9afa-24caaeaa16c1",
+"name": "Masjid-E-Alqasim",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5485612154006958,
+"lat": 12.96664097,
+"lng": 77.55075865,
+"addr": "9th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e6d890c2-b1b4-4ac0-85b7-504cfe398c41",
+"name": "Masjid-e-Mustafa",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5877554416656494,
+"lat": 12.96722452,
+"lng": 77.55123598,
+"addr": "17th Cross, 10th Main, Padarayanapura, 17th Cross, 9th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "70679008-7fa2-4c0b-8884-f83e5ac170f8",
+"name": "Masjid E Umer Farooq",
+"cat": "religious_organization",
+"confidence": 0.7598131895065308,
+"lat": 12.965496596412619,
+"lng": 77.55466445225262,
+"addr": "7 1st Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "www.amreli.com"
+},
+{
+"id": "9199aefe-139b-4746-a352-bc9925d20a4c",
+"name": "Masjid E Noor",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6394325494766235,
+"lat": 12.97679829,
+"lng": 77.56021339,
+"addr": "Main, 3rd Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918861966028",
+"website": null
+},
+{
+"id": "1219c73f-f29a-46eb-84e3-5a35d459510a",
+"name": "Tollgate Mosque",
+"cat": "religious_organization",
+"confidence": 0.7030346989631653,
+"lat": 12.97251,
+"lng": 77.547777,
+"addr": "Cholourpalya",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "4fa6d645-db79-43cd-ab61-3020b93ee24d",
+"name": "Jamia Community Centre ",
+"cat": "non_governmental_association",
+"confidence": 0.663104772567749,
+"lat": 12.972070166839,
+"lng": 77.54776,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "83db1e7f-e0ea-4d7d-bd4a-82a1ef6f0e29",
+"name": "Jamiya Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6851754188537598,
+"lat": 12.97251037,
+"lng": 77.54760467,
+"addr": "Kashi Arcade, Vidyaranya Nagar, Cholurpalya",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "01009226-0075-4902-b168-ff0534cee0fb",
+"name": "Madrasa Darul Uloom Rasheediya",
+"cat": "education",
+"confidence": 0.2934603691101074,
+"lat": 12.98237181,
+"lng": 77.53833439,
+"addr": "No 39 To 47, 17th Cross, 4th B Main Road, 4th Stage, 4th Block, Basaveshwara",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a8ccacb0-f7bc-4a68-ae3a-e25550af8d90",
+"name": "Madrasa-E-Tajweedul Qur'an Deeniyat",
+"cat": "school",
+"confidence": 0.5479914546012878,
+"lat": 12.98325,
+"lng": 77.56194,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "8173ab60-c0f1-473f-a0c9-3474130a68cf",
+"name": "Old Sawar Lane Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5698553919792175,
+"lat": 12.98347222,
+"lng": 77.57461271,
+"addr": "Subedar Chatram Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "006e7a43-7b8a-4822-95b0-4ed089a4e3b1",
+"name": "Anandarao Circle Police Quarters Masjid-E-Abdul",
+"cat": "lodging",
+"confidence": 0.17113107442855835,
+"lat": 12.98348797,
+"lng": 77.57452338,
+"addr": "ANAND RAO CIRCLE POLICE QUARTERS, Subedar Chatram Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "54e49e43-73be-4419-896e-c45eddac7896",
+"name": "Madrasa-E-Faizul Quran",
+"cat": "elementary_school",
+"confidence": 0.6098759174346924,
+"lat": 12.99548,
+"lng": 77.56746,
+"addr": "3rd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3ba1e52f-556a-4229-a798-9df88aa30cea",
+"name": "Masjid E Auliya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6574757099151611,
+"lat": 12.995634,
+"lng": 77.568554,
+"addr": "3 2nd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "198a607a-b4b0-49b7-ab7a-fc6051d32c04",
+"name": "Masjid Complex",
+"cat": "religious_organization",
+"confidence": 0.25902384519577026,
+"lat": 12.9926656,
+"lng": 77.59272941,
+"addr": "Opposite Sri Lakshmi Venkateswara Temple 8th Main Road, Vasanthnagara",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6b756ad0-730f-4841-a0a8-1d048371e114",
+"name": "Jamal Carpet Industries",
+"cat": "carpet_store",
+"confidence": 0.4565226435661316,
+"lat": 12.99058423,
+"lng": 77.58868755,
+"addr": "17 Shah Sultan Complex, Cunningham Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022380694",
+"website": null
+},
+{
+"id": "51f3a318-c4ae-4b0c-be29-975c5f8c97ba",
+"name": "Dargah Hazrath Yakeen Shah Wali - RA",
+"cat": "religious_organization",
+"confidence": 0.7295092940330505,
+"lat": 12.98539,
+"lng": 77.58892,
+"addr": "High Grounds, Sampangi Rama Nagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+917022450500",
+"website": null
+},
+{
+"id": "ca6f3491-5f8f-4279-a4ce-0a99d5d76ca6",
+"name": "Dargah Hazrath Sayyed Yaqeen Shah Wali RA Mosque",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7050351500511169,
+"lat": 12.9831845,
+"lng": 77.58769539,
+"addr": "Palace Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919738032575",
+"website": null
+},
+{
+"id": "0081591d-6e40-432c-a5df-635648b6ab1d",
+"name": "Astana Hazrath Syed Adam Sha Qadri Dargah",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7198299765586853,
+"lat": 12.97641,
+"lng": 77.57577,
+"addr": "Venus Hotel Lodging-Subedar Chatram Road, 306 S C Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d37230b8-8394-4f57-b568-2c7b7e90b858",
+"name": "Tawakal Mastan RA",
+"cat": "muslim_place_of_worship",
+"confidence": 0.9682784676551819,
+"lat": 12.97305572,
+"lng": 77.57166981,
+"addr": "395, Old Taluk Cutchery Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022874946",
+"website": null
+},
+{
+"id": "133fbe85-868e-475b-8300-120e9b82dd77",
+"name": "Hazrath Tavakal Mastan Shah Dargah",
+"cat": "religious_organization",
+"confidence": 0.736341118812561,
+"lat": 12.97293661,
+"lng": 77.5723949,
+"addr": "Otc Main Road, Chickpete",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "503aa1dd-bd07-4714-992c-58e9be750d42",
+"name": "Masjide Hussein",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6700567007064819,
+"lat": 12.97587617,
+"lng": 77.57627335,
+"addr": "44/45, 6th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3a3006de-f862-49da-8710-c69b6e44e402",
+"name": "Riddhi Siddhi Creation/wedding dress for mens/suits for men/sherwani for men/pajama kurta for men/uniforms",
+"cat": "mens_clothing_store",
+"confidence": 0.2981019616127014,
+"lat": 12.96963238,
+"lng": 77.57227333,
+"addr": "138 D M, 1st Main Rd, near Ramesh Transport",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918073444738",
+"website": "http://dl.flipkart.com/dl/baalar-cotton-blend-printed-salwar-suit-material/p/itmfd4wsakwftye4?pid=FABFD4U3FHDNTXRE&cmpid=product.share.pp"
+},
+{
+"id": "677672bf-37af-4f36-ae12-861f47f7ce32",
+"name": "Madrasa E Noorul Banath",
+"cat": "education",
+"confidence": 0.2594490647315979,
+"lat": 12.96492368,
+"lng": 77.56583081,
+"addr": "No 64, Gr Floor",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3df25605-a38b-4c30-b39e-c8c6ff567a5f",
+"name": "Masjid Jolly Moholla",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8018479943275452,
+"lat": 12.96545562,
+"lng": 77.57117504,
+"addr": "BDG LANE, 39, Jali Masjid Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+917353457604",
+"website": null
+},
+{
+"id": "fb64a316-91a6-4580-8e43-3168f007b631",
+"name": "Hazrath Syeda Syedani Bibi Dargah",
+"cat": "christian_place_of_worship",
+"confidence": 0.7081472873687744,
+"lat": 12.96459923,
+"lng": 77.57321467,
+"addr": "H Ramaiah Ln",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9c5591cb-406e-4b11-9a7d-7f472e135a7d",
+"name": "Jali Mohalla",
+"cat": "muslim_place_of_worship",
+"confidence": 0.542514443397522,
+"lat": 12.9646254,
+"lng": 77.5731706,
+"addr": "Mysore Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "94a75441-cb48-4b93-9345-bc168a60369c",
+"name": "Masjid-e-Lababeen",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5753017067909241,
+"lat": 12.96458125,
+"lng": 77.57194935,
+"addr": "199, Mysore Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c5fd3276-bb3c-41e9-9083-21773f7d85a7",
+"name": "Masjid-E-Nalbanwadi",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8926497101783752,
+"lat": 12.96694077,
+"lng": 77.57386992,
+"addr": "168, AS Char St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "34eab0fa-9414-4114-be50-f75de85cb729",
+"name": "Astana",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4083474278450012,
+"lat": 12.96600049,
+"lng": 77.57835941,
+"addr": "Ibrahim Shah Mosque Ln",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919980664339",
+"website": null
+},
+{
+"id": "275f50bb-6337-4f08-8641-87489b1b4069",
+"name": "Dargah Nawab Mohamed Ibrahim",
+"cat": "christian_place_of_worship",
+"confidence": 0.5494318008422852,
+"lat": 12.96601979,
+"lng": 77.57842645,
+"addr": "# 13 masjid lane",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "fa45b232-41e1-4d3a-85e9-21ead45913c3",
+"name": "Madrasa E Niswan Deeniyah",
+"cat": "education",
+"confidence": 0.2653737962245941,
+"lat": 12.96520991,
+"lng": 77.57896649,
+"addr": "No 177, Banki Street, Sadar Patrappa Road Cross",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b257f340-2225-4efe-bf73-c29f153d59ac",
+"name": "Dargah Hazrath Syed Mahamood Sha Khadri",
+"cat": "religious_organization",
+"confidence": 0.4835774302482605,
+"lat": 12.96530142,
+"lng": 77.57730171,
+"addr": "402, Avenue Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d739ded0-55e7-4610-94e0-e933b5378010",
+"name": "Jamia Masjid Bengaluru City",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6586145758628845,
+"lat": 12.96402164,
+"lng": 77.57866853,
+"addr": "Jamia Masjid, 28, SJP Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "10168d33-425e-499d-958c-e0f182d276cb",
+"name": "Hotel Jamia Select-S J P Road",
+"cat": "hotel",
+"confidence": 0.5605059862136841,
+"lat": 12.963873,
+"lng": 77.5782485,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1dbdb8c1-51b2-466f-ba6e-564a6aa81f0f",
+"name": "Hazrath Khwaja Syed Shah Sharfuddin Qadri Shaheed",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6268537044525146,
+"lat": 12.96546198,
+"lng": 77.58558912,
+"addr": "No 3, Old Taluk Cutchery Rd, near Coporation City",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "62e3e1ec-93b1-40e5-b505-26db369b722d",
+"name": "Masjid E Gumbad",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7102564573287964,
+"lat": 12.96721296,
+"lng": 77.58598014,
+"addr": "209, Hospital Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "954ff037-2110-4fda-a0e3-aedf259a68d4",
+"name": "Dargah",
+"cat": "religious_organization",
+"confidence": 0.2006479650735855,
+"lat": 12.96732026,
+"lng": 77.58621727,
+"addr": "No 02, Hazrath Hameed Shah Complex",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1c182dc7-9a40-4da7-98dd-6b4a049d1d8c",
+"name": "VRL Logistics Limited - Jumma Masjid Road A",
+"cat": "medical_transportation",
+"confidence": 0.85,
+"lat": 12.967642,
+"lng": 77.582029,
+"addr": "67/1, Ganigara C Lane, J.M. Road, Cubbonpet",
+"ds": [
+"Microsoft",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "18005997800",
+"website": "https://vrlgroup.in/"
+},
+{
+"id": "eb843e0d-408e-48c9-894a-b28b8a92c3cf",
+"name": "Masjid e jumma",
+"cat": "muslim_place_of_worship",
+"confidence": 0.2738288342952728,
+"lat": 12.9678709,
+"lng": 77.58247026,
+"addr": "Siddanna Ln",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a8dde398-aeb1-4dbe-9b3f-00241caf9e1a",
+"name": "Quran For All",
+"cat": "muslim_place_of_worship",
+"confidence": 0.38297516107559204,
+"lat": 12.92912,
+"lng": 77.59852,
+"addr": "1 2nd Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919945177477",
+"website": "http://www.quranforall.in/"
+},
+{
+"id": "7d0abb13-142f-4d61-9e51-98d1f2ae5eda",
+"name": "Green Freshe Musalla",
+"cat": "muslim_place_of_worship",
+"confidence": 0.04171694442629814,
+"lat": 12.92983002,
+"lng": 77.63414708,
+"addr": "6th C Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1d1a02ed-2027-4303-8391-5f1e03995ca3",
+"name": "Madina Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7551296353340149,
+"lat": 12.931841,
+"lng": 77.598889,
+"addr": "7th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://www.madina-masjid.com/"
+},
+{
+"id": "cfc8c564-07b0-42a2-9ada-4e286b035518",
+"name": "Jamals Inc",
+"cat": "hardware_store",
+"confidence": 0.395050048828125,
+"lat": 12.934579,
+"lng": 77.611291,
+"addr": "Smoor Forum Mall, 21 Hosur Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022067828",
+"website": null
+},
+{
+"id": "b46b925e-bfd5-444a-9f2c-88612edc0bfb",
+"name": "Masjid E Mamoor",
+"cat": "muslim_place_of_worship",
+"confidence": 0.9117285013198853,
+"lat": 12.93562096,
+"lng": 77.61626313,
+"addr": "K H B Colony Koramangala",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025539797",
+"website": null
+},
+{
+"id": "04b7ef7a-75f7-421d-b44e-d32eb698e615",
+"name": "Madni Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5927830338478088,
+"lat": 12.93912268,
+"lng": 77.60195572,
+"addr": "6th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "84c10d53-376b-4d69-a6e5-1eca51f62d0e",
+"name": "Jamia Masjid varthur",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6625460386276245,
+"lat": 12.94137701,
+"lng": 77.74683037,
+"addr": "Varthur Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919136201003",
+"website": null
+},
+{
+"id": "5a6eb9cf-e9b6-4092-8023-41c796e5e3de",
+"name": "Aghaiya Makkah Sunni Masjid",
+"cat": "religious_organization",
+"confidence": 0.5805856585502625,
+"lat": 12.93956351,
+"lng": 77.60789018,
+"addr": "Nanjaoppa Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "5a3b827e-e909-4ecd-b6c3-34fd116300c6",
+"name": "Masjid Al Anbia",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4052451550960541,
+"lat": 12.93958566,
+"lng": 77.59964605,
+"addr": "6, 1st Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d47df625-5220-47c0-a09c-838cc005a2d1",
+"name": "Jamals Inc",
+"cat": "hardware_store",
+"confidence": 0.39345720410346985,
+"lat": 12.94007,
+"lng": 77.59413,
+"addr": "Smoor Forum Mall, 21 Hosur Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022067828",
+"website": null
+},
+{
+"id": "d7802387-25ed-439c-a232-19383b21d69a",
+"name": "Masjid e Ateeq",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8405556678771973,
+"lat": 12.94469728,
+"lng": 77.59453404,
+"addr": "Someshwara Nagar, 8th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918026572906",
+"website": null
+},
+{
+"id": "0be5250d-d5d0-4b3c-b45f-acbe2196ea22",
+"name": "Mosque",
+"cat": "religious_organization",
+"confidence": 0.1702294945716858,
+"lat": 12.95047397,
+"lng": 77.61270739,
+"addr": "No 13, Ground Floor, Rk Garden, Neelasandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b0f755ee-c21f-4a7c-85e8-38257b17cf97",
+"name": "Masjid E Imam Al Gayem",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7802466154098511,
+"lat": 12.9504713,
+"lng": 77.61098897,
+"addr": "4th Cross St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919945777448",
+"website": null
+},
+{
+"id": "7af913a8-772b-452a-990a-267e380fee4e",
+"name": "Madrasa and Masjid e Khateejatul Kubra",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6553182005882263,
+"lat": 12.95108397,
+"lng": 77.61272701,
+"addr": "No 6, South Cross Street, Neelasandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "06b06e85-b835-4dab-8542-6383ff0afc4b",
+"name": "Masjid E Ghouse E Azaam",
+"cat": "religious_organization",
+"confidence": 0.6789728999137878,
+"lat": 12.95348529,
+"lng": 77.61384039,
+"addr": "Ground Floor, East Street Cross, Mg Garden, Neelasandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b781d7df-8b7a-4ec1-b770-1a1bca72cbcf",
+"name": "Masjid E Akbari",
+"cat": "religious_organization",
+"confidence": 0.7511028051376343,
+"lat": 12.95333424,
+"lng": 77.61203126,
+"addr": "Masjid E Akbari, Masjid Street, Neelasandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919845012345",
+"website": null
+},
+{
+"id": "3a75db5b-4729-49e6-9a16-b8095d80ab63",
+"name": "Madrasa Kashiful Uloom",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6487290859222412,
+"lat": 12.95324322,
+"lng": 77.61233179,
+"addr": "Masjid St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918904525838",
+"website": null
+},
+{
+"id": "98f78c74-5d02-47b6-8692-49151fac0637",
+"name": "Madeena Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7652230858802795,
+"lat": 12.95392084,
+"lng": 77.61301343,
+"addr": "South Cross Street Neelasandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://keralamasjids.blogspot.com/p/dargas.html"
+},
+{
+"id": "abe97221-83ce-45c0-96d5-73764bc24c56",
+"name": "Madrasa Qasim Ul Uloom",
+"cat": "government_office",
+"confidence": 0.5542858242988586,
+"lat": 12.9546209,
+"lng": 77.61694665,
+"addr": "No 1538, 4th Cross, Bda, Austin Town",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "677618dc-d5f2-486b-a040-0765e0b2048c",
+"name": "Masjid e Taha Ahle sunnat Wal jamat",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6226022839546204,
+"lat": 12.95490341,
+"lng": 77.61337541,
+"addr": "44/4, 3rd Cross Rd, Bazaar St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "01c54fd5-9f37-498b-aa95-d22c4a05c028",
+"name": "Masjid E Furqan Ahle Hadees",
+"cat": "muslim_place_of_worship",
+"confidence": 0.85,
+"lat": 12.9549553,
+"lng": 77.6172003,
+"addr": "East Road, Rose Garden, Austin Town Layout, Austin Town, Neelasandra",
+"ds": [
+"Microsoft",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "09845638792",
+"website": "https://www.salafi.in/"
+},
+{
+"id": "a3627055-929b-4557-9f95-e00be7f20dc7",
+"name": "Makkah Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.9663691520690918,
+"lat": 12.95521435,
+"lng": 77.61451432,
+"addr": "36/38, Bazaar St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://www.makkahmasjid.net/index.php"
+},
+{
+"id": "5d08cf2c-84ef-4b98-be6a-11b7e8d03196",
+"name": "Masjid E Yousuf",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6496802568435669,
+"lat": 12.95638557,
+"lng": 77.61210283,
+"addr": "273 North Street, Neelasandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "87e2a67b-a9d1-42e7-a331-634fe05974fa",
+"name": "Noor Mosque",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6902990937232971,
+"lat": 12.956976879649293,
+"lng": 77.59942046241429,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0beb0507-985f-4605-bfc3-5bc87ffbb674",
+"name": "Naz Unnisha Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4222515821456909,
+"lat": 12.95812457,
+"lng": 77.6012839,
+"addr": "Shanti Nagar Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "48740fa5-0ce6-4eb1-bf1d-3bcf3ef5f5b0",
+"name": "Jamavar",
+"cat": "indian_restaurant",
+"confidence": 0.9849088245630264,
+"lat": 12.96016439,
+"lng": 77.64850933,
+"addr": "23, The Leela Palace, HAL Old Airport Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918951974426",
+"website": "http://www.theleela.com/locations/bangalore/dining"
+},
+{
+"id": "2c32295f-e17d-469d-a6a7-4f115ccf55c5",
+"name": "Masjid E Rasheediya",
+"cat": "religious_organization",
+"confidence": 0.6662127375602722,
+"lat": 12.96289876,
+"lng": 77.60378952,
+"addr": "Alexander Street",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3c843d38-e15a-4fc3-ad51-9812970711b8",
+"name": "Jamia Masjid",
+"cat": "religious_organization",
+"confidence": 0.7165631651878357,
+"lat": 12.96196084,
+"lng": 77.67026455,
+"addr": "As Palya Main Road, Annasandra Payla",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1ae60386-3117-43f0-9492-bc23bd4d2e62",
+"name": "Eid Gah Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5183570384979248,
+"lat": 12.96077536,
+"lng": 77.68220299,
+"addr": "beside ADA Office",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "4d86505b-e607-42d5-a9a3-71c20a39a771",
+"name": "Masjid-e-farooqi",
+"cat": "muslim_place_of_worship",
+"confidence": 0.727410614490509,
+"lat": 12.965103784449973,
+"lng": 77.64902412379612,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3ab02ad3-e26e-43c9-80dd-be8c3a274925",
+"name": "Masjid-E-Munawara",
+"cat": "muslim_place_of_worship",
+"confidence": 0.625732421875,
+"lat": 12.96313538,
+"lng": 77.61237817,
+"addr": "2, Masjid St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "711fd607-b64e-40fa-bd0c-6320d5f63af3",
+"name": "Masjid e akbari",
+"cat": "religious_organization",
+"confidence": 0.6229444742202759,
+"lat": 12.9629491,
+"lng": 77.6124394,
+"addr": "masjid street",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918660783214",
+"website": null
+},
+{
+"id": "9cecfccf-8a23-4a45-9d01-5f24c539a0bd",
+"name": "Masjid-E-Askari",
+"cat": "muslim_place_of_worship",
+"confidence": 0.9218125939369202,
+"lat": 12.96370457,
+"lng": 77.60646016,
+"addr": "9, Curley St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919980909889",
+"website": null
+},
+{
+"id": "8c922e93-cd50-4775-92b3-b03d84757a27",
+"name": "Masjid E Askari - Bangalore",
+"cat": "muslim_place_of_worship",
+"confidence": 0.9223927855491638,
+"lat": 12.963828520242462,
+"lng": 77.60611124018742,
+"addr": "40/2 Sir Mirja Ismail Nagar Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919980909889",
+"website": null
+},
+{
+"id": "eeca8103-67e8-49f8-8ee7-afc9f150245d",
+"name": "Hazrath Abbas St",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5055302977561951,
+"lat": 12.96402455,
+"lng": 77.60644098,
+"addr": "9, Curley St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919620090966",
+"website": "http://www.karwaneabbas.net/"
+},
+{
+"id": "f83348f5-0efa-4fa3-897d-cd13d5d0d164",
+"name": "Hussainy Chowk Ashurkhana Arab Line Muharram Committee",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6301090717315674,
+"lat": 12.964467800000062,
+"lng": 77.60609625000033,
+"addr": "Arab Lane B Street",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "54bb83a8-90a1-4472-b7c6-2a46594fa163",
+"name": "Madrasa Wo Dargah Hazrath Syed Hayath Shah",
+"cat": "religious_organization",
+"confidence": 0.665221631526947,
+"lat": 12.96713806,
+"lng": 77.62667303,
+"addr": "Nana Wali Dargah Compound, Artillery Road, Ulsoor",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c4b4a86f-87d2-49f3-a909-6e8f6025c3b9",
+"name": "Masjid Umar E Farooq",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5832562446594238,
+"lat": 12.96866991,
+"lng": 77.60897968,
+"addr": "Commissariat Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ad9d8e9e-65f7-46ba-be18-c247e53866b8",
+"name": "Masjid E Abrar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6282922625541687,
+"lat": 12.96902875,
+"lng": 77.62545594,
+"addr": "1/1, 3rd Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ad260f77-fe27-422c-98be-ecb33c278248",
+"name": "Jamia Masjid White Field",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5480741262435913,
+"lat": 12.96909834,
+"lng": 77.74966692,
+"addr": "Whitefield Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "86dc963b-cd64-481c-bcf2-2b50f6547e84",
+"name": "Masjid Mosque Prayer Hall",
+"cat": "religious_organization",
+"confidence": 0.6559914946556091,
+"lat": 12.9714121,
+"lng": 77.59600803,
+"addr": "Ub City, Parking Area, At Corner, Grant Road, Kg Halli, D Souza Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "7cc26205-0a38-46b1-88a8-ae6dfbec1883",
+"name": "KHMJ",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7441343665122986,
+"lat": 12.971898349188,
+"lng": 77.683372625919,
+"addr": "Islampur, Vimanapura",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "https://khmj.in/"
+},
+{
+"id": "daa5cccd-4577-4dc5-bd7f-4d1c44e69fe7",
+"name": "Fifth Avenue Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.586685836315155,
+"lat": 12.97311037,
+"lng": 77.60711672,
+"addr": "119, Brigade Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b73dec6e-30ec-43dc-8706-04647824ff3f",
+"name": "Markhins Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6569253206253052,
+"lat": 12.97441124,
+"lng": 77.62316589,
+"addr": "2, B5 St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c132eee4-6a54-4fa7-abfe-215ab8769d9b",
+"name": "Jamiya Masjid Ulsoor",
+"cat": "religious_organization",
+"confidence": 0.8118197321891785,
+"lat": 12.975024,
+"lng": 77.623873,
+"addr": "Bazar Street, Halasuru",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3bfe171d-9950-4f51-8b65-6097ef1834c2",
+"name": "Masjid E Rahmaniya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7546856999397278,
+"lat": 12.974375,
+"lng": 77.755973,
+"addr": "Vijayanagara, Whitefield",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f6e68b05-31b9-4223-b1c9-5f4c22cb2a4f",
+"name": "Rajamane Industries Pvt. Ltd.",
+"cat": "commercial_industrial",
+"confidence": 0.4535256326198578,
+"lat": 12.977899,
+"lng": 77.742906,
+"addr": "8",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918028524262",
+"website": "http://www.rajamane.com"
+},
+{
+"id": "b7b23a02-5d39-4963-9865-7be8be802988",
+"name": "Masjid Al Noor (Halasuru)",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8176482319831848,
+"lat": 12.97906757,
+"lng": 77.61597808,
+"addr": "Dickenson Rd, near 1",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3149d7fe-6536-47a8-8365-e360328bc36a",
+"name": "Masjid Al Noor, mosque",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8258681297302246,
+"lat": 12.97906757,
+"lng": 77.61597808,
+"addr": "Dickenson Rd, near 1",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a9b8c09a-b570-4dac-b1a3-6a498213f781",
+"name": "Masjid Al Nur",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7841757535934448,
+"lat": 12.9790869,
+"lng": 77.61552367,
+"addr": "Dickenson Road, Halasuru",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "4ef01a59-1190-4153-9441-cbedd9d33a4a",
+"name": "ICAHT Centre of Clinically Applied Hijama/Cupping Therapy",
+"cat": "naturopathic_medicine",
+"confidence": 0.8980398178100586,
+"lat": 12.97948,
+"lng": 77.64068,
+"addr": "2 100 Feet Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://icaht.in/"
+},
+{
+"id": "cdc1196d-b1df-4e33-a9b9-f93487f3c1ea",
+"name": "Miqat Umrah Services",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5292074680328369,
+"lat": 12.98123,
+"lng": 77.6041599,
+"addr": "Suite 208, Curzon Square # 24, Lady Curzon Road, Tasker Town, Shivaji Nagar ",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919980243700",
+"website": "http://www.miqatumrah.com/"
+},
+{
+"id": "b2c86fb7-646c-4866-96d0-10044b8e9559",
+"name": "Minhaj-ul-Quran Intl India Karnataka",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7178724408149719,
+"lat": 12.981923673336334,
+"lng": 77.59975338000679,
+"addr": "11 Infantry Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918040921756",
+"website": "http://www.miwf.in/"
+},
+{
+"id": "d28265a1-9769-4f6c-846d-db9b19790fa3",
+"name": "Masjid E Ummul Hasain",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5572495460510254,
+"lat": 12.98161556,
+"lng": 77.64174458,
+"addr": "3rd Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919845665459",
+"website": null
+},
+{
+"id": "173f2f93-e6ac-40fb-9298-47e42cf8e8f5",
+"name": "Cutchi Memon Jamath Khana",
+"cat": "community_center",
+"confidence": 0.7315307259559631,
+"lat": 12.98273784,
+"lng": 77.61082141,
+"addr": "276, Kamaraj Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025582243",
+"website": null
+},
+{
+"id": "fc2c8a2c-43a7-435c-be69-db0bda744116",
+"name": "Jumma Masjid Mosque",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6083818674087524,
+"lat": 12.98261488,
+"lng": 77.60589354,
+"addr": "479, Dispensary Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022352828",
+"website": null
+},
+{
+"id": "b176e13a-0c24-4983-8d07-b04b1a31a5e3",
+"name": "Sultan Shah Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8779714703559875,
+"lat": 12.98284905,
+"lng": 77.60193039,
+"addr": "Sultan Shah Masjid, 41, Bowring Hospital Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025903233",
+"website": null
+},
+{
+"id": "a7cef040-4a19-49a2-ae8e-9bdfec4582b3",
+"name": "Hajee Saleh Mohammed Ahmed Sait Cutchi Memon Jamath Khana Exit Gate",
+"cat": "party_and_event_planning",
+"confidence": 0.3986186683177948,
+"lat": 12.98292675,
+"lng": 77.61086312,
+"addr": "Hajee Saleh Mohammed Ahmed Sait Cutchi Memon Jamath Khana, K Kamaraj Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "7cfa3841-1f08-4d9f-9d14-76463ea0416a",
+"name": "Choti Charminar Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.804451048374176,
+"lat": 12.983570541257679,
+"lng": 77.60094878143356,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1bdf766a-90cc-4788-8db9-517e1eab93fa",
+"name": "Beopariyan Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7095094323158264,
+"lat": 12.983551943163658,
+"lng": 77.60647651177814,
+"addr": "48 Jumma Masjid Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "30210949-30b8-49c2-a350-fb070e35ca55",
+"name": "JG Rajamannar Setty and Sons",
+"cat": "jewelry_store",
+"confidence": 0.32153865694999695,
+"lat": 12.98373864,
+"lng": 77.60816611,
+"addr": "Shop No 122/123, Ground Floor, No 178, Jewellers Street",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d4d77175-ccc5-4f55-bc2a-726dfa6664c0",
+"name": "Masjid Road Shivaji Nagar",
+"cat": "",
+"confidence": 0.5753160119056702,
+"lat": 12.98479,
+"lng": 77.60645,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ed6efe1e-c2be-4c1a-a215-b96f0301003e",
+"name": "Masjid E Azam Ahle Sunnat Wal Jamaat",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7411561608314514,
+"lat": 12.98515103,
+"lng": 77.60677262,
+"addr": "Jumma Masjid Rd, near Taj Hotel",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ece489f3-3144-4ce7-a47b-a5e0d0302ece",
+"name": "Hari Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7746462225914001,
+"lat": 12.985152,
+"lng": 77.606743,
+"addr": "Jumma Masjid Road, Shivaji Nagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9a3c4024-e71a-4ab2-a64e-5112c4140cd1",
+"name": "Madrasa E Mahmoodiya",
+"cat": "religious_organization",
+"confidence": 0.65464848279953,
+"lat": 12.98515651,
+"lng": 77.61011756,
+"addr": "Plot No 44, Stone Chip Road, Coil Street, Kodandaram",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "5cd3e976-aaf4-41eb-9f99-86e9b8a271ba",
+"name": "Duck Back Jamal Trading Company",
+"cat": "clothing_store",
+"confidence": 0.19888819754123688,
+"lat": 12.98490618,
+"lng": 77.6067915,
+"addr": "24 Jumma Masjid Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025583354",
+"website": null
+},
+{
+"id": "4f3c087d-2ee0-4d3a-ae80-335396f32ec3",
+"name": "Jamia Masjid Shivaji Nagar",
+"cat": "religious_organization",
+"confidence": 0.6637630462646484,
+"lat": 12.98506,
+"lng": 77.60655,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "5b7009da-8173-46cb-8489-dcfd5df1a29b",
+"name": "Green Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6318486928939819,
+"lat": 12.98515683,
+"lng": 77.60300448,
+"addr": "Chandni Chowk Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "fc465b7b-99df-4c5f-ace4-54a3ef5c43d8",
+"name": "Modi Masjid Complex",
+"cat": "real_estate_service",
+"confidence": 0.6348656415939331,
+"lat": 12.9854285,
+"lng": 77.59978001,
+"addr": "120 Chick Bazaar Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "81739b82-d8d7-4c40-b7c4-1178830ae98f",
+"name": "Modi Masjid Deeniyat School",
+"cat": "school",
+"confidence": 0.8368276357650757,
+"lat": 12.98545,
+"lng": 77.59877,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919916669509",
+"website": null
+},
+{
+"id": "924420d1-2fb3-42fa-a672-c936dc633ee1",
+"name": "Masjid-e-Ayesha,  Bangalore",
+"cat": "religious_organization",
+"confidence": 0.6045809984207153,
+"lat": 12.98548,
+"lng": 77.60136,
+"addr": "Thimmiah Road Cross, near Bangalore Medicals, Shivajinagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "00e34918-b4ae-45d8-80c3-c48cd625c6bf",
+"name": "Abdul Gafoor Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8004776835441589,
+"lat": 12.98553169,
+"lng": 77.59863301,
+"addr": "48, Chikka Bazar Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022352828",
+"website": null
+},
+{
+"id": "9a35f99a-31d7-43bc-b07b-7006a67d5239",
+"name": "Jama Masjid",
+"cat": "",
+"confidence": 0.5418540835380554,
+"lat": 12.9858121,
+"lng": 77.6013507,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "bce5c43c-17e3-447b-b052-60622d962b03",
+"name": "Masjid Un Noor",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5616000890731812,
+"lat": 12.98594481,
+"lng": 77.60617457,
+"addr": "Shivajinagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918884926508",
+"website": null
+},
+{
+"id": "81390003-6682-4e29-8913-cc02eba245bf",
+"name": "Hazrath Peer Syed Jamal Shah Khadri Dargha",
+"cat": "religious_organization",
+"confidence": 0.5989450216293335,
+"lat": 12.98590989,
+"lng": 77.60550035,
+"addr": "Dharmaraj Street",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ee3c1c9d-65ba-4f8d-acc5-34bfc7d9b51d",
+"name": "Markazi Masjid E Ahle Hadees Charminar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8733360767364502,
+"lat": 12.98637692,
+"lng": 77.60588104,
+"addr": "Masjid Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918099999999",
+"website": "http://charminarmasjid.org/"
+},
+{
+"id": "f7c22cc6-aae0-4a93-aae7-18f326ebe538",
+"name": "Wifaqul Makatib",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7595548033714294,
+"lat": 12.986647059900609,
+"lng": 77.59921545663536,
+"addr": "l-Qasim venkatappa Road, Tasker Town",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022866555",
+"website": null
+},
+{
+"id": "676000f4-0390-4391-aa7a-96b589cbd4ed",
+"name": "Pension Mohalla Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5888068079948425,
+"lat": 12.98735445,
+"lng": 77.60189626,
+"addr": "Shivaji Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1b0c6f1c-cffb-416e-8a81-07b0fef57feb",
+"name": "Lal Masjid",
+"cat": "religious_organization",
+"confidence": 0.7130743265151978,
+"lat": 12.987123,
+"lng": 77.60704,
+"addr": "385 Jumma Masjid Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919811570946",
+"website": "http://www.jamiathalaltrust.org"
+},
+{
+"id": "90a1283e-9545-4870-ac29-4634b64a3eec",
+"name": "Masjid e Abrar and Madrasa",
+"cat": "religious_school",
+"confidence": 0.12308316677808762,
+"lat": 12.98705083,
+"lng": 77.60338601,
+"addr": "Shivaji Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "51e2beb6-aec0-4e75-be28-16d55f371709",
+"name": "Jamiat-ul-Quraish Beef Merchant's Charitable Trust",
+"cat": "charity_organization",
+"confidence": 0.27280503511428833,
+"lat": 12.98703304,
+"lng": 77.60581117,
+"addr": "Mir Obaidullah Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "fabf5ca5-9072-4915-8c88-3db3372596e0",
+"name": "ITPL Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5998179912567139,
+"lat": 12.98426413,
+"lng": 77.71965621,
+"addr": "Masjid Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022352828",
+"website": null
+},
+{
+"id": "a860d4bd-aa7b-4a69-84f1-78d29c523bba",
+"name": "Dr Kumardev Arvind Rajamanya",
+"cat": "orthopedics",
+"confidence": 0.8893122673034668,
+"lat": 12.988225674639,
+"lng": 77.728622067879,
+"addr": "KIMS Hospital, MAHADEVPURA ",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919591234658",
+"website": "https://www.manipalhospitals.com/whitefield/doctors/dr-kumardev-arvind-rajamanya-consultant-orthopaedic-surgery"
+},
+{
+"id": "65ab8485-bcce-4115-bdfa-a40533120628",
+"name": "Masjid-O-Madrasa-E-Umar Farooq",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5566970109939575,
+"lat": 12.98741747,
+"lng": 77.60281363,
+"addr": "31, 12th E St Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ab8d436f-b9bd-4ecb-a7a3-b3b33e81ecf7",
+"name": "Mohalla Baidwadi Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6514334082603455,
+"lat": 12.98802,
+"lng": 77.61201,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025364530",
+"website": null
+},
+{
+"id": "8bd68e4a-5802-4c31-b440-3aed2225e925",
+"name": "Madrasa-E-Arabia Kanzul Emaan",
+"cat": "religious_school",
+"confidence": 0.6044698357582092,
+"lat": 12.9882,
+"lng": 77.60729,
+"addr": "Arunachalam Mudlar Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919739700315",
+"website": null
+},
+{
+"id": "23ec7277-c9da-4fc3-ba30-b272d1f40447",
+"name": "Masjid E Noorul Huda",
+"cat": "muslim_place_of_worship",
+"confidence": 0.3601320683956146,
+"lat": 12.98842442,
+"lng": 77.59968222,
+"addr": "GC Colony Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d1b6d596-27d3-4187-b503-9d8ac8564053",
+"name": "All India Jamiathul Quresh",
+"cat": "social_or_community_service",
+"confidence": 0.38161230087280273,
+"lat": 12.98851441,
+"lng": 77.60480392,
+"addr": "No 34, Slaughter House Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "894561ad-2947-40c4-a652-8551249d65eb",
+"name": "Masjid E Ayesha Madrasa",
+"cat": "education",
+"confidence": 0.6706934571266174,
+"lat": 12.98981539,
+"lng": 77.60642381,
+"addr": "Sultan",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "686a8e1e-945e-4c5d-8311-47cdd8bf236d",
+"name": "Masjid E Mina",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6423488855361938,
+"lat": 12.99000798,
+"lng": 77.66308421,
+"addr": "Varthur Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "31acaf53-cb6c-4c62-85c5-a35c641c4e8c",
+"name": "Dargah E Maj Zoob E Haq",
+"cat": "religious_organization",
+"confidence": 0.5273247957229614,
+"lat": 12.99008205,
+"lng": 77.60148157,
+"addr": "Hkp Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6680a1fe-3c39-4674-9e7c-dbf0ac04c7bf",
+"name": "Dargah Hazrat Khadir Hussain",
+"cat": "christian_place_of_worship",
+"confidence": 0.6238988041877747,
+"lat": 12.99041804,
+"lng": 77.60150544,
+"addr": "Thimmaiah Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6b8e0358-384a-4ed1-a7aa-e5e3be2effab",
+"name": "Islam Madrasa E Niswan HS",
+"cat": "school",
+"confidence": 0.668168842792511,
+"lat": 12.99034194,
+"lng": 77.60429361,
+"addr": "Thimmaiah Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e67bb524-67ef-43c9-a662-f1743e832221",
+"name": "Madeena Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8436314463615417,
+"lat": 12.9908493,
+"lng": 77.60527862,
+"addr": "Sultan Gunta Rd, next to Shamsu store",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "19485e91-bb0f-4629-91b6-8f2eb91959fc",
+"name": "Makkah Masjid Educational Institute",
+"cat": "school",
+"confidence": 0.4657060205936432,
+"lat": 12.99115376,
+"lng": 77.60784853,
+"addr": "37 Makkah Masjid Street, Thimmiah Road, Nehru Puram",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "03be3fd4-f425-497f-9bf1-2ecb71fd74ab",
+"name": "Masjidu Ur Rahma",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5100849270820618,
+"lat": 12.992602,
+"lng": 77.609296,
+"addr": "52 St Johns Church Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f34b15ec-c56b-4e42-b7eb-450cec2b0b60",
+"name": "Masjid-E-Khadria",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8596248030662537,
+"lat": 12.99465808,
+"lng": 77.6023595,
+"addr": "Plot no 68, Millers Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918497005441",
+"website": "http://flickriver.com/photos/tags/masjidekhadria/interesting/"
+},
+{
+"id": "be7a7ce5-e3b9-4eec-afc8-be266b03418f",
+"name": "Nimra Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.687556803226471,
+"lat": 12.99504955,
+"lng": 77.61082645,
+"addr": "Masjid Nimra, Saunders Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "bac8adbc-f4a8-4c6d-94fe-795088fb8892",
+"name": "Quddus Saheb Eidgah",
+"cat": "muslim_place_of_worship",
+"confidence": 0.22162562608718872,
+"lat": 12.99497206,
+"lng": 77.60220393,
+"addr": "65/2, Millers Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "be86f2fc-0753-4584-926e-6cf57f44daee",
+"name": "Khadriya Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.9291439652442932,
+"lat": 12.995133003924163,
+"lng": 77.60217944033823,
+"addr": "Nandidurga Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c52804d6-177f-45cd-925b-c92047cf8a90",
+"name": "Jamal Tours and Travels",
+"cat": "travel_service",
+"confidence": 0.9132421612739563,
+"lat": 12.9963711,
+"lng": 77.61252388,
+"addr": "1st Floor, No.32, Coles Rd, above Vodafone Office",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919900670564",
+"website": "http://www.jamaltours.com/"
+},
+{
+"id": "cb3711b7-fcc7-4210-9d61-cecb0d008e06",
+"name": "Apollo Diagnostics I Frazertown Mosque Road I Lab Test Near You I Book Health Checkup",
+"cat": "diagnostic_imaging",
+"confidence": 0.85,
+"lat": 12.9971162,
+"lng": 77.6140752,
+"addr": "No 11/3, SN 2, Ground Flr, Pentagan Cplx, Mosque Road",
+"ds": [
+"Microsoft",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "08048851037",
+"website": "https://www.apollo247.com/lab-tests"
+},
+{
+"id": "1cd16029-5f80-46a8-a011-8c3e22a16ba3",
+"name": "Masjid-e-Madina",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6231399774551392,
+"lat": 12.99520361,
+"lng": 77.71549838,
+"addr": "Hoodi Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e80548bd-3b51-401e-85fc-bcdd6c21a737",
+"name": "Rajamane & Hegde Services Pvt. Ltd",
+"cat": "industrial_company",
+"confidence": 0.5759869813919067,
+"lat": 12.9952497,
+"lng": 77.697937,
+"addr": "Whitefield Road, Mahadevapura Post,",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "https://www.rajamanehegde.com/"
+},
+{
+"id": "56df1a6a-b9a7-4c95-8e11-9517682d78fd",
+"name": "Masjid E Al Kareem",
+"cat": "religious_organization",
+"confidence": 0.4457709491252899,
+"lat": 12.99687808,
+"lng": 77.7853153,
+"addr": "Appajipura",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "87f8fa22-d23f-4b35-b029-cd6a06299052",
+"name": "Masjid E Ayesha",
+"cat": "muslim_place_of_worship",
+"confidence": 0.48986873030662537,
+"lat": 12.99160445,
+"lng": 77.76567521,
+"addr": "2nd Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "https://www.masaajidun.com/"
+},
+{
+"id": "53caf992-5528-406c-b672-5741eb5e6d67",
+"name": "Madrasa-E-Arabiya Luqman Shah",
+"cat": "school",
+"confidence": 0.5431559681892395,
+"lat": 13.001098844370912,
+"lng": 77.57657773817063,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e473b6a8-8931-461e-9f65-a65fae309d20",
+"name": "Madrasa-E-Qadria Jamia Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6351251602172852,
+"lat": 12.9996069,
+"lng": 77.5816824,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d025e1a9-d42e-440f-a62b-7920e9228aea",
+"name": "Asthana-E-Khadriya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8138836026191711,
+"lat": 13.0047915720327,
+"lng": 77.59388569722846,
+"addr": "#31 jayamahal road dargah compound bangalore 560006",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "dff66f28-923c-4b11-aaf3-2eb3283a7af8",
+"name": "Dargah Hazrath Khwaja Lalu Bhai Qasir",
+"cat": "christian_place_of_worship",
+"confidence": 0.4832698702812195,
+"lat": 13.00407733,
+"lng": 77.59405487,
+"addr": "25, Jayamahal Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ae33a78c-f844-4b40-86f2-2f0754907172",
+"name": "Aasthana E Quadria Private Trust Dargah of Peer Syed Hyder Shah Jilani Peer of Cutchi Memon Saits",
+"cat": "religious_organization",
+"confidence": 0.5120336413383484,
+"lat": 13.00505768,
+"lng": 77.59334385,
+"addr": "Jayamahal Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "beea77d1-76bc-4b45-b6d4-68387550e3a6",
+"name": "Magru Subah Dargah",
+"cat": "religious_organization",
+"confidence": 0.6046886444091797,
+"lat": 13.00624,
+"lng": 77.5952,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e5dfc147-aa6f-4390-8902-031b0c15c2ac",
+"name": "Makkah Masjid Ehle Sunnat wal Jamat",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5747817754745483,
+"lat": 13.00516135,
+"lng": 77.60280011,
+"addr": "PO, 32, 4th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e42754d7-9419-4fb1-badb-eef8a41e8569",
+"name": "Masjid-E-Aqsa",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7312929034233093,
+"lat": 13.00707722,
+"lng": 77.60008203,
+"addr": "18, Pemme Gowda Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "8e857ab4-81f4-441a-80ad-7e87904696e9",
+"name": "Masjid E Zulnoorain Trust",
+"cat": "government_office",
+"confidence": 0.7218928933143616,
+"lat": 13.00768195,
+"lng": 77.59574152,
+"addr": "2nd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "497e0720-929f-4255-8dbc-3aef74973dfb",
+"name": "Mubarak Masjid",
+"cat": "religious_organization",
+"confidence": 0.5679833292961121,
+"lat": 13.010162,
+"lng": 77.59626,
+"addr": "1st Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "78f3db82-3f7c-4cc7-8d58-34b65646ea58",
+"name": "Modi Masjeed",
+"cat": "religious_organization",
+"confidence": 0.3656150698661804,
+"lat": 13.011547230721996,
+"lng": 77.6065216371567,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "48d15e31-bd6a-4405-9dba-cbeca3aa558f",
+"name": "Modi Masjid Complex",
+"cat": "party_and_event_planning",
+"confidence": 0.6714630722999573,
+"lat": 13.011677300605335,
+"lng": 77.60620750341604,
+"addr": "Modi Masjid Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "14834b4b-1700-4351-aa6f-d9461543d2b2",
+"name": "Masjid-e-Ghousia",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6495851874351501,
+"lat": 13.0157636,
+"lng": 77.53994523,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6f13caf0-cb54-498d-8488-4c8763a13666",
+"name": "Masjid-E-Moiniya ",
+"cat": "religious_organization",
+"confidence": 0.28446513414382935,
+"lat": 13.02009,
+"lng": 77.56031,
+"addr": "4 1st Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919886344512",
+"website": null
+},
+{
+"id": "5e7caa7d-29ea-4e48-8774-42a5e0b2fec7",
+"name": "Jamia Masjid Yeshwanthpura",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8667365908622742,
+"lat": 13.01939213,
+"lng": 77.55546239,
+"addr": "Subedarchatram Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022352828",
+"website": null
+},
+{
+"id": "3ef3f50b-09f8-4dbd-a4cd-2a3e9211a219",
+"name": "Jamia Masjid,Yeshwanthpur",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6017085909843445,
+"lat": 13.025132593111767,
+"lng": 77.55632150802202,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919535837074",
+"website": null
+},
+{
+"id": "1fe996d7-caac-4fd6-a617-3180f20a4084",
+"name": "Masjid-E-Imam Raza",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5678555965423584,
+"lat": 13.02217668,
+"lng": 77.56231263,
+"addr": "10th Cross Road, No 1/5, 2nd Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919945792212",
+"website": null
+},
+{
+"id": "a4b2be7b-eb52-4d3e-aeb1-701a5f98624e",
+"name": "Masjid-e-Moiniya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6686091423034668,
+"lat": 13.021905,
+"lng": 77.56168776,
+"addr": "851/6, 4th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919886344512",
+"website": null
+},
+{
+"id": "919364ae-03fc-458f-b7b0-7499739c41cf",
+"name": "Jamia Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6551228165626526,
+"lat": 13.022494228193066,
+"lng": 77.5851923014335,
+"addr": "Andrahalli Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "013c2900-8920-4e2f-98e7-cb9ea921e837",
+"name": "Madeena Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8867825269699097,
+"lat": 13.02722003,
+"lng": 77.57853946,
+"addr": "180, 80 Feet Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919972246785",
+"website": null
+},
+{
+"id": "c01aed0e-f5e3-4999-8724-7b8afd2f9dee",
+"name": "Kausar Nagar Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5931835770606995,
+"lat": 13.02588751,
+"lng": 77.59602085,
+"addr": "2nd Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "fef02da6-913b-475e-96a4-a4237fd62218",
+"name": "Masjid E Khaleelulla",
+"cat": "muslim_place_of_worship",
+"confidence": 0.702751636505127,
+"lat": 13.027542,
+"lng": 77.5978269,
+"addr": "Chamundi Nagar RT Nagar Post Bangalore",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9315c1c0-42ae-422f-ae82-55c6fcd71b07",
+"name": "Masjid-E-Shams",
+"cat": "muslim_place_of_worship",
+"confidence": 0.3200701177120209,
+"lat": 13.02738879,
+"lng": 77.60489989,
+"addr": "Sultanpalya Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919611161481",
+"website": null
+},
+{
+"id": "13142d1f-77a7-43ce-bc5f-d364fb44d41a",
+"name": "Zia Health Care Unani Dispensary & Hijama Centre",
+"cat": "",
+"confidence": 0.524733304977417,
+"lat": 13.02361,
+"lng": 77.59986,
+"addr": "1 Dinnur Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919535367696",
+"website": null
+},
+{
+"id": "0302b781-20e1-4889-89c1-d87894bdc17c",
+"name": "Masjid-E-Saa'd Bin Abi Waqas",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5461390018463135,
+"lat": 13.023425728953548,
+"lng": 77.59680148600415,
+"addr": "8th Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0269d91a-af2b-416c-92aa-82d74e8116b8",
+"name": "Jamaat-e-Islami Hind Karnataka",
+"cat": "religious_organization",
+"confidence": 0.6077879667282104,
+"lat": 13.01850279,
+"lng": 77.59469133,
+"addr": "#52, Shanthi Sadan, 2nd \u0c2e\u0c46\u0c2f\u0c3f\u0c28\u0c4d \u0c30\u0c4b\u0c21\u0c4d\u0c21\u0c41",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025924059",
+"website": "http://jihkarnataka.org/"
+},
+{
+"id": "86041bed-e605-4e81-805a-fc7f04da4c7a",
+"name": "Masjid E Aala Complex",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6776610612869263,
+"lat": 13.01820938,
+"lng": 77.59439887,
+"addr": "1st Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3c858ed4-3ad4-4c1a-8d0d-38cf98f9e838",
+"name": "Madrasa-E-Darul Falah",
+"cat": "elementary_school",
+"confidence": 0.6141689419746399,
+"lat": 13.0171462,
+"lng": 77.5925838,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ca6e317c-8432-49df-95d1-958bcce3ec7f",
+"name": "Masjid Al-Huda",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5820612907409668,
+"lat": 13.01948409,
+"lng": 77.58820948,
+"addr": "20, 4th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0d302130-e61b-4de8-ba32-54e4d18f5da0",
+"name": "Jamiat-E-Mehdavia",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6827941536903381,
+"lat": 13.014325700001358,
+"lng": 77.5956469999975,
+"addr": "3rd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918023531935",
+"website": null
+},
+{
+"id": "ca7469d0-bad7-495d-a00b-dff332e86277",
+"name": "Modi Zia Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6896944642066956,
+"lat": 13.013483968626591,
+"lng": 77.60246179344357,
+"addr": "4th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0197f267-86a8-44d4-b003-4fb216d684b4",
+"name": "Milli Council Karnataka",
+"cat": "muslim_place_of_worship",
+"confidence": 0.41871803998947144,
+"lat": 13.0137705221988,
+"lng": 77.60382214279274,
+"addr": "25 Eidgah Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "15758f17-5057-4705-a1c9-7178fb62bddb",
+"name": "Husaini Masjid",
+"cat": "religious_organization",
+"confidence": 0.7765206098556519,
+"lat": 13.013014022197758,
+"lng": 77.60752938260501,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b5157798-4d6f-4ec2-9b5c-3affc8541b4f",
+"name": "Lababee Masjid-Main Entrance",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6281523704528809,
+"lat": 13.013626474255396,
+"lng": 77.60975747176127,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c1082163-4bb0-4a0a-b892-817d3e0f6bbf",
+"name": "Masjid-E-Khalandariya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6068474650382996,
+"lat": 13.01318149,
+"lng": 77.61125325,
+"addr": "4th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9ce68ffb-f177-4ef7-8c50-eb6530400ac3",
+"name": "Masjid E Sultan",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5723856091499329,
+"lat": 13.01591118,
+"lng": 77.60879208,
+"addr": "NP Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9b817ab6-78df-4353-854d-6b0814d00ef6",
+"name": "Masjid e sana",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5279934406280518,
+"lat": 13.01629845,
+"lng": 77.61058046,
+"addr": "4th cross Amar layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "957ddb23-5bda-45bd-900b-720a412523d1",
+"name": "Madrasa E Arabiya Najmul Islam",
+"cat": "elementary_school",
+"confidence": 0.4318220615386963,
+"lat": 13.01575353,
+"lng": 77.61133825,
+"addr": "3rd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919342642004",
+"website": null
+},
+{
+"id": "5cb941dd-22fd-4fa7-9dfe-553cd31e9c09",
+"name": "Madrasa E Alfalah",
+"cat": "vocational_and_technical_school",
+"confidence": 0.3114570081233978,
+"lat": 13.01559151,
+"lng": 77.61347825,
+"addr": "131, Shampur Main Road, Mother Theresa School Compound, Anwar Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6fd20e9f-6929-4ad4-a07a-2f18f91dd004",
+"name": "Masjid Zohra Batool",
+"cat": "religious_organization",
+"confidence": 0.7708773016929626,
+"lat": 13.01521607,
+"lng": 77.61621744,
+"addr": "1st Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "https://www.masjid-arrahman.org/"
+},
+{
+"id": "8de58ae3-3825-4ead-a3a7-797a6f92b3c7",
+"name": "Jamat Raza-E-Mustafa, Bangalore Branch",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8231965899467468,
+"lat": 13.015991745877,
+"lng": 77.61586,
+"addr": "30 2nd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3ebc2f8c-bb48-4bc4-9f8d-465e40199324",
+"name": "Masjid E Abubakar",
+"cat": "religious_organization",
+"confidence": 0.6866053342819214,
+"lat": 13.0161489,
+"lng": 77.61783057,
+"addr": "No 76/1, Masjid E-Abu Baker Complex, Nagawara Main Road, Arabic College Post, Kg Halli, Nagawar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "03f8aa5c-4be5-414d-bc84-32c11596c3d7",
+"name": "Masjid E Nauman \u0645\u0633\u062c\u062f\u0650 \u0646\u0639\u0645\u0627\u0646",
+"cat": "muslim_place_of_worship",
+"confidence": 0.737269401550293,
+"lat": 13.0131387,
+"lng": 77.61630635,
+"addr": "3, Arabic College Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "34b3e0eb-103a-4c48-bf3b-c334f7369929",
+"name": "Masjid E Asra",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5906779170036316,
+"lat": 13.01402797,
+"lng": 77.6366681,
+"addr": "Mary Chinnappa",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "https://masjideasra.com/"
+},
+{
+"id": "48d1b8d1-48e6-44c8-b4f1-4b1cc7a02f6b",
+"name": "Centre Of Wellness Adapted Hijama Cupping Chiropractic Therapy",
+"cat": "naturopathic_medicine",
+"confidence": 0.8567285537719727,
+"lat": 13.01684177,
+"lng": 77.6358756,
+"addr": "4 2nd B Cross Ramaiah layout Kammanahall Main Road, Main Road, near church gate",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918755324829",
+"website": "https://cwahtcentre-of-wellness-adapted-hijamacupping-therapy.business.site/"
+},
+{
+"id": "a149a457-6240-45f7-885a-3d603242b1fc",
+"name": "Madrasa Ekashif ul Huda",
+"cat": "religious_school",
+"confidence": 0.577835738658905,
+"lat": 13.01972769,
+"lng": 77.62163423,
+"addr": "541, 7th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+917411776657",
+"website": null
+},
+{
+"id": "c1c1a2b2-523e-47d8-90cf-25a1415983fc",
+"name": "Masjid E Abu Raihan",
+"cat": "religious_organization",
+"confidence": 0.7091313004493713,
+"lat": 13.02034118,
+"lng": 77.62236993,
+"addr": "No 902, 10th B Street, 10th Cross, Vinoba Nagar, Kg Halli, Nagwara",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "bff5502d-3697-4519-8009-8be952c8bfe7",
+"name": "Hanfia Masjid",
+"cat": "religious_organization",
+"confidence": 0.7205591201782227,
+"lat": 13.01915787017614,
+"lng": 77.61655515013832,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "12aa8d86-af62-44b2-b7b8-bfe6eb019cbf",
+"name": "Madrasa E Obaidia Tahfizul Quran",
+"cat": "religious_school",
+"confidence": 0.4770503640174866,
+"lat": 13.01879283,
+"lng": 77.62262158,
+"addr": "11th Cross Rd, Behind Police station",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919611226589",
+"website": null
+},
+{
+"id": "2d1aec3c-9b79-416f-b243-4581c8e1372a",
+"name": "Bismillah Mosque",
+"cat": "religious_organization",
+"confidence": 0.5869014859199524,
+"lat": 13.01706129,
+"lng": 77.61853798,
+"addr": "Venketesh Pura, Kadugondanahalli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c0138392-7905-4bed-a626-169d20e5d19f",
+"name": "Masjid-E-Qadriya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6032741665840149,
+"lat": 13.01861318,
+"lng": 77.60992658,
+"addr": "3007, 6th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "69cb24c4-29a8-4c36-8fc6-d1abb78cd6be",
+"name": "Jamia Gulshan-e-Fatima",
+"cat": "religious_school",
+"confidence": 0.46106472611427307,
+"lat": 13.01873348,
+"lng": 77.61143567,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919886051066",
+"website": null
+},
+{
+"id": "8c4e78d3-7c68-4da9-a01e-e12b5daaa540",
+"name": "Masjid Ali Bin Abe Talib",
+"cat": "muslim_place_of_worship",
+"confidence": 0.3796429932117462,
+"lat": 13.019149010557333,
+"lng": 77.61519507371057,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a0c1494f-b765-4ad0-b8af-3ef4ae1aa60a",
+"name": "Masjid Al Azeez",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4852459132671356,
+"lat": 13.02017677,
+"lng": 77.61408256,
+"addr": "677/1, AMC Sowarkar Ln",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "33ff3607-78e9-4f28-9445-df3d295ba5b8",
+"name": "Masjid-e-Akbari",
+"cat": "muslim_place_of_worship",
+"confidence": 0.47987672686576843,
+"lat": 13.02100628,
+"lng": 77.6146494,
+"addr": "Dr AMC Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c8f84dde-8fdf-4e3b-b0e7-9adaa67bd8d0",
+"name": "Masjid E Ayesha Building",
+"cat": "party_and_event_planning",
+"confidence": 0.5643123984336853,
+"lat": 13.02090325,
+"lng": 77.62414583,
+"addr": "2 Shubhash Layout, Kk Halli, Hbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9c2a10e7-0183-4e7c-be1e-2dc3dd98627a",
+"name": "Sahaba Masjid",
+"cat": "religious_organization",
+"confidence": 0.6439759135246277,
+"lat": 13.02208851,
+"lng": 77.61658983,
+"addr": "Samadhan Nagar Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "309a4a4e-e70a-4084-8d80-a61069da17eb",
+"name": "Masjid E Saud",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5890132188796997,
+"lat": 13.02303892,
+"lng": 77.61814365,
+"addr": "46",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "af1e4047-0c8d-4c3b-86d4-6f8a6679436b",
+"name": "Masjid E Syed Usman",
+"cat": "religious_organization",
+"confidence": 0.30861222743988037,
+"lat": 13.02326416,
+"lng": 77.62290335,
+"addr": "No 33-34, Peace Garden, Hbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e976c0ff-bb7a-4e05-af5c-3a8d53b6beec",
+"name": "Jamia Tayyibath",
+"cat": "education",
+"confidence": 0.41452881693840027,
+"lat": 13.02352468,
+"lng": 77.61705462,
+"addr": "9th Cross, Gandhi Nagar, Ac Post, Kg Halli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f3c5dc2a-0fc0-42ff-9b3a-95d595fe24bc",
+"name": "Madrasa-E-Riyazul Jannah",
+"cat": "religious_organization",
+"confidence": 0.5267479419708252,
+"lat": 13.02574,
+"lng": 77.61531,
+"addr": "3rd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "182c92bb-5555-425d-acce-746102481b2d",
+"name": "Masjid E Khaif",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5978635549545288,
+"lat": 13.02712653,
+"lng": 77.61098076,
+"addr": "LR Bande Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f0df52b0-75fa-4e8a-8420-8c6a0f246e37",
+"name": "Masjid E Munavvara O Jamia Fazeelathul Quaraan",
+"cat": "religious_organization",
+"confidence": 0.5382411479949951,
+"lat": 13.02715326,
+"lng": 77.62014929,
+"addr": "Jamia Nagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "93700d82-b58c-4802-a4bc-600155963db2",
+"name": "Mrs Rajamani Advocate and Notary",
+"cat": "property_management",
+"confidence": 0.3075030446052551,
+"lat": 13.02547776,
+"lng": 77.62800457,
+"addr": "Shop No 15/5, Ground Floor, Hbr Layout Bda Shopping Complex, Hbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025442569",
+"website": null
+},
+{
+"id": "2cc5e693-cc62-431e-b20b-96c37e685e7c",
+"name": "HBR Layout 3rd Block Masjid",
+"cat": "religious_organization",
+"confidence": 0.5946590900421143,
+"lat": 13.02827019,
+"lng": 77.62525001,
+"addr": "Al Hilal Nagar Mosque, Hbr Layout 3rd Block, Hbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "21ad5694-d5ab-4205-8e50-e22a34629b3b",
+"name": "Al Hilal Mosque",
+"cat": "religious_organization",
+"confidence": 0.6423332095146179,
+"lat": 13.02833526,
+"lng": 77.62526489,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a9dbff12-2d46-4f56-8635-a2a37895fbe2",
+"name": "Masjid-e-Yusuf",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5299466848373413,
+"lat": 13.02794139,
+"lng": 77.63181845,
+"addr": "Service Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "91b77146-e1d6-4c12-b45d-454f6f29f092",
+"name": "Hotel Jamayca",
+"cat": "hotel",
+"confidence": 0.77,
+"lat": 13.025976542028733,
+"lng": 77.63957632449753,
+"addr": "Outer Ring Road, Chelakara, Kalyan Nagar",
+"ds": [
+"Foursquare",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "080 2544 5544",
+"website": "http://hotel-jamayca.com"
+},
+{
+"id": "bef68c9a-ca5b-4e7c-8097-142d86342ca2",
+"name": "Tang of Jamaica",
+"cat": "restaurant",
+"confidence": 0.6202796101570129,
+"lat": 13.02632091,
+"lng": 77.6396616,
+"addr": "Hotel Jamayca, Lobby Level, Outer Ring Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918088822665",
+"website": "http://www.tangofjamaica.com/"
+},
+{
+"id": "f74f7550-01ec-4ff7-831f-cb59fa3d5dcf",
+"name": "Madrasa Masjid-E-Usmaniyyah",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5561151504516602,
+"lat": 13.0234362,
+"lng": 77.6258455,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a91a42b5-8069-4ad2-9e66-106da448cbaa",
+"name": "Sir Mirza Ismail Sait Mosque",
+"cat": "religious_organization",
+"confidence": 0.5637218952178955,
+"lat": 13.023178,
+"lng": 77.6308094,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "8c00ac46-58da-418f-9179-be6cb5e507cf",
+"name": "Jafer Masjid",
+"cat": "religious_organization",
+"confidence": 0.6965846419334412,
+"lat": 13.02229217,
+"lng": 77.63889972,
+"addr": "4th Cross, 4th G Main Road, Hrbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "4f07aec0-3a0c-4e27-b56e-894efb4f5a2a",
+"name": "Masjid-E-Abdul Malik",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5367394685745239,
+"lat": 13.0274397,
+"lng": 77.66494031,
+"addr": "Masjid - E - Abdul Malick & Madrasa - E - Khatoonia, Jayanti Nagar - Thambuchettypalya Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918050255738",
+"website": "http://www.urduaudio.com"
+},
+{
+"id": "c9347d4b-c6dc-4923-85bf-d72f4d3dea3f",
+"name": "Darga Hazrath Kambalposh Sha",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4883286952972412,
+"lat": 13.00517013,
+"lng": 77.66913662,
+"addr": "1/3, Khadri",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022866135",
+"website": null
+},
+{
+"id": "2761f9e7-3146-408b-ab73-39eb01b4b771",
+"name": "Health and Hijama Cupping Therapy Clinic",
+"cat": "naturopathic_medicine",
+"confidence": 0.998798754543066,
+"lat": 13.01046435,
+"lng": 77.64832445,
+"addr": "113, 4th Cross OMBR OMBR Layout Main Road Opposite HDFC Bank Health and Hijama Clinic, B.Channasandra Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918041221499",
+"website": "http://www.healthandhijamaclinic.com/"
+},
+{
+"id": "a657bb05-36b5-48c4-909f-75cb96f2bf3f",
+"name": "Masjid E Abuzar Ghifari",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6251262426376343,
+"lat": 13.00976259,
+"lng": 77.62837817,
+"addr": "G block, Lingarajapura2J8F+FVW Masjid-E, Abuzar Ghifari, 9th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d153fb5d-e89c-4a20-98b2-c79249b7122b",
+"name": "Healthy U Clinic and Hijama Centre",
+"cat": "health_care",
+"confidence": 0.2953484058380127,
+"lat": 13.00941512,
+"lng": 77.62759749,
+"addr": "No.10, 11, Church St Rd, near Chowdeshwari temple",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+917019363220",
+"website": null
+},
+{
+"id": "b259a781-0cf6-451c-b0d4-069dc0eed21f",
+"name": "Pizza Hut Mosque Road",
+"cat": "pizza_restaurant",
+"confidence": 0.5296810269355774,
+"lat": 13.01035,
+"lng": 77.62525,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "52bae95d-9013-4900-a4dd-5982cde8a04b",
+"name": "Masjide Naseer Fathima",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5675269365310669,
+"lat": 13.01275901,
+"lng": 77.62030535,
+"addr": "3/1 3/1, 11th Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918880836308",
+"website": null
+},
+{
+"id": "c46b61b7-8192-45cf-b14c-9276020109ce",
+"name": "Masjid-E-Hazrat Bilal",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8572187423706055,
+"lat": 13.01175337,
+"lng": 77.61644645,
+"addr": "Hazrath Bilal Complex, Tannery Road Pillanna Garden, Arabic College Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025493147",
+"website": "http://www.hazratbilalsunnitrust.com/"
+},
+{
+"id": "6c45edaf-30ec-4222-ab72-b6bb31d81462",
+"name": "Hazrath Bilal Masjid Complex-Entrance 1",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8192081451416016,
+"lat": 13.011763824776239,
+"lng": 77.61605422846202,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "7f19bdd7-5016-448a-90b8-cef2d8367d6e",
+"name": "Madrasa E Iqra",
+"cat": "school",
+"confidence": 0.4127380847930908,
+"lat": 13.01260003,
+"lng": 77.6193425,
+"addr": "6th Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "52dd7fcf-bba5-4104-848d-bbcaa666a33c",
+"name": "Masjid e Quraish",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5561736226081848,
+"lat": 13.01216514,
+"lng": 77.61000334,
+"addr": "Devarajivanahalli Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "685c614b-71b1-435e-9064-30684e35dad5",
+"name": "Rehmania Masjid",
+"cat": "religious_organization",
+"confidence": 0.6214601397514343,
+"lat": 13.01131241,
+"lng": 77.61392719,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "cdcfadb5-00a1-460d-84aa-58f925acf557",
+"name": "Aisha Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.613197922706604,
+"lat": 13.010833555104817,
+"lng": 77.60756507846243,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ffca31bc-850b-4cfa-bf4a-0362380a476b",
+"name": "Madrasa-E-Jannatun Nayeem",
+"cat": "religious_school",
+"confidence": 0.3862437307834625,
+"lat": 13.01007005,
+"lng": 77.61710179,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "81cf3300-bb4f-4733-bc73-0d5efe020a9e",
+"name": "Makka Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6399882435798645,
+"lat": 13.00780338,
+"lng": 77.62008372,
+"addr": "Gospel St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919900107898",
+"website": null
+},
+{
+"id": "43b324be-b0dc-4775-bde4-ee159976e366",
+"name": "Masjid E Omar Ahal E Sunnath Al Jamat",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5396581292152405,
+"lat": 13.00892757,
+"lng": 77.61159927,
+"addr": "Dj Halli Main Road, Periya Nagar Dj Halli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "8b4bba22-0654-4c2d-8045-5f85738936f0",
+"name": "Eidgah-e-Jadeed",
+"cat": "muslim_place_of_worship",
+"confidence": 0.60704505443573,
+"lat": 13.00651211,
+"lng": 77.61174989,
+"addr": "Tannery Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2955976d-d4ec-46ce-80ed-c857c764b890",
+"name": "Eidgah E Jadeed Trust Board Shadaab Shaadi Mahal",
+"cat": "party_and_event_planning",
+"confidence": 0.6390575170516968,
+"lat": 13.0067693,
+"lng": 77.61235425,
+"addr": "Bsa, Tannery Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025478270",
+"website": null
+},
+{
+"id": "c5b4f9b6-c4ba-46d7-a6d9-4928e54cdb1b",
+"name": "Dargah Hazrath Mastani Amma",
+"cat": "religious_organization",
+"confidence": 0.7456018328666687,
+"lat": 13.00562972,
+"lng": 77.61221108,
+"addr": "mastani Amma dargah, Tannery Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919008197464",
+"website": null
+},
+{
+"id": "bec105c4-cfb3-4278-b919-c4108aa89e5f",
+"name": "Masjid Ul Firdose and Madrasa Firdose",
+"cat": "religious_organization",
+"confidence": 0.4816295802593231,
+"lat": 13.0052744,
+"lng": 77.6145106,
+"addr": "Hall Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d7425c7e-22d3-43e0-b6a4-eabdc0bc0c0f",
+"name": "Masjid Al-Fatah",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7520374059677124,
+"lat": 13.00636876,
+"lng": 77.63121537,
+"addr": "HKGN MOHALLA, Lingarajapuram Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "8a6d615a-a521-49e7-a4db-770cfd08b32b",
+"name": "Makka Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5887616276741028,
+"lat": 13.00530996,
+"lng": 77.63660883,
+"addr": "Masjid street, Kammanahalli Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "188e6aa9-1435-40f4-ae48-969babc2f800",
+"name": "Subbanna Palya Masjid",
+"cat": "religious_organization",
+"confidence": 0.618772029876709,
+"lat": 13.00590241,
+"lng": 77.6392667,
+"addr": "Near Pooja Hospital, Chikka Banaswadi Main Road, Subbanna Palya, Banaswadi",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "8ca86499-bd9e-4b5f-96b5-428b9c985051",
+"name": "Savory Residency,Mosque Road ,Frazer Town ,Bangalore",
+"cat": "restaurant",
+"confidence": 0.5522569417953491,
+"lat": 13.0041545,
+"lng": 77.6190039,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "df33623f-12fc-4c79-936d-8f20bd4fb734",
+"name": "Masjid E Taqwaa",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5903714299201965,
+"lat": 13.00404885,
+"lng": 77.60807352,
+"addr": "No 22, Wahid Garden, Benson Town",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a6faab16-6a93-40f5-a6f0-5cb70affbc80",
+"name": "Madrasa E Islahul Banath",
+"cat": "school",
+"confidence": 0.6514608263969421,
+"lat": 13.00379845,
+"lng": 77.61392783,
+"addr": "Km Road, Richards Town",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "86caaf41-573d-4223-9bed-816bd79044bd",
+"name": "Masjid Al Farooq",
+"cat": "religious_organization",
+"confidence": 0.5879989266395569,
+"lat": 13.00173185,
+"lng": 77.6080508,
+"addr": "No 45, 4th Cross Road, Pottery Town, Williams Town, Benson Town",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918023537734",
+"website": null
+},
+{
+"id": "dee75d7f-01bc-460c-9fc1-069a85111ede",
+"name": "Hajee Sir Ismail Sait Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.711561918258667,
+"lat": 13.00091021,
+"lng": 77.61577018,
+"addr": "Mosque Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919590836364",
+"website": null
+},
+{
+"id": "64a90080-aaaf-441d-a4d4-d461eb770243",
+"name": "Masjid Osmania",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6629931330680847,
+"lat": 12.99842789,
+"lng": 77.61302681,
+"addr": "16, Robertson Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "02c80b57-754b-4a9d-9c30-a61ff4f21af2",
+"name": "Hijama Wellness Centre",
+"cat": "naturopathic_medicine",
+"confidence": 0.9355594515800476,
+"lat": 12.99899724,
+"lng": 77.615873,
+"addr": "63, Mosque Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919886822737",
+"website": "http://www.hijamawellnesscentre.com/"
+},
+{
+"id": "e50b1ecd-1d11-48da-b46e-05e3cb8239a2",
+"name": "Mosque",
+"cat": "religious_organization",
+"confidence": 0.15506504476070404,
+"lat": 13.00213895,
+"lng": 77.66581309,
+"addr": "Iti Employees, Housing Colony, Durvani",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "02aeb4a9-7827-47a1-bdd1-ce225ad85295",
+"name": "Jamia Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6081278324127197,
+"lat": 13.00263691,
+"lng": 77.67083831,
+"addr": "Sunni Jamia Masjid, 1043, 1st Main Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "bae1f02f-d4af-44c9-b107-1d5fd7cd3f7b",
+"name": "Dargah Mohalla Kabristan",
+"cat": "funeral_service",
+"confidence": 0.45358890295028687,
+"lat": 12.99904795,
+"lng": 77.67315344,
+"addr": "Old Madras Road, Dargaa Mahal",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "848e8124-c410-40b4-a8ef-c6027e004f74",
+"name": "Eidgah Masjid MS Palya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5371174812316895,
+"lat": 13.08850018,
+"lng": 77.54300204,
+"addr": "292",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ccec0259-4644-434e-a1af-a561d567f2cf",
+"name": "Masjid-O-Madrasa-E-Qasimiya Arabic Trust",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6014420390129089,
+"lat": 13.08220904,
+"lng": 77.54343902,
+"addr": "Mohammed saab palya, post",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c1a76b11-3422-4b8c-9da6-88551b3e6bcf",
+"name": "Jamaican Cocktails and Liquor at Tang of Jamaica, Bangalore",
+"cat": "lounge",
+"confidence": 0.6721213459968567,
+"lat": 13.0413967,
+"lng": 77.5466334,
+"addr": "4GM, 426,  OUTER RING ROAD, BANASAWADI",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0127e67c-63cf-4648-a5d6-507557b7b15d",
+"name": "Masjid E Umar Farooq",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6027448773384094,
+"lat": 13.08356329,
+"lng": 77.55328985,
+"addr": "Obed Manzil, Vidyaranyapura Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "45ab2761-e57b-4fff-87c9-d529e6c3948a",
+"name": "Jamia Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6037937998771667,
+"lat": 13.08056909,
+"lng": 77.55286415,
+"addr": "20",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "7a8564f9-a7d3-488b-a6a8-cc6411bd3a86",
+"name": "Masjid-E-Taha",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5910345911979675,
+"lat": 13.039666620045,
+"lng": 77.555490730538,
+"addr": "",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c4d19883-10f9-4c26-8857-5f7e62c6c91c",
+"name": "Jamai Ice-Cream",
+"cat": "ice_cream_shop",
+"confidence": 0.5649901628494263,
+"lat": 13.03544,
+"lng": 77.56514,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "57bc4454-c956-4963-8468-e214d7d763b8",
+"name": "Masjid-e-Yaqub",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5650045871734619,
+"lat": 13.03798963,
+"lng": 77.56540368,
+"addr": "No 561, Mosque Cross, New BEL Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "52c521e9-b1ca-4a83-b9af-44b4f2a5598f",
+"name": "Masjid-E-Taha",
+"cat": "religious_organization",
+"confidence": 0.6802186965942383,
+"lat": 13.03308,
+"lng": 77.56609,
+"addr": "MSR Main Road Mathikere Bengaluru",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919945519149",
+"website": null
+},
+{
+"id": "27246650-b504-4a2a-9450-b306310c986b",
+"name": "Masjid E Bilal",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6733493804931641,
+"lat": 13.10761138,
+"lng": 77.57336148,
+"addr": "6th Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9db898e6-ab9d-4760-b8cd-cb561370579f",
+"name": "Masjid-e-Azam",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5952883958816528,
+"lat": 13.04099523,
+"lng": 77.59007505,
+"addr": "Hebbal Railway Station Road, Hebbal Flyover",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9c287d8a-eace-42be-aaef-bcec49b88db2",
+"name": "Siddeek Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.3754347562789917,
+"lat": 13.10877218,
+"lng": 77.59159121,
+"addr": "1-83, 27th Cross, Chowdeshwari Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "dc92dbcd-8975-4e42-b14e-2d3638613a45",
+"name": "Jamia Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.2427266538143158,
+"lat": 13.1042265,
+"lng": 77.59440222,
+"addr": "BBMP Office Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b49ed547-a302-441d-90a5-513d82f6b0c4",
+"name": "Masjid E Badar",
+"cat": "religious_organization",
+"confidence": 0.6311267614364624,
+"lat": 13.07275676,
+"lng": 77.59706502,
+"addr": "Jakkur Main Road, Jakkuru Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6a506119-319a-4403-8b5a-b9c0d4cae654",
+"name": "Saba Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8614915609359741,
+"lat": 13.03283577,
+"lng": 77.59824145,
+"addr": "3rd Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "171bc916-59c5-4104-84a7-a487bd833d5b",
+"name": "Darul Uloom Usmaniya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5783604979515076,
+"lat": 13.11122,
+"lng": 77.60234,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "64178f4f-4466-4fab-ac35-ef29dc008031",
+"name": "Abubakkar Siddiq Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5245996713638306,
+"lat": 13.03296,
+"lng": 77.60092,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "87e962dc-5893-4032-ba5e-c8444bcd8df5",
+"name": "Masjid-E-Al Quba",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6686806678771973,
+"lat": 13.05287116,
+"lng": 77.60143011,
+"addr": "1st B Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a799c2a7-a539-4085-bdb3-c549f7dd66af",
+"name": "Masjid e-Sultan",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6995996236801147,
+"lat": 13.03661996,
+"lng": 77.60568302,
+"addr": "7th A Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a26d6d65-2c29-44de-9cd1-6342cbb84fe5",
+"name": "Khanqah-e-Jamalia Aamiria",
+"cat": "religious_organization",
+"confidence": 0.6359882354736328,
+"lat": 13.03720378,
+"lng": 77.60604746,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f5d1b308-e86b-4e32-b4a4-d2e6699f9d62",
+"name": "Noorani Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6778813600540161,
+"lat": 13.07821053,
+"lng": 77.60644613,
+"addr": "Jakkur",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "7bc5d988-0605-4d33-9ab0-7e9a376e9cf9",
+"name": "MASJID-E-BILAL@Bilal Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6240668296813965,
+"lat": 13.03298595,
+"lng": 77.60841494,
+"addr": "5, K H B Main Road, post",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919900364271",
+"website": null
+},
+{
+"id": "47d2ba16-2258-4aa2-9f69-cc110fcc98c2",
+"name": "Rashidiya Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7561817169189453,
+"lat": 13.03292154,
+"lng": 77.61376723,
+"addr": "1777/2 1777/2, 1st Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919986336068",
+"website": null
+},
+{
+"id": "98e2d665-d62f-416f-aa1a-6d0ba4937ca5",
+"name": "Masjid E Hazrath Khadijatul Kubra",
+"cat": "religious_organization",
+"confidence": 0.640021026134491,
+"lat": 13.02940223,
+"lng": 77.61423761,
+"addr": "Railway Line Shampura Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "42f06ad1-df77-4b87-a351-ced963c42535",
+"name": "Masjid E Inamul Hasan",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7997928857803345,
+"lat": 13.02931889,
+"lng": 77.61617684,
+"addr": "Shampura Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "4e6670de-fa94-4270-83e6-6a91ad4700c8",
+"name": "Masjid E Kausar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6437783241271973,
+"lat": 13.03486115,
+"lng": 77.61643924,
+"addr": "Kausar Masjid St",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919916394002",
+"website": null
+},
+{
+"id": "4c18f46a-be49-43f9-aa01-431f11d9c0bc",
+"name": "Masjid-E-Noorul Hudha",
+"cat": "muslim_place_of_worship",
+"confidence": 0.39452794194221497,
+"lat": 13.03240139,
+"lng": 77.6171798,
+"addr": "35/B, 11th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d45dd35e-bcfa-4264-a3a3-66f157e2774a",
+"name": "Madrasatul Momineen",
+"cat": "vocational_and_technical_school",
+"confidence": 0.2943517565727234,
+"lat": 13.03486445,
+"lng": 77.61794756,
+"addr": "No 23/1, 11th Cross, Behind Muzzammil Residency, Govindapura",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918867786491",
+"website": null
+},
+{
+"id": "07af36b9-d9fd-4166-adb7-dc5cc86c475d",
+"name": "Masjid E Muzzammil",
+"cat": "religious_organization",
+"confidence": 0.8920403122901917,
+"lat": 13.03510989,
+"lng": 77.61873729,
+"addr": "Near Hkbk College Road, 9th Cross, Muzzammil Masjid Road, Umar Nagar, Ac Post, Nagawara",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b66a6a09-7d73-4cc5-a6b9-52558121d773",
+"name": "Al Masjid E Noor",
+"cat": "religious_organization",
+"confidence": 0.47921672463417053,
+"lat": 13.03137237,
+"lng": 77.61865128,
+"addr": "Rashad Nagar, D Block",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "09a79bef-8db1-45f8-b389-5edd46d77852",
+"name": "Masjid-e-Sauood",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5759835839271545,
+"lat": 13.03388492,
+"lng": 77.61960246,
+"addr": "7th Cross, Umar Nagar, Arabic College Post, Govindapura Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "6d66890b-808b-4e9f-8699-797f4fc2beb0",
+"name": "Abrar Masjid",
+"cat": "religious_organization",
+"confidence": 0.3186928331851959,
+"lat": 13.02857326,
+"lng": 77.6195212,
+"addr": "Opposite Ac Post Office, Nagwara Main Road, Rashad Nagar, Nagawara",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ca475a6b-140e-466e-bf3d-1d8578100fa7",
+"name": "Masjid E Gulshan E Bagdad",
+"cat": "religious_organization",
+"confidence": 0.5302008390426636,
+"lat": 13.03304667,
+"lng": 77.62014862,
+"addr": "Apj Abdul Kalam Road, Umar Nagar, Hbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c04de99d-8a2b-48df-99bd-b4e6176176ce",
+"name": "Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.3212386965751648,
+"lat": 13.03093889,
+"lng": 77.62098103,
+"addr": "239, Nagawara Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ceb5281e-b9c7-48e9-a882-c8b2031ea4ed",
+"name": "Masjid E Hanifiya",
+"cat": "religious_organization",
+"confidence": 0.7676768898963928,
+"lat": 13.03219577,
+"lng": 77.62100899,
+"addr": "Apj Abdul Kalam Road, Umar Nagar, Hbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "a8540155-19fc-46b0-be53-d80283f81dcc",
+"name": "Ul Azeez Masjid",
+"cat": "religious_organization",
+"confidence": 0.33881598711013794,
+"lat": 13.04041756,
+"lng": 77.62177882,
+"addr": "3rd Cross, 4th Main Road, Munivenkatappa Layout, Nagawara",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c301e869-5b3b-4bfd-8520-361b2b55f446",
+"name": "Masjid E Umar Bin Khatabh",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8187934756278992,
+"lat": 13.03414494,
+"lng": 77.62249523,
+"addr": "29, Umar Nagar Main Rd, Behind Masjid e Umar bin Khattab Hazrath Umar Bin Khathab Complex",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://masjidumarbinkhattab.org/"
+},
+{
+"id": "96802446-82e3-4e0a-98b2-9efc3ccd1532",
+"name": "Masjid E Azeez Yousuf",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5867701172828674,
+"lat": 13.03076765,
+"lng": 77.62368029,
+"addr": "Masjid E Azeez Yusuf Road, Hbr Layout, 5th Block, 1st Stage, Nagavara",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919945558171",
+"website": null
+},
+{
+"id": "0ace74c2-cb17-419d-9556-57bc82d9db58",
+"name": "Madrasa E Islahul Banath",
+"cat": "vocational_and_technical_school",
+"confidence": 0.2897289991378784,
+"lat": 13.03065842,
+"lng": 77.62390945,
+"addr": "No 1, Masjid E Azeez Yusuf Road, Hbr Layout, 5th Block, 1st Stage, Nagavara",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "4393ef57-5e15-45b7-b86a-f0243c668369",
+"name": "Masjid E Mohammadia",
+"cat": "religious_organization",
+"confidence": 0.33812108635902405,
+"lat": 13.03019031,
+"lng": 77.62467604,
+"addr": "9th Main Road, Hbr Layout 3rd Block, Hbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "1bd08d86-f9ed-4fb3-92c0-42b0ea9433ef",
+"name": "Madrasa E Rahman Bant",
+"cat": "education",
+"confidence": 0.4086688458919525,
+"lat": 13.04055466,
+"lng": 77.62495561,
+"addr": "60 Nagawara, Hbr Layout",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "e5b36fb2-e96a-4a39-a006-9102a370b6fc",
+"name": "Masjid-e-Ali",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7193115949630737,
+"lat": 13.05553057,
+"lng": 77.6268389,
+"addr": "Rachenahalli Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919035437302",
+"website": null
+},
+{
+"id": "8ba60288-1d75-404a-8ae0-d3fae83062c6",
+"name": "Masjid E Quba",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7808294296264648,
+"lat": 13.09863613,
+"lng": 77.62478542,
+"addr": "7th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919731236211",
+"website": null
+},
+{
+"id": "58a76cb6-9efe-4416-a46f-4d5c26617167",
+"name": "Masjid E Fathima",
+"cat": "religious_organization",
+"confidence": 0.6028658151626587,
+"lat": 13.04910914,
+"lng": 77.62785684,
+"addr": "Bharath Nagar, Thanisandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ad8c6192-1016-4193-82ae-4f68c748640b",
+"name": "Masjid E Raza",
+"cat": "muslim_place_of_worship",
+"confidence": 0.8451175689697266,
+"lat": 13.04983252,
+"lng": 77.62728815,
+"addr": "5th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "961cc6fd-40bf-4579-bdf6-d826e47282ee",
+"name": "Masjid Abu Bakr Siddique",
+"cat": "religious_organization",
+"confidence": 0.726899266242981,
+"lat": 13.05095468,
+"lng": 77.62726663,
+"addr": "Saraipalya, Manayata Tech Park, Thanisandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "bc81e806-bdb7-42ad-92f6-83a25d74773c",
+"name": "Zam Zam Travels Haj - Umrah - Ziyarath",
+"cat": "travel_service",
+"confidence": 0.598093569278717,
+"lat": 13.036573129182,
+"lng": 77.628001165576,
+"addr": "1808 Outer Ring Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": "http://umrahpackagefrombangalore.com/"
+},
+{
+"id": "a24d052e-edbf-4477-bf31-e3f19754e631",
+"name": "Madrasa E Falah Ul Banat",
+"cat": "elementary_school",
+"confidence": 0.43060553073883057,
+"lat": 13.04631562,
+"lng": 77.62962946,
+"addr": "1st Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025446361",
+"website": null
+},
+{
+"id": "f457cb77-b0e3-4fb2-a98a-ab6ca1577420",
+"name": "Masjid E Jamia Abdur Rahman Bin Auf",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5417817831039429,
+"lat": 13.07509804,
+"lng": 77.62968512,
+"addr": "64, 7th A Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "44da8ea8-1ddb-48e4-93e5-6427638efd1f",
+"name": "Masjid e Abrar",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6077696681022644,
+"lat": 13.07129882,
+"lng": 77.63073103,
+"addr": "Door No, 1203, 8th Cross Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919036070329",
+"website": null
+},
+{
+"id": "bcdd8997-ad39-4e9e-9325-7c26af78c7f5",
+"name": "Madrasa Mazahir Uloom",
+"cat": "education",
+"confidence": 0.5442078709602356,
+"lat": 13.0493311,
+"lng": 77.6309406,
+"addr": "Ashwath Nagar, Thanisandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9b20dadb-b01e-4872-a830-ad2a14161e50",
+"name": "Jamia Ayesha Siddiqua",
+"cat": "school",
+"confidence": 0.848892331123352,
+"lat": 13.053231712664187,
+"lng": 77.63045471258036,
+"addr": "12 1st Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919341742417",
+"website": null
+},
+{
+"id": "297c1aa7-4a12-4d79-9b6a-3904665cd192",
+"name": "Kogilu Layout Masjid",
+"cat": "religious_organization",
+"confidence": 0.6179872155189514,
+"lat": 13.10290438,
+"lng": 77.63239933,
+"addr": "10th Cross",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "931d8cf9-34bd-4f58-b05f-b9f62b4868d6",
+"name": "Masjid E Rahmania",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6748007535934448,
+"lat": 13.10082064,
+"lng": 77.62966528,
+"addr": "1, SH 104",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0ae5f4e8-cbac-48f6-8cde-ce8c12603c92",
+"name": "Madrasa E Najmussuffah",
+"cat": "vocational_and_technical_school",
+"confidence": 0.2792412340641022,
+"lat": 13.07331132,
+"lng": 77.63493771,
+"addr": "327 3rd Cross, Hegde",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "514c2306-8a78-431d-8ce0-51d91cb304e7",
+"name": "Jamia Muhammadiyah Mansoora",
+"cat": "school",
+"confidence": 0.7371193170547485,
+"lat": 13.0663821,
+"lng": 77.63403918,
+"addr": "Thanisandra Main Road, Rk Hegde",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "75243889-2bc5-45d1-b184-cd1d1b99d987",
+"name": "Masjid-e-Basheer Fathima",
+"cat": "religious_organization",
+"confidence": 0.524387776851654,
+"lat": 13.07422,
+"lng": 77.63416,
+"addr": "Near Police Ground, RK Hegde Nagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "ce6057f7-50bc-4c58-8e69-6d8bfa4c25d7",
+"name": "Jafar E Sadia Masjid Complex",
+"cat": "party_and_event_planning",
+"confidence": 0.8085875511169434,
+"lat": 13.05023891,
+"lng": 77.63354165,
+"addr": "157 Ashwath Nagar, Thanisandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b9e637ee-8107-4533-847c-e21b55be06cb",
+"name": "Madrasa e Noor For The Blind Bengaluru ",
+"cat": "social_or_community_service",
+"confidence": 0.663615345954895,
+"lat": 13.03632,
+"lng": 77.63508,
+"addr": "3 1st Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918971942822",
+"website": null
+},
+{
+"id": "fce6e57b-dba6-4425-a3a9-7e3c16089a3f",
+"name": "Jamia Muhammadiyah Mansoora, Bangalore.",
+"cat": "school",
+"confidence": 0.7767870426177979,
+"lat": 13.0499009,
+"lng": 77.6366432,
+"addr": "Thanisandra Main Road, RK HEgdenagar.",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f90f18dd-10fd-4c3a-b04d-d14dd5375253",
+"name": "Haj Bhavan",
+"cat": "muslim_place_of_worship",
+"confidence": 0.9218918085098267,
+"lat": 13.08996234,
+"lng": 77.63642813,
+"addr": "104 SH 104",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918022244434",
+"website": "http://www.karhaj.in/"
+},
+{
+"id": "edb963a9-a4dc-41b5-86cd-443cfefe82a9",
+"name": "Zohra Masjid",
+"cat": "religious_organization",
+"confidence": 0.6197373270988464,
+"lat": 13.07165213,
+"lng": 77.63677486,
+"addr": "Police Quarters, Rk Hegde Nagar, Nagareshwara Nagenahalli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "4b707964-20e9-47bb-8efb-01a5dafc447a",
+"name": "Masjid Al Salf Al Salah",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6674790382385254,
+"lat": 13.048196,
+"lng": 77.638166,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2d3074ed-7002-40ba-a9db-ed12a57189fe",
+"name": "Madina Masjid",
+"cat": "religious_organization",
+"confidence": 0.5907284617424011,
+"lat": 13.04712137,
+"lng": 77.6397398,
+"addr": "Vidya Sagar Main Road, Saravi Palya, Vidya Sagar, Geddalahalli, Thanisandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b3bd71de-55c7-4d01-95ea-e5f092b5a4ae",
+"name": "Masjid E Hazrath Ali",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6046664714813232,
+"lat": 13.07381575,
+"lng": 77.63856245,
+"addr": "No 49, Behind Police Couriers, 3rd Cross Road, Kgn Layout, New Shanthi Nagar, Rk Hegde Nagar, Thanisandra",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "30445540-38ce-4353-a471-b4a2443ba840",
+"name": "Mosque Near Razack Palya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5869564414024353,
+"lat": 13.153843,
+"lng": 77.655761,
+"addr": "Hosahalli, Near Kadigenahalli",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "d3a2a7d1-9b60-4bc4-a90e-633480f4d669",
+"name": "Tawakkal Mosque",
+"cat": "religious_organization",
+"confidence": 0.6520487070083618,
+"lat": 13.10567,
+"lng": 77.66493,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "0403d481-584c-4c4d-a156-78ce1e6641db",
+"name": "Al Jamia Al Islamia Maseeh Ul Uloom",
+"cat": "religious_school",
+"confidence": 0.9308241009712219,
+"lat": 13.10503184,
+"lng": 77.66555168,
+"addr": "Al Jamia Al Islamia Maseehul Uloom, Ro Nilaya, 224 Hennur Bagalur Main Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918025364530",
+"website": "http://muftishuaibullah.com/"
+},
+{
+"id": "f6ea565b-7a76-4df3-bb45-44b06a087d58",
+"name": "Masjid-e-Nimra",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5594758987426758,
+"lat": 13.014968244852755,
+"lng": 77.68457624215027,
+"addr": "Frazer Town",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "91211318-cbe8-4d5c-9bf4-3d075a4b4c9f",
+"name": "Masjid-e-Nimra",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5569677948951721,
+"lat": 13.014968244852755,
+"lng": 77.68457624215027,
+"addr": "2 2nd Cross Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "c3cbfa7e-f15d-48b4-ba14-dd04ae66e0ed",
+"name": "Masjid E Gaffaria",
+"cat": "religious_organization",
+"confidence": 0.5325784683227539,
+"lat": 13.00835475,
+"lng": 77.69631427,
+"addr": "Old Madras Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "cf969822-7faf-4b01-9c07-d4fa3a918fba",
+"name": "Makkah Masjid",
+"cat": "religious_organization",
+"confidence": 0.6631125211715698,
+"lat": 13.00155112,
+"lng": 77.69962395,
+"addr": "Masjid Main Road, Roshan Nagar, Devasandra, Kr Puram",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "aa1d77a1-a4d7-4d7a-9021-4bad1e8737ad",
+"name": "Masjid E Haadi",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7968123555183411,
+"lat": 13.00449936,
+"lng": 77.69993032,
+"addr": "Hadi masjid, Devasandra Main Rd",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+917829939659",
+"website": null
+},
+{
+"id": "bdbbd200-e6bc-41da-a53d-df996cb91112",
+"name": "Khuba Masjid",
+"cat": "religious_organization",
+"confidence": 0.5883983969688416,
+"lat": 13.00193069,
+"lng": 77.7010885,
+"addr": "Prajavani Layout Road, Prajavani Layout, Devasandra, Kr Puram",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "f4f57c81-2a7b-47ad-ad79-093a19293bea",
+"name": "Noorani Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.7101682424545288,
+"lat": 12.99778918,
+"lng": 77.70707331,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "07839cd1-6ffa-44a9-bae4-30172acdbe01",
+"name": "Masjid E Dawood",
+"cat": "religious_organization",
+"confidence": 0.5134121775627136,
+"lat": 13.00310748,
+"lng": 77.7115401,
+"addr": "11th Cross, Masjid Road, Devasandra, Kr Puram",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "2e6c596e-9aef-41cf-a44e-5e99520dbb68",
+"name": "Bilal Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5516830682754517,
+"lat": 13.017660833333,
+"lng": 77.7067175,
+"addr": "31",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "3a263bda-a420-42d2-aa50-6a2af3e3d633",
+"name": "Al Jamiatul Quadria Masjid",
+"cat": "religious_organization",
+"confidence": 0.5202019214630127,
+"lat": 13.0559584,
+"lng": 77.71469779,
+"addr": "Ramapura Main Road, Bidrahalli Village, Virgonagar",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "9df6cf41-5c58-4cdd-8873-b8e96b847c2f",
+"name": "Masjid E Al Raafiya",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5320180058479309,
+"lat": 13.055984,
+"lng": 77.714509,
+"addr": "Aavalahalli Main Road, Aduru",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b7b41118-aea7-43a9-9188-035e8c8dbf01",
+"name": "Masjid-E-Mahaboobia",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6436550617218018,
+"lat": 13.03113547,
+"lng": 77.71517892,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "defb55fa-9a9d-48bc-856f-92525991856a",
+"name": "Bilal Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5516830682754517,
+"lat": 13.02584,
+"lng": 77.71656,
+"addr": "31",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "27c82985-3a9e-4006-af22-af48595d2012",
+"name": "Madeena Masjid \u0645\u062f\u06cc\u0646\u06c1 \u0645\u0633\u062c\u062f",
+"cat": "muslim_place_of_worship",
+"confidence": 0.674897313117981,
+"lat": 13.00053654,
+"lng": 77.7626841,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b80e6e26-9c5a-4e55-8465-3421b56b8a16",
+"name": "Aqsa Masjid",
+"cat": "muslim_place_of_worship",
+"confidence": 0.6142749190330505,
+"lat": 13.0716274,
+"lng": 77.79715943,
+"addr": "Kannurahalli Road",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919880308982",
+"website": null
+},
+{
+"id": "089bd9c5-9d1d-4031-82b6-26d1b24fed27",
+"name": "Hazrath Syed Kabeer Shah Wali Dargha",
+"cat": "christian_place_of_worship",
+"confidence": 0.41127458214759827,
+"lat": 13.08763347,
+"lng": 77.7817158,
+"addr": "NH-207",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+919844985786",
+"website": null
+},
+{
+"id": "2d8acc6a-5f39-45e7-b3b1-a310b1ce8019",
+"name": "Hoskote Mosque",
+"cat": "muslim_place_of_worship",
+"confidence": 0.5876709818840027,
+"lat": 13.078467,
+"lng": 77.788818,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "b106dcdb-95f1-41aa-b3d8-3e445fb94a3c",
+"name": "Jumma Masjid Ahle Hadees Charminar Hoskote",
+"cat": "muslim_place_of_worship",
+"confidence": 0.558317244052887,
+"lat": 13.067658636215743,
+"lng": 77.77812413669336,
+"addr": "Kumbar pete , Hoskote Bangalore Rural",
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "+918123264425",
+"website": null
+},
+{
+"id": "3b98a86b-62e0-476a-acb7-0f1c61eb8509",
+"name": "Hazrat Jazbe Wale Choti Bi Bi Ammaji Sahaba (RA)",
+"cat": "muslim_place_of_worship",
+"confidence": 0.4455784559249878,
+"lat": 13.17644328,
+"lng": 77.81560515,
+"addr": null,
+"ds": [
+"meta",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": null,
+"website": null
+},
+{
+"id": "976535d3-2cbb-4458-8d25-75249120cc15",
+"name": "Green Apple Academy | Top & Best School in Budigere",
+"cat": "muslim_place_of_worship",
+"confidence": 0.85,
+"lat": 13.1370204,
+"lng": 77.7344393,
+"addr": "Budigere, Bagalur Road",
+"ds": [
+"Microsoft",
+"Overture"
+],
+"rel": "2026-10-21.0",
+"phone": "08296458447",
+"website": "https://greenappleschool.in/"
+}
+]
