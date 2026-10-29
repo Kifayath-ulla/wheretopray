@@ -6,7 +6,7 @@ import type { Place } from "@/lib/types";
 
 const COLORS: Record<string, string> = { mosque: "#047857", dargah: "#b45309", idgah: "#1d4ed8", musalla: "#7c3aed", prayer_room: "#be123c" };
 
-export default function PlaceMap({ places, center, zoom = 11, me }: { places: Place[]; center: [number, number]; zoom?: number; me?: [number, number] | null }) {
+export default function PlaceMap({ places, center, zoom = 11, me, radiusKm }: { places: Place[]; center: [number, number]; zoom?: number; me?: [number, number] | null; radiusKm?: number }) {
   const el = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const markers = useRef<maplibregl.Marker[]>([]);
@@ -43,10 +43,18 @@ export default function PlaceMap({ places, center, zoom = 11, me }: { places: Pl
     if (me) {
       const d = document.createElement("div");
       d.style.cssText = "width:16px;height:16px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 0 6px #2563eb";
+      d.title = "You are here";
       markers.current.push(new maplibregl.Marker({ element: d }).setLngLat([me[1], me[0]]).addTo(m));
-      m.flyTo({ center: [me[1], me[0]], zoom: 14 });
     }
   }, [places, me]);
+
+  // recenter on the user and fit the search radius
+  useEffect(() => {
+    const m = map.current;
+    if (!m || !me) return;
+    const km = radiusKm ?? 2, dLat = km / 111, dLng = km / (111 * Math.cos((me[0] * Math.PI) / 180));
+    m.fitBounds([[me[1] - dLng, me[0] - dLat], [me[1] + dLng, me[0] + dLat]], { padding: 30, duration: 800 });
+  }, [me, radiusKm]);
 
   return <div ref={el} className="h-full w-full" />;
 }
