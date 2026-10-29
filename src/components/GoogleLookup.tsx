@@ -22,7 +22,7 @@ export default function GoogleLookup({ bbox, q }: { bbox: [number, number, numbe
   }
   return (
     <div className="border-t p-3 text-sm">
-      <button onClick={go} className="w-full rounded-lg border border-emerald-700 py-2 text-emerald-800">Search more on Google in this map area</button>
+      <button onClick={go} className="btn btn-tinted w-full">Search more on Google in this map area</button>
       {msg && <p className="mt-1 text-xs text-gray-600">{msg}</p>}
       {res && res.length > 0 && (
         <div className="mt-2">
@@ -32,8 +32,8 @@ export default function GoogleLookup({ bbox, q }: { bbox: [number, number, numbe
                 <div className="font-medium">{p.name}</div>
                 <div className="text-xs text-gray-500">{p.address}</div>
                 <div className="mt-1 flex gap-3 text-xs">
-                  {p.url && <a href={p.url} target="_blank" rel="noreferrer" className="text-emerald-700 underline">View on Google Maps</a>}
-                  <a href={`/submit?gpid=${encodeURIComponent(p.place_id)}`} className="text-emerald-700 underline">Missing from wheretopray? Suggest it</a>
+                  {p.url && <a href={p.url} target="_blank" rel="noreferrer" className="font-medium text-accent-text hover:underline">View on Google Maps</a>}
+                  <a href={`/submit?gpid=${encodeURIComponent(p.place_id)}`} className="font-medium text-accent-text hover:underline">Missing from wheretopray? Suggest it</a>
                 </div>
               </li>
             ))}

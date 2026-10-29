@@ -2,7 +2,8 @@
 import { useEffect, useRef } from "react";
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import type { Place } from "@/lib/types";
+import type { Place, PlaceType } from "@/lib/types";
+import { TYPE_COLOR, TYPE_LABEL } from "@/lib/typeStyle";
 
 const esc = (s: string) => s.replace(/[<>&"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", '"': "&quot;" })[c]!);
 
@@ -22,27 +23,28 @@ export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMo
 
   useEffect(() => {
     if (!el.current) return;
+    const dark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
     const m = new maplibregl.Map({
       container: el.current,
       style: {
         version: 8,
         glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
-        sources: { osm: { type: "raster", tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"], tileSize: 256, attribution: "© OpenStreetMap contributors" } },
+        sources: { osm: { type: "raster", tiles: ["a", "b", "c", "d"].map((sub) => `https://${sub}.basemaps.cartocdn.com/${dark ? "dark_all" : "light_all"}/{z}/{x}/{y}@2x.png`), tileSize: 256, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>' } },
         layers: [{ id: "osm", type: "raster", source: "osm" }],
       },
-      center, zoom,
+      center, zoom, attributionControl: { compact: true },
     });
     map.current = m;
-    m.addControl(new maplibregl.NavigationControl(), "top-right");
+    m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     m.on("load", () => {
       m.addSource("places", { type: "geojson", data: toGeo(latest.current), cluster: true, clusterRadius: 45, clusterMaxZoom: 14 });
       m.addLayer({ id: "clusters", type: "circle", source: "places", filter: ["has", "point_count"],
-        paint: { "circle-color": ["step", ["get", "point_count"], "#10b981", 50, "#047857", 500, "#064e3b"], "circle-radius": ["step", ["get", "point_count"], 14, 50, 19, 500, 25], "circle-stroke-width": 2, "circle-stroke-color": "#fff" } });
+        paint: { "circle-color": "#0b6e4f", "circle-opacity": 0.92, "circle-radius": ["step", ["get", "point_count"], 15, 50, 20, 500, 26], "circle-stroke-width": 5, "circle-stroke-color": "rgba(11,110,79,0.22)" } });
       m.addLayer({ id: "cluster-count", type: "symbol", source: "places", filter: ["has", "point_count"],
-        layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Open Sans Semibold"], "text-size": 12 }, paint: { "text-color": "#fff" } });
+        layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Open Sans Semibold"], "text-size": 12.5 }, paint: { "text-color": "#fff" } });
       m.addLayer({ id: "point", type: "circle", source: "places", filter: ["!", ["has", "point_count"]],
-        paint: { "circle-radius": 6, "circle-stroke-width": 2, "circle-stroke-color": "#fff",
-          "circle-color": ["match", ["get", "type"], "dargah", "#b45309", "idgah", "#1d4ed8", "musalla", "#7c3aed", "prayer_room", "#be123c", "#047857"] } });
+        paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 5, 16, 8], "circle-stroke-width": 2.5, "circle-stroke-color": "#fff",
+          "circle-color": ["match", ["get", "type"], "dargah", TYPE_COLOR.dargah, "idgah", TYPE_COLOR.idgah, "musalla", TYPE_COLOR.musalla, "prayer_room", TYPE_COLOR.prayer_room, TYPE_COLOR.mosque] } });
       m.on("click", "clusters", async (e) => {
         const f = e.features?.[0]; if (!f) return;
         const src = m.getSource("places") as maplibregl.GeoJSONSource;
@@ -52,8 +54,8 @@ export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMo
       m.on("click", "point", (e) => {
         const f = e.features?.[0]; if (!f) return;
         const p = f.properties as { slug: string; name: string; type: string; area: string };
-        new maplibregl.Popup({ offset: 8 }).setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number])
-          .setHTML(`<a href="/place/${encodeURIComponent(p.slug)}" style="font-weight:600;color:#047857">${esc(p.name)}</a><br/><small>${esc(p.type.replace("_", " "))}${p.area ? " - " + esc(p.area) : ""}</small>`).addTo(m);
+        new maplibregl.Popup({ offset: 12, maxWidth: "260px" }).setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number])
+          .setHTML(`<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:${TYPE_COLOR[p.type as PlaceType] ?? TYPE_COLOR.mosque}">${esc(TYPE_LABEL[p.type as PlaceType] ?? p.type)}</div><div style="font-size:15px;font-weight:600;margin:2px 0 2px;line-height:1.25">${esc(p.name)}</div>${p.area ? `<div style="font-size:12px;color:var(--text-2)">${esc(p.area)}</div>` : ""}<a href="/place/${encodeURIComponent(p.slug)}" style="display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:600">View details</a>`).addTo(m);
       });
       for (const l of ["clusters", "point"]) {
         m.on("mouseenter", l, () => { m.getCanvas().style.cursor = "pointer"; });
@@ -78,7 +80,7 @@ export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMo
     meMarker.current?.remove(); meMarker.current = null;
     if (!me) return;
     const d = document.createElement("div");
-    d.style.cssText = "width:16px;height:16px;border-radius:50%;background:#2563eb;border:3px solid #fff;box-shadow:0 0 6px #2563eb";
+    d.style.cssText = "width:16px;height:16px;border-radius:50%;background:#0a84ff;border:3px solid #fff;box-shadow:0 0 0 8px rgba(10,132,255,.2),0 2px 6px rgba(0,0,0,.3)";
     d.title = "You are here";
     meMarker.current = new maplibregl.Marker({ element: d }).setLngLat([me[1], me[0]]).addTo(m);
     const km = radiusKm ?? 2, dLat = km / 111, dLng = km / (111 * Math.cos((me[0] * Math.PI) / 180));
