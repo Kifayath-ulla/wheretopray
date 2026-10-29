@@ -18,7 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <nav className="flex gap-4 text-sm">
             <Link href="/directory">Directory</Link>
             <Link href="/qibla">Qibla</Link>
-            <Link href="/submit" className="font-medium text-emerald-700">Add a place</Link>
+            <Link href="/bengaluru/gaps">Gaps</Link>
+            <Link href="/add" className="font-medium text-emerald-700">Add a place</Link>
           </nav>
         </header>
         {children}

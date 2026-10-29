@@ -1,0 +1,106 @@
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Script from "next/script";
+import { PLACE_TYPES } from "@/lib/types";
+
+const TS_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+type Geo = { lat: number; lng: number; acc: number };
+
+export default function QuickAdd() {
+  const started = useRef(Date.now());
+  const tsEl = useRef<HTMLDivElement>(null);
+  const tsId = useRef<string | undefined>(undefined);
+  const tsToken = useRef("");
+  const [geo, setGeo] = useState<Geo | null>(null);
+  const [geoMsg, setGeoMsg] = useState("Getting your location...");
+  const [addr, setAddr] = useState({ address: "", area: "", city: "", state: "" });
+  const [name, setName] = useState("");
+  const [type, setType] = useState("mosque");
+  const [women, setWomen] = useState(false);
+  const [jumuah, setJumuah] = useState("");
+  const [hp, setHp] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState("");
+  const [err, setErr] = useState("");
+
+  function renderTs() {
+    const t = (window as unknown as { turnstile?: { render: (el: HTMLElement, o: Record<string, unknown>) => string } }).turnstile;
+    if (!TS_KEY || !tsEl.current || !t || tsId.current) return;
+    tsId.current = t.render(tsEl.current, { sitekey: TS_KEY, callback: (v: string) => { tsToken.current = v; } });
+  }
+  function locate() {
+    if (!navigator.geolocation) { setGeoMsg("Your browser has no location. Type the address below."); return; }
+    setGeoMsg("Getting your location...");
+    navigator.geolocation.getCurrentPosition(
+      async (p) => {
+        const g = { lat: +p.coords.latitude.toFixed(6), lng: +p.coords.longitude.toFixed(6), acc: Math.round(p.coords.accuracy) };
+        setGeo(g); setGeoMsg(`Location found (accurate to about ${g.acc} m).`);
+        try {
+          const r = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=18&lat=${g.lat}&lon=${g.lng}`, { headers: { "accept-language": "en" } });
+          const a = (await r.json()).address ?? {};
+          setAddr({
+            address: [a.house_number, a.road].filter(Boolean).join(" "),
+            area: a.suburb || a.neighbourhood || a.quarter || a.village || "",
+            city: a.city || a.town || a.county || a.state_district || "",
+            state: a.state || "",
+          });
+        } catch { /* address stays editable */ }
+      },
+      (e) => setGeoMsg(e.code === 1 ? "Location is blocked. Allow location for this site in your browser settings, or type the address below." : "Could not get your location. Try again or type the address."),
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 },
+    );
+  }
+  useEffect(() => { renderTs(); locate(); }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function submit(e: React.FormEvent) {
+    e.preventDefault(); setErr(""); setBusy(true);
+    const payload: Record<string, string> = { name, type, ...addr, country: "IN", website: hp, women_section: women ? "yes" : "", jumuah_time: jumuah, notes: "Quick add" + (geo ? ` (GPS accuracy ${geo.acc} m)` : "") };
+    if (geo) { payload.lat = String(geo.lat); payload.lng = String(geo.lng); }
+    if (!payload.city && geo && geo.lat > 12.6 && geo.lat < 13.45 && geo.lng > 77.2 && geo.lng < 78) { payload.city = "Bengaluru"; payload.state = "Karnataka"; }
+    const r = await fetch("/api/submissions", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ kind: "new_place", payload, started_at: started.current, turnstile: tsToken.current || undefined }) });
+    const d = await r.json().catch(() => ({}));
+    setBusy(false);
+    if (r.ok) { setDone(name); setName(""); setJumuah(""); setWomen(false); started.current = Date.now(); }
+    else setErr(d.error ?? "Something went wrong. Please try again.");
+  }
+
+  if (done) return (
+    <div className="space-y-3 rounded-xl border border-emerald-300 bg-emerald-50 p-4">
+      <p className="font-medium">JazakAllah khair. &quot;{done}&quot; was sent for review.</p>
+      <button onClick={() => { setDone(""); locate(); }} className="w-full rounded-xl bg-emerald-700 py-3 text-white">Add another</button>
+      <a href="/share" className="block text-center text-sm text-emerald-800 underline">Share with your masjid committee</a>
+    </div>
+  );
+  const inp = "w-full rounded-xl border px-3 py-3 text-base";
+  return (
+    <form onSubmit={submit} className="space-y-3">
+      {TS_KEY && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" onLoad={renderTs} />}
+      <div className="rounded-xl bg-gray-50 p-3 text-sm">
+        <p>{geoMsg}</p>
+        {geo && <a className="text-emerald-800 underline" target="_blank" rel="noreferrer" href={`https://www.openstreetmap.org/?mlat=${geo.lat}&mlon=${geo.lng}#map=18/${geo.lat}/${geo.lng}`}>Check the pin</a>}
+        <button type="button" onClick={locate} className="ml-3 text-emerald-800 underline">Refresh location</button>
+      </div>
+      <input required minLength={3} maxLength={150} value={name} onChange={(e) => setName(e.target.value)} placeholder="Name, e.g. Masjid-e-Noor" className={inp} autoFocus />
+      <div className="grid grid-cols-2 gap-2">
+        {PLACE_TYPES.map((t) => (
+          <button type="button" key={t.value} onClick={() => setType(t.value)} className={`rounded-xl border px-2 py-2 text-sm ${type === t.value ? "border-emerald-700 bg-emerald-700 text-white" : ""}`}>{t.label}</button>
+        ))}
+      </div>
+      <label className="flex items-center gap-3 rounded-xl border px-3 py-3"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>
+      <input value={jumuah} onChange={(e) => setJumuah(e.target.value)} maxLength={60} placeholder="Jumu'ah time (optional), e.g. 1:30 PM" className={inp} />
+      <details className="text-sm">
+        <summary className="cursor-pointer text-gray-600">Address {addr.city ? `(${[addr.area, addr.city].filter(Boolean).join(", ")})` : "(needed if location is off)"}</summary>
+        <div className="mt-2 space-y-2">
+          <input value={addr.address} onChange={(e) => setAddr({ ...addr, address: e.target.value })} placeholder="Street / landmark" className={inp} />
+          <input value={addr.area} onChange={(e) => setAddr({ ...addr, area: e.target.value })} placeholder="Area" className={inp} />
+          <input value={addr.city} onChange={(e) => setAddr({ ...addr, city: e.target.value })} placeholder="City" className={inp} />
+        </div>
+      </details>
+      <input tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} name="website" aria-hidden className="absolute -left-[9999px] h-0 w-0 opacity-0" />
+      <div ref={tsEl} />
+      {err && <p className="text-sm text-red-700">{err}</p>}
+      <button disabled={busy || (!geo && !addr.address)} className="w-full rounded-xl bg-emerald-700 py-4 text-lg font-medium text-white disabled:opacity-40">{busy ? "Sending..." : "Add this place"}</button>
+      <p className="text-center text-xs text-gray-500">Photos: send them to the masjid page later via &quot;Suggest a fix&quot;. We do not store photos yet.</p>
+    </form>
+  );
+}
