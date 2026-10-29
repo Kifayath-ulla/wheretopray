@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { repo } from "@/lib/data";
-import { isAdmin } from "@/lib/admin";
 
 export async function POST(req: Request) {
   const body = await req.json().catch(() => null);
@@ -15,6 +14,7 @@ export async function POST(req: Request) {
 }
 
 export async function GET(req: Request) {
-  if (!isAdmin(req.headers.get("x-admin-token"))) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  return NextResponse.json(await repo.listSubmissions());
+  const list = await repo.listSubmissions(req.headers.get("x-admin-token") ?? "");
+  if (!list) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  return NextResponse.json(list);
 }
