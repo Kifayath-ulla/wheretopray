@@ -9,7 +9,7 @@ export default function GapMap({ wards }: { wards: GeoJSON.FeatureCollection | {
     if (!el.current) return;
     const m = new maplibregl.Map({
       container: el.current,
-      style: { version: 8, sources: { osm: { type: "raster", tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"], tileSize: 256, attribution: "© OpenStreetMap contributors" } }, layers: [{ id: "osm", type: "raster", source: "osm" }] },
+      style: "https://tiles.openfreemap.org/styles/positron",
       center: [77.59, 12.97], zoom: 10.3,
     });
     m.addControl(new maplibregl.NavigationControl(), "top-right");

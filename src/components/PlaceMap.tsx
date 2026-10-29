@@ -26,12 +26,8 @@ export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMo
     const dark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
     const m = new maplibregl.Map({
       container: el.current,
-      style: {
-        version: 8,
-        glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
-        sources: { osm: { type: "raster", tiles: ["a", "b", "c", "d"].map((sub) => `https://${sub}.basemaps.cartocdn.com/${dark ? "dark_all" : "light_all"}/{z}/{x}/{y}@2x.png`), tileSize: 256, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>' } },
-        layers: [{ id: "osm", type: "raster", source: "osm" }],
-      },
+      // OpenFreeMap: free vector tiles, no key, no limits. Attribution comes with the style.
+      style: `https://tiles.openfreemap.org/styles/${dark ? "dark" : "positron"}`,
       center, zoom, attributionControl: { compact: true },
     });
     map.current = m;
@@ -41,7 +37,7 @@ export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMo
       m.addLayer({ id: "clusters", type: "circle", source: "places", filter: ["has", "point_count"],
         paint: { "circle-color": "#0b6e4f", "circle-opacity": 0.92, "circle-radius": ["step", ["get", "point_count"], 15, 50, 20, 500, 26], "circle-stroke-width": 5, "circle-stroke-color": "rgba(11,110,79,0.22)" } });
       m.addLayer({ id: "cluster-count", type: "symbol", source: "places", filter: ["has", "point_count"],
-        layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Open Sans Semibold"], "text-size": 12.5 }, paint: { "text-color": "#fff" } });
+        layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Noto Sans Bold"], "text-size": 12.5 }, paint: { "text-color": "#fff" } });
       m.addLayer({ id: "point", type: "circle", source: "places", filter: ["!", ["has", "point_count"]],
         paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 5, 16, 8], "circle-stroke-width": 2.5, "circle-stroke-color": "#fff",
           "circle-color": ["match", ["get", "type"], "dargah", TYPE_COLOR.dargah, "idgah", TYPE_COLOR.idgah, "musalla", TYPE_COLOR.musalla, "prayer_room", TYPE_COLOR.prayer_room, TYPE_COLOR.mosque] } });
