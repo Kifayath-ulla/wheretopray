@@ -1,1 +1,16 @@
-{"name":"wheretopray","short_name":"wheretopray","start_url":"/","display":"standalone","background_color":"#ffffff","theme_color":"#047857","icons":[{"src":"/favicon.ico","sizes":"48x48","type":"image/x-icon"}]}
+{
+  "name": "wheretopray - find a place to pray",
+  "short_name": "wheretopray",
+  "description": "Mosques, dargahs, idgahs and prayer rooms near you, with qibla and prayer times.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f7",
+  "theme_color": "#0b6e4f",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
