@@ -16,11 +16,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b bg-white px-4">
           <Link href="/" className="text-lg font-bold text-emerald-800">wheretopray</Link>
           <nav className="flex gap-4 text-sm">
-            <Link href="/city/bengaluru">Bengaluru</Link>
+            <Link href="/directory">Directory</Link>
+            <Link href="/qibla">Qibla</Link>
             <Link href="/submit" className="font-medium text-emerald-700">Add a place</Link>
           </nav>
         </header>
         {children}
+        <footer className="border-t bg-white px-4 py-3 text-xs text-gray-500">
+          Data: © <a className="underline" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL);{" "}
+          <a className="underline" href="https://docs.overturemaps.org/attribution/">Overture Maps Foundation</a> Places (CDLA-Permissive-2.0);{" "}
+          <a className="underline" href="https://www.wikidata.org">Wikidata</a> (CC0); community submissions. Prayer times calculated locally. Geocoding by Nominatim.
+        </footer>
       </body>
     </html>
   );
