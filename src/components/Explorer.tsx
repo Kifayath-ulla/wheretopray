@@ -56,13 +56,19 @@ export default function Explorer({ places, center }: { places: Place[]; center: 
     if (!("geolocation" in navigator)) { setShowManual(true); return setLocMsg("Location is not available in this browser. Search for your area or pincode instead."); }
     try {
       const perm = await navigator.permissions?.query({ name: "geolocation" as PermissionName });
-      if (perm?.state === "denied") { setShowManual(true); return setLocMsg("Location permission is blocked. Allow it in your browser settings, or search for your area or pincode."); }
+      if (perm?.state === "denied") { setShowManual(true); setLocMsg("Location is blocked for this site in your browser. Click the lock icon in the address bar and allow Location, or search an area below."); }
+      if (false) { return setLocMsg("Location permission is blocked. Allow it in your browser settings, or search for your area or pincode."); }
     } catch {}
     setLocMsg("Finding you...");
     navigator.geolocation.getCurrentPosition(
       (pos) => { setLoc({ lat: pos.coords.latitude, lng: pos.coords.longitude, label: `your location (±${Math.round(pos.coords.accuracy)} m)` }); setLocMsg(""); setShowManual(false); },
-      (err) => {
+      async (err) => {
         setShowManual(true);
+        try {
+          const r = await fetch("https://ipwho.is/");
+          const j = await r.json();
+          if (j.success && j.latitude) { setLoc({ lat: j.latitude, lng: j.longitude, label: `approx. ${j.city || "your area"} (from your internet connection)` }); setLocMsg("Exact location is blocked, so I used your approximate location. Allow location in your browser or search an area for better accuracy."); return; }
+        } catch {}
         setLocMsg(err.code === err.PERMISSION_DENIED ? "You declined location access. Search for your area or pincode instead." : err.code === err.TIMEOUT ? "Location timed out. Try again or search for your area or pincode." : "Could not get your location. Search for your area or pincode instead.");
       },
       { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 },

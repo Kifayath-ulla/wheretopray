@@ -64,7 +64,7 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
     setMsg("Finding you...");
     navigator.geolocation.getCurrentPosition(
       (p) => { const l = { lat: p.coords.latitude, lng: p.coords.longitude, label: "your location" }; setLoc(l); setMsg(""); try { sessionStorage.setItem("wtp-loc", JSON.stringify(l)); } catch {} },
-      (e) => setMsg(e.code === e.PERMISSION_DENIED ? "Location permission denied. Enter your area, city or pincode below." : "Could not get your location. Enter your area, city or pincode below."),
+      async (e) => { try { const r = await fetch("https://ipwho.is/"); const j = await r.json(); if (j.success && j.latitude) { const l = { lat: j.latitude, lng: j.longitude, label: `approx. ${j.city || "your area"}` }; setLoc(l); setMsg("Exact location is blocked, so I used your approximate location. Allow location in your browser for a precise direction."); try { sessionStorage.setItem("wtp-loc", JSON.stringify(l)); } catch {} return; } } catch {} setMsg(e.code === e.PERMISSION_DENIED ? "Location permission denied. Enter your area, city or pincode below." : "Could not get your location. Enter your area, city or pincode below."); },
       { enableHighAccuracy: true, timeout: 12000 },
     );
   }
