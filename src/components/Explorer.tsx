@@ -1,7 +1,7 @@
 "use client";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { PLACE_TYPES, type Place, type PlaceType } from "@/lib/types";
 import { distanceKm } from "@/lib/geo";
 import { qiblaBearing } from "@/lib/qibla";
@@ -18,7 +18,26 @@ export function directionsLinks(p: { lat: number; lng: number; name: string }) {
   };
 }
 
-export default function Explorer({ places, center }: { places: Place[]; center: [number, number] }) {
+export default function Explorer({ places: initial, center }: { places: Place[]; center: [number, number] }) {
+  // Places loaded so far: the initial city list plus whatever the map view or "Near me" pulls from the server.
+  const [places, setPlaces] = useState<Place[]>(initial);
+  const loaded = useRef(new Map(initial.map((p) => [p.id, p])));
+  const merge = useCallback((more: Place[]) => {
+    let changed = false;
+    for (const p of more) if (!loaded.current.has(p.id)) { loaded.current.set(p.id, p); changed = true; }
+    if (changed) setPlaces([...loaded.current.values()]);
+  }, []);
+  const bboxTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const onMoveEnd = useCallback((b: [number, number, number, number], zoom: number) => {
+    if (zoom < 8) return;
+    if (bboxTimer.current) clearTimeout(bboxTimer.current);
+    bboxTimer.current = setTimeout(async () => {
+      try {
+        const r = await fetch(`/api/places?bbox=${b.map((x) => x.toFixed(3)).join(",")}`);
+        if (r.ok) merge(await r.json());
+      } catch {}
+    }, 350);
+  }, [merge]);
   const [q, setQ] = useState("");
   const [types, setTypes] = useState<PlaceType[]>([]);
   const [area, setArea] = useState("");
@@ -31,10 +50,12 @@ export default function Explorer({ places, center }: { places: Place[]; center: 
   const [limit, setLimit] = useState(50);
 
   useEffect(() => {
-    try { const s = sessionStorage.getItem("wtp-loc"); if (s) setMe(JSON.parse(s)); } catch {}
+    try { const s = sessionStorage.getItem("wtp-loc"); if (s) setLoc(JSON.parse(s)); } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   function setLoc(l: Loc | null) {
     setMe(l);
+    if (l) fetch(`/api/places?lat=${l.lat}&lng=${l.lng}&radius_km=10`).then((r) => (r.ok ? r.json() : [])).then(merge).catch(() => {});
     try { if (l) sessionStorage.setItem("wtp-loc", JSON.stringify(l)); else sessionStorage.removeItem("wtp-loc"); } catch {}
   }
 
@@ -81,7 +102,7 @@ export default function Explorer({ places, center }: { places: Place[]; center: 
     if (!term) return;
     setLocMsg("Searching...");
     try {
-      const qs = /^\d{6}$/.test(term) ? `postalcode=${term}&country=India` : `q=${encodeURIComponent(term + ", Bengaluru, India")}`;
+      const qs = /^\d{6}$/.test(term) ? `postalcode=${term}&country=India` : `q=${encodeURIComponent(term)}&countrycodes=in`;
       const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&${qs}`, { headers: { "Accept-Language": "en" } });
       const [hit] = (await res.json()) as { lat: string; lon: string; display_name: string }[];
       if (!hit) return setLocMsg(`No match for "${term}". Try a nearby area name or 6-digit pincode.`);
@@ -93,7 +114,7 @@ export default function Explorer({ places, center }: { places: Place[]; center: 
   return (
     <div className="flex flex-col md:flex-row md:h-[calc(100vh-56px)]">
       <div className="h-[45vh] md:h-full md:flex-1 md:order-2">
-        <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} radiusKm={me ? radius : undefined} />
+        <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} />
       </div>
       <aside className="md:w-[420px] md:order-1 md:overflow-y-auto border-r border-gray-200 bg-white">
         <div className="sticky top-0 z-10 bg-white p-3 space-y-2 border-b">
@@ -103,7 +124,7 @@ export default function Explorer({ places, center }: { places: Place[]; center: 
           </div>
           {(showManual || me) && (
             <form onSubmit={searchManual} className="flex gap-2">
-              <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Area or pincode, e.g. Frazer Town or 560005" className="flex-1 rounded-lg border px-3 py-1.5 text-sm" aria-label="Area or pincode" />
+              <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Area, city or pincode, e.g. Frazer Town or 560005" className="flex-1 rounded-lg border px-3 py-1.5 text-sm" aria-label="Area or pincode" />
               <button className="rounded-lg border px-3 py-1.5 text-sm">Go</button>
             </form>
           )}
@@ -150,7 +171,7 @@ export default function Explorer({ places, center }: { places: Place[]; center: 
                     <span className="font-medium">{p.name}</span>
                     {p._d !== undefined && <span className="text-xs font-semibold text-emerald-800 whitespace-nowrap" data-testid="distance">{p._d < 1 ? `${Math.round(p._d * 1000)} m` : `${p._d.toFixed(1)} km`}</span>}
                   </div>
-                  <div className="text-xs text-gray-500 capitalize">{p.type.replace("_", " ")}{p.area ? ` - ${p.area}` : ""}</div>
+                  <div className="text-xs text-gray-500 capitalize">{p.type.replace("_", " ")}{p.area || p.city ? ` - ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
                 </Link>
                 <div className="mt-1 flex gap-3 text-xs">
                   <a href={d.google} target="_blank" rel="noreferrer" className="text-emerald-700 underline">Google Maps</a>

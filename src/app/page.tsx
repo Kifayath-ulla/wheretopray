@@ -1,7 +1,7 @@
 import Explorer from "@/components/Explorer";
 import { repo } from "@/lib/data";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 export default async function Home() {
   const places = await repo.listPlaces("Bengaluru");
