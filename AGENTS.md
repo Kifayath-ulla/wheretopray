@@ -1,4 +1,4 @@
-# Prayer Places - project brief
+# wheretopray - project brief
 
 Goal: a website listing every place where Muslims can pray: mosques (masjid), dargahs, idgahs, musallas and prayer rooms (airports, malls, universities, offices). Start with Bengaluru (1000+ places), then all of India, then worldwide.
 
