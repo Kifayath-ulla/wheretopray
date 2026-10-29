@@ -6,7 +6,7 @@ import { PLACE_TYPES } from "@/lib/types";
 const TS_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 declare global { interface Window { turnstile?: { render: (el: HTMLElement, o: Record<string, unknown>) => string; reset: (id?: string) => void } } }
 
-export default function SubmissionForm({ kind, placeId, placeName }: { kind: "new_place" | "fix"; placeId?: string; placeName?: string }) {
+export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId }: { kind: "new_place" | "fix"; placeId?: string; placeName?: string; googlePlaceId?: string }) {
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [err, setErr] = useState("");
   const [loc, setLoc] = useState({ lat: "", lng: "", city: "", state: "", country: "IN", area: "" });
@@ -72,6 +72,8 @@ export default function SubmissionForm({ kind, placeId, placeName }: { kind: "ne
   return (
     <form onSubmit={onSubmit} className="space-y-3">
       {TS_KEY && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" onLoad={renderTurnstile} />}
+      {googlePlaceId && <input type="hidden" name="google_place_id" value={googlePlaceId} />}
+      {googlePlaceId && <p className="text-xs text-gray-600">Found on Google Maps. Please type the details yourself (name, address, pin) - we only keep the Google place ID as a reference.</p>}
       {/* Honeypot: hidden from people, bots tend to fill it. */}
       <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
         <label>Website <input name="website" tabIndex={-1} autoComplete="off" /></label>

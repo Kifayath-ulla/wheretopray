@@ -3,7 +3,7 @@ import { repo, RateLimitError } from "@/lib/data";
 import { ipHash, validatePayload, verifyTurnstile } from "@/lib/spam";
 
 const MIN_FILL_MS = 3000;
-const ALLOWED = new Set(["name", "type", "address", "area", "city", "state", "country", "lat", "lng", "jumuah_time", "women_section", "wudu", "parking", "issue", "notes", "contact"]);
+const ALLOWED = new Set(["name", "type", "address", "area", "city", "state", "country", "lat", "lng", "jumuah_time", "women_section", "wudu", "parking", "issue", "notes", "contact", "google_place_id"]);
 
 export async function POST(req: Request) {
   const body = await req.json().catch(() => null);

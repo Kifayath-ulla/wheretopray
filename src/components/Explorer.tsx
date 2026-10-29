@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { PLACE_TYPES, type Place, type PlaceType } from "@/lib/types";
 import { distanceKm } from "@/lib/geo";
 import { qiblaBearing } from "@/lib/qibla";
+import GoogleLookup from "./GoogleLookup";
 
 const PlaceMap = dynamic(() => import("./PlaceMap"), { ssr: false, loading: () => <div className="h-full w-full animate-pulse bg-emerald-50" /> });
 const RADII = [1, 2, 5, 10] as const;
@@ -28,7 +29,9 @@ export default function Explorer({ places: initial, center }: { places: Place[];
     if (changed) setPlaces([...loaded.current.values()]);
   }, []);
   const bboxTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [view, setView] = useState<[number, number, number, number] | null>(null);
   const onMoveEnd = useCallback((b: [number, number, number, number], zoom: number) => {
+    setView(b);
     if (zoom < 8) return;
     if (bboxTimer.current) clearTimeout(bboxTimer.current);
     bboxTimer.current = setTimeout(async () => {
@@ -183,6 +186,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
         </ul>
         {me && filtered.length === 0 && <p className="p-3 text-sm text-gray-600">Nothing within {radius} km. Try a bigger radius.</p>}
         {filtered.length > limit && <button onClick={() => setLimit(limit + 50)} className="m-3 w-[calc(100%-1.5rem)] rounded-lg border py-2 text-sm">Show more</button>}
+        <GoogleLookup bbox={view} q={q} />
       </aside>
     </div>
   );

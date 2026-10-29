@@ -31,3 +31,23 @@ Copy `.env.example` to `.env.local` and set `ADMIN_TOKEN` (used by `/admin`).
 
 ## Next steps
 Supabase repository, merge Overture/Foursquare OS Places/Wikidata with dedupe, WAMSI data for India, iqama times from mosque admins, PWA icons.
+
+## Optional: live "Search more on Google"
+
+The home page can show a "Search more on Google in this map area" button. It calls the Places API (New) Text Search live through `/api/google`, shows the results with Google Maps attribution, and never writes them to the database. If a visitor clicks "Suggest it", only the Google `place_id` is kept in the submission, plus whatever the visitor types. The button is hidden when no key is set.
+
+To turn it on:
+1. Go to https://console.cloud.google.com, create a project (for example `wheretopray`) and add a billing account. Google gives a monthly free credit; after that Text Search costs roughly USD 32 per 1,000 calls.
+2. APIs & Services - Library - enable **Places API (New)**.
+3. APIs & Services - Credentials - Create credentials - API key. Edit the key: under API restrictions choose "Restrict key" and select only Places API (New). Leave application restriction as "None" (the key is used server-side only and never sent to browsers), or IP-restrict it if you later use fixed egress IPs.
+4. Billing - Budgets & alerts - create a budget (for example USD 10/month) with email alerts at 50%, 90% and 100%. Optionally set a quota cap under APIs & Services - Places API (New) - Quotas (for example 300 requests/day).
+5. In Vercel: Project wheretopray - Settings - Environment Variables - add `GOOGLE_PLACES_API_KEY` (Production) and redeploy (`vercel --prod`). For local use add it to `.env.local`.
+
+The route is rate limited to 10 searches per minute per visitor and only searches when the map is zoomed in (area under about 1 degree).
+
+## Data sources added (Oct 2026)
+
+- GeoNames (CC BY 4.0), feature code MSQE for India.
+- Additional Wikidata items (CC0) that are instances of mosque or dargah in India with coordinates.
+- Both deduplicated against existing places within 75 m. Items with no existing place within 30 km are loaded as `pending` for review.
+- State Waqf board lists were checked (WAMSI, Telangana, Tamil Nadu, Uttarakhand, UP Sunni). They have no coordinates and no clear reuse licence, so they are not imported. See `docs/waqf-request.md` for the formal data request.

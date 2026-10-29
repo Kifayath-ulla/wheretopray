@@ -25,7 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="border-t bg-white px-4 py-3 text-xs text-gray-500">
           Data: © <a className="underline" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL);{" "}
           <a className="underline" href="https://docs.overturemaps.org/attribution/">Overture Maps Foundation</a> Places (CDLA-Permissive-2.0);{" "}
-          <a className="underline" href="https://overturemaps.org">Overture Maps</a> (CDLA-Permissive-2.0 / ODbL); <a className="underline" href="https://www.wikidata.org">Wikidata</a> (CC0); boundaries from <a className="underline" href="https://www.geoboundaries.org">geoBoundaries</a>; community submissions. Prayer times calculated locally. Geocoding by Nominatim.
+          <a className="underline" href="https://overturemaps.org">Overture Maps</a> (CDLA-Permissive-2.0 / ODbL); <a className="underline" href="https://www.wikidata.org">Wikidata</a> (CC0); <a className="underline" href="https://www.geonames.org">GeoNames</a> (CC BY 4.0); boundaries from <a className="underline" href="https://www.geoboundaries.org">geoBoundaries</a>; community submissions. Prayer times calculated locally. Geocoding by Nominatim.
         </footer>
       </body>
     </html>
