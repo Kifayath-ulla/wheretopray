@@ -189,7 +189,7 @@ class SupabaseRepository implements PlaceRepository {
   async near(lat: number, lng: number, radiusKm: number) {
     return this.pubRpc<(Place & { distance_km: number })[]>("places_near", { p_lat: lat, p_lng: lng, p_radius_km: Math.min(Math.max(radiusKm, 0.1), 50), p_limit: 500, p_offset: 0 });
   }
-  async cities() { return this.pubRpc<CityCount[]>("place_cities", {}); }
+  async cities() { return this.pubRpc<CityCount[]>("place_cities_json", {}); } // single jsonb value: not capped at 1000 rows
   async slugs() { return this.paged<{ slug: string; last_verified: string }>(`places?select=slug,last_verified&status=eq.verified&order=id.asc`); }
   async inBbox(w: number, s: number, e: number, n: number, limit = 2000) {
     return this.pubRpc<Place[]>("places_in_bbox", { p_west: w, p_south: s, p_east: e, p_north: n, p_limit: limit });
