@@ -1,6 +1,6 @@
 """Merge OSM + Overture + Wikidata into data/places.json. Dedupe: normalized name + <75 m (or any two within 25 m when one is unnamed/generic)."""
 import json,re,math,datetime,collections
-now=datetime.datetime.utcnow().isoformat()+"Z"
+now=datetime.datetime.now(datetime.UTC).isoformat()[:19]+"Z"
 STRONG=re.compile(r'masjid|masjeed|masjed|mosque|dargah|dargha|darga\b|idgah|eidgah|eid gah|musall?ah?|ziyarat|jama\s*masjid|jamia masjid|prayer (room|hall)|namaz',re.I)
 BAD=re.compile(r'school|education|college|real_estate|hotel|shopping|restaurant|naturopath|clinic|hospital|event|store|government|christian|hindu|temple|church',re.I)
 def norm(n):
@@ -57,6 +57,16 @@ for c in cands:
     for f in('address','phone','website'):
       if not hit.get(f) and c.get(f):hit[f]=c[f]
   else:out.append(c)
+# area: nearest OSM locality (ODbL) when the source has none
+locs=[dict(n=e['tags'].get('name:en') or e['tags'].get('name'),lat=e['lat'],lng=e['lon'],k=e['tags']['place']) for e in json.load(open('data/raw/localities.json'))['elements'] if e.get('tags',{}).get('name')]
+for p in out:
+  if p.get('area'):continue
+  best=None
+  for l in locs:
+    d=dist(p,l)
+    lim=2500 if l['k'] in('suburb','neighbourhood','quarter') else 4000
+    if d<lim and (best is None or d<best[0]):best=(d,l['n'])
+  p['area']=best[1] if best else None
 used=set()
 for p in sorted(out,key=lambda p:p['name'].lower()):
   s=slug(p['name'])

@@ -6,7 +6,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { randomUUID } from "node:crypto";
-import type { Place } from "./types";
+import { PLACE_TYPES, type Place, type PlaceType } from "./types";
 import { distanceKm } from "./geo";
 
 export interface Submission {
@@ -31,10 +31,42 @@ const DATA = path.join(process.cwd(), "data");
 const QUEUE = path.join(DATA, "queue", "submissions.json");
 
 class JsonRepository implements PlaceRepository {
-  private cache: Place[] | null = null;
-  private async all() {
-    if (!this.cache) this.cache = JSON.parse(await fs.readFile(path.join(DATA, "places.json"), "utf8")) as Place[];
-    return this.cache;
+  private base: Place[] | null = null;
+  /** Imported places plus approved community submissions (new places added, fixes applied). */
+  private async all(): Promise<Place[]> {
+    if (!this.base) this.base = JSON.parse(await fs.readFile(path.join(DATA, "places.json"), "utf8")) as Place[];
+    const approved = (await this.readQueue()).filter((s) => s.status === "approved");
+    const places = this.base.map((p) => ({ ...p }));
+    const byId = new Map(places.map((p) => [p.id, p]));
+    const slugs = new Set(places.map((p) => p.slug));
+    for (const s of approved) {
+      const pl = s.payload as Record<string, string>;
+      if (s.kind === "new_place") {
+        const lat = parseFloat(pl.lat), lng = parseFloat(pl.lng);
+        if (!pl.name || !isFinite(lat) || !isFinite(lng)) continue;
+        let slug = pl.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || "place";
+        if (slugs.has(slug)) slug = `${slug}-${s.id.slice(0, 6)}`;
+        slugs.add(slug);
+        const type = (PLACE_TYPES.some((t) => t.value === pl.type) ? pl.type : "mosque") as PlaceType;
+        places.push({
+          id: `user-${s.id}`, slug, name: pl.name, type, lat, lng, address: pl.address || null, area: pl.area || null,
+          city: "Bengaluru", state: "Karnataka", country: "IN",
+          women_section: pl.women_section === "yes" ? true : null, wudu: pl.wudu === "yes" ? true : null,
+          parking: pl.parking === "yes" ? true : null, wheelchair: null, phone: null, website: null,
+          jumuah_time: pl.jumuah_time || null, iqama_times: null, source: "user", source_id: s.id, sources: ["user"],
+          source_ids: { user: [s.id] }, last_verified: s.created_at, status: "verified",
+        });
+      } else if (s.kind === "fix" && s.place_id) {
+        const p = byId.get(s.place_id);
+        if (!p) continue;
+        if (pl.issue === "Permanently closed") { const i = places.indexOf(p); if (i >= 0) places.splice(i, 1); continue; }
+        for (const k of ["name", "address", "jumuah_time", "phone", "website"] as const) if (pl[k]) (p as unknown as Record<string, unknown>)[k] = pl[k];
+        const lat = parseFloat(pl.lat), lng = parseFloat(pl.lng);
+        if (isFinite(lat) && isFinite(lng)) { p.lat = lat; p.lng = lng; }
+        p.last_verified = s.created_at;
+      }
+    }
+    return places;
   }
   async listPlaces(city?: string) {
     const all = await this.all();

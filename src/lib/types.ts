@@ -24,6 +24,8 @@ export interface Place {
   iqama_times?: Record<string, string> | null;
   source: string;
   source_id: string;
+  sources?: string[];
+  source_ids?: Record<string, string[]>;
   last_verified: string;
   status: "pending" | "verified";
 }

@@ -5,6 +5,9 @@ import { repo } from "@/lib/data";
 import PrayerTimes from "@/components/PrayerTimes";
 import SubmissionForm from "@/components/SubmissionForm";
 
+export const revalidate = 60;
+export const dynamicParams = true;
+
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {

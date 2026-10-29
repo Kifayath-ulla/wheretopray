@@ -3,6 +3,8 @@ import Link from "next/link";
 import { repo } from "@/lib/data";
 import { PLACE_TYPES } from "@/lib/types";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Mosques, dargahs and prayer rooms in Bengaluru",
   description: "Directory of masjids, dargahs, idgahs and prayer rooms in Bengaluru, Karnataka, with map, areas and prayer times.",

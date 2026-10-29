@@ -38,6 +38,9 @@ export default function SubmissionForm({ kind, placeId, placeName }: { kind: "ne
           <select name="issue" className={field}>
             <option>Wrong name</option><option>Wrong location</option><option>Wrong type</option><option>Timings</option><option>Facilities</option><option>Permanently closed</option><option>Other</option>
           </select>
+          <input name="name" placeholder="Corrected name (optional)" className={field} />
+          <input name="address" placeholder="Corrected address (optional)" className={field} />
+          <div className="flex gap-2"><input name="lat" placeholder="Corrected latitude" className={field} /><input name="lng" placeholder="Corrected longitude" className={field} /></div>
         </>
       )}
       <textarea name="notes" placeholder={kind === "fix" ? "What should be corrected? *" : "Notes (iqama times, facilities, who runs it)"} required={kind === "fix"} className={field} rows={3} />
