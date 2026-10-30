@@ -14,7 +14,7 @@ function toGeo(places: Place[]): GeoJSON.FeatureCollection {
   return { type: "FeatureCollection", features: places.map((p) => ({ type: "Feature", geometry: { type: "Point", coordinates: [p.lng, p.lat] }, properties: { slug: p.slug, name: p.name, type: p.type, area: p.area ?? p.city ?? "" } })) };
 }
 
-export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMoveEnd }: { places: Place[]; center: [number, number]; zoom?: number; me?: [number, number] | null; radiusKm?: number; onMoveEnd?: (b: [number, number, number, number], zoom: number) => void }) {
+export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusKm, onMoveEnd }: { places: Place[]; center: [number, number]; zoom?: number; me?: [number, number] | null; meAcc?: number; radiusKm?: number; onMoveEnd?: (b: [number, number, number, number], zoom: number) => void }) {
   const el = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const ready = useRef(false);
@@ -84,14 +84,18 @@ export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMo
     const m = map.current;
     if (!m) return;
     meMarker.current?.remove(); meMarker.current = null;
+    const circ = () => { if (!m.isStyleLoaded()) return void m.once("idle", circ); const src = m.getSource("me-acc") as maplibregl.GeoJSONSource | undefined;
+      const fc: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: me && meAcc ? [{ type: "Feature", properties: {}, geometry: { type: "Polygon", coordinates: [Array.from({ length: 65 }, (_, i) => { const a = (i / 64) * 2 * Math.PI; return [me[1] + (meAcc / (111320 * Math.cos((me[0] * Math.PI) / 180))) * Math.sin(a), me[0] + (meAcc / 111320) * Math.cos(a)]; })] } }] : [] };
+      if (src) src.setData(fc); else { m.addSource("me-acc", { type: "geojson", data: fc }); m.addLayer({ id: "me-acc", type: "fill", source: "me-acc", paint: { "fill-color": "#0a84ff", "fill-opacity": 0.12, "fill-outline-color": "#0a84ff" } }); } };
+    circ();
     if (!me) return;
     const d = document.createElement("div");
-    d.style.cssText = "width:16px;height:16px;border-radius:50%;background:#0a84ff;border:3px solid #fff;box-shadow:0 0 0 8px rgba(10,132,255,.2),0 2px 6px rgba(0,0,0,.3)";
+    d.style.cssText = "width:16px;height:16px;border-radius:50%;background:#0a84ff;border:3px solid #fff;box-sizing:border-box;box-shadow:0 2px 6px rgba(0,0,0,.3)";
     d.title = "You are here";
-    meMarker.current = new maplibregl.Marker({ element: d }).setLngLat([me[1], me[0]]).addTo(m);
+    meMarker.current = new maplibregl.Marker({ element: d, anchor: "center" }).setLngLat([me[1], me[0]]).addTo(m);
     const km = radiusKm ?? 2, dLat = km / 111, dLng = km / (111 * Math.cos((me[0] * Math.PI) / 180));
     m.fitBounds([[me[1] - dLng, me[0] - dLat], [me[1] + dLng, me[0] + dLat]], { padding: 30, duration: 800 });
-  }, [me, radiusKm]);
+  }, [me, meAcc, radiusKm]);
 
   return <div ref={el} className="h-full w-full" />;
 }

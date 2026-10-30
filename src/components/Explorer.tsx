@@ -15,7 +15,7 @@ const RADII = [1, 2, 5, 10] as const;
 const MAX_LOADED = 6000;
 const ROW_H = 60;
 
-type Loc = { lat: number; lng: number; label: string };
+type Loc = { lat: number; lng: number; label: string; acc?: number; approx?: boolean; t?: number };
 
 export function directionsLinks(p: { lat: number; lng: number; name: string }) {
   return {
@@ -67,7 +67,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
     return () => document.documentElement.classList.remove("app-lock");
   }, []);
   useEffect(() => {
-    try { const s = sessionStorage.getItem("wtp-loc"); if (s) setLoc(JSON.parse(s)); } catch {}
+    try { const s = sessionStorage.getItem("wtp-loc"); if (s) { const l = JSON.parse(s) as Loc; if (l.acc == null || (l.t && Date.now() - l.t < 5 * 60000)) setLoc(l); } } catch {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   function setLoc(l: Loc | null) {
@@ -99,19 +99,25 @@ export default function Explorer({ places: initial, center }: { places: Place[];
       if (perm?.state === "denied") { setShowManual(true); setLocMsg("Location is blocked for this site in your browser. Click the lock icon in the address bar and allow Location, or search an area below."); }
     } catch {}
     setLocMsg("Finding you...");
-    navigator.geolocation.getCurrentPosition(
-      (pos) => { setLoc({ lat: pos.coords.latitude, lng: pos.coords.longitude, label: `your location (±${Math.round(pos.coords.accuracy)} m)` }); setLocMsg(""); setShowManual(false); },
+    let best: GeolocationPosition | null = null, done = false;
+    const show = (p: GeolocationPosition) => { const a = Math.round(p.coords.accuracy); setLoc({ lat: p.coords.latitude, lng: p.coords.longitude, acc: a, t: Date.now(), label: `your location (±${a} m)` }); setShowManual(false); setLocMsg(a > 100 ? `Your phone reports ±${a} m. Turn on Precise Location for this browser and GPS / Wi-Fi, then tap Near me again.` : ""); };
+    const finish = () => { if (done) return; done = true; navigator.geolocation.clearWatch(id); clearTimeout(tm); };
+    const id = navigator.geolocation.watchPosition(
+      (p) => { if (!best || p.coords.accuracy < best.coords.accuracy) { best = p; show(p); } if (p.coords.accuracy <= 25) finish(); },
       async (err) => {
+        if (best) return finish();
+        finish();
         setShowManual(true);
         try {
           const r = await fetch("https://ipwho.is/");
           const j = await r.json();
-          if (j.success && j.latitude) { setLoc({ lat: j.latitude, lng: j.longitude, label: `approx. ${j.city || "your area"} (from your internet connection)` }); setLocMsg("Exact location is blocked, so I used your approximate location. Allow location in your browser or search an area for better accuracy."); return; }
+          if (j.success && j.latitude) { setLoc({ lat: j.latitude, lng: j.longitude, acc: 5000, approx: true, t: Date.now(), label: `approx. ${j.city || "your area"} (from your internet connection, not exact)` }); setLocMsg("Exact location is blocked, so this is only a rough area from your internet connection (can be km off). Allow Precise Location and tap Near me to retry."); return; }
         } catch {}
         setLocMsg(err.code === err.PERMISSION_DENIED ? "You declined location access. Search for your area or pincode instead." : err.code === err.TIMEOUT ? "Location timed out. Try again or search for your area or pincode." : "Could not get your location. Search for your area or pincode instead.");
       },
-      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 },
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 },
     );
+    const tm = setTimeout(finish, 20000);
   }
 
   async function searchManual(e: React.FormEvent) {
@@ -135,7 +141,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   return (
     <div className="fixed inset-x-0 bottom-[var(--tabbar-h)] top-[var(--header-h)] overflow-hidden">
       <div className="absolute inset-0">
-        <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} />
+        <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} meAcc={me?.acc} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} />
       </div>
       <BottomSheet snap={snap} onSnap={setSnap}>
         <div className="space-y-3 px-4 pb-3 pt-1 md:pt-4">
@@ -156,7 +162,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
           {locMsg && <p className="rounded-xl bg-amber-500/10 px-3 py-2 text-xs text-amber-700 dark:text-amber-300" role="status">{locMsg}</p>}
           {me && (
             <div className="space-y-2 rounded-2xl bg-accent-soft p-3 text-xs">
-              <div className="flex items-center justify-between gap-2"><span className="truncate">Near <b>{me.label}</b></span><button onClick={() => setLoc(null)} className="font-semibold text-accent-text">Clear</button></div>
+              <div className="flex items-center justify-between gap-2"><span className="truncate">Near <b>{me.label}</b>{me.approx && <button onClick={nearMe} className="ml-2 font-semibold text-accent-text">Retry exact</button>}</span><button onClick={() => setLoc(null)} className="font-semibold text-accent-text">Clear</button></div>
               <div className="flex items-center justify-between gap-2">
                 <div className="segmented" role="group" aria-label="Radius">
                   {RADII.map((r) => <button key={r} aria-pressed={radius === r} onClick={() => setRadius(r)}>{r} km</button>)}

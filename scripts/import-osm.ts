@@ -32,6 +32,8 @@ function slugify(s: string) {
 
 function classify(t: Record<string, string>): PlaceType | null {
   const name = `${t.name ?? ""} ${t["name:en"] ?? ""}`.toLowerCase();
+  if (t.highway) return null; // streets named "Masjid Road" are not places
+
   const isMuslimPow = t.amenity === "place_of_worship" && t.religion === "muslim";
   if (t.tomb === "dargah" || /dargah|darga\b|ziyarat/.test(name)) return "dargah";
   if (/idgah|eidgah|eid gah/.test(name)) return "idgah";
