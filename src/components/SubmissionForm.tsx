@@ -116,7 +116,7 @@ export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId
       <textarea name="notes" maxLength={1000} placeholder={kind === "fix" ? "What should be corrected? *" : "Notes (iqama times, facilities, who runs it)"} required={kind === "fix"} className={field} rows={3} />
       <input name="contact" type="email" maxLength={120} placeholder="Your email (optional)" className={field} />
       {TS_KEY && <div ref={tsEl} />}
-      <button disabled={state === "sending"} className="rounded-lg bg-emerald-700 px-4 py-2 text-sm font-medium text-white disabled:opacity-50">{state === "sending" ? "Sending..." : "Submit"}</button>
+      <button disabled={state === "sending"} className="btn btn-primary">{state === "sending" ? "Sending..." : "Submit"}</button>
       {state === "error" && <p className="text-sm text-red-600">{err}</p>}
     </form>
   );

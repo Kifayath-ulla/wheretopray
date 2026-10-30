@@ -25,9 +25,9 @@ export default function PrayerTimes({ lat, lng }: { lat: number; lng: number }) 
       {err ? <p className="text-sm text-red-600">Could not load prayer times.</p> : (
         <dl className="grid grid-cols-3 gap-2 text-center sm:grid-cols-6">
           {NAMES.map((n) => (
-            <div key={n} className={`rounded-2xl px-2 py-3 ${n === "Sunrise" ? "bg-surface-2/60" : "bg-surface-2"}`}>
+            <div key={n} className={`rounded-[10px] px-2 py-3 ${n === "Sunrise" ? "bg-surface-2/60" : "bg-surface-2"}`}>
               <dt className="text-xs font-medium text-ink-3">{n}</dt>
-              <dd className="mt-0.5 text-lg font-semibold tabular-nums tracking-tight">{t ? t[n] : <span className="inline-block h-5 w-12 animate-pulse rounded bg-hairline" />}</dd>
+              <dd className="mt-0.5 font-mono text-lg font-medium tabular-nums">{t ? t[n] : <span className="inline-block h-5 w-12 animate-pulse rounded bg-hairline" />}</dd>
             </div>
           ))}
         </dl>

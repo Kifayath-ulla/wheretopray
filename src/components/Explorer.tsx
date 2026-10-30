@@ -210,10 +210,10 @@ const Row = memo(function Row({ p }: { p: Place & { _d?: number } }) {
       </span>
       <Link href={`/place/${p.slug}`} className="min-w-0 flex-1">
         <div className="truncate text-[15px] font-medium">{p.name}</div>
-        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
+        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? `, ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
       </Link>
       <div className="flex shrink-0 flex-col items-end gap-1">
-        {p._d !== undefined && <span className="text-xs font-semibold text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
+        {p._d !== undefined && <span className="font-mono text-xs font-medium text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
         <span className="flex gap-1 text-[11px]">
           <a href={d.google} target="_blank" rel="noreferrer" className="rounded-full bg-accent-soft px-2 py-0.5 font-medium text-accent-text" aria-label={`Google Maps directions to ${p.name}`}>Google</a>
           <a href={d.apple} target="_blank" rel="noreferrer" className="rounded-full bg-surface-2 px-2 py-0.5 font-medium" aria-label={`Apple Maps directions to ${p.name}`}>Apple</a>

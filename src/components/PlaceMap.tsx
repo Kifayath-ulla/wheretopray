@@ -45,7 +45,7 @@ export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusK
       collapse(); m.once("idle", collapse);
       m.addSource("places", { type: "geojson", data: toGeo(latest.current), cluster: true, clusterRadius: 45, clusterMaxZoom: 14 });
       m.addLayer({ id: "clusters", type: "circle", source: "places", filter: ["has", "point_count"],
-        paint: { "circle-color": "#0b6e4f", "circle-opacity": 0.92, "circle-radius": ["step", ["get", "point_count"], 15, 50, 20, 500, 26], "circle-stroke-width": 5, "circle-stroke-color": "rgba(11,110,79,0.22)" } });
+        paint: { "circle-color": "#0f7a55", "circle-opacity": 0.92, "circle-radius": ["step", ["get", "point_count"], 15, 50, 20, 500, 26], "circle-stroke-width": 5, "circle-stroke-color": "rgba(15,122,85,0.22)" } });
       m.addLayer({ id: "cluster-count", type: "symbol", source: "places", filter: ["has", "point_count"],
         layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Noto Sans Bold"], "text-size": 12.5 }, paint: { "text-color": "#fff" } });
       m.addLayer({ id: "point", type: "circle", source: "places", filter: ["!", ["has", "point_count"]],
@@ -61,7 +61,7 @@ export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusK
         const f = e.features?.[0]; if (!f) return;
         const p = f.properties as { slug: string; name: string; type: string; area: string };
         new maplibregl.Popup({ offset: 12, maxWidth: "260px" }).setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number])
-          .setHTML(`<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:${TYPE_COLOR[p.type as PlaceType] ?? TYPE_COLOR.mosque}">${esc(TYPE_LABEL[p.type as PlaceType] ?? p.type)}</div><div style="font-size:15px;font-weight:600;margin:2px 0 2px;line-height:1.25">${esc(p.name)}</div>${p.area ? `<div style="font-size:12px;color:var(--text-2)">${esc(p.area)}</div>` : ""}<a href="/place/${encodeURIComponent(p.slug)}" style="display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:600">View details</a>`).addTo(m);
+          .setHTML(`<div style="font-size:12px;font-weight:500;color:${TYPE_COLOR[p.type as PlaceType] ?? TYPE_COLOR.mosque}">${esc(TYPE_LABEL[p.type as PlaceType] ?? p.type)}</div><div style="font-size:15px;font-weight:600;margin:2px 0 2px;line-height:1.25">${esc(p.name)}</div>${p.area ? `<div style="font-size:12px;color:var(--text-2)">${esc(p.area)}</div>` : ""}<a href="/place/${encodeURIComponent(p.slug)}" style="display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:13px;font-weight:500">View details</a>`).addTo(m);
       });
       for (const l of ["clusters", "point"]) {
         m.on("mouseenter", l, () => { m.getCanvas().style.cursor = "pointer"; });

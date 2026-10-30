@@ -90,20 +90,20 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
   return (
     <div className="space-y-5">
       <div className="relative mx-auto" style={{ width: size, height: size }} aria-label="Qibla compass">
-        <div className={`absolute inset-0 rounded-full ${aligned ? "shadow-[0_0_0_10px_var(--accent-soft),0_20px_60px_rgba(11,110,79,.35)]" : "shadow-float"}`} />
+        <div className={`absolute inset-0 rounded-full ${aligned ? "shadow-[0_0_0_10px_var(--accent-soft),0_20px_60px_color-mix(in_oklab,var(--accent)_35%,transparent)]" : "shadow-float"}`} />
         <svg viewBox="-150 -150 300 300" className="absolute inset-0 h-full w-full transition-transform duration-200 ease-out" style={{ transform: `rotate(${dialRot}deg)` }} data-testid="dial">
           <circle r="148" fill="var(--surface)" stroke={aligned ? "var(--accent)" : "var(--hairline)"} strokeWidth="2" />
           {Array.from({ length: 72 }, (_, i) => (
             <line key={i} x1="0" y1="-140" x2="0" y2={i % 18 === 0 ? -124 : i % 2 === 0 ? -131 : -135} stroke={i % 18 === 0 ? "var(--text)" : "var(--text-3)"} strokeWidth={i % 18 === 0 ? 2.5 : 1} strokeLinecap="round" transform={`rotate(${i * 5})`} />
           ))}
           {["N", "E", "S", "W"].map((d, i) => (
-            <text key={d} x="0" y="-102" textAnchor="middle" dominantBaseline="middle" fontSize="18" fontWeight="700" fill={d === "N" ? "#ff3b30" : "var(--text-2)"} transform={`rotate(${i * 90}) rotate(${-i * 90 - dialRot} 0 -102)`}>{d}</text>
+            <text key={d} x="0" y="-102" textAnchor="middle" dominantBaseline="middle" fontSize="18" fontWeight="700" fill={d === "N" ? "var(--mark-north)" : "var(--text-2)"} transform={`rotate(${i * 90}) rotate(${-i * 90 - dialRot} 0 -102)`}>{d}</text>
           ))}
           {bearing != null && (
             <g transform={`rotate(${bearing})`} data-testid="needle">
               <path d="M0,-118 L9,-30 L0,-38 L-9,-30 Z" fill="var(--accent)" />
               <line x1="0" y1="-30" x2="0" y2="40" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" opacity=".35" />
-              <g transform="translate(0,-128)"><rect x="-8" y="-8" width="16" height="16" rx="2.5" fill="var(--text)" /><rect x="-8" y="-3.5" width="16" height="2.5" fill="#d4af37" /></g>
+              <g transform="translate(0,-128)"><rect x="-8" y="-8" width="16" height="16" rx="2.5" fill="var(--text)" /><rect x="-8" y="-3.5" width="16" height="2.5" fill="var(--mark-kaaba)" /></g>
             </g>
           )}
           <circle r="7" fill="var(--surface)" stroke="var(--text)" strokeWidth="3" />
@@ -112,8 +112,8 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
       </div>
       {bearing != null ? (
         <div className="text-center" data-testid="bearing">
-          <div className="text-5xl font-bold tabular-nums tracking-tight">{bearing.toFixed(1)}°</div>
-          <div className="mt-1 text-[15px] text-ink-2">{compassPoint(bearing)} from true north · Kaaba {Math.round(dist!).toLocaleString()} km away</div>
+          <div className="font-mono text-5xl font-medium tabular-nums">{bearing.toFixed(1)}°</div>
+          <div className="mt-1 text-[15px] text-ink-2">{compassPoint(bearing)} from true north. Kaaba {Math.round(dist!).toLocaleString()} km away</div>
           {!compact && <div className="mt-1 text-xs text-ink-3">From {loc!.label}</div>}
         </div>
       ) : <p className="text-center text-sm text-ink-2">Set your location to get the qibla direction.</p>}

@@ -83,7 +83,7 @@ export default function QuickAdd() {
       <input required minLength={3} maxLength={150} value={name} onChange={(e) => setName(e.target.value)} placeholder="Name, e.g. Masjid-e-Noor" className={inp} autoFocus />
       <div className="grid grid-cols-2 gap-2">
         {PLACE_TYPES.map((t) => (
-          <button type="button" key={t.value} onClick={() => setType(t.value)} className={`rounded-2xl px-2 py-3 text-sm font-medium ${type === t.value ? "bg-accent text-white shadow-soft" : "bg-surface-2"}`}>{t.label}</button>
+          <button type="button" key={t.value} onClick={() => setType(t.value)} className={`rounded-[10px] px-2 py-3 text-sm font-medium ${type === t.value ? "bg-accent text-[var(--on-accent)] shadow-soft" : "bg-surface-2"}`}>{t.label}</button>
         ))}
       </div>
       <label className="flex items-center gap-3 rounded-2xl bg-surface-2 px-4 py-3.5"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>

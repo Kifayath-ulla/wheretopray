@@ -46,7 +46,7 @@ export default async function PlacePage({ params }: Props) {
             <DistanceFromMe lat={p.lat} lng={p.lng} />
           </div>
           <div>
-            <h1 className="text-[2rem] font-bold leading-tight tracking-tight sm:text-4xl">{p.name}</h1>
+            <h1 className="text-[2rem] font-bold leading-tight sm:text-4xl">{p.name}</h1>
             {p.name_local && <p className="mt-1 text-lg text-ink-2">{p.name_local}</p>}
             <p className="mt-2 text-[15px] text-ink-2">{p.area ? `${p.area}, ` : ""}{p.city}{p.state ? `, ${p.state}` : ""}</p>
             {p.address && <p className="mt-1 text-sm text-ink-3">{p.address}</p>}
@@ -70,13 +70,13 @@ export default async function PlacePage({ params }: Props) {
         <svg width="76" height="76" viewBox="-38 -38 76 76" aria-label={`Prayer direction ${qb.toFixed(0)} degrees`} className="shrink-0">
           <circle r="36" fill="var(--surface-2)" />
           {Array.from({ length: 36 }, (_, i) => <line key={i} x1="0" y1="-33" x2="0" y2={i % 9 === 0 ? -28 : -31} stroke="var(--text-3)" strokeWidth={i % 9 === 0 ? 1.4 : 0.6} transform={`rotate(${i * 10})`} />)}
-          <text y="-18" textAnchor="middle" fontSize="8" fill="#ff3b30" fontWeight="700">N</text>
+          <text y="-18" textAnchor="middle" fontSize="8" fill="var(--mark-north)" fontWeight="700">N</text>
           <g transform={`rotate(${qb.toFixed(1)})`}><path d="M0,-27 L5,-8 L0,-11 L-5,-8 Z" fill="var(--accent)" /><line y1="-8" y2="14" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" /></g>
           <circle r="2.5" fill="var(--text)" />
         </svg>
         <div className="text-sm">
           <div className="eyebrow">{p.type === "prayer_room" ? "Prayer direction" : "Qibla"}</div>
-          <div className="text-2xl font-semibold tracking-tight">{qb.toFixed(1)}° <span className="text-base font-normal text-ink-2">{compassPoint(qb)}</span></div>
+          <div className="font-mono text-2xl font-medium">{qb.toFixed(1)}° <span className="text-base font-normal text-ink-2">{compassPoint(qb)}</span></div>
           <div className="text-ink-2">Clockwise from true north. Kaaba is {kaabaKm.toLocaleString()} km away.</div>
           {p.type === "prayer_room" && <div className="text-ink-2">Face the arrow when the top of the dial points north.</div>}
           <Link href="/qibla" className="mt-1 inline-block font-medium text-accent-text">Open live compass</Link>
@@ -87,10 +87,10 @@ export default async function PlacePage({ params }: Props) {
         <h2 className="mb-3 text-lg font-semibold">Facilities</h2>
         <dl className="grid grid-cols-2 gap-2 text-sm">
           {([["Women's area", p.women_section], ["Wudu", p.wudu], ["Parking", p.parking], ["Wheelchair", p.wheelchair]] as const).map(([k, v]) => (
-            <div key={k} className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">{k}</dt><dd className={`font-medium ${v === true ? "text-accent-text" : ""}`}>{yesNo(v)}</dd></div>
+            <div key={k} className="rounded-[10px] bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">{k}</dt><dd className={`font-medium ${v === true ? "text-accent-text" : ""}`}>{yesNo(v)}</dd></div>
           ))}
-          {p.denomination && <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Denomination</dt><dd className="font-medium">{p.denomination}</dd></div>}
-          {p.jumuah_time && <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Jumu&apos;ah</dt><dd className="font-medium">{p.jumuah_time}</dd></div>}
+          {p.denomination && <div className="rounded-[10px] bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Denomination</dt><dd className="font-medium">{p.denomination}</dd></div>}
+          {p.jumuah_time && <div className="rounded-[10px] bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Jumu&apos;ah</dt><dd className="font-medium">{p.jumuah_time}</dd></div>}
         </dl>
       </section>
 

@@ -40,7 +40,7 @@ export default function AdminPending() {
         <div className="flex flex-wrap gap-2 text-sm">
           <button onClick={() => setSel(new Set(shown.map((p) => p.id)))} className="h-9 px-3 text-sm">Select all shown ({shown.length})</button>
           <button onClick={() => setSel(new Set())} className="h-9 px-3 text-sm">Clear</button>
-          <button onClick={() => approve([...sel])} disabled={!sel.size} className="rounded bg-emerald-700 px-3 py-1 text-white disabled:opacity-40">Approve selected ({sel.size})</button>
+          <button onClick={() => approve([...sel])} disabled={!sel.size} className="btn btn-primary min-h-0 px-3 py-1.5">Approve selected ({sel.size})</button>
         </div>
       )}
       <ul className="max-h-[70vh] divide-y overflow-auto rounded-xl border">
