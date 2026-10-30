@@ -35,21 +35,21 @@ export default async function City({ params }: Props) {
     itemListElement: places.slice(0, 100).map((p, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Mosque", name: p.name, geo: { "@type": "GeoCoordinates", latitude: p.lat, longitude: p.lng } } })),
   };
   return (
-    <main className="mx-auto max-w-3xl px-4 pb-10 pt-8">
+    <main className="mx-auto max-w-3xl px-5 pb-16 pt-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <p className="text-xs text-gray-500"><Link href="/directory" className="underline">Directory</Link> / {c.state}</p>
-      <h1 className="page-title">Mosques, dargahs and prayer rooms in {c.city}</h1>
-      <p className="mt-2 text-gray-600">{places.length} places listed. {PLACE_TYPES.map((t) => [t, places.filter((p) => p.type === t.value).length] as const).filter(([, n]) => n).map(([t, n]) => `${n} ${t.label.toLowerCase()}`).join(", ")}.</p>
-      <p className="mt-1 text-sm"><Link href="/" className="font-medium text-accent-text hover:underline">Open the map</Link> - missing a place? <Link href="/submit" className="font-medium text-accent-text hover:underline">Add it</Link>.</p>
+      <p className="text-[13px] text-ink-3"><Link href="/directory" className="hover:text-ink">Directory</Link> / {c.state}</p>
+      <h1 className="page-title mt-2">Places to pray in {c.city}</h1>
+      <p className="mt-3 text-[15px] text-ink-2">{places.length} places listed. {PLACE_TYPES.map((t) => [t, places.filter((p) => p.type === t.value).length] as const).filter(([, n]) => n).map(([t, n]) => `${n} ${t.label.toLowerCase()}`).join(", ")}.</p>
+      <div className="mt-5 flex gap-2"><Link href="/" className="btn btn-primary">Open the map</Link><Link href="/add" className="btn btn-secondary">Add a missing place</Link></div>
       {areas.map(([a, ps]) => (
-        <section key={a} className="mt-6">
-          <h2 className="font-semibold">{a} <span className="text-sm text-gray-500">({ps.length})</span></h2>
-          <ul className="mt-1 grid gap-1 sm:grid-cols-2">
-            {ps.map((p) => <li key={p.id}><Link href={`/place/${p.slug}`} className="text-sm text-emerald-800 hover:underline">{p.name}</Link> <span className="text-xs capitalize text-gray-500">{p.type.replace("_", " ")}</span></li>)}
+        <section key={a} className="mt-10">
+          <h2 className="mb-3 flex items-baseline justify-between px-1 text-[1.05rem] font-semibold">{a} <span className="font-mono text-[13px] font-normal text-ink-3">{ps.length}</span></h2>
+          <ul className="group-list">
+            {ps.map((p) => <li key={p.id}><Link href={`/place/${p.slug}`} className="list-row justify-between hover:bg-surface-2"><span className="min-w-0 truncate">{p.name}</span><span className="shrink-0 text-[13px] capitalize text-ink-3">{p.type.replace("_", " ")}</span></Link></li>)}
           </ul>
         </section>
       ))}
-      <p className="mt-8 text-xs text-gray-500">Data: OpenStreetMap contributors (ODbL), Overture Maps Foundation (CDLA-Permissive-2.0 / ODbL), Wikidata (CC0), community submissions.</p>
+      <p className="mt-10 px-1 text-[12px] text-ink-3">Data: OpenStreetMap contributors (ODbL), Overture Maps Foundation (CDLA-Permissive-2.0 / ODbL), Wikidata (CC0), community submissions.</p>
     </main>
   );
 }

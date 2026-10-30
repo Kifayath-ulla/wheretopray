@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = { title: "About and data credits" };
+const CREDITS: [string, string, string][] = [
+  ["OpenStreetMap contributors", "https://www.openstreetmap.org/copyright", "Places and area names, ODbL"],
+  ["Overture Maps Foundation", "https://docs.overturemaps.org/attribution/", "Places, CDLA-Permissive-2.0 / ODbL"],
+  ["Wikidata", "https://www.wikidata.org", "Notable sites, CC0"],
+  ["GeoNames", "https://www.geonames.org", "Place names, CC BY 4.0"],
+  ["geoBoundaries", "https://www.geoboundaries.org", "Ward and city boundaries"],
+  ["OpenFreeMap", "https://openfreemap.org", "Map tiles, data © OpenStreetMap"],
+  ["Nominatim", "https://nominatim.org", "Area and pincode search"],
+];
 export default function About() {
   return (
-    <main className="mx-auto max-w-2xl px-4 py-10">
+    <main className="mx-auto max-w-2xl px-5 pb-16 pt-12">
       <h1 className="page-title">About</h1>
-      <p className="lead mt-3">wheretopray helps you find mosques, dargahs, idgahs, musallas and prayer rooms near you, with qibla direction and prayer times.</p>
-      <h2 className="mt-8 text-xl font-semibold">Data credits</h2>
-      <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm text-ink-2">
-        <li>© <a className="link" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, licensed under the ODbL.</li>
-        <li><a className="link" href="https://docs.overturemaps.org/attribution/">Overture Maps Foundation</a> Places (CDLA-Permissive-2.0) and Overture Maps (CDLA-Permissive-2.0 / ODbL).</li>
-        <li><a className="link" href="https://www.wikidata.org">Wikidata</a> (CC0).</li>
-        <li><a className="link" href="https://www.geonames.org">GeoNames</a> (CC BY 4.0).</li>
-        <li>Boundaries from <a className="link" href="https://www.geoboundaries.org">geoBoundaries</a>.</li>
-        <li>Map tiles by <a className="link" href="https://openfreemap.org">OpenFreeMap</a>, map data © OpenStreetMap contributors.</li>
-        <li>Geocoding by <a className="link" href="https://nominatim.org">Nominatim</a>. Prayer times are calculated locally on your device.</li>
-        <li>Community submissions from people like you.</li>
+      <p className="lead mt-4">wheretopray helps you find mosques, dargahs, idgahs, musallas and prayer rooms near you, with the qibla direction and prayer times. It is free, has no ads and needs no account.</p>
+      <h2 className="section-title mt-12">Data credits</h2>
+      <ul className="group-list">
+        {CREDITS.map(([name, href, what]) => (
+          <li key={name}><a href={href} className="list-row justify-between hover:bg-surface-2" target="_blank" rel="noreferrer"><span className="font-medium">{name}</span><span className="text-right text-[13px] text-ink-3">{what}</span></a></li>
+        ))}
       </ul>
+      <p className="mt-4 px-1 text-[13px] text-ink-3">Prayer times are calculated for each place&apos;s coordinates. Community submissions are reviewed before they appear.</p>
     </main>
   );
 }

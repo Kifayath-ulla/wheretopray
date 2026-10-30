@@ -10,5 +10,5 @@ export default function DistanceFromMe({ lat, lng }: { lat: number; lng: number 
     try { const s = sessionStorage.getItem("wtp-loc"); if (s) { const l = JSON.parse(s); setD(distanceKm(l.lat, l.lng, lat, lng)); } } catch {}
   }, [lat, lng]);
   if (d == null) return null;
-  return <span className="chip bg-accent-soft text-accent-text" data-testid="distance">{fmtDistance(d)} away</span>;
+  return <span className="text-ink-3" data-testid="distance">· {fmtDistance(d)} away</span>;
 }

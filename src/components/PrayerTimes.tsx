@@ -14,25 +14,25 @@ export default function PrayerTimes({ lat, lng }: { lat: number; lng: number }) 
       .then((r) => r.json()).then((j) => setT(j.data.timings)).catch(() => setErr(true));
   }, [lat, lng, school]);
   return (
-    <section className="card p-5">
-      <div className="mb-4 flex items-center justify-between gap-3">
-        <h2 className="text-lg font-semibold">Prayer times today</h2>
+    <section>
+      <div className="mb-2 flex items-center justify-between gap-3 px-1">
+        <h2 className="text-[.95rem] font-semibold tracking-[-0.01em]">Prayer times today</h2>
         <div className="segmented" role="group" aria-label="Asr method">
           <button aria-pressed={school === 1} onClick={() => setSchool(1)}>Hanafi</button>
           <button aria-pressed={school === 0} onClick={() => setSchool(0)}>Shafi&apos;i</button>
         </div>
       </div>
-      {err ? <p className="text-sm text-red-600">Could not load prayer times.</p> : (
-        <dl className="grid grid-cols-3 gap-2 text-center sm:grid-cols-6">
-          {NAMES.map((n) => (
-            <div key={n} className={`rounded-[10px] px-2 py-3 ${n === "Sunrise" ? "bg-surface-2/60" : "bg-surface-2"}`}>
-              <dt className="text-xs font-medium text-ink-3">{n}</dt>
-              <dd className="mt-0.5 font-mono text-lg font-medium tabular-nums">{t ? t[n] : <span className="inline-block h-5 w-12 animate-pulse rounded bg-hairline" />}</dd>
+      {err ? <p className="card p-5 text-sm text-red-600">Could not load prayer times. Check your connection and reload.</p> : (
+        <dl className="card grid grid-cols-3 overflow-hidden text-center sm:grid-cols-6">
+          {NAMES.map((n, i) => (
+            <div key={n} className={`px-2 py-4 ${i % 3 ? "border-l border-hairline" : ""} ${i >= 3 ? "border-t border-hairline sm:border-t-0" : ""} ${i === 3 ? "sm:border-l" : ""}`}>
+              <dt className={`text-[12px] font-medium ${n === "Sunrise" ? "text-ink-3" : "text-ink-2"}`}>{n}</dt>
+              <dd className={`mt-1 font-mono text-[17px] font-medium tabular-nums ${n === "Sunrise" ? "text-ink-3" : ""}`}>{t ? t[n] : <span className="inline-block h-5 w-12 rounded bg-surface-2" />}</dd>
             </div>
           ))}
         </dl>
       )}
-      <p className="mt-3 text-xs text-ink-3">Calculated start times (Karachi method). Iqama times at this place may differ.</p>
+      <p className="mt-2 px-1 text-[12px] text-ink-3">Calculated start times (Karachi method). Iqama times here may differ.</p>
     </section>
   );
 }

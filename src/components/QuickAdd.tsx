@@ -65,31 +65,31 @@ export default function QuickAdd() {
   }
 
   if (done) return (
-    <div className="space-y-3 rounded-xl border border-emerald-300 bg-emerald-50 p-4">
+    <div className="card space-y-3 p-5">
       <p className="font-medium">JazakAllah khair. &quot;{done}&quot; was sent for review.</p>
       <button onClick={() => { setDone(""); locate(); }} className="btn btn-primary w-full py-3.5">Add another</button>
-      <a href="/share" className="block text-center text-sm text-emerald-800 underline">Share with your masjid committee</a>
+      <a href="/share" className="block text-center text-sm font-medium text-accent-text">Share with your masjid committee</a>
     </div>
   );
   const inp = "w-full h-12 px-4 text-base";
   return (
     <form onSubmit={submit} className="space-y-3">
       {TS_KEY && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" onLoad={renderTs} />}
-      <div className="rounded-2xl bg-surface-2 p-4 text-sm">
+      <div className="card p-4 text-[14px] text-ink-2">
         <p>{geoMsg}</p>
         {geo && <a className="font-medium text-accent-text hover:underline" target="_blank" rel="noreferrer" href={`https://www.openstreetmap.org/?mlat=${geo.lat}&mlon=${geo.lng}#map=18/${geo.lat}/${geo.lng}`}>Check the pin</a>}
-        <button type="button" onClick={locate} className="ml-3 text-emerald-800 underline">Refresh location</button>
+        <button type="button" onClick={locate} className="ml-3 font-medium text-accent-text">Refresh location</button>
       </div>
       <input required minLength={3} maxLength={150} value={name} onChange={(e) => setName(e.target.value)} placeholder="Name, e.g. Masjid-e-Noor" className={inp} autoFocus />
       <div className="grid grid-cols-2 gap-2">
         {PLACE_TYPES.map((t) => (
-          <button type="button" key={t.value} onClick={() => setType(t.value)} className={`rounded-[10px] px-2 py-3 text-sm font-medium ${type === t.value ? "bg-accent text-[var(--on-accent)] shadow-soft" : "bg-surface-2"}`}>{t.label}</button>
+          <button type="button" key={t.value} onClick={() => setType(t.value)} className={`rounded-[14px] px-2 py-3 text-[14px] font-medium ${type === t.value ? "bg-ink text-surface" : "bg-surface shadow-[inset_0_0_0_1px_var(--hairline)] hover:bg-surface-2"}`}>{t.label}</button>
         ))}
       </div>
-      <label className="flex items-center gap-3 rounded-2xl bg-surface-2 px-4 py-3.5"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>
+      <label className="card flex items-center gap-3 px-4 py-3.5"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>
       <input value={jumuah} onChange={(e) => setJumuah(e.target.value)} maxLength={60} placeholder="Jumu'ah time (optional), e.g. 1:30 PM" className={inp} />
       <details className="text-sm">
-        <summary className="cursor-pointer text-gray-600">Address {addr.city ? `(${[addr.area, addr.city].filter(Boolean).join(", ")})` : "(needed if location is off)"}</summary>
+        <summary className="cursor-pointer px-1 text-ink-2">Address {addr.city ? `(${[addr.area, addr.city].filter(Boolean).join(", ")})` : "(needed if location is off)"}</summary>
         <div className="mt-2 space-y-2">
           <input value={addr.address} onChange={(e) => setAddr({ ...addr, address: e.target.value })} placeholder="Street / landmark" className={inp} />
           <input value={addr.area} onChange={(e) => setAddr({ ...addr, area: e.target.value })} placeholder="Area" className={inp} />

@@ -12,21 +12,19 @@ const TABS = [
 
 export function Header() {
   const path = usePathname() || "/";
+  const pill = (on: boolean) => `rounded-full px-3.5 py-1.5 text-[14px] font-medium ${on ? "bg-surface-2 text-ink" : "text-ink-2 hover:text-ink"}`;
   return (
     <header className="glass sticky top-0 z-30 border-b border-hairline pt-[env(safe-area-inset-top)]">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-2 font-[family-name:var(--font-display)] text-[18px] font-bold text-ink">
-          <Logo /> wheretopray
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5">
+        <Link href="/" className="flex items-center gap-2.5 text-[17px] font-semibold tracking-[-0.02em] text-ink">
+          <Logo className="h-7 w-7" /> wheretopray
         </Link>
-        <nav className="hidden items-center gap-1 text-sm md:flex" aria-label="Main">
-          {TABS.map((t) => (
-            <Link key={t.href} href={t.href} aria-current={t.match(path) ? "page" : undefined}
-              className={`rounded-full px-3.5 py-1.5 font-medium ${t.match(path) ? "bg-surface-2 text-ink" : "text-ink-2 hover:text-ink"}`}>{t.label}</Link>
-          ))}
-          <Link href="/bengaluru/gaps" className={`rounded-full px-3.5 py-1.5 font-medium ${path.startsWith("/bengaluru") ? "bg-surface-2 text-ink" : "text-ink-2 hover:text-ink"}`}>Gaps</Link>
-          <Link href="/share" className={`rounded-full px-3.5 py-1.5 font-medium ${path.startsWith("/share") ? "bg-surface-2 text-ink" : "text-ink-2 hover:text-ink"}`}>Share</Link>
+        <nav className="hidden items-center gap-0.5 md:flex" aria-label="Main">
+          {TABS.map((t) => <Link key={t.href} href={t.href} aria-current={t.match(path) ? "page" : undefined} className={pill(t.match(path))}>{t.label}</Link>)}
+          <Link href="/about" className={pill(path.startsWith("/about"))}>About</Link>
+          <Link href="/share" className="ml-2 rounded-full bg-ink px-4 py-1.5 text-[14px] font-medium text-surface hover:opacity-90">Share</Link>
         </nav>
-        <Link href="/share" className="text-sm font-medium text-accent-text md:hidden">Share</Link>
+        <Link href="/share" className="rounded-full bg-surface-2 px-3.5 py-1.5 text-[14px] font-medium text-ink md:hidden">Share</Link>
       </div>
     </header>
   );
@@ -41,8 +39,8 @@ export function TabBar() {
           const on = match(path);
           return (
             <li key={href}>
-              <Link href={href} aria-current={on ? "page" : undefined} className={`flex h-[60px] flex-col items-center justify-center gap-0.5 text-[11px] font-medium ${on ? "text-accent-text" : "text-ink-3"}`}>
-                <Icon className="h-6 w-6" />{label}
+              <Link href={href} aria-current={on ? "page" : undefined} className={`flex h-[58px] flex-col items-center justify-center gap-1 text-[11px] font-medium ${on ? "text-accent-text" : "text-ink-3"}`}>
+                <Icon className="h-[22px] w-[22px]" />{label}
               </Link>
             </li>
           );

@@ -66,7 +66,7 @@ export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId
     }
   }
 
-  if (state === "done") return <p className="rounded-lg bg-emerald-50 p-4 text-emerald-800">Thank you - your {kind === "fix" ? "correction" : "submission"} is in the moderation queue.</p>;
+  if (state === "done") return <p className="rounded-[14px] bg-accent-soft p-4 text-accent-text">Thank you - your {kind === "fix" ? "correction" : "submission"} is in the moderation queue.</p>;
   const field = "w-full h-11 px-4 text-[15px]";
   const set = (k: keyof typeof loc) => (e: React.ChangeEvent<HTMLInputElement>) => setLoc({ ...loc, [k]: e.target.value });
   return (

@@ -7,13 +7,13 @@ import { PLACE_TYPES, type Place, type PlaceType } from "@/lib/types";
 import { distanceKm } from "@/lib/geo";
 import { qiblaBearing } from "@/lib/qibla";
 const GoogleLookup = dynamic(() => import("./GoogleLookup"), { ssr: false });
-import { IconLocate, IconSearch } from "./ui/Icons";
+import { IconCompass, IconInfo, IconLocate, IconMap, IconSearch } from "./ui/Icons";
 import { TYPE_COLOR, TYPE_LABEL, fmtDistance } from "@/lib/typeStyle";
 
-const PlaceMap = dynamic(() => import("./PlaceMap"), { ssr: false, loading: () => <div className="h-full w-full animate-pulse bg-surface-2" /> });
+const PlaceMap = dynamic(() => import("./PlaceMap"), { ssr: false, loading: () => <div className="h-full w-full bg-surface-2" /> });
 const RADII = [1, 2, 5, 10] as const;
 const MAX_LOADED = 6000;
-const ROW_H = 60;
+const ROW_H = 64;
 
 type Loc = { lat: number; lng: number; label: string; acc?: number; approx?: boolean; t?: number };
 
@@ -67,7 +67,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
     return () => document.documentElement.classList.remove("app-lock");
   }, []);
   useEffect(() => {
-    try { const s = sessionStorage.getItem("wtp-loc"); if (s) { const l = JSON.parse(s) as Loc; if (l.acc == null || (l.t && Date.now() - l.t < 5 * 60000)) setLoc(l); } } catch {}
+    try { const s = sessionStorage.getItem("wtp-loc"); if (s) setLoc(JSON.parse(s)); } catch {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   function setLoc(l: Loc | null) {
@@ -139,50 +139,53 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   const FAC = [["women", "Women's area"], ["wudu", "Wudu"], ["parking", "Parking"], ["wheelchair", "Wheelchair"]] as const;
 
   return (
-    <div className="fixed inset-x-0 bottom-[var(--tabbar-h)] top-[var(--header-h)] overflow-hidden">
+    <div className="fixed inset-x-0 bottom-[var(--tabbar-h)] top-[var(--header-h)] overflow-hidden bg-surface-2">
       <div className="absolute inset-0">
         <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} meAcc={me?.acc} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} />
       </div>
       <BottomSheet snap={snap} onSnap={setSnap}>
-        <div className="space-y-3 px-4 pb-3 pt-1 md:pt-4">
-          <div className="flex gap-2">
+        <div className="space-y-3.5 px-4 pb-3 pt-1 md:px-5 md:pt-5">
+          <div className="flex items-center gap-2">
             <label className="relative flex-1">
-              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-3"><IconSearch className="h-4 w-4" /></span>
-              <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setSnap("full")} placeholder="Search mosques, areas" className="h-10 w-full pl-9 pr-3 text-[15px]" aria-label="Search" />
+              <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-3"><IconSearch className="h-[18px] w-[18px]" /></span>
+              <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setSnap("full")} placeholder="Search mosques or areas" className="h-11 w-full !rounded-full pl-10 pr-4 text-[15px]" aria-label="Search" />
             </label>
-            <button onClick={nearMe} className="btn btn-primary h-10 px-4 text-sm"><IconLocate className="h-4 w-4" />Near me</button>
+            <button onClick={nearMe} className="btn btn-primary h-11 min-h-0 px-4 text-[14px]"><IconLocate className="h-4 w-4" />Near me</button>
           </div>
           {(showManual || me) && (
             <form onSubmit={searchManual} className="flex gap-2">
-              <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Area, city or pincode, e.g. 560005" className="h-9 flex-1 px-3 text-sm" aria-label="Area or pincode" />
-              <button className="btn btn-secondary h-9 px-4 text-sm">Go</button>
+              <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Area, city or pincode, e.g. 560005" className="h-10 flex-1 !rounded-full px-4 text-sm" aria-label="Area or pincode" />
+              <button className="btn btn-secondary h-10 min-h-0 px-4 text-sm">Go</button>
             </form>
           )}
-          {!showManual && !me && <button onClick={() => setShowManual(true)} className="text-xs font-medium text-accent-text">Or enter an area or pincode</button>}
-          {locMsg && <p className="rounded-xl bg-amber-500/10 px-3 py-2 text-xs text-amber-700 dark:text-amber-300" role="status">{locMsg}</p>}
+          {!showManual && !me && <button onClick={() => setShowManual(true)} className="px-1 text-[13px] font-medium text-accent-text">Or enter an area or pincode</button>}
+          {locMsg && <p className="notice" role="status">{locMsg}</p>}
           {me && (
-            <div className="space-y-2 rounded-2xl bg-accent-soft p-3 text-xs">
-              <div className="flex items-center justify-between gap-2"><span className="truncate">Near <b>{me.label}</b>{me.approx && <button onClick={nearMe} className="ml-2 font-semibold text-accent-text">Retry exact</button>}</span><button onClick={() => setLoc(null)} className="font-semibold text-accent-text">Clear</button></div>
+            <div className="space-y-2.5 rounded-[18px] border border-hairline p-3 text-[13px]">
+              <div className="flex items-center justify-between gap-2">
+                <span className="min-w-0 truncate text-ink-2">Near <span className="font-medium text-ink">{me.label}</span>{me.acc ? <span className="font-mono text-ink-3"> ±{Math.round(me.acc)} m</span> : null}</span>
+                <span className="flex shrink-0 gap-3">{me.approx && <button onClick={nearMe} className="font-medium text-accent-text">Retry exact</button>}<button onClick={() => setLoc(null)} className="font-medium text-ink-2">Clear</button></span>
+              </div>
               <div className="flex items-center justify-between gap-2">
                 <div className="segmented" role="group" aria-label="Radius">
                   {RADII.map((r) => <button key={r} aria-pressed={radius === r} onClick={() => setRadius(r)}>{r} km</button>)}
                 </div>
-                <Link href="/qibla" className="whitespace-nowrap font-semibold text-accent-text">Qibla {qiblaBearing(me.lat, me.lng).toFixed(0)}°</Link>
+                <Link href="/qibla" className="flex items-center gap-1 whitespace-nowrap font-medium text-accent-text"><IconCompass className="h-4 w-4" />Qibla {qiblaBearing(me.lat, me.lng).toFixed(0)}°</Link>
               </div>
             </div>
           )}
-          <div className="sheet-x -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-0.5 [scrollbar-width:none]">
+          <div className="sheet-x -mx-4 flex gap-2 overflow-x-auto px-4 pb-0.5 [scrollbar-width:none] md:-mx-5 md:px-5">
             {PLACE_TYPES.map((t) => {
               const on = types.includes(t.value);
               return (
-                <button key={t.value} aria-pressed={on} onClick={() => setTypes((x) => (on ? x.filter((y) => y !== t.value) : [...x, t.value]))} className="chip gap-1.5">
+                <button key={t.value} aria-pressed={on} onClick={() => setTypes((x) => (on ? x.filter((y) => y !== t.value) : [...x, t.value]))} className="chip gap-2">
                   <span className="h-2 w-2 rounded-full" style={{ background: TYPE_COLOR[t.value] }} />{TYPE_LABEL[t.value]}
                 </button>
               );
             })}
           </div>
-          <div className="sheet-x -mx-4 flex items-center gap-1.5 overflow-x-auto px-4 [scrollbar-width:none]">
-            <select value={area} onChange={(e) => setArea(e.target.value)} className="h-8 max-w-[9rem] px-2 text-xs" aria-label="Area">
+          <div className="sheet-x -mx-4 flex items-center gap-2 overflow-x-auto px-4 [scrollbar-width:none] md:-mx-5 md:px-5">
+            <select value={area} onChange={(e) => setArea(e.target.value)} className="h-[34px] !min-h-0 max-w-[9.5rem] !rounded-full px-3 text-[13px]" aria-label="Area">
               <option value="">All areas</option>
               {areas.map((a) => <option key={a}>{a}</option>)}
             </select>
@@ -190,9 +193,9 @@ export default function Explorer({ places: initial, center }: { places: Place[];
               <button key={k} aria-pressed={fac[k]} onClick={() => setFac({ ...fac, [k]: !fac[k] })} className="chip">{label}</button>
             ))}
           </div>
-          <div className="flex items-center justify-between">
-            <p className="eyebrow">{filtered.length.toLocaleString("en-IN")} places{me ? ` within ${radius} km` : ""}</p>
-            <Link href="/about" className="grid h-6 w-6 place-items-center rounded-full bg-surface-2 text-[12px] font-semibold text-ink-2" aria-label="About and data credits" title="About and data credits">i</Link>
+          <div className="flex items-center justify-between px-1 pt-1">
+            <p className="text-[13px] text-ink-3"><span className="font-medium text-ink">{filtered.length.toLocaleString("en-IN")}</span> places{me ? ` within ${radius} km` : " in view"}</p>
+            <Link href="/about" className="grid h-7 w-7 place-items-center rounded-full text-ink-3 hover:bg-surface-2 hover:text-ink" aria-label="About and data credits" title="About and data credits"><IconInfo /></Link>
           </div>
         </div>
         <VirtualList items={filtered} me={!!me} radius={radius} footer={<GoogleLookup bbox={view} q={q} />} />
@@ -204,19 +207,19 @@ export default function Explorer({ places: initial, center }: { places: Place[];
 const Row = memo(function Row({ p }: { p: Place & { _d?: number } }) {
   const d = directionsLinks(p);
   return (
-    <li className="flex items-center gap-3 rounded-2xl px-2" style={{ height: ROW_H }}>
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={{ background: `${TYPE_COLOR[p.type]}1f` }} aria-hidden>
-        <span className="h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLOR[p.type] }} />
+    <li className="flex items-center gap-3 px-2" style={{ height: ROW_H }}>
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[12px] bg-surface-2" aria-hidden style={{ color: TYPE_COLOR[p.type] }}>
+        <IconMap className="h-5 w-5" />
       </span>
-      <Link href={`/place/${p.slug}`} className="min-w-0 flex-1">
-        <div className="truncate text-[15px] font-medium">{p.name}</div>
-        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? `, ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
+      <Link href={`/place/${p.slug}`} className="min-w-0 flex-1 self-stretch content-center border-b border-hairline">
+        <div className="truncate text-[15px] font-medium tracking-[-0.01em]">{p.name}</div>
+        <div className="truncate text-[13px] text-ink-3">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
       </Link>
-      <div className="flex shrink-0 flex-col items-end gap-1">
-        {p._d !== undefined && <span className="font-mono text-xs font-medium text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
-        <span className="flex gap-1 text-[11px]">
-          <a href={d.google} target="_blank" rel="noreferrer" className="rounded-full bg-accent-soft px-2 py-0.5 font-medium text-accent-text" aria-label={`Google Maps directions to ${p.name}`}>Google</a>
-          <a href={d.apple} target="_blank" rel="noreferrer" className="rounded-full bg-surface-2 px-2 py-0.5 font-medium" aria-label={`Apple Maps directions to ${p.name}`}>Apple</a>
+      <div className="flex shrink-0 flex-col items-end gap-1 self-stretch justify-center border-b border-hairline">
+        {p._d !== undefined && <span className="font-mono text-[12px] font-medium text-ink" data-testid="distance">{fmtDistance(p._d)}</span>}
+        <span className="flex gap-2 text-[12px] font-medium">
+          <a href={d.google} target="_blank" rel="noreferrer" className="text-accent-text hover:underline" aria-label={`Google Maps directions to ${p.name}`}>Google</a>
+          <a href={d.apple} target="_blank" rel="noreferrer" className="text-ink-2 hover:underline" aria-label={`Apple Maps directions to ${p.name}`}>Apple</a>
         </span>
       </div>
     </li>
@@ -241,13 +244,13 @@ function VirtualList({ items, me, radius, footer }: { items: (Place & { _d?: num
   const start = Math.max(0, Math.floor(top / ROW_H) - 6);
   const end = Math.min(items.length, Math.ceil((top + h) / ROW_H) + 6);
   return (
-    <div ref={ref} className="sheet-scroll min-h-0 flex-1 overflow-y-auto border-t border-hairline px-2 pb-4" data-testid="results">
+    <div ref={ref} className="sheet-scroll min-h-0 flex-1 overflow-y-auto px-2 pb-4" data-testid="results">
       <ul style={{ height: items.length * ROW_H, position: "relative" }}>
         <div style={{ transform: `translateY(${start * ROW_H}px)` }}>
           {items.slice(start, end).map((p) => <Row key={p.id} p={p} />)}
         </div>
       </ul>
-      {me && items.length === 0 && <p className="p-6 text-center text-sm text-ink-2">Nothing within {radius} km. Try a bigger radius.</p>}
+      {me && items.length === 0 && <div className="px-6 py-10 text-center"><p className="text-[15px] font-medium">Nothing within {radius} km</p><p className="mt-1 text-[13px] text-ink-3">Try a bigger radius or move the map.</p></div>}
       {footer}
     </div>
   );

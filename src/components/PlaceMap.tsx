@@ -45,11 +45,11 @@ export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusK
       collapse(); m.once("idle", collapse);
       m.addSource("places", { type: "geojson", data: toGeo(latest.current), cluster: true, clusterRadius: 45, clusterMaxZoom: 14 });
       m.addLayer({ id: "clusters", type: "circle", source: "places", filter: ["has", "point_count"],
-        paint: { "circle-color": "#0f7a55", "circle-opacity": 0.92, "circle-radius": ["step", ["get", "point_count"], 15, 50, 20, 500, 26], "circle-stroke-width": 5, "circle-stroke-color": "rgba(15,122,85,0.22)" } });
+        paint: { "circle-color": dark ? "#24272c" : "#ffffff", "circle-radius": ["step", ["get", "point_count"], 16, 50, 20, 500, 25], "circle-stroke-width": 1, "circle-stroke-color": dark ? "#3a3e45" : "#d9dce1" } });
       m.addLayer({ id: "cluster-count", type: "symbol", source: "places", filter: ["has", "point_count"],
-        layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Noto Sans Bold"], "text-size": 12.5 }, paint: { "text-color": "#fff" } });
+        layout: { "text-field": ["get", "point_count_abbreviated"], "text-font": ["Noto Sans Bold"], "text-size": 12.5 }, paint: { "text-color": dark ? "#f2f3f5" : "#1c1f24" } });
       m.addLayer({ id: "point", type: "circle", source: "places", filter: ["!", ["has", "point_count"]],
-        paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 5, 16, 8], "circle-stroke-width": 2.5, "circle-stroke-color": "#fff",
+        paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 5, 16, 8], "circle-stroke-width": 2, "circle-stroke-color": dark ? "#16181b" : "#ffffff",
           "circle-color": ["match", ["get", "type"], "dargah", TYPE_COLOR.dargah, "idgah", TYPE_COLOR.idgah, "musalla", TYPE_COLOR.musalla, "prayer_room", TYPE_COLOR.prayer_room, TYPE_COLOR.mosque] } });
       m.on("click", "clusters", async (e) => {
         const f = e.features?.[0]; if (!f) return;
@@ -90,7 +90,7 @@ export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusK
     circ();
     if (!me) return;
     const d = document.createElement("div");
-    d.style.cssText = "width:16px;height:16px;border-radius:50%;background:#0a84ff;border:3px solid #fff;box-sizing:border-box;box-shadow:0 2px 6px rgba(0,0,0,.3)";
+    d.style.cssText = "width:18px;height:18px;border-radius:50%;background:#0a84ff;border:3px solid #fff;box-sizing:border-box;box-shadow:0 1px 4px rgba(0,0,0,.25)";
     d.title = "You are here";
     meMarker.current = new maplibregl.Marker({ element: d, anchor: "center" }).setLngLat([me[1], me[0]]).addTo(m);
     const km = radiusKm ?? 2, dLat = km / 111, dLng = km / (111 * Math.cos((me[0] * Math.PI) / 180));
