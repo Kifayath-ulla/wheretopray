@@ -41,7 +41,8 @@ export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMo
     m.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: '<a href="/about">Places: OSM (ODbL), Overture (CDLA), Wikidata, GeoNames (CC BY)</a>' }), "top-left");
     m.on("load", () => {
       // Start the credits collapsed as a small "i" so they never cover the map.
-      m.getContainer().querySelector(".maplibregl-ctrl-attrib")?.classList.remove("maplibregl-compact-show");
+      const collapse = () => m.getContainer().querySelector(".maplibregl-ctrl-attrib")?.classList.remove("maplibregl-compact-show");
+      collapse(); m.once("idle", collapse);
       m.addSource("places", { type: "geojson", data: toGeo(latest.current), cluster: true, clusterRadius: 45, clusterMaxZoom: 14 });
       m.addLayer({ id: "clusters", type: "circle", source: "places", filter: ["has", "point_count"],
         paint: { "circle-color": "#0b6e4f", "circle-opacity": 0.92, "circle-radius": ["step", ["get", "point_count"], 15, 50, 20, 500, 26], "circle-stroke-width": 5, "circle-stroke-color": "rgba(11,110,79,0.22)" } });
