@@ -3,7 +3,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import { repo } from "@/lib/data";
-import GapMap from "@/components/GapMap";
+import GapMap from "@/components/GapMapLazy";
 
 export const metadata: Metadata = { title: "Bengaluru ward gap map", description: "Which BBMP wards have the fewest mosques, dargahs and prayer rooms listed. Help fill the gaps." };
 export const revalidate = 600;

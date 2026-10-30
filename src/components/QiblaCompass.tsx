@@ -90,7 +90,7 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
   return (
     <div className="space-y-5">
       <div className="relative mx-auto" style={{ width: size, height: size }} aria-label="Qibla compass">
-        <div className={`absolute inset-0 rounded-full transition-shadow duration-500 ${aligned ? "shadow-[0_0_0_10px_var(--accent-soft),0_20px_60px_rgba(11,110,79,.35)]" : "shadow-float"}`} />
+        <div className={`absolute inset-0 rounded-full ${aligned ? "shadow-[0_0_0_10px_var(--accent-soft),0_20px_60px_rgba(11,110,79,.35)]" : "shadow-float"}`} />
         <svg viewBox="-150 -150 300 300" className="absolute inset-0 h-full w-full transition-transform duration-200 ease-out" style={{ transform: `rotate(${dialRot}deg)` }} data-testid="dial">
           <circle r="148" fill="var(--surface)" stroke={aligned ? "var(--accent)" : "var(--hairline)"} strokeWidth="2" />
           {Array.from({ length: 72 }, (_, i) => (

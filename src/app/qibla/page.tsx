@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import QiblaCompass from "@/components/QiblaCompass";
+import QiblaCompass from "@/components/QiblaLazy";
 
 export const metadata: Metadata = { title: "Qibla direction finder", description: "Live qibla compass: the great-circle direction to the Kaaba from where you are, in degrees, with distance." };
 

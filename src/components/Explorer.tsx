@@ -1,16 +1,19 @@
 "use client";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import BottomSheet from "./ui/BottomSheet";
 import { PLACE_TYPES, type Place, type PlaceType } from "@/lib/types";
 import { distanceKm } from "@/lib/geo";
 import { qiblaBearing } from "@/lib/qibla";
-import GoogleLookup from "./GoogleLookup";
+const GoogleLookup = dynamic(() => import("./GoogleLookup"), { ssr: false });
 import { IconLocate, IconSearch } from "./ui/Icons";
 import { TYPE_COLOR, TYPE_LABEL, fmtDistance } from "@/lib/typeStyle";
 
 const PlaceMap = dynamic(() => import("./PlaceMap"), { ssr: false, loading: () => <div className="h-full w-full animate-pulse bg-surface-2" /> });
 const RADII = [1, 2, 5, 10] as const;
+const MAX_LOADED = 6000;
+const ROW_H = 60;
 
 type Loc = { lat: number; lng: number; label: string };
 
@@ -28,7 +31,13 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   const merge = useCallback((more: Place[]) => {
     let changed = false;
     for (const p of more) if (!loaded.current.has(p.id)) { loaded.current.set(p.id, p); changed = true; }
-    if (changed) setPlaces([...loaded.current.values()]);
+    if (!changed) return;
+    if (loaded.current.size > MAX_LOADED) {
+      // Keep memory and map work bounded while panning across India: drop the oldest entries.
+      const keep = [...loaded.current.entries()].slice(-MAX_LOADED);
+      loaded.current = new Map(keep);
+    }
+    setPlaces([...loaded.current.values()]);
   }, []);
   const bboxTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [view, setView] = useState<[number, number, number, number] | null>(null);
@@ -52,8 +61,11 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   const [locMsg, setLocMsg] = useState("");
   const [manual, setManual] = useState("");
   const [showManual, setShowManual] = useState(false);
-  const [limit, setLimit] = useState(50);
 
+  useEffect(() => {
+    document.documentElement.classList.add("app-lock");
+    return () => document.documentElement.classList.remove("app-lock");
+  }, []);
   useEffect(() => {
     try { const s = sessionStorage.getItem("wtp-loc"); if (s) setLoc(JSON.parse(s)); } catch {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,17 +78,19 @@ export default function Explorer({ places: initial, center }: { places: Place[];
 
   const areas = useMemo(() => [...new Set(places.map((p) => p.area).filter(Boolean) as string[])].sort(), [places]);
 
+  const dq = useDeferredValue(q);
+  const hay = useMemo(() => new Map(places.map((p) => [p.id, `${p.name} ${p.name_local ?? ""} ${p.address ?? ""} ${p.area ?? ""}`.toLowerCase()])), [places]);
   const filtered = useMemo(() => {
-    const s = q.trim().toLowerCase();
+    const s = dq.trim().toLowerCase();
     let r = places.filter(
       (p) =>
-        (!s || `${p.name} ${p.name_local ?? ""} ${p.address ?? ""} ${p.area ?? ""}`.toLowerCase().includes(s)) &&
+        (!s || hay.get(p.id)!.includes(s)) &&
         (!types.length || types.includes(p.type)) && (!area || p.area === area) &&
         (!fac.women || p.women_section) && (!fac.wudu || p.wudu) && (!fac.parking || p.parking) && (!fac.wheelchair || p.wheelchair),
     ) as (Place & { _d?: number })[];
     if (me) r = r.map((p) => ({ ...p, _d: distanceKm(me.lat, me.lng, p.lat, p.lng) })).filter((p) => p._d! <= radius).sort((a, b) => a._d! - b._d!);
     return r;
-  }, [places, q, types, area, fac, me, radius]);
+  }, [places, hay, dq, types, area, fac, me, radius]);
 
   async function nearMe() {
     if (!("geolocation" in navigator)) { setShowManual(true); return setLocMsg("Location is not available in this browser. Search for your area or pincode instead."); }
@@ -115,26 +129,20 @@ export default function Explorer({ places: initial, center }: { places: Place[];
     } catch { setLocMsg("Search failed. Check your connection and try again."); }
   }
 
-  const [expanded, setExpanded] = useState(false);
+  const [snap, setSnap] = useState<"peek" | "half" | "full">("half");
   const FAC = [["women", "Women's area"], ["wudu", "Wudu"], ["parking", "Parking"], ["wheelchair", "Wheelchair"]] as const;
 
   return (
-    <div className="relative h-[calc(100dvh-56px-70px)] overflow-hidden md:h-[calc(100dvh-56px)]">
+    <div className="fixed inset-x-0 bottom-[var(--tabbar-h)] top-[var(--header-h)] overflow-hidden">
       <div className="absolute inset-0">
         <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} />
       </div>
-      <aside
-        className={`glass animate-sheet absolute inset-x-0 bottom-0 z-10 flex flex-col overflow-hidden rounded-t-[28px] border border-hairline shadow-float transition-[height] duration-500 ease-[cubic-bezier(.2,.8,.2,1)] md:inset-y-4 md:left-4 md:right-auto md:h-auto md:w-[400px] md:rounded-[28px] ${expanded ? "h-[88%]" : "h-[46%]"}`}
-        aria-label="Places"
-      >
-        <button onClick={() => setExpanded((x) => !x)} className="flex w-full justify-center pb-1 pt-2.5 md:hidden" aria-label={expanded ? "Collapse list" : "Expand list"} aria-expanded={expanded}>
-          <span className="h-1.5 w-10 rounded-full bg-ink-3/40" />
-        </button>
+      <BottomSheet snap={snap} onSnap={setSnap}>
         <div className="space-y-3 px-4 pb-3 pt-1 md:pt-4">
           <div className="flex gap-2">
             <label className="relative flex-1">
               <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-3"><IconSearch className="h-4 w-4" /></span>
-              <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setExpanded(true)} placeholder="Search mosques, areas" className="h-10 w-full pl-9 pr-3 text-[15px]" aria-label="Search" />
+              <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setSnap("full")} placeholder="Search mosques, areas" className="h-10 w-full pl-9 pr-3 text-[15px]" aria-label="Search" />
             </label>
             <button onClick={nearMe} className="btn btn-primary h-10 px-4 text-sm"><IconLocate className="h-4 w-4" />Near me</button>
           </div>
@@ -157,7 +165,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
               </div>
             </div>
           )}
-          <div className="-mx-4 flex gap-1.5 overflow-x-auto px-4 pb-0.5 [scrollbar-width:none]">
+          <div className="sheet-x -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-0.5 [scrollbar-width:none]">
             {PLACE_TYPES.map((t) => {
               const on = types.includes(t.value);
               return (
@@ -167,7 +175,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
               );
             })}
           </div>
-          <div className="-mx-4 flex items-center gap-1.5 overflow-x-auto px-4 [scrollbar-width:none]">
+          <div className="sheet-x -mx-4 flex items-center gap-1.5 overflow-x-auto px-4 [scrollbar-width:none]">
             <select value={area} onChange={(e) => setArea(e.target.value)} className="h-8 max-w-[9rem] px-2 text-xs" aria-label="Area">
               <option value="">All areas</option>
               {areas.map((a) => <option key={a}>{a}</option>)}
@@ -176,35 +184,65 @@ export default function Explorer({ places: initial, center }: { places: Place[];
               <button key={k} aria-pressed={fac[k]} onClick={() => setFac({ ...fac, [k]: !fac[k] })} className="chip">{label}</button>
             ))}
           </div>
-          <p className="eyebrow">{filtered.length.toLocaleString("en-IN")} places{me ? ` within ${radius} km` : ""}</p>
+          <div className="flex items-center justify-between">
+            <p className="eyebrow">{filtered.length.toLocaleString("en-IN")} places{me ? ` within ${radius} km` : ""}</p>
+            <Link href="/about" className="grid h-6 w-6 place-items-center rounded-full bg-surface-2 text-[12px] font-semibold text-ink-2" aria-label="About and data credits" title="About and data credits">i</Link>
+          </div>
         </div>
-        <ul className="flex-1 space-y-0.5 overflow-y-auto border-t border-hairline px-2 py-2">
-          {filtered.slice(0, limit).map((p) => {
-            const d = directionsLinks(p);
-            return (
-              <li key={p.id} className="group flex items-center gap-3 rounded-2xl px-2 py-2.5 hover:bg-surface-2/70">
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={{ background: `${TYPE_COLOR[p.type]}1f`, color: TYPE_COLOR[p.type] }} aria-hidden>
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLOR[p.type] }} />
-                </span>
-                <Link href={`/place/${p.slug}`} className="min-w-0 flex-1">
-                  <div className="truncate text-[15px] font-medium">{p.name}</div>
-                  <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
-                </Link>
-                <div className="flex shrink-0 flex-col items-end gap-1">
-                  {p._d !== undefined && <span className="text-xs font-semibold text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
-                  <span className="flex gap-1 text-[11px]">
-                    <a href={d.google} target="_blank" rel="noreferrer" className="rounded-full bg-accent-soft px-2 py-0.5 font-medium text-accent-text" aria-label={`Google Maps directions to ${p.name}`}>Google</a>
-                    <a href={d.apple} target="_blank" rel="noreferrer" className="rounded-full bg-surface-2 px-2 py-0.5 font-medium" aria-label={`Apple Maps directions to ${p.name}`}>Apple</a>
-                  </span>
-                </div>
-              </li>
-            );
-          })}
-          {me && filtered.length === 0 && <li className="p-6 text-center text-sm text-ink-2">Nothing within {radius} km. Try a bigger radius.</li>}
-          {filtered.length > limit && <li><button onClick={() => setLimit(limit + 50)} className="btn btn-secondary m-2 w-[calc(100%-1rem)] text-sm">Show more</button></li>}
-          <li><GoogleLookup bbox={view} q={q} /></li>
-        </ul>
-      </aside>
+        <VirtualList items={filtered} me={!!me} radius={radius} footer={<GoogleLookup bbox={view} q={q} />} />
+      </BottomSheet>
+    </div>
+  );
+}
+
+const Row = memo(function Row({ p }: { p: Place & { _d?: number } }) {
+  const d = directionsLinks(p);
+  return (
+    <li className="flex items-center gap-3 rounded-2xl px-2" style={{ height: ROW_H }}>
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={{ background: `${TYPE_COLOR[p.type]}1f` }} aria-hidden>
+        <span className="h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLOR[p.type] }} />
+      </span>
+      <Link href={`/place/${p.slug}`} className="min-w-0 flex-1">
+        <div className="truncate text-[15px] font-medium">{p.name}</div>
+        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
+      </Link>
+      <div className="flex shrink-0 flex-col items-end gap-1">
+        {p._d !== undefined && <span className="text-xs font-semibold text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
+        <span className="flex gap-1 text-[11px]">
+          <a href={d.google} target="_blank" rel="noreferrer" className="rounded-full bg-accent-soft px-2 py-0.5 font-medium text-accent-text" aria-label={`Google Maps directions to ${p.name}`}>Google</a>
+          <a href={d.apple} target="_blank" rel="noreferrer" className="rounded-full bg-surface-2 px-2 py-0.5 font-medium" aria-label={`Apple Maps directions to ${p.name}`}>Apple</a>
+        </span>
+      </div>
+    </li>
+  );
+});
+
+// Simple windowing: only the rows in view (plus overscan) are in the DOM.
+function VirtualList({ items, me, radius, footer }: { items: (Place & { _d?: number })[]; me: boolean; radius: number; footer: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [top, setTop] = useState(0);
+  const [h, setH] = useState(600);
+  useEffect(() => {
+    const el = ref.current; if (!el) return;
+    let raf = 0;
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; setTop(el.scrollTop); }); };
+    const ro = new ResizeObserver(() => setH(el.clientHeight));
+    ro.observe(el); setH(el.clientHeight);
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => { el.removeEventListener("scroll", onScroll); ro.disconnect(); cancelAnimationFrame(raf); };
+  }, []);
+  useEffect(() => { if (ref.current) ref.current.scrollTop = 0; setTop(0); }, [items]);
+  const start = Math.max(0, Math.floor(top / ROW_H) - 6);
+  const end = Math.min(items.length, Math.ceil((top + h) / ROW_H) + 6);
+  return (
+    <div ref={ref} className="sheet-scroll min-h-0 flex-1 overflow-y-auto border-t border-hairline px-2 pb-4" data-testid="results">
+      <ul style={{ height: items.length * ROW_H, position: "relative" }}>
+        <div style={{ transform: `translateY(${start * ROW_H}px)` }}>
+          {items.slice(start, end).map((p) => <Row key={p.id} p={p} />)}
+        </div>
+      </ul>
+      {me && items.length === 0 && <p className="p-6 text-center text-sm text-ink-2">Nothing within {radius} km. Try a bigger radius.</p>}
+      {footer}
     </div>
   );
 }

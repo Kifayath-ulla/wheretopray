@@ -31,10 +31,14 @@ export default function PlaceMap({ places, center, zoom = 11, me, radiusKm, onMo
       container: el.current,
       // OpenFreeMap: free vector tiles, no key, no limits. Attribution comes with the style.
       style: `https://tiles.openfreemap.org/styles/${dark ? "dark" : "positron"}`,
-      center, zoom, attributionControl: { compact: true },
+      center, zoom, attributionControl: false,
+      // DPR 3 phones render 2.25x more pixels than needed for a map; cap at 2. No label fade animation.
+      pixelRatio: Math.min(window.devicePixelRatio || 1, 2), fadeDuration: 0,
     });
     map.current = m;
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+    // Credits stay visible above the bottom sheet (top-left), compact "i" style.
+    m.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: '<a href="/about">Places: OSM (ODbL), Overture (CDLA), Wikidata, GeoNames (CC BY)</a>' }), "top-left");
     m.on("load", () => {
       m.addSource("places", { type: "geojson", data: toGeo(latest.current), cluster: true, clusterRadius: 45, clusterMaxZoom: 14 });
       m.addLayer({ id: "clusters", type: "circle", source: "places", filter: ["has", "point_count"],

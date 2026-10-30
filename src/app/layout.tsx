@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Header, TabBar } from "@/components/ui/Nav";
+import SiteFooter from "@/components/ui/SiteFooter";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,14 +22,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-dvh bg-canvas pb-20 text-ink antialiased md:pb-0">
+      <body className="min-h-dvh bg-canvas pb-[var(--tabbar-h)] text-ink antialiased md:pb-0">
         <Header />
         {children}
-        <footer className="mx-auto max-w-6xl px-4 py-8 text-[11px] leading-relaxed text-ink-3">
-          Data: © <a className="underline" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL);{" "}
-          <a className="underline" href="https://docs.overturemaps.org/attribution/">Overture Maps Foundation</a> Places (CDLA-Permissive-2.0);{" "}
-          <a className="underline" href="https://overturemaps.org">Overture Maps</a> (CDLA-Permissive-2.0 / ODbL); <a className="underline" href="https://www.wikidata.org">Wikidata</a> (CC0); <a className="underline" href="https://www.geonames.org">GeoNames</a> (CC BY 4.0); boundaries from <a className="underline" href="https://www.geoboundaries.org">geoBoundaries</a>; community submissions. Prayer times calculated locally. Geocoding by Nominatim.
-        </footer>
+        <SiteFooter />
         <TabBar />
       </body>
     </html>

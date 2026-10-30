@@ -5,5 +5,8 @@ export const revalidate = 60;
 
 export default async function Home() {
   const places = await repo.listPlaces("Bengaluru");
-  return <Explorer places={places} center={[77.5946, 12.9716]} />;
+  // Send only what the Explorer needs, keeping the HTML payload small.
+  const slim = places.map((p) => ({ id: p.id, slug: p.slug, name: p.name, name_local: p.name_local, type: p.type, lat: p.lat, lng: p.lng, area: p.area, city: p.city, address: p.address,
+    women_section: p.women_section, wudu: p.wudu, parking: p.parking, wheelchair: p.wheelchair })) as typeof places;
+  return <Explorer places={slim} center={[77.5946, 12.9716]} />;
 }
