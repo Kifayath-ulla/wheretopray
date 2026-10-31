@@ -10,11 +10,30 @@ export default function AdminPending() {
   const [msg, setMsg] = useState("");
   useEffect(() => { setToken(localStorage.getItem("wtp_admin") ?? ""); }, []);
   const h = () => ({ "x-admin-token": token, "content-type": "application/json" });
+  const [total, setTotal] = useState<number | null>(null);
+  const [more, setMore] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const PAGE = 500;
+  async function fetchPage(offset: number) {
+    const r = await fetch(`/api/admin/pending?limit=${PAGE}&offset=${offset}`, { headers: h() });
+    if (!r.ok) { setMsg(r.status === 401 ? "Wrong admin token" : "Load failed"); return null; }
+    return (await r.json()) as { items: Place[]; total: number | null };
+  }
   async function load() {
-    const r = await fetch("/api/admin/pending", { headers: h() });
-    if (!r.ok) { setMsg(r.status === 401 ? "Wrong admin token" : "Load failed"); return; }
+    setBusy(true); const d = await fetchPage(0); setBusy(false);
+    if (!d) return;
     localStorage.setItem("wtp_admin", token);
-    const d: Place[] = await r.json(); setItems(d); setSel(new Set()); setMsg(`${d.length} pending places`);
+    setItems(d.items); setTotal(d.total); setMore(d.items.length === PAGE); setSel(new Set());
+    setMsg(`Loaded ${d.items.length} of ${d.total ?? "?"} pending places`);
+  }
+  async function loadMore() {
+    if (!items) return;
+    setBusy(true); const d = await fetchPage(items.length); setBusy(false);
+    if (!d) return;
+    const seen = new Set(items.map((p) => p.id));
+    const next = [...items, ...d.items.filter((p) => !seen.has(p.id))];
+    setItems(next); setMore(d.items.length === PAGE);
+    setMsg(`Loaded ${next.length} of ${total ?? "?"} pending places`);
   }
   const shown = useMemo(() => (items ?? []).filter((p) => !filter || `${p.name} ${p.city} ${p.state}`.toLowerCase().includes(filter.toLowerCase())), [items, filter]);
   async function approve(ids: string[]) {
@@ -44,7 +63,7 @@ export default function AdminPending() {
         </div>
       )}
       <ul className="max-h-[70vh] divide-y overflow-auto rounded-xl border">
-        {shown.slice(0, 1000).map((p) => (
+        {shown.map((p) => (
           <li key={p.id} className="flex items-center gap-2 p-2 text-sm">
             <input type="checkbox" checked={sel.has(p.id)} onChange={() => toggle(p.id)} />
             <a className="flex-1" href={`https://www.openstreetmap.org/?mlat=${p.lat}&mlon=${p.lng}#map=18/${p.lat}/${p.lng}`} target="_blank" rel="noreferrer">
@@ -55,6 +74,9 @@ export default function AdminPending() {
           </li>
         ))}
       </ul>
+      {items && more && (
+        <button onClick={loadMore} disabled={busy} className="btn text-sm">{busy ? "Loading..." : `Load more (${items.length} of ${total ?? "?"})`}</button>
+      )}
     </div>
   );
 }

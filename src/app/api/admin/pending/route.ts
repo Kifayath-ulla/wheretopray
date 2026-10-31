@@ -13,8 +13,13 @@ const tok = (req: Request) => req.headers.get("x-admin-token") ?? "";
 
 export async function GET(req: Request) {
   if (!tok(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  const r = await rpc("admin_list_pending_places", { p_token: tok(req), p_limit: 2000 });
-  return NextResponse.json(r.data, { status: r.status });
+  const u = new URL(req.url);
+  const limit = Math.min(Math.max(parseInt(u.searchParams.get("limit") ?? "500", 10) || 500, 1), 1000);
+  const offset = Math.max(parseInt(u.searchParams.get("offset") ?? "0", 10) || 0, 0);
+  const r = await rpc("admin_list_pending_places_paged", { p_token: tok(req), p_limit: limit, p_offset: offset });
+  if (r.status !== 200) return NextResponse.json(r.data, { status: r.status });
+  const c = offset === 0 ? await rpc("admin_count_pending_places", { p_token: tok(req) }) : null;
+  return NextResponse.json({ items: r.data, offset, limit, total: c && c.status === 200 ? Number(c.data) : null });
 }
 
 export async function POST(req: Request) {
