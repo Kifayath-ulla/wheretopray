@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 
@@ -22,7 +23,7 @@ export default function GapMap({ wards }: { wards: GeoJSON.FeatureCollection | {
       m.addLayer({ id: "line", type: "line", source: "wards", paint: { "line-color": "#374151", "line-width": 0.5 } });
       m.on("click", "fill", (e) => {
         const p = e.features?.[0]?.properties as { no: string; name: string; count: number } | undefined;
-        if (p) new maplibregl.Popup().setLngLat(e.lngLat).setHTML(`<b>${p.no}. ${p.name}</b><br>${p.count} places listed<br><a href="/add" style="color:#047857;text-decoration:underline">Add one here</a>`).addTo(m);
+        if (p) new maplibregl.Popup().setLngLat(e.lngLat).setHTML(`<b>${esc(String(p.no))}. ${esc(String(p.name))}</b><br>${Number(p.count) || 0} places listed<br><a href="/add" style="color:#047857;text-decoration:underline">Add one here</a>`).addTo(m);
       });
       m.on("mouseenter", "fill", () => { m.getCanvas().style.cursor = "pointer"; });
       m.on("mouseleave", "fill", () => { m.getCanvas().style.cursor = ""; });

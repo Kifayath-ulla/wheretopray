@@ -72,7 +72,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   }, []);
   function setLoc(l: Loc | null) {
     setMe(l);
-    if (l) fetch(`/api/places?lat=${l.lat}&lng=${l.lng}&radius_km=10`).then((r) => (r.ok ? r.json() : [])).then(merge).catch(() => {});
+    if (l) fetch(`/api/places?lat=${l.lat.toFixed(2)}&lng=${l.lng.toFixed(2)}&radius_km=10`).then((r) => (r.ok ? r.json() : [])).then(merge).catch(() => {});
     try { if (l) sessionStorage.setItem("wtp-loc", JSON.stringify(l)); else sessionStorage.removeItem("wtp-loc"); } catch {}
   }
 

@@ -11,14 +11,14 @@ export default function AdminPlaces() {
   const [items, setItems] = useState<Place[] | null>(null);
   const [edit, setEdit] = useState<Place | null>(null);
   const [msg, setMsg] = useState("");
-  useEffect(() => { setToken(localStorage.getItem("wtp_admin") ?? ""); }, []);
+  useEffect(() => { setToken(sessionStorage.getItem("wtp_admin") ?? ""); }, []);
   const h = () => ({ "x-admin-token": token, "content-type": "application/json" });
 
   async function search(e?: React.FormEvent) {
     e?.preventDefault();
     const r = await fetch(`/api/admin/places?q=${encodeURIComponent(q)}`, { headers: h() });
     if (!r.ok) { setMsg(r.status === 401 ? "Wrong admin token" : "Search failed"); setItems(null); return; }
-    localStorage.setItem("wtp_admin", token); setMsg(""); setItems(await r.json());
+    sessionStorage.setItem("wtp_admin", token); setMsg(""); setItems(await r.json());
   }
   async function save() {
     if (!edit) return;

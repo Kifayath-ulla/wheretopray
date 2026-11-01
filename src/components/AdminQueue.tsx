@@ -6,12 +6,12 @@ export default function AdminQueue() {
   const [token, setToken] = useState("");
   const [items, setItems] = useState<Submission[] | null>(null);
   const [err, setErr] = useState("");
-  useEffect(() => { setToken(localStorage.getItem("wtp_admin") ?? ""); }, []);
+  useEffect(() => { setToken(sessionStorage.getItem("wtp_admin") ?? ""); }, []);
 
   async function load(tk = token) {
     const r = await fetch("/api/submissions", { headers: { "x-admin-token": tk } });
     if (!r.ok) { setErr("Wrong token"); setItems(null); return; }
-    setErr(""); localStorage.setItem("wtp_admin", tk); setItems(await r.json());
+    setErr(""); sessionStorage.setItem("wtp_admin", tk); setItems(await r.json());
   }
   async function act(id: string, status: Submission["status"]) {
     await fetch(`/api/submissions/${id}`, { method: "PATCH", headers: { "x-admin-token": token, "content-type": "application/json" }, body: JSON.stringify({ status }) });

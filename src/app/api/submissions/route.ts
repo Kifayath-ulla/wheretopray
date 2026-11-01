@@ -6,6 +6,8 @@ const MIN_FILL_MS = 3000;
 const ALLOWED = new Set(["name", "type", "address", "area", "city", "state", "country", "lat", "lng", "jumuah_time", "women_section", "wudu", "parking", "issue", "notes", "contact", "google_place_id"]);
 
 export async function POST(req: Request) {
+  if (!(req.headers.get("content-type") ?? "").includes("application/json")) return NextResponse.json({ error: "Invalid submission" }, { status: 415 });
+  if (Number(req.headers.get("content-length") ?? 0) > 20_000) return NextResponse.json({ error: "Too large" }, { status: 413 });
   const body = await req.json().catch(() => null);
   if (!body || (body.kind !== "new_place" && body.kind !== "fix") || typeof body.payload !== "object" || !body.payload)
     return NextResponse.json({ error: "Invalid submission" }, { status: 400 });

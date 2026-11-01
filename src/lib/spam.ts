@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 /** Hash the client IP with a server-side salt so raw IPs are never stored. */
 export function ipHash(req: Request) {
   const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || req.headers.get("x-real-ip") || "unknown";
-  const salt = process.env.RATE_LIMIT_SALT || process.env.ADMIN_TOKEN || "wheretopray";
+  const salt = process.env.RATE_LIMIT_SALT || process.env.ADMIN_TOKEN || process.env.NEXT_PUBLIC_SUPABASE_URL || "wheretopray-dev";
   return createHash("sha256").update(`${salt}:${ip}`).digest("hex");
 }
 

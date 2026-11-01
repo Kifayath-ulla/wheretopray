@@ -1,3 +1,9 @@
-// Simple shared-secret admin check. Set ADMIN_TOKEN in .env.local (defaults to "changeme" in dev).
-export const ADMIN_TOKEN = process.env.ADMIN_TOKEN || "changeme";
-export const isAdmin = (token: string | null | undefined) => !!token && token === ADMIN_TOKEN;
+import { createHash, timingSafeEqual } from "node:crypto";
+
+// Shared-secret admin check. ADMIN_TOKEN must be set (16+ chars); there is no default, so admin is off without it.
+const h = (s: string) => createHash("sha256").update(s).digest();
+export const isAdmin = (token: string | null | undefined) => {
+  const t = process.env.ADMIN_TOKEN;
+  if (!t || t.length < 16 || !token) return false;
+  return timingSafeEqual(h(token), h(t));
+};

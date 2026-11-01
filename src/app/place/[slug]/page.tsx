@@ -58,8 +58,8 @@ export default async function PlacePage({ params }: Props) {
           <div className="flex flex-wrap gap-2 text-sm">
             <a className="chip" href={`https://maps.apple.com/?daddr=${p.lat},${p.lng}&q=${encodeURIComponent(p.name)}`} target="_blank" rel="noreferrer">Apple Maps</a>
             <a className="chip" href={`https://www.openstreetmap.org/directions?to=${p.lat}%2C${p.lng}`} target="_blank" rel="noreferrer">OpenStreetMap</a>
-            {p.phone && <a className="chip" href={`tel:${p.phone}`}>Call</a>}
-            {p.website && <a className="chip" href={p.website} target="_blank" rel="noreferrer">Website</a>}
+            {p.phone && /^[+\d][\d\s()-]{4,20}$/.test(p.phone) && <a className="chip" href={`tel:${p.phone.replace(/[^\d+]/g, "")}`}>Call</a>}
+            {p.website && /^https?:\/\//i.test(p.website) && <a className="chip" href={p.website} target="_blank" rel="noopener noreferrer nofollow">Website</a>}
           </div>
         </div>
       </section>

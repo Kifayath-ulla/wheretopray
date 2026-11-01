@@ -40,13 +40,13 @@ export default function AdminBulk() {
   const [msg, setMsg] = useState("");
   const [status, setStatus] = useState<"pending" | "verified">("pending");
   const stop = useRef(false);
-  useEffect(() => { setToken(localStorage.getItem("wtp_admin") ?? ""); }, []);
+  useEffect(() => { setToken(sessionStorage.getItem("wtp_admin") ?? ""); }, []);
 
   async function call(action: "dedupe" | "import", payload: Row[]) {
     const r = await fetch("/api/admin/bulk", { method: "POST", headers: { "x-admin-token": token, "content-type": "application/json" }, body: JSON.stringify({ action, status, rows: payload.map(({ name, type, area, city, lat, lng }) => ({ name, type, area, city, lat, lng })) }) });
     const j = await r.json().catch(() => ({}));
     if (!r.ok) throw new Error(r.status === 401 ? "Wrong admin token" : j.error ?? "Failed");
-    localStorage.setItem("wtp_admin", token);
+    sessionStorage.setItem("wtp_admin", token);
     return j;
   }
 

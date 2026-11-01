@@ -8,12 +8,12 @@ export default function AdminPending() {
   const [sel, setSel] = useState<Set<string>>(new Set());
   const [filter, setFilter] = useState("");
   const [msg, setMsg] = useState("");
-  useEffect(() => { setToken(localStorage.getItem("wtp_admin") ?? ""); }, []);
+  useEffect(() => { setToken(sessionStorage.getItem("wtp_admin") ?? ""); }, []);
   const h = () => ({ "x-admin-token": token, "content-type": "application/json" });
   async function load() {
     const r = await fetch("/api/admin/pending", { headers: h() });
     if (!r.ok) { setMsg(r.status === 401 ? "Wrong admin token" : "Load failed"); return; }
-    localStorage.setItem("wtp_admin", token);
+    sessionStorage.setItem("wtp_admin", token);
     const d: Place[] = await r.json(); setItems(d); setSel(new Set()); setMsg(`${d.length} pending places`);
   }
   const shown = useMemo(() => (items ?? []).filter((p) => !filter || `${p.name} ${p.city} ${p.state}`.toLowerCase().includes(filter.toLowerCase())), [items, filter]);

@@ -22,6 +22,7 @@ export async function POST(req: Request) {
   const token = req.headers.get("x-admin-token") ?? "";
   if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!URL_ || !KEY) return NextResponse.json({ error: "Supabase not configured" }, { status: 501 });
+  if (Number(req.headers.get("content-length") ?? 0) > 2_000_000) return NextResponse.json({ error: "Too large" }, { status: 413 });
   const body = await req.json().catch(() => null);
   const rows = clean(body?.rows);
   const action = body?.action, status = body?.status ?? "pending";
