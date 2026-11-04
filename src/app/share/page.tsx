@@ -3,7 +3,7 @@ import QRCode from "qrcode";
 import ShareButtons from "@/components/ShareButtons";
 
 export const metadata: Metadata = { title: "Share wheretopray", description: "Help list every masjid, dargah and prayer room in Bengaluru." };
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.netlify.app";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.in";
 const TEXT = `Assalamu alaikum. wheretopray is a free map of every masjid, dargah, idgah and prayer room in Bengaluru and across India, with qibla, distance and directions.
 
 Is your masjid missing? Add it in 30 seconds from your phone while you are there:

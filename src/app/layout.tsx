@@ -5,7 +5,7 @@ import "./globals.css";
 import { THEME_SCRIPT } from "@/lib/theme";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.netlify.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.in"),
   title: { default: "wheretopray - find a mosque, dargah or prayer room near you", template: "%s | wheretopray" },
   description: "Find mosques, masjids, dargahs, idgahs, musallas and prayer rooms near you, with qibla and prayer times.",
   manifest: "/manifest.webmanifest",

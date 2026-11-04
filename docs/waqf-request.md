@@ -7,7 +7,7 @@
 
 Assalamu alaikum, respected Sir/Madam,
 
-I am Kifayath Ulla, a resident of Bengaluru. I am building wheretopray (https://wheretopray.vercel.app), a free, non-commercial public directory that helps people find the nearest masjid, dargah, idgah or prayer room, with directions, qibla direction and prayer times. It has no advertising and no charges.
+I am Kifayath Ulla, a resident of Bengaluru. I am building wheretopray (https://wheretopray.in), a free, non-commercial public directory that helps people find the nearest masjid, dargah, idgah or prayer room, with directions, qibla direction and prayer times. It has no advertising and no charges.
 
 Public map sources list only about 560 places in Bengaluru, while the Board's records hold far more. To make the directory accurate, I request the following for Bengaluru Urban and Bengaluru Rural districts:
 
