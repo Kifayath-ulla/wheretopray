@@ -44,8 +44,8 @@ export default function AdminPlaces() {
   return (
     <div className="space-y-3">
       <form onSubmit={search} className="flex flex-wrap gap-2">
-        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Admin token" className="h-11 w-40 px-4 text-[15px]" />
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search name, area, city or id" className="h-11 flex-1 px-4 text-[15px]" />
+        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} aria-label="Admin token" placeholder="Admin token" className="h-11 w-40 px-4 text-[15px]" />
+        <input value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search name, area, city or id" placeholder="Search name, area, city or id" className="h-11 flex-1 px-4 text-[15px]" />
         <button className="btn btn-primary text-sm">Search places</button>
       </form>
       {msg && <p className="text-sm text-amber-700">{msg}</p>}

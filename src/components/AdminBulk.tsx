@@ -106,10 +106,10 @@ export default function AdminBulk() {
         <a className="font-medium text-accent-text" href="/bulk-template.csv" download>Download template</a>
       </p>
       <div className="flex flex-wrap gap-2">
-        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Admin token" className="h-11 w-44 px-4 text-[15px]" />
+        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} aria-label="Admin token" placeholder="Admin token" className="h-11 w-44 px-4 text-[15px]" />
         <label className="btn btn-secondary cursor-pointer">Upload CSV<input type="file" accept=".csv,text/csv,.tsv,.txt" className="hidden" onChange={async (e) => { const f = e.target.files?.[0]; if (f) setText(await f.text()); }} /></label>
       </div>
-      <textarea value={text} onChange={(e) => setText(e.target.value)} rows={6} placeholder={"Masjid-e-Noor,mosque,Shivajinagar,Bengaluru\nTech Park Prayer Room,prayer_room,Whitefield,Bengaluru,12.98,77.72"} className="w-full p-4 font-mono text-sm" />
+      <textarea aria-label="CSV rows" value={text} onChange={(e) => setText(e.target.value)} rows={6} placeholder={"Masjid-e-Noor,mosque,Shivajinagar,Bengaluru\nTech Park Prayer Room,prayer_room,Whitefield,Bengaluru,12.98,77.72"} className="w-full p-4 font-mono text-sm" />
       <div className="flex flex-wrap items-center gap-2">
         <button className="btn btn-tinted" disabled={!!busy || !text.trim()} onClick={preview}>Preview</button>
         {busy && <><span className="text-sm text-ink-2">{busy}</span><button className="text-sm text-red-600" onClick={() => { stop.current = true; }}>Stop</button></>}

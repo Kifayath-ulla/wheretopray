@@ -128,7 +128,7 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
           </p>
           <div className="flex justify-center"><button onClick={locate} className="btn btn-tinted">Use my location</button></div>
           <form onSubmit={search} className="flex gap-2">
-            <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Or enter area, city or pincode" className="h-11 flex-1 px-4 text-[15px]" />
+            <input value={manual} onChange={(e) => setManual(e.target.value)} aria-label="Or enter area, city or pincode" placeholder="Or enter area, city or pincode" className="h-11 flex-1 px-4 text-[15px]" />
             <button className="btn btn-secondary">Set</button>
           </form>
           {msg && <p className="text-center text-xs text-amber-700" role="status">{msg}</p>}

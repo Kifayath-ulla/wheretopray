@@ -50,9 +50,9 @@ export default function AdminPending() {
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap gap-2">
-        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} placeholder="Admin token" className="h-11 w-40 px-4 text-[15px]" />
+        <input type="password" value={token} onChange={(e) => setToken(e.target.value)} aria-label="Admin token" placeholder="Admin token" className="h-11 w-40 px-4 text-[15px]" />
         <button onClick={load} className="btn btn-primary text-sm">Load pending</button>
-        {items && <input value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Filter by name, city or state" className="h-11 flex-1 px-4 text-[15px]" />}
+        {items && <input value={filter} onChange={(e) => setFilter(e.target.value)} aria-label="Filter by name, city or state" placeholder="Filter by name, city or state" className="h-11 flex-1 px-4 text-[15px]" />}
       </div>
       {msg && <p className="text-sm text-amber-700">{msg}</p>}
       {items && items.length > 0 && (

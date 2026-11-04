@@ -21,7 +21,7 @@ export default async function Share() {
     <main className="mx-auto max-w-2xl space-y-5 px-4 pb-10 pt-8">
       <h1 className="page-title">Share with your masjid committee</h1>
       <p className="text-sm text-gray-600">Send this on WhatsApp, or print the QR code and put it on the masjid notice board.</p>
-      <pre className="card whitespace-pre-wrap p-5 text-sm leading-relaxed">{TEXT}</pre>
+      <pre className="card whitespace-pre-wrap break-words [overflow-wrap:anywhere] p-5 text-sm leading-relaxed">{TEXT}</pre>
       <ShareButtons text={TEXT} />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 print:grid-cols-2">
         <figure className="card p-5 text-center">
