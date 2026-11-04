@@ -41,7 +41,7 @@ export default function PlaceSpot({ lat, lng, name, quality, color }: { lat: num
     <section className="card overflow-hidden" data-testid="place-location">
       <div ref={el} className="h-64 w-full bg-surface-2" />
       <div className="space-y-3 p-4 text-sm">
-        {note && <p className="rounded-xl bg-amber-500/10 px-3 py-2 text-xs text-amber-800 dark:text-amber-300" data-testid="approx-note"><b>{quality === "approximate" ? "Approximate location." : "Listing pin."}</b> {note.replace(/^Approximate location\. /, "")} If you know the exact spot, use Report a fix below.</p>}
+        {note && <p className="rounded-xl bg-amber-500/10 px-3 py-2 text-xs text-amber-800 dark:text-amber-300" data-testid="approx-note"><b>{quality === "approximate" ? "Approximate location." : "Listing pin."}</b> {note.replace(/^(Approximate location|May be a few doors off)\. /, quality === "listing" ? "May be a few doors off. " : "")} If you know the exact spot, use Report a fix below.</p>}
         <div className="flex items-center justify-between gap-2">
           <div><div className="text-xs text-ink-3">Exact coordinates</div><code className="font-mono text-[13px]" data-testid="coords">{coords}</code></div>
           <button onClick={copy} className="chip">{copied ? "Copied" : "Copy"}</button>

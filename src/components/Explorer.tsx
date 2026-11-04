@@ -8,7 +8,7 @@ import { distanceKm } from "@/lib/geo";
 import { qiblaBearing } from "@/lib/qibla";
 const GoogleLookup = dynamic(() => import("./GoogleLookup"), { ssr: false });
 import { IconLocate, IconSearch } from "./ui/Icons";
-import { mapLinks, QUALITY_NOTE } from "@/lib/maplinks";
+import { mapLinks, QUALITY_NOTE, SHORT_NOTE } from "@/lib/maplinks";
 import { TYPE_COLOR, TYPE_LABEL, fmtDistance } from "@/lib/typeStyle";
 
 const PlaceMap = dynamic(() => import("./PlaceMap"), { ssr: false, loading: () => <div className="h-full w-full animate-pulse bg-surface-2" /> });
@@ -213,7 +213,7 @@ function Selected({ p, onClose }: { p: Place; onClose: () => void }) {
         <div className="min-w-0"><div className="flex items-center gap-1.5 text-xs font-medium text-ink-2"><span className="inline-block h-2 w-2 rounded-full" style={{ background: TYPE_COLOR[p.type] }} aria-hidden="true" />{TYPE_LABEL[p.type]}</div><div className="truncate text-[15px] font-semibold">{p.name}</div><div className="truncate text-xs text-ink-2">{[p.area, p.city].filter(Boolean).join(", ")} · <span className="font-mono">{p.lat.toFixed(5)}, {p.lng.toFixed(5)}</span></div></div>
         <button onClick={onClose} className="text-xs font-semibold text-accent-text" aria-label="Close selected place">Close</button>
       </div>
-      {note && p.location_quality === "approximate" && <p className="mt-2 text-[11px] text-amber-700 dark:text-amber-300">{note}</p>}
+      {note && (p.location_quality === "approximate" || p.location_quality === "listing") && <p className="mt-2 text-[11px] text-amber-700 dark:text-amber-300">{note}</p>}
       <div className="mt-2 flex gap-2 text-xs">
         <a href={l.googleDir} target="_blank" rel="noreferrer" className="btn btn-primary h-8 px-3 text-xs">Directions</a>
         <a href={l.appleDir} target="_blank" rel="noreferrer" className="chip">Apple</a>
@@ -232,7 +232,7 @@ const Row = memo(function Row({ p, onSelect, active }: { p: Place & { _d?: numbe
       </span>
       <button type="button" onClick={() => onSelect(p.slug)} className="min-w-0 flex-1 text-left" aria-label={`Show ${p.name} on the map`} data-slug={p.slug}>
         <div className="truncate text-[15px] font-medium">{p.name}</div>
-        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}{p.location_quality === "approximate" ? " · approx. location" : ""}</div>
+        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}{p.location_quality && SHORT_NOTE[p.location_quality] ? ` · ${SHORT_NOTE[p.location_quality]}` : ""}</div>
       </button>
       <div className="flex shrink-0 flex-col items-end gap-1">
         {p._d !== undefined && <span className="text-xs font-semibold text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
