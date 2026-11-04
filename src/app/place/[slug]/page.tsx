@@ -8,6 +8,8 @@ import { compassPoint, qiblaBearing, KAABA } from "@/lib/qibla";
 import { distanceKm } from "@/lib/geo";
 import { SOURCES } from "@/lib/sources";
 import { TYPE_COLOR, TYPE_LABEL } from "@/lib/typeStyle";
+import PlaceSpot from "@/components/PlaceSpotLazy";
+import { mapLinks } from "@/lib/maplinks";
 import DistanceFromMe from "@/components/DistanceFromMe";
 import { IconBack, IconChevron, IconCompass, IconDirections } from "@/components/ui/Icons";
 
@@ -35,6 +37,7 @@ export default async function PlacePage({ params }: Props) {
   const srcIds = p.source_ids ?? { [p.source]: [p.source_id] };
   const kaabaKm = Math.round(distanceKm(p.lat, p.lng, KAABA.lat, KAABA.lng));
   const color = TYPE_COLOR[p.type];
+  const ml = mapLinks(p);
   return (
     <main className="mx-auto max-w-2xl space-y-5 px-4 pb-10 pt-4">
       <Link href="/" className="inline-flex items-center gap-1 text-sm font-medium text-accent-text"><IconBack /> Explore</Link>
@@ -52,19 +55,21 @@ export default async function PlacePage({ params }: Props) {
             {p.address && <p className="mt-1 text-sm text-ink-3">{p.address}</p>}
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <a className="btn btn-primary py-3.5 text-base" href={`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`} target="_blank" rel="noreferrer"><IconDirections /> Directions</a>
+            <a className="btn btn-primary py-3.5 text-base" href={ml.googleDir} target="_blank" rel="noreferrer"><IconDirections /> Directions</a>
             <Link className="btn btn-tinted py-3.5 text-base" href="/qibla"><IconCompass className="h-5 w-5" /> Qibla {qb.toFixed(0)}°</Link>
           </div>
           <div className="flex flex-wrap gap-2 text-sm">
-            <a className="chip" href={`https://maps.apple.com/?daddr=${p.lat},${p.lng}&q=${encodeURIComponent(p.name)}`} target="_blank" rel="noreferrer">Apple Maps</a>
-            <a className="chip" href={`https://www.openstreetmap.org/directions?to=${p.lat}%2C${p.lng}`} target="_blank" rel="noreferrer">OpenStreetMap</a>
+            <a className="chip" href={ml.appleDir} target="_blank" rel="noreferrer">Apple Maps</a>
+            <a className="chip" href={ml.osmDir} target="_blank" rel="noreferrer">OpenStreetMap</a>
             {p.phone && /^[+\d][\d\s()-]{4,20}$/.test(p.phone) && <a className="chip" href={`tel:${p.phone.replace(/[^\d+]/g, "")}`}>Call</a>}
             {p.website && /^https?:\/\//i.test(p.website) && <a className="chip" href={p.website} target="_blank" rel="noopener noreferrer nofollow">Website</a>}
           </div>
         </div>
       </section>
 
-      <PrayerTimes lat={p.lat} lng={p.lng} />
+      <PlaceSpot lat={p.lat} lng={p.lng} name={p.name} quality={p.location_quality} color={color} />
+
+      <PrayerTimes lat={p.lat} lng={p.lng} jamaat={p.iqama_times} jumuah={p.jumuah_time} />
 
       <section className="card flex items-center gap-5 p-5" data-testid="qibla">
         <svg width="76" height="76" viewBox="-38 -38 76 76" aria-label={`Prayer direction ${qb.toFixed(0)} degrees`} className="shrink-0">
@@ -90,7 +95,6 @@ export default async function PlacePage({ params }: Props) {
             <div key={k} className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">{k}</dt><dd className={`font-medium ${v === true ? "text-accent-text" : ""}`}>{yesNo(v)}</dd></div>
           ))}
           {p.denomination && <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Denomination</dt><dd className="font-medium">{p.denomination}</dd></div>}
-          {p.jumuah_time && <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Jumu&apos;ah</dt><dd className="font-medium">{p.jumuah_time}</dd></div>}
         </dl>
       </section>
 

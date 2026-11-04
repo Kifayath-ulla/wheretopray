@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { PLACE_TYPES, type Place } from "@/lib/types";
 
+const JAMAAT = ["fajr", "zuhr", "asr", "maghrib", "isha", "jumuah"] as const;
 const TEXT = ["name", "address", "area", "city", "state", "country", "jumuah_time"] as const;
 const BOOL = ["women_section", "wudu", "parking", "wheelchair"] as const;
 
@@ -22,7 +23,11 @@ export default function AdminPlaces() {
   }
   async function save() {
     if (!edit) return;
-    const patch: Record<string, unknown> = { type: edit.type, status: edit.status, lat: Number(edit.lat), lng: Number(edit.lng) };
+    const orig = items?.find((x) => x.id === edit.id);
+    const patch: Record<string, unknown> = { type: edit.type, status: edit.status };
+    // Only send coordinates when they changed: a changed pin is marked as an exact location.
+    if (!orig || Number(edit.lat) !== orig.lat || Number(edit.lng) !== orig.lng) { patch.lat = Number(edit.lat); patch.lng = Number(edit.lng); }
+    patch.iqama_times = Object.fromEntries(JAMAAT.map((k) => [k, edit.iqama_times?.[k] ?? ""]).filter(([, v]) => v));
     for (const k of TEXT) patch[k] = edit[k] ?? null;
     for (const k of BOOL) patch[k] = edit[k] ?? null;
     const r = await fetch("/api/admin/places", { method: "PATCH", headers: h(), body: JSON.stringify({ id: edit.id, patch }) });
@@ -51,6 +56,7 @@ export default function AdminPlaces() {
             {edit?.id === p.id ? (
               <div className="space-y-2">
                 {TEXT.map((k) => <label key={k} className="block text-xs text-gray-500">{k}<input className={f} value={(edit[k] as string) ?? ""} onChange={(e) => setEdit({ ...edit, [k]: e.target.value })} /></label>)}
+                <div className="grid grid-cols-3 gap-2">{JAMAAT.map((k) => <label key={k} className="text-xs text-gray-500">jamaat {k}<input type="time" className={f} value={edit.iqama_times?.[k] ?? ""} onChange={(e) => setEdit({ ...edit, iqama_times: { ...(edit.iqama_times ?? {}), [k]: e.target.value } })} /></label>)}</div>
                 <div className="flex gap-2">
                   <label className="text-xs text-gray-500">lat<input className={f} value={edit.lat} onChange={(e) => setEdit({ ...edit, lat: e.target.value as unknown as number })} /></label>
                   <label className="text-xs text-gray-500">lng<input className={f} value={edit.lng} onChange={(e) => setEdit({ ...edit, lng: e.target.value as unknown as number })} /></label>
