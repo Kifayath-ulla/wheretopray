@@ -6,7 +6,7 @@ import { PLACE_TYPES } from "@/lib/types";
 const TS_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 declare global { interface Window { turnstile?: { render: (el: HTMLElement, o: Record<string, unknown>) => string; reset: (id?: string) => void } } }
 
-export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId }: { kind: "new_place" | "fix"; placeId?: string; placeName?: string; googlePlaceId?: string }) {
+export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId, prefill }: { kind: "new_place" | "fix"; placeId?: string; placeName?: string; googlePlaceId?: string; prefill?: Record<string, string> }) {
   const [state, setState] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [err, setErr] = useState("");
   const [loc, setLoc] = useState({ lat: "", lng: "", city: "", state: "", country: "IN", area: "" });
@@ -105,7 +105,7 @@ export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId
       ) : (
         <>
           <p className="text-sm text-gray-600">Reporting a fix for <b>{placeName}</b></p>
-          <select name="issue" className={field}>
+          <select name="issue" className={field} defaultValue={prefill ? "Timings" : undefined}>
             <option>Wrong name</option><option>Wrong location</option><option>Wrong type</option><option>Timings</option><option>Facilities</option><option>Permanently closed</option><option>Other</option>
           </select>
           <input name="name" maxLength={150} placeholder="Corrected name (optional)" className={field} />
@@ -115,14 +115,14 @@ export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId
             <legend className="px-1 text-xs font-medium text-ink-2">Jamaat times here (optional, only if you know them)</legend>
             <div className="grid grid-cols-3 gap-2">
               {(["fajr", "zuhr", "asr", "maghrib", "isha"] as const).map((k) => (
-                <label key={k} className="text-xs capitalize text-ink-2">{k}<input name={`jamaat_${k}`} type="time" className="mt-0.5 h-9 w-full px-2 text-sm" /></label>
+                <label key={k} className="text-xs capitalize text-ink-2">{k}<input name={`jamaat_${k}`} type="time" defaultValue={prefill?.[k] ?? ""} className="mt-0.5 h-9 w-full px-2 text-sm" /></label>
               ))}
-              <label className="text-xs text-ink-2">Jumu&apos;ah<input name="jumuah_time" type="time" className="mt-0.5 h-9 w-full px-2 text-sm" /></label>
+              <label className="text-xs text-ink-2">Jumu&apos;ah<input name="jumuah_time" type="time" defaultValue={prefill?.jumuah ?? ""} className="mt-0.5 h-9 w-full px-2 text-sm" /></label>
             </div>
           </fieldset>
         </>
       )}
-      <textarea name="notes" maxLength={1000} placeholder={kind === "fix" ? "What should be corrected? *" : "Notes (iqama times, facilities, who runs it)"} required={kind === "fix"} className={field} rows={3} />
+      <textarea name="notes" maxLength={1000} placeholder={kind === "fix" ? "What should be corrected? *" : "Notes (iqama times, facilities, who runs it)"} required={kind === "fix"} defaultValue={prefill ? "Jamaat times have changed: " : undefined} className={field} rows={3} />
       <input name="contact" type="email" maxLength={120} placeholder="Your email (optional)" className={field} />
       {TS_KEY && <div ref={tsEl} />}
       <button disabled={state === "sending"} className="rounded-lg bg-emerald-700 px-4 py-2 text-sm font-medium text-white disabled:opacity-50">{state === "sending" ? "Sending..." : "Submit"}</button>

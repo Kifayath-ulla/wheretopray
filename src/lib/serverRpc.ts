@@ -8,5 +8,6 @@ export async function serverRpc<T>(fn: string, args: Record<string, unknown>): P
     body: JSON.stringify({ p_token: process.env.ADMIN_TOKEN ?? "", ...args }),
   });
   if (!r.ok) throw new Error(`rpc ${fn} ${r.status}`);
-  return (await r.json()) as T;
+  const t = await r.text();
+  return (t ? JSON.parse(t) : null) as T;
 }
