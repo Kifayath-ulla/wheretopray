@@ -6,9 +6,18 @@ export function clientIp(req: Request) {
     || (req.headers.get("x-forwarded-for") ?? "").split(",").map((s) => s.trim()).filter(Boolean).pop() || "unknown";
 }
 
+/** IPv6 clients can rotate addresses inside their allocation, so rate limits key on the /48 prefix. */
+export function ipBucket(ip: string) {
+  if (!ip.includes(":")) return ip;
+  const [head] = ip.split("%");
+  const parts = head.split("::")[0].split(":");
+  const full = head.includes("::") ? parts : head.split(":");
+  return full.slice(0, 3).map((x) => x || "0").join(":") + "::/48";
+}
+
 /** Hash the client IP with a server-side salt so raw IPs are never stored. */
 export function ipHash(req: Request) {
-  const ip = clientIp(req);
+  const ip = ipBucket(clientIp(req));
   const salt = process.env.RATE_LIMIT_SALT || process.env.ADMIN_TOKEN || process.env.NEXT_PUBLIC_SUPABASE_URL || "wheretopray-dev";
   return createHash("sha256").update(`${salt}:${ip}`).digest("hex");
 }
