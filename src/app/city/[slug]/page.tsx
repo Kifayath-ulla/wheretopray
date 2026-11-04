@@ -36,7 +36,7 @@ export default async function City({ params }: Props) {
   };
   return (
     <main className="mx-auto max-w-3xl px-4 pb-10 pt-8">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <p className="text-xs text-gray-500"><Link href="/directory" className="underline">Directory</Link> / {c.state}</p>
       <h1 className="page-title">Mosques, dargahs and prayer rooms in {c.city}</h1>
       <p className="mt-2 text-gray-600">{places.length} places listed. {PLACE_TYPES.map((t) => [t, places.filter((p) => p.type === t.value).length] as const).filter(([, n]) => n).map(([t, n]) => `${n} ${t.label.toLowerCase()}`).join(", ")}.</p>

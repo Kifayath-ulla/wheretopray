@@ -25,7 +25,7 @@ export default async function Bengaluru() {
   };
   return (
     <main className="mx-auto max-w-3xl px-4 pb-10 pt-8">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <h1 className="page-title">Mosques, dargahs and prayer rooms in Bengaluru</h1>
       <p className="mt-2 text-gray-600">{places.length} places listed. {PLACE_TYPES.map((t) => `${places.filter((p) => p.type === t.value).length} ${t.label.toLowerCase()}`).join(", ")}.</p>
       <p className="mt-1 text-sm"><Link href="/" className="font-medium text-accent-text hover:underline">Open the map</Link> - missing a place? <Link href="/submit" className="font-medium text-accent-text hover:underline">Add it</Link>.</p>
