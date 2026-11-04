@@ -17,6 +17,12 @@ export default function AdminQueue() {
     await fetch(`/api/submissions/${id}`, { method: "PATCH", headers: { "x-admin-token": token, "content-type": "application/json" }, body: JSON.stringify({ status }) });
     load();
   }
+  async function viewPhoto(path: string) {
+    const r = await fetch(`/api/admin/timetable/${encodeURIComponent(path)}`, { headers: { "x-admin-token": token } });
+    if (!r.ok) { setErr("Could not load photo"); return; }
+    window.open(URL.createObjectURL(await r.blob()), "_blank", "noopener");
+  }
+  const title = (s: Submission) => s.kind === "timetable" ? `Timetable for ${s.place_id ?? String(s.payload.place_name ?? "")}` : s.kind === "fix" ? `Fix for ${s.place_id}` : `New: ${String(s.payload.name ?? "")}`;
   return (
     <div className="space-y-4">
       <div className="flex gap-2">
@@ -27,8 +33,15 @@ export default function AdminQueue() {
       {items && items.length === 0 && <p className="text-sm text-gray-500">Queue is empty.</p>}
       {items?.map((s) => (
         <div key={s.id} className="card p-4 text-sm">
-          <div className="flex justify-between"><b>{s.kind === "fix" ? `Fix for ${s.place_id}` : `New: ${String(s.payload.name ?? "")}`}</b><span className="text-xs text-gray-600">{s.status}</span></div>
+          <div className="flex justify-between"><b>{title(s)}</b><span className="text-xs text-gray-600">{s.status}</span></div>
           <pre className="mt-2 overflow-x-auto whitespace-pre-wrap text-xs text-gray-700">{JSON.stringify(s.payload, null, 2)}</pre>
+          {s.kind === "timetable" && (
+            <div className="mt-2 flex flex-wrap gap-2 text-sm">
+              {typeof s.payload.link === "string" && /^https?:\/\//.test(s.payload.link) && <a className="chip" href={s.payload.link} target="_blank" rel="noopener noreferrer nofollow">Open link</a>}
+              {typeof s.payload.photo_path === "string" && <button className="chip" onClick={() => viewPhoto(String(s.payload.photo_path))}>View photo</button>}
+              <span className="text-xs text-ink-3">Copy the times in with Edit places below, then approve.</span>
+            </div>
+          )}
           <div className="mt-2 flex gap-2">
             <button onClick={() => act(s.id, "approved")} className="btn btn-primary py-1.5 text-sm">Approve</button>
             <button onClick={() => act(s.id, "rejected")} className="btn btn-secondary py-1.5 text-sm">Reject</button>

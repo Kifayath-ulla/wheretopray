@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { repo } from "@/lib/data";
 import PrayerTimes from "@/components/PrayerTimes";
 import SubmissionForm from "@/components/SubmissionForm";
+import JamaatConfirm from "@/components/JamaatConfirm";
+import TimetableShare from "@/components/TimetableShare";
 import { compassPoint, qiblaBearing, KAABA } from "@/lib/qibla";
 import { distanceKm } from "@/lib/geo";
 import { SOURCES } from "@/lib/sources";
@@ -38,6 +40,10 @@ export default async function PlacePage({ params }: Props) {
   const kaabaKm = Math.round(distanceKm(p.lat, p.lng, KAABA.lat, KAABA.lng));
   const color = TYPE_COLOR[p.type];
   const ml = mapLinks(p);
+  const HM = /^([01]?\d|2[0-3]):[0-5]\d$/;
+  const prefill: Record<string, string> = Object.fromEntries(Object.entries(p.iqama_times ?? {}).filter(([, v]) => HM.test(v)).map(([k, v]) => [k, v.padStart(5, "0")]));
+  if (!prefill.jumuah && p.jumuah_time && HM.test(p.jumuah_time)) prefill.jumuah = p.jumuah_time.padStart(5, "0");
+  const hasJamaat = !!(p.jumuah_time || (p.iqama_times && Object.keys(p.iqama_times).length));
   return (
     <main className="mx-auto max-w-2xl space-y-5 px-4 pb-10 pt-4">
       <Link href="/" className="inline-flex items-center gap-1 text-sm font-medium text-accent-text"><IconBack /> Explore</Link>
@@ -70,6 +76,12 @@ export default async function PlacePage({ params }: Props) {
       <PlaceSpot lat={p.lat} lng={p.lng} name={p.name} quality={p.location_quality} color={color} />
 
       <PrayerTimes lat={p.lat} lng={p.lng} jamaat={p.iqama_times} jumuah={p.jumuah_time} />
+      {hasJamaat && <JamaatConfirm placeId={p.id} placeName={p.name} confirmedAt={p.jamaat_confirmed_at} prefill={prefill} />}
+
+      <details className="card group p-5">
+        <summary className="flex cursor-pointer items-center justify-between font-semibold">Share the masjid timetable <span className="text-ink-3 transition-transform group-open:rotate-90"><IconChevron /></span></summary>
+        <div className="mt-4"><TimetableShare placeId={p.id} placeName={p.name} /></div>
+      </details>
 
       <section className="card flex items-center gap-5 p-5" data-testid="qibla">
         <svg width="76" height="76" viewBox="-38 -38 76 76" aria-label={`Prayer direction ${qb.toFixed(0)} degrees`} className="shrink-0">
