@@ -45,7 +45,7 @@ export default async function PlacePage({ params }: Props) {
         <div className="h-1.5" style={{ background: color }} />
         <div className="space-y-4 p-6">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="chip" style={{ background: `${color}1f`, color }}>{TYPE_LABEL[p.type]}</span>
+            <span className="chip gap-1.5"><span className="inline-block h-2 w-2 rounded-full" style={{ background: color }} aria-hidden="true" />{TYPE_LABEL[p.type]}</span>
             <DistanceFromMe lat={p.lat} lng={p.lng} />
           </div>
           <div>
