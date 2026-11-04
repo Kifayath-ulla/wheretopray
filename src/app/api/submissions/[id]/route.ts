@@ -1,8 +1,9 @@
+import { withAdmin } from "@/lib/adminGuard";
 import { NextResponse } from "next/server";
 import { refreshPlaces } from "@/lib/revalidate";
 import { repo } from "@/lib/data";
 
-export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
+async function PATCH_(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { status } = (await req.json().catch(() => ({}))) as { status?: string };
   if (!/^[0-9a-f-]{36}$/i.test(id)) return NextResponse.json({ error: "Bad id" }, { status: 400 });
@@ -12,3 +13,5 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   if (s) refreshPlaces();
   return s ? NextResponse.json(s) : NextResponse.json({ error: "Not found" }, { status: 404 });
 }
+
+export const PATCH = (req: Request, ctx: { params: Promise<{ id: string }> }) => withAdmin(req, () => PATCH_(req, ctx));

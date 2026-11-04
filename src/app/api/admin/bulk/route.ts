@@ -1,3 +1,4 @@
+import { withAdmin } from "@/lib/adminGuard";
 import { NextResponse } from "next/server";
 import { refreshPlaces } from "@/lib/revalidate";
 
@@ -18,7 +19,7 @@ function clean(rows: unknown): Row[] | null {
   return out;
 }
 
-export async function POST(req: Request) {
+async function POST_(req: Request) {
   const token = req.headers.get("x-admin-token") ?? "";
   if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!URL_ || !KEY) return NextResponse.json({ error: "Supabase not configured" }, { status: 501 });
@@ -39,3 +40,5 @@ export async function POST(req: Request) {
   if (action === "import") { refreshPlaces(); return NextResponse.json({ imported: data }); }
   return NextResponse.json({ matches: data });
 }
+
+export const POST = (req: Request) => withAdmin(req, () => POST_(req));

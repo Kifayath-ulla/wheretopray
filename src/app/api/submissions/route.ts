@@ -1,3 +1,4 @@
+import { withAdmin } from "@/lib/adminGuard";
 import { NextResponse } from "next/server";
 import { repo, RateLimitError } from "@/lib/data";
 import { ipHash, validatePayload, verifyTurnstile } from "@/lib/spam";
@@ -37,8 +38,10 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: Request) {
+async function GET_(req: Request) {
   const list = await repo.listSubmissions(req.headers.get("x-admin-token") ?? "");
   if (!list) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   return NextResponse.json(list);
 }
+
+export const GET = (req: Request) => withAdmin(req, () => GET_(req));

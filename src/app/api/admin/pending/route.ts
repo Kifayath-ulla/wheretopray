@@ -1,3 +1,4 @@
+import { withAdmin } from "@/lib/adminGuard";
 import { NextResponse } from "next/server";
 import { refreshPlaces } from "@/lib/revalidate";
 
@@ -11,7 +12,7 @@ async function rpc(fn: string, args: Record<string, unknown>) {
 }
 const tok = (req: Request) => req.headers.get("x-admin-token") ?? "";
 
-export async function GET(req: Request) {
+async function GET_(req: Request) {
   if (!tok(req)) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const u = new URL(req.url);
   const limit = Math.min(Math.max(parseInt(u.searchParams.get("limit") ?? "500", 10) || 500, 1), 1000);
@@ -22,7 +23,7 @@ export async function GET(req: Request) {
   return NextResponse.json({ items: r.data, offset, limit, total: c && c.status === 200 ? Number(c.data) : null });
 }
 
-export async function POST(req: Request) {
+async function POST_(req: Request) {
   const body = await req.json().catch(() => null);
   const ids = Array.isArray(body?.ids) ? body.ids.map(String).slice(0, 2000) : [];
   const status = String(body?.status ?? "verified");
@@ -32,3 +33,7 @@ export async function POST(req: Request) {
   if (r.status === 200) refreshPlaces();
   return NextResponse.json(r.status === 200 ? { updated: r.data } : r.data, { status: r.status });
 }
+
+export const GET = (req: Request) => withAdmin(req, () => GET_(req));
+
+export const POST = (req: Request) => withAdmin(req, () => POST_(req));

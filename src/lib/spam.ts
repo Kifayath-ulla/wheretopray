@@ -1,8 +1,14 @@
 import { createHash } from "node:crypto";
 
+/** Client IP as set by the hosting edge. X-Forwarded-For is only a last resort because clients can prepend to it. */
+export function clientIp(req: Request) {
+  return (req.headers.get("x-nf-client-connection-ip") || req.headers.get("x-real-ip") || "").trim()
+    || (req.headers.get("x-forwarded-for") ?? "").split(",").map((s) => s.trim()).filter(Boolean).pop() || "unknown";
+}
+
 /** Hash the client IP with a server-side salt so raw IPs are never stored. */
 export function ipHash(req: Request) {
-  const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim() || req.headers.get("x-real-ip") || "unknown";
+  const ip = clientIp(req);
   const salt = process.env.RATE_LIMIT_SALT || process.env.ADMIN_TOKEN || process.env.NEXT_PUBLIC_SUPABASE_URL || "wheretopray-dev";
   return createHash("sha256").update(`${salt}:${ip}`).digest("hex");
 }
@@ -13,8 +19,8 @@ export async function verifyTurnstile(token: string | undefined, req: Request) {
   if (!turnstileEnabled()) return true;
   if (!token) return false;
   const body = new URLSearchParams({ secret: process.env.TURNSTILE_SECRET_KEY!, response: token });
-  const ip = (req.headers.get("x-forwarded-for") ?? "").split(",")[0].trim();
-  if (ip) body.set("remoteip", ip);
+  const ip = clientIp(req);
+  if (ip && ip !== "unknown") body.set("remoteip", ip);
   try {
     const r = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", { method: "POST", body, cache: "no-store" });
     return ((await r.json()) as { success?: boolean }).success === true;

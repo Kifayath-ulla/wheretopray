@@ -1,3 +1,4 @@
+import { withAdmin } from "@/lib/adminGuard";
 import { NextResponse } from "next/server";
 import { repo } from "@/lib/data";
 import { refreshPlaces } from "@/lib/revalidate";
@@ -5,7 +6,7 @@ import { PLACE_TYPES } from "@/lib/types";
 
 const tok = (req: Request) => req.headers.get("x-admin-token") ?? "";
 
-export async function GET(req: Request) {
+async function GET_(req: Request) {
   const q = (new URL(req.url).searchParams.get("q") ?? "").slice(0, 100);
   const list = await repo.adminSearch(tok(req), q);
   if (!list) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -15,7 +16,7 @@ export async function GET(req: Request) {
 const STR = ["name", "address", "area", "city", "state", "country", "jumuah_time"] as const;
 const BOOL = ["women_section", "wudu", "parking", "wheelchair"] as const;
 
-export async function PATCH(req: Request) {
+async function PATCH_(req: Request) {
   const body = await req.json().catch(() => null);
   if (!body?.id || typeof body.patch !== "object") return NextResponse.json({ error: "Bad request" }, { status: 400 });
   const p = body.patch as Record<string, unknown>;
@@ -42,7 +43,7 @@ export async function PATCH(req: Request) {
   return NextResponse.json(r);
 }
 
-export async function DELETE(req: Request) {
+async function DELETE_(req: Request) {
   const u = new URL(req.url);
   const id = u.searchParams.get("id"), slug = u.searchParams.get("slug") ?? undefined;
   if (!id) return NextResponse.json({ error: "Bad request" }, { status: 400 });
@@ -52,3 +53,9 @@ export async function DELETE(req: Request) {
   refreshPlaces(slug);
   return NextResponse.json({ ok: true });
 }
+
+export const GET = (req: Request) => withAdmin(req, () => GET_(req));
+
+export const PATCH = (req: Request) => withAdmin(req, () => PATCH_(req));
+
+export const DELETE = (req: Request) => withAdmin(req, () => DELETE_(req));

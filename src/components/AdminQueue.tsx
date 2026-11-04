@@ -10,7 +10,7 @@ export default function AdminQueue() {
 
   async function load(tk = token) {
     const r = await fetch("/api/submissions", { headers: { "x-admin-token": tk } });
-    if (!r.ok) { setErr("Wrong token"); setItems(null); return; }
+    if (!r.ok) { setErr(r.status === 429 ? "Too many wrong attempts. Wait 15 minutes." : "Wrong token"); setItems(null); return; }
     setErr(""); sessionStorage.setItem("wtp_admin", tk); setItems(await r.json());
   }
   async function act(id: string, status: Submission["status"]) {

@@ -16,7 +16,7 @@ export default function AdminPending() {
   const PAGE = 500;
   async function fetchPage(offset: number) {
     const r = await fetch(`/api/admin/pending?limit=${PAGE}&offset=${offset}`, { headers: h() });
-    if (!r.ok) { setMsg(r.status === 401 ? "Wrong admin token" : "Load failed"); return null; }
+    if (!r.ok) { setMsg(r.status === 401 ? "Wrong admin token" : r.status === 429 ? "Too many wrong attempts. Wait 15 minutes." : "Load failed"); return null; }
     return (await r.json()) as { items: Place[]; total: number | null };
   }
   async function load() {
