@@ -42,3 +42,6 @@ next-env.d.ts
 data/queue/submissions.json
 .tmp
 public/maplibre-gl-worker.mjs
+
+# Local Netlify folder
+.netlify

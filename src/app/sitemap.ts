@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { repo, citySlug } from "@/lib/data";
 
 export const revalidate = 3600;
-const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.vercel.app";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.netlify.app";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [slugs, cities] = await Promise.all([repo.slugs(), repo.cities()]);
   const citySlugs = [...new Set(cities.filter((c) => c.city && c.city !== "Unknown").map((c) => citySlug(c.city)))].filter(Boolean);
