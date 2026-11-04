@@ -16,6 +16,7 @@ export function setMode(m: ThemeMode) {
 export function useTheme(): Theme {
   const [t, setT] = useState<Theme>("light");
   useEffect(() => {
+    (window as unknown as { __wtpApplyTheme?: () => void }).__wtpApplyTheme?.();
     const upd = () => setT(currentTheme());
     upd();
     const mo = new MutationObserver(upd);

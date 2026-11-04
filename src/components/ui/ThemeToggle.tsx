@@ -11,7 +11,7 @@ const OPTS: { v: ThemeMode; label: string; icon: string }[] = [
 /** Three-way appearance switch: light, system (default), dark. */
 export default function ThemeToggle({ className = "" }: { className?: string }) {
   const [mode, setM] = useState<ThemeMode>("system");
-  useEffect(() => setM(getMode()), []);
+  useEffect(() => { (window as unknown as { __wtpApplyTheme?: () => void }).__wtpApplyTheme?.(); setM(getMode()); }, []);
   return (
     <div role="radiogroup" aria-label="Appearance" className={`segmented ${className}`}>
       {OPTS.map((o) => (
