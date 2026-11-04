@@ -45,3 +45,4 @@ public/maplibre-gl-worker.mjs
 
 # Local Netlify folder
 .netlify
+.audit/
