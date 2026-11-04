@@ -14,7 +14,7 @@ export function setMode(m: ThemeMode) {
 }
 /** Resolved theme, live: follows the toggle and, in system mode, the OS setting. */
 export function useTheme(): Theme {
-  const [t, setT] = useState<Theme>(currentTheme);
+  const [t, setT] = useState<Theme>("light");
   useEffect(() => {
     const upd = () => setT(currentTheme());
     upd();
