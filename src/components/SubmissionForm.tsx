@@ -111,6 +111,15 @@ export default function SubmissionForm({ kind, placeId, placeName, googlePlaceId
           <input name="name" maxLength={150} placeholder="Corrected name (optional)" className={field} />
           <input name="address" maxLength={500} placeholder="Corrected address (optional)" className={field} />
           <div className="flex gap-2"><input name="lat" inputMode="decimal" placeholder="Corrected latitude" className={field} /><input name="lng" inputMode="decimal" placeholder="Corrected longitude" className={field} /></div>
+          <fieldset className="space-y-2 rounded-xl border border-hairline p-3">
+            <legend className="px-1 text-xs font-medium text-ink-2">Jamaat times here (optional, only if you know them)</legend>
+            <div className="grid grid-cols-3 gap-2">
+              {(["fajr", "zuhr", "asr", "maghrib", "isha"] as const).map((k) => (
+                <label key={k} className="text-xs capitalize text-ink-2">{k}<input name={`jamaat_${k}`} type="time" className="mt-0.5 h-9 w-full px-2 text-sm" /></label>
+              ))}
+              <label className="text-xs text-ink-2">Jumu&apos;ah<input name="jumuah_time" type="time" className="mt-0.5 h-9 w-full px-2 text-sm" /></label>
+            </div>
+          </fieldset>
         </>
       )}
       <textarea name="notes" maxLength={1000} placeholder={kind === "fix" ? "What should be corrected? *" : "Notes (iqama times, facilities, who runs it)"} required={kind === "fix"} className={field} rows={3} />

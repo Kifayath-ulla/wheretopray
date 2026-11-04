@@ -145,7 +145,7 @@ class JsonRepository implements PlaceRepository {
 const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const PLACE_COLS =
-  "id,slug,name,name_local,type,lat,lng,address,area,city,state,country,denomination,women_section,wudu,parking,wheelchair,phone,website,jumuah_time,iqama_times,source,source_id,sources,source_ids,last_verified,status";
+  "id,slug,name,name_local,type,lat,lng,address,area,city,state,country,denomination,women_section,wudu,parking,wheelchair,phone,website,jumuah_time,iqama_times,location_quality,source,source_id,sources,source_ids,last_verified,status";
 
 class SupabaseRepository implements PlaceRepository {
   constructor(private url: string, private key: string) {}

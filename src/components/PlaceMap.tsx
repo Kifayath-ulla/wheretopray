@@ -14,7 +14,11 @@ function toGeo(places: Place[]): GeoJSON.FeatureCollection {
   return { type: "FeatureCollection", features: places.map((p) => ({ type: "Feature", geometry: { type: "Point", coordinates: [p.lng, p.lat] }, properties: { slug: p.slug, name: p.name, type: p.type, area: p.area ?? p.city ?? "" } })) };
 }
 
-export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusKm, onMoveEnd }: { places: Place[]; center: [number, number]; zoom?: number; me?: [number, number] | null; meAcc?: number; radiusKm?: number; onMoveEnd?: (b: [number, number, number, number], zoom: number) => void }) {
+export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusKm, onMoveEnd, selected, onSelect }: { places: Place[]; center: [number, number]; zoom?: number; me?: [number, number] | null; meAcc?: number; radiusKm?: number; onMoveEnd?: (b: [number, number, number, number], zoom: number) => void; selected?: Place | null; onSelect?: (slug: string) => void }) {
+  const selCb = useRef(onSelect);
+  selCb.current = onSelect;
+  const popup = useRef<maplibregl.Popup | null>(null);
+  const meLat = me?.[0], meLng = me?.[1];
   const el = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const ready = useRef(false);
@@ -59,10 +63,12 @@ export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusK
       });
       m.on("click", "point", (e) => {
         const f = e.features?.[0]; if (!f) return;
-        const p = f.properties as { slug: string; name: string; type: string; area: string };
-        new maplibregl.Popup({ offset: 12, maxWidth: "260px" }).setLngLat((f.geometry as GeoJSON.Point).coordinates as [number, number])
-          .setHTML(`<div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:${TYPE_COLOR[p.type as PlaceType] ?? TYPE_COLOR.mosque}">${esc(TYPE_LABEL[p.type as PlaceType] ?? p.type)}</div><div style="font-size:15px;font-weight:600;margin:2px 0 2px;line-height:1.25">${esc(p.name)}</div>${p.area ? `<div style="font-size:12px;color:var(--text-2)">${esc(p.area)}</div>` : ""}<a href="/place/${encodeURIComponent(p.slug)}" style="display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:600">View details</a>`).addTo(m);
+        selCb.current?.((f.properties as { slug: string }).slug);
       });
+      // Highlight ring for the selected place, drawn from an unclustered source so it never hides inside a cluster.
+      m.addSource("sel", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+      m.addLayer({ id: "sel-halo", type: "circle", source: "sel", paint: { "circle-radius": 18, "circle-color": "#0a7a55", "circle-opacity": 0.18, "circle-stroke-width": 2, "circle-stroke-color": "#0a7a55" } });
+      m.addLayer({ id: "sel-dot", type: "circle", source: "sel", paint: { "circle-radius": 8, "circle-color": ["get", "color"], "circle-stroke-width": 3, "circle-stroke-color": "#fff" } });
       for (const l of ["clusters", "point"]) {
         m.on("mouseenter", l, () => { m.getCanvas().style.cursor = "pointer"; });
         m.on("mouseleave", l, () => { m.getCanvas().style.cursor = ""; });
@@ -95,7 +101,25 @@ export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusK
     meMarker.current = new maplibregl.Marker({ element: d, anchor: "center" }).setLngLat([me[1], me[0]]).addTo(m);
     const km = radiusKm ?? 2, dLat = km / 111, dLng = km / (111 * Math.cos((me[0] * Math.PI) / 180));
     m.fitBounds([[me[1] - dLng, me[0] - dLat], [me[1] + dLng, me[0] + dLat]], { padding: 30, duration: 800 });
-  }, [me, meAcc, radiusKm]);
+    // Depend on the numbers, not the array: a new [lat,lng] array every render used to re-fit the map to the
+    // user's location on every re-render, pulling the view away from the place they had just picked.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [meLat, meLng, meAcc, radiusKm]);
+
+  useEffect(() => {
+    const m = map.current; if (!m) return;
+    popup.current?.remove(); popup.current = null;
+    const apply = () => {
+      if (!m.getSource("sel")) return void m.once("idle", apply);
+      const p = selected;
+      (m.getSource("sel") as maplibregl.GeoJSONSource).setData({ type: "FeatureCollection", features: p ? [{ type: "Feature", geometry: { type: "Point", coordinates: [p.lng, p.lat] }, properties: { color: TYPE_COLOR[p.type] ?? TYPE_COLOR.mosque } }] : [] });
+      if (!p) return;
+      m.flyTo({ center: [p.lng, p.lat], zoom: Math.max(m.getZoom(), 17), duration: 700, essential: true });
+      popup.current = new maplibregl.Popup({ offset: 14, maxWidth: "260px", closeOnClick: false }).setLngLat([p.lng, p.lat])
+        .setHTML(`<div data-testid="map-popup" data-slug="${esc(p.slug)}"><div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:${TYPE_COLOR[p.type] ?? TYPE_COLOR.mosque}">${esc(TYPE_LABEL[p.type] ?? p.type)}</div><div style="font-size:15px;font-weight:600;margin:2px 0;line-height:1.25">${esc(p.name)}</div>${p.area || p.city ? `<div style="font-size:12px;color:var(--text-2)">${esc([p.area, p.city].filter(Boolean).join(", "))}</div>` : ""}${p.location_quality === "approximate" ? `<div style="font-size:11px;color:#b45309;margin-top:4px">Approximate location</div>` : ""}<a href="/place/${encodeURIComponent(p.slug)}" style="display:inline-block;margin-top:8px;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:600">View details</a></div>`).addTo(m);
+    };
+    apply();
+  }, [selected]);
 
   return <div ref={el} className="h-full w-full" />;
 }

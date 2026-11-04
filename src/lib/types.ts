@@ -22,6 +22,8 @@ export interface Place {
   website?: string | null;
   jumuah_time?: string | null;
   iqama_times?: Record<string, string> | null;
+  /** exact = mapped point (OSM/admin); listing = business-listing pin; approximate = coarse/snapped */
+  location_quality?: "exact" | "listing" | "approximate" | null;
   source: string;
   source_id: string;
   sources?: string[];

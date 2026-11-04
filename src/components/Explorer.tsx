@@ -8,6 +8,7 @@ import { distanceKm } from "@/lib/geo";
 import { qiblaBearing } from "@/lib/qibla";
 const GoogleLookup = dynamic(() => import("./GoogleLookup"), { ssr: false });
 import { IconLocate, IconSearch } from "./ui/Icons";
+import { mapLinks, QUALITY_NOTE } from "@/lib/maplinks";
 import { TYPE_COLOR, TYPE_LABEL, fmtDistance } from "@/lib/typeStyle";
 
 const PlaceMap = dynamic(() => import("./PlaceMap"), { ssr: false, loading: () => <div className="h-full w-full animate-pulse bg-surface-2" /> });
@@ -18,10 +19,8 @@ const ROW_H = 60;
 type Loc = { lat: number; lng: number; label: string; acc?: number; approx?: boolean; t?: number };
 
 export function directionsLinks(p: { lat: number; lng: number; name: string }) {
-  return {
-    google: `https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`,
-    apple: `https://maps.apple.com/?daddr=${p.lat},${p.lng}&q=${encodeURIComponent(p.name)}`,
-  };
+  const l = mapLinks(p);
+  return { google: l.googleDir, apple: l.appleDir };
 }
 
 export default function Explorer({ places: initial, center }: { places: Place[]; center: [number, number] }) {
@@ -136,19 +135,22 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   }
 
   const [snap, setSnap] = useState<"peek" | "half" | "full">("half");
+  const [selSlug, setSelSlug] = useState<string | null>(null);
+  const selected = useMemo(() => (selSlug ? places.find((p) => p.slug === selSlug) ?? null : null), [selSlug, places]);
+  const select = useCallback((slug: string) => { setSelSlug(slug); setSnap("peek"); (document.activeElement as HTMLElement | null)?.blur?.(); }, []);
   const FAC = [["women", "Women's area"], ["wudu", "Wudu"], ["parking", "Parking"], ["wheelchair", "Wheelchair"]] as const;
 
   return (
     <div className="fixed inset-x-0 bottom-[var(--tabbar-h)] top-[var(--header-h)] overflow-hidden">
       <div className="absolute inset-0">
-        <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} meAcc={me?.acc} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} />
+        <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} meAcc={me?.acc} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} selected={selected} onSelect={select} />
       </div>
       <BottomSheet snap={snap} onSnap={setSnap}>
         <div className="space-y-3 px-4 pb-3 pt-1 md:pt-4">
           <div className="flex gap-2">
             <label className="relative flex-1">
               <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-3"><IconSearch className="h-4 w-4" /></span>
-              <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setSnap("full")} placeholder="Search mosques, areas" className="h-10 w-full pl-9 pr-3 text-[15px]" aria-label="Search" />
+              <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setSnap("full")} onKeyDown={(e) => { if (e.key === "Enter" && filtered[0]) { e.preventDefault(); select(filtered[0].slug); } }} enterKeyHint="search" placeholder="Search mosques, areas" className="h-10 w-full pl-9 pr-3 text-[15px]" aria-label="Search" />
             </label>
             <button onClick={nearMe} className="btn btn-primary h-10 px-4 text-sm"><IconLocate className="h-4 w-4" />Near me</button>
           </div>
@@ -190,28 +192,48 @@ export default function Explorer({ places: initial, center }: { places: Place[];
               <button key={k} aria-pressed={fac[k]} onClick={() => setFac({ ...fac, [k]: !fac[k] })} className="chip">{label}</button>
             ))}
           </div>
+          {selected && <Selected p={selected} onClose={() => setSelSlug(null)} />}
           <div className="flex items-center justify-between">
             <p className="eyebrow">{filtered.length.toLocaleString("en-IN")} places{me ? ` within ${radius} km` : ""}</p>
             <Link href="/about" className="grid h-6 w-6 place-items-center rounded-full bg-surface-2 text-[12px] font-semibold text-ink-2" aria-label="About and data credits" title="About and data credits">i</Link>
           </div>
         </div>
-        <VirtualList items={filtered} me={!!me} radius={radius} footer={<GoogleLookup bbox={view} q={q} />} />
+        <VirtualList items={filtered} me={!!me} radius={radius} onSelect={select} selSlug={selSlug} footer={<GoogleLookup bbox={view} q={q} />} />
       </BottomSheet>
     </div>
   );
 }
 
-const Row = memo(function Row({ p }: { p: Place & { _d?: number } }) {
+function Selected({ p, onClose }: { p: Place; onClose: () => void }) {
+  const l = mapLinks(p);
+  const note = p.location_quality ? QUALITY_NOTE[p.location_quality] : undefined;
+  return (
+    <div className="rounded-2xl border border-hairline bg-surface p-3" data-testid="selected-place">
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0"><div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: TYPE_COLOR[p.type] }}>{TYPE_LABEL[p.type]}</div><div className="truncate text-[15px] font-semibold">{p.name}</div><div className="truncate text-xs text-ink-2">{[p.area, p.city].filter(Boolean).join(", ")} · <span className="font-mono">{p.lat.toFixed(5)}, {p.lng.toFixed(5)}</span></div></div>
+        <button onClick={onClose} className="text-xs font-semibold text-accent-text" aria-label="Close selected place">Close</button>
+      </div>
+      {note && p.location_quality === "approximate" && <p className="mt-2 text-[11px] text-amber-700 dark:text-amber-300">{note}</p>}
+      <div className="mt-2 flex gap-2 text-xs">
+        <a href={l.googleDir} target="_blank" rel="noreferrer" className="btn btn-primary h-8 px-3 text-xs">Directions</a>
+        <a href={l.appleDir} target="_blank" rel="noreferrer" className="chip">Apple</a>
+        <Link href={`/place/${p.slug}`} className="chip">Details and timings</Link>
+      </div>
+    </div>
+  );
+}
+
+const Row = memo(function Row({ p, onSelect, active }: { p: Place & { _d?: number }; onSelect: (slug: string) => void; active: boolean }) {
   const d = directionsLinks(p);
   return (
-    <li className="flex items-center gap-3 rounded-2xl px-2" style={{ height: ROW_H }}>
+    <li className={`flex items-center gap-3 rounded-2xl px-2 ${active ? "bg-accent-soft" : ""}`} style={{ height: ROW_H }}>
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={{ background: `${TYPE_COLOR[p.type]}1f` }} aria-hidden>
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLOR[p.type] }} />
       </span>
-      <Link href={`/place/${p.slug}`} className="min-w-0 flex-1">
+      <button type="button" onClick={() => onSelect(p.slug)} className="min-w-0 flex-1 text-left" aria-label={`Show ${p.name} on the map`} data-slug={p.slug}>
         <div className="truncate text-[15px] font-medium">{p.name}</div>
-        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
-      </Link>
+        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}{p.location_quality === "approximate" ? " · approx. location" : ""}</div>
+      </button>
       <div className="flex shrink-0 flex-col items-end gap-1">
         {p._d !== undefined && <span className="text-xs font-semibold text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
         <span className="flex gap-1 text-[11px]">
@@ -224,7 +246,7 @@ const Row = memo(function Row({ p }: { p: Place & { _d?: number } }) {
 });
 
 // Simple windowing: only the rows in view (plus overscan) are in the DOM.
-function VirtualList({ items, me, radius, footer }: { items: (Place & { _d?: number })[]; me: boolean; radius: number; footer: React.ReactNode }) {
+function VirtualList({ items, me, radius, footer, onSelect, selSlug }: { items: (Place & { _d?: number })[]; me: boolean; radius: number; footer: React.ReactNode; onSelect: (slug: string) => void; selSlug: string | null }) {
   const ref = useRef<HTMLDivElement>(null);
   const [top, setTop] = useState(0);
   const [h, setH] = useState(600);
@@ -244,7 +266,7 @@ function VirtualList({ items, me, radius, footer }: { items: (Place & { _d?: num
     <div ref={ref} className="sheet-scroll min-h-0 flex-1 overflow-y-auto border-t border-hairline px-2 pb-4" data-testid="results">
       <ul style={{ height: items.length * ROW_H, position: "relative" }}>
         <div style={{ transform: `translateY(${start * ROW_H}px)` }}>
-          {items.slice(start, end).map((p) => <Row key={p.id} p={p} />)}
+          {items.slice(start, end).map((p) => <Row key={p.id} p={p} onSelect={onSelect} active={p.slug === selSlug} />)}
         </div>
       </ul>
       {me && items.length === 0 && <p className="p-6 text-center text-sm text-ink-2">Nothing within {radius} km. Try a bigger radius.</p>}

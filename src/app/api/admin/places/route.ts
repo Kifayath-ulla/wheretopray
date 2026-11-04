@@ -29,6 +29,11 @@ export async function PATCH(req: Request) {
     if (!isFinite(lat) || !isFinite(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) return NextResponse.json({ error: "Bad coordinates" }, { status: 400 });
     patch.lat = String(lat); patch.lng = String(lng);
   }
+  if (p.iqama_times && typeof p.iqama_times === "object") {
+    const t: Record<string, string> = {};
+    for (const k of ["fajr", "zuhr", "asr", "maghrib", "isha", "jumuah"]) { const v = String((p.iqama_times as Record<string, unknown>)[k] ?? ""); if (/^([01]?\d|2[0-3]):[0-5]\d$/.test(v)) t[k] = v; }
+    patch.iqama_times = t;
+  }
   if (patch.name === "") return NextResponse.json({ error: "Name required" }, { status: 400 });
   const r = await repo.adminUpdate(tok(req), String(body.id), patch);
   if (r === "unauthorized") return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
