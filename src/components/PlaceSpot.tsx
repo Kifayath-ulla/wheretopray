@@ -2,19 +2,21 @@
 import { useEffect, useRef, useState } from "react";
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { useTheme } from "@/lib/theme";
 import { mapLinks, QUALITY_NOTE } from "@/lib/maplinks";
 
 if (typeof window !== "undefined") maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
 
 /** Street-level map with one pin on the place's exact stored coordinates, plus copyable coordinates. */
 export default function PlaceSpot({ lat, lng, name, quality, color }: { lat: number; lng: number; name: string; quality?: string | null; color: string }) {
+  const theme = useTheme();
   const el = useRef<HTMLDivElement>(null);
   const [copied, setCopied] = useState(false);
   const coords = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
   const l = mapLinks({ lat, lng, name });
   useEffect(() => {
     if (!el.current) return;
-    const dark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
+    const dark = theme === "dark";
     const m = new maplibregl.Map({ container: el.current, style: `https://tiles.openfreemap.org/styles/${dark ? "dark" : "liberty"}`, center: [lng, lat], zoom: 17.5, attributionControl: false, pixelRatio: Math.min(window.devicePixelRatio || 1, 2), fadeDuration: 0, cooperativeGestures: true });
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     m.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
@@ -32,7 +34,7 @@ export default function PlaceSpot({ lat, lng, name, quality, color }: { lat: num
       });
     }
     return () => m.remove();
-  }, [lat, lng, name, quality, color]);
+  }, [lat, lng, name, quality, color, theme]);
   const copy = async () => { try { await navigator.clipboard.writeText(coords); setCopied(true); setTimeout(() => setCopied(false), 1500); } catch {} };
   const note = quality ? QUALITY_NOTE[quality] : undefined;
   return (

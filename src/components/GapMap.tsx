@@ -3,17 +3,19 @@ import { useEffect, useRef } from "react";
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { useTheme } from "@/lib/theme";
 
 // maplibre v6 ships its worker as a separate module; we copy it to /public at build time.
 if (typeof window !== "undefined") maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
 
 export default function GapMap({ wards }: { wards: GeoJSON.FeatureCollection | { features: unknown[] } }) {
+  const theme = useTheme();
   const el = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!el.current) return;
     const m = new maplibregl.Map({
       container: el.current,
-      style: "https://tiles.openfreemap.org/styles/positron",
+      style: `https://tiles.openfreemap.org/styles/${theme === "dark" ? "dark" : "positron"}`,
       center: [77.59, 12.97], zoom: 10.3,
     });
     m.addControl(new maplibregl.NavigationControl(), "top-right");
@@ -23,13 +25,13 @@ export default function GapMap({ wards }: { wards: GeoJSON.FeatureCollection | {
       m.addLayer({ id: "line", type: "line", source: "wards", paint: { "line-color": "#374151", "line-width": 0.5 } });
       m.on("click", "fill", (e) => {
         const p = e.features?.[0]?.properties as { no: string; name: string; count: number } | undefined;
-        if (p) new maplibregl.Popup().setLngLat(e.lngLat).setHTML(`<b>${esc(String(p.no))}. ${esc(String(p.name))}</b><br>${Number(p.count) || 0} places listed<br><a href="/add" style="color:#047857;text-decoration:underline">Add one here</a>`).addTo(m);
+        if (p) new maplibregl.Popup().setLngLat(e.lngLat).setHTML(`<b>${esc(String(p.no))}. ${esc(String(p.name))}</b><br>${Number(p.count) || 0} places listed<br><a href="/add" style="color:var(--accent-text);text-decoration:underline">Add one here</a>`).addTo(m);
       });
       m.on("mouseenter", "fill", () => { m.getCanvas().style.cursor = "pointer"; });
       m.on("mouseleave", "fill", () => { m.getCanvas().style.cursor = ""; });
     });
     return () => m.remove();
-  }, [wards]);
+  }, [wards, theme]);
   return (
     <div>
       <div ref={el} className="h-[60vh] w-full rounded-xl border" />

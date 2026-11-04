@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 import { IconCompass, IconList, IconMap, IconPlus, Logo } from "./Icons";
 
 const TABS = [
@@ -26,7 +27,10 @@ export function Header() {
           <Link href="/bengaluru/gaps" className={`rounded-full px-3.5 py-1.5 font-medium ${path.startsWith("/bengaluru") ? "bg-surface-2 text-ink" : "text-ink-2 hover:text-ink"}`}>Gaps</Link>
           <Link href="/share" className={`rounded-full px-3.5 py-1.5 font-medium ${path.startsWith("/share") ? "bg-surface-2 text-ink" : "text-ink-2 hover:text-ink"}`}>Share</Link>
         </nav>
-        <Link href="/share" className="text-sm font-medium text-accent-text md:hidden">Share</Link>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Link href="/share" className="inline-flex min-h-11 items-center px-1 text-sm font-medium text-accent-text md:hidden">Share</Link>
+        </div>
       </div>
     </header>
   );

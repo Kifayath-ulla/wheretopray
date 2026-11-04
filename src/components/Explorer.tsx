@@ -210,7 +210,7 @@ function Selected({ p, onClose }: { p: Place; onClose: () => void }) {
   return (
     <div className="rounded-2xl border border-hairline bg-surface p-3" data-testid="selected-place">
       <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0"><div className="text-[11px] font-semibold uppercase tracking-wide" style={{ color: TYPE_COLOR[p.type] }}>{TYPE_LABEL[p.type]}</div><div className="truncate text-[15px] font-semibold">{p.name}</div><div className="truncate text-xs text-ink-2">{[p.area, p.city].filter(Boolean).join(", ")} · <span className="font-mono">{p.lat.toFixed(5)}, {p.lng.toFixed(5)}</span></div></div>
+        <div className="min-w-0"><div className="flex items-center gap-1.5 text-xs font-medium text-ink-2"><span className="inline-block h-2 w-2 rounded-full" style={{ background: TYPE_COLOR[p.type] }} aria-hidden="true" />{TYPE_LABEL[p.type]}</div><div className="truncate text-[15px] font-semibold">{p.name}</div><div className="truncate text-xs text-ink-2">{[p.area, p.city].filter(Boolean).join(", ")} · <span className="font-mono">{p.lat.toFixed(5)}, {p.lng.toFixed(5)}</span></div></div>
         <button onClick={onClose} className="text-xs font-semibold text-accent-text" aria-label="Close selected place">Close</button>
       </div>
       {note && p.location_quality === "approximate" && <p className="mt-2 text-[11px] text-amber-700 dark:text-amber-300">{note}</p>}
@@ -226,7 +226,7 @@ function Selected({ p, onClose }: { p: Place; onClose: () => void }) {
 const Row = memo(function Row({ p, onSelect, active }: { p: Place & { _d?: number }; onSelect: (slug: string) => void; active: boolean }) {
   const d = directionsLinks(p);
   return (
-    <li className={`flex items-center gap-3 rounded-2xl px-2 ${active ? "bg-accent-soft" : ""}`} style={{ height: ROW_H }}>
+    <li className={`flex items-center gap-3 rounded-2xl px-2 ${active ? "bg-surface-2" : ""}`} style={{ height: ROW_H }}>
       <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={{ background: `${TYPE_COLOR[p.type]}1f` }} aria-hidden>
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLOR[p.type] }} />
       </span>

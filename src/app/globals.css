@@ -1,6 +1,7 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-/* Apple-style design tokens. Light by default, dark via prefers-color-scheme. */
+/* Apple-style design tokens. Light and dark, switchable; system is the default. */
 :root {
   --tabbar-h: calc(56px + env(safe-area-inset-bottom));
   --header-h: calc(56px + env(safe-area-inset-top));
@@ -9,35 +10,66 @@
   --surface-2: #f2f2f5;
   --text: #1d1d1f;
   --text-2: #6e6e73;
-  --text-3: #86868b;
+  --text-3: #6b6b70;
   --hairline: rgba(0, 0, 0, 0.09);
   --accent: #0b6e4f;
   --accent-hover: #095c42;
   --accent-soft: rgba(11, 110, 79, 0.1);
   --accent-text: #0b6e4f;
   --glass: rgba(255, 255, 255, 0.72);
+  --warn: #a15c07;
+  --warn-soft: rgba(217,119,6,.12);
+  --danger: #c4261d;
+  --on-accent: #ffffff;
+  --pin-ring: #ffffff;
   --shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
   --shadow-lg: 0 2px 6px rgba(0,0,0,.05), 0 20px 48px rgba(0,0,0,.12);
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
+/* Theme: [data-theme] is set before paint by an inline script (system default, or the user's choice). No-JS falls back to the media query. */
+:root[data-theme=dark] {
     --bg: #000000;
     --surface: #1c1c1e;
     --surface-2: #2c2c2e;
     --text: #f5f5f7;
-    --text-2: #a1a1a6;
-    --text-3: #8e8e93;
+    --text-2: #b0b0b5;
+    --text-3: #a0a0a6;
     --hairline: rgba(255, 255, 255, 0.12);
-    --accent: #248a3d;
+    --accent: #1f7a37;
     --accent-hover: #2a9d47;
     --accent-soft: rgba(48, 209, 88, 0.16);
     --accent-text: #4cd97b;
     --glass: rgba(28, 28, 30, 0.72);
+    --warn: #fbbf24;
+    --warn-soft: rgba(251,191,36,.14);
+    --danger: #ff6961;
+    --on-accent: #ffffff;
+    --pin-ring: #ffffff;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
     --shadow-lg: 0 2px 6px rgba(0,0,0,.5), 0 20px 48px rgba(0,0,0,.6);
-    color-scheme: dark;
-  }
+    color-scheme: dark;}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #000000;
+    --surface: #1c1c1e;
+    --surface-2: #2c2c2e;
+    --text: #f5f5f7;
+    --text-2: #b0b0b5;
+    --text-3: #a0a0a6;
+    --hairline: rgba(255, 255, 255, 0.12);
+    --accent: #1f7a37;
+    --accent-hover: #2a9d47;
+    --accent-soft: rgba(48, 209, 88, 0.16);
+    --accent-text: #4cd97b;
+    --glass: rgba(28, 28, 30, 0.72);
+    --warn: #fbbf24;
+    --warn-soft: rgba(251,191,36,.14);
+    --danger: #ff6961;
+    --on-accent: #ffffff;
+    --pin-ring: #ffffff;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.35);
+    --shadow-lg: 0 2px 6px rgba(0,0,0,.5), 0 20px 48px rgba(0,0,0,.6);
+    color-scheme: dark;}
 }
 
 /* Remap legacy Tailwind palette classes onto the tokens so every page follows the theme. */
@@ -56,6 +88,16 @@
   --color-gray-600: var(--text-2);
   --color-gray-700: var(--text-2);
   --color-gray-900: var(--text);
+  --color-amber-300: var(--warn);
+  --color-amber-500: #d97706;
+  --color-amber-600: var(--warn);
+  --color-amber-700: var(--warn);
+  --color-amber-800: var(--warn);
+  --color-red-500: var(--danger);
+  --color-red-600: var(--danger);
+  --color-red-700: var(--danger);
+  --color-emerald-300: var(--accent);
+  --color-white: var(--on-accent);
   --color-surface: var(--surface);
   --color-surface-2: var(--surface-2);
   --color-canvas: var(--bg);
@@ -92,6 +134,7 @@
   input::placeholder, textarea::placeholder { color: var(--text-3); }
   input[type=checkbox], input[type=radio], input[type=range] { accent-color: var(--accent); }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  p, li { text-wrap: pretty; }
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
 }
@@ -100,7 +143,7 @@
   .glass { background: var(--glass); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); }
   .card { background: var(--surface); border-radius: 1.375rem; box-shadow: var(--shadow); border: 1px solid var(--hairline); }
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border-radius: 999px; padding: .7rem 1.25rem; font-weight: 600; font-size: .95rem; line-height: 1.1; cursor: pointer; }
-  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary { background: var(--accent); color: var(--on-accent); }
   .btn-primary:hover { background: var(--accent-hover); }
   .btn-secondary { background: var(--surface-2); color: var(--text); }
   .btn-secondary:hover { filter: brightness(0.97); }
@@ -110,8 +153,8 @@
   .chip[aria-pressed=true], .chip-on { background: var(--text); color: var(--bg); }
   .segmented { display: inline-flex; padding: 3px; border-radius: 10px; background: var(--surface-2); gap: 2px; }
   .segmented > button { border-radius: 8px; padding: .35rem .8rem; font-size: .8rem; font-weight: 500; color: var(--text-2); }
-  .segmented > button[aria-pressed=true] { background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
-  .eyebrow { font-size: .75rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--text-3); }
+  .segmented > button[aria-pressed=true], .segmented > button[aria-checked=true] { background: var(--surface); color: var(--text); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+  .eyebrow { font-size: .8125rem; font-weight: 600; color: var(--text-2); }
   .page-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
   .lead { font-size: 1.0625rem; color: var(--text-2); line-height: 1.5; }
   .link { color: var(--accent-text); }
@@ -130,22 +173,35 @@
   *, ::before, ::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
 
-/* MapLibre polish */
+/* MapLibre polish. maplibre-gl.css loads after this file in component chunks, so every override is scoped under .maplibregl-map to win on specificity. */
 .maplibregl-map { font-family: inherit; }
-.maplibregl-popup-content { font-family: inherit; background: var(--surface); color: var(--text); border-radius: 16px; padding: 12px 14px; box-shadow: var(--shadow-lg); border: 1px solid var(--hairline); min-width: 180px; }
-.maplibregl-popup-tip { border-top-color: var(--surface) !important; border-bottom-color: var(--surface) !important; }
-.maplibregl-popup-close-button { font-size: 18px; color: var(--text-3); padding: 2px 8px; border-radius: 999px; }
-.maplibregl-ctrl-group { border-radius: 12px !important; overflow: hidden; box-shadow: var(--shadow) !important; border: 1px solid var(--hairline); background: var(--surface) !important; }
-.maplibregl-ctrl-attrib, .maplibregl-ctrl-attrib a { color: var(--text-2) !important; }
-.maplibregl-ctrl-attrib { background: var(--surface) !important; border-radius: 10px 0 0 0; font-size: 10px; }
-@media (prefers-color-scheme: dark) {
-  .maplibregl-ctrl-group button .maplibregl-ctrl-icon { filter: invert(1); }
+.maplibregl-map .maplibregl-popup-content { font-family: inherit; background: var(--surface); color: var(--text); border-radius: 16px; padding: 14px 44px 14px 16px; box-shadow: var(--shadow-lg); border: 1px solid var(--hairline); min-width: 200px; max-width: min(280px, calc(100vw - 48px)); overflow-wrap: anywhere; }
+.maplibregl-map .maplibregl-popup-anchor-bottom .maplibregl-popup-tip, .maplibregl-map .maplibregl-popup-anchor-bottom-left .maplibregl-popup-tip, .maplibregl-map .maplibregl-popup-anchor-bottom-right .maplibregl-popup-tip { border-top-color: var(--surface); }
+.maplibregl-map .maplibregl-popup-anchor-top .maplibregl-popup-tip, .maplibregl-map .maplibregl-popup-anchor-top-left .maplibregl-popup-tip, .maplibregl-map .maplibregl-popup-anchor-top-right .maplibregl-popup-tip { border-bottom-color: var(--surface); }
+.maplibregl-map .maplibregl-popup-anchor-left .maplibregl-popup-tip { border-right-color: var(--surface); }
+.maplibregl-map .maplibregl-popup-anchor-right .maplibregl-popup-tip { border-left-color: var(--surface); }
+.maplibregl-map .maplibregl-popup-close-button { width: 44px; height: 44px; top: 0; right: 0; font-size: 22px; line-height: 1; color: var(--text-2); background: transparent; border-radius: 0 16px 0 12px; }
+.maplibregl-map .maplibregl-popup-close-button:hover { background: var(--surface-2); color: var(--text); }
+.wtp-pop-type { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--text-2); }
+.wtp-pop-type i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.wtp-pop-name { font-size: 16px; font-weight: 650; letter-spacing: -0.01em; line-height: 1.25; margin: 3px 0 2px; color: var(--text); }
+.wtp-pop-sub { font-size: 13px; color: var(--text-2); line-height: 1.35; }
+.wtp-pop-warn { font-size: 12px; color: var(--warn); margin-top: 4px; }
+.wtp-pop-btn { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; padding: 0 2px; font-size: 14px; font-weight: 600; color: var(--accent-text); }
+.wtp-pop-btn:hover { text-decoration: underline; }
+.maplibregl-map .maplibregl-ctrl-group { border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--hairline); background: var(--surface); }
+.maplibregl-map .maplibregl-ctrl-group button + button { border-top-color: var(--hairline); }
+.maplibregl-map .maplibregl-ctrl-attrib, .maplibregl-map .maplibregl-ctrl-attrib a { color: var(--text-2); }
+.maplibregl-map .maplibregl-ctrl-attrib { background: var(--surface); border-radius: 10px 0 0 0; font-size: 10px; }
+.maplibregl-map .maplibregl-ctrl-attrib.maplibregl-compact { background: var(--surface); }
+[data-theme=dark] {
+  .maplibregl-map .maplibregl-ctrl-group button .maplibregl-ctrl-icon, .maplibregl-map .maplibregl-ctrl-attrib-button { filter: invert(1); }
   .wtp-tiles canvas { filter: none; }
 }
 @media print { header, nav.tabbar, footer { display: none !important; } }
 
 /* Explore bottom sheet: moved with transform only, solid surface (no backdrop blur on large areas, it janks on iOS). */
-.sheet { background: var(--surface); will-change: transform; touch-action: none; transition: transform .32s cubic-bezier(.2,.8,.2,1); box-shadow: 0 -4px 24px rgba(0,0,0,.12); }
+.sheet { background: var(--surface); will-change: transform; touch-action: none; transition: transform .32s cubic-bezier(.2,.8,.2,1); box-shadow: 0 -4px 24px rgba(0,0,0,.12); color: var(--text); }
 .sheet.dragging { transition: none; }
 .sheet .sheet-scroll { touch-action: pan-y; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .sheet .sheet-x { touch-action: pan-x; }

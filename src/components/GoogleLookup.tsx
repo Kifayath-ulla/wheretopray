@@ -39,7 +39,7 @@ export default function GoogleLookup({ bbox, q }: { bbox: [number, number, numbe
   if (state === "loading") return null;
   return (
     <section aria-label="From Google Maps" className="border-t p-3 text-sm" data-testid="google-section">
-      <h3 className="text-xs font-semibold uppercase tracking-wide text-gray-500">From Google Maps</h3>
+      <h3 className="text-sm font-semibold text-gray-600">From Google Maps</h3>
       {state === "off" && <p className="mt-1 text-xs text-gray-500">Google Maps lookup is off. Showing open data only.</p>}
       {state === "paused" && <p className="mt-1 text-xs text-gray-500">Google results paused this month. Showing open data only.</p>}
       {state === "on" && <button onClick={go} className="btn btn-tinted mt-2 w-full">Search Google too (this map area)</button>}
