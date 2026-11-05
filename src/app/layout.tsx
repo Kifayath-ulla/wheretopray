@@ -6,7 +6,7 @@ import { THEME_SCRIPT } from "@/lib/theme";
 import { META_DESC } from "@/lib/copy";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.netlify.app"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.in"),
   title: { default: "wheretopray - find a mosque, dargah or prayer room near you", template: "%s | wheretopray" },
   description: META_DESC,
   manifest: "/manifest.webmanifest",

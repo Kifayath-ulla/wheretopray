@@ -11,7 +11,7 @@ const csp = [
   `connect-src 'self' ${supa} https://tiles.openfreemap.org https://*.openfreemap.org https://api.aladhan.com https://ipwho.is https://nominatim.openstreetmap.org https://challenges.cloudflare.com`,
   "worker-src 'self' blob:",
   "child-src 'self' blob:",
-  "frame-src https://challenges.cloudflare.com",
+  "frame-src https://challenges.cloudflare.com https://docs.google.com https://forms.gle",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

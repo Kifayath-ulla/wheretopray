@@ -5,7 +5,7 @@ import ShareButtons from "@/components/ShareButtons";
 import { FEATURES, META_DESC, TLDR, WHY } from "@/lib/copy";
 
 export const metadata: Metadata = { title: "Share wheretopray", description: META_DESC };
-const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.netlify.app";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL || "https://wheretopray.in";
 const TEXT = `Assalamu alaikum.
 
 ${TLDR}
