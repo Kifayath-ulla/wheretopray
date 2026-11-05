@@ -41,21 +41,33 @@ export default async function Gaps() {
   const zero = sorted.filter((w) => w.properties.count === 0).length;
   return (
     <main className="mx-auto max-w-5xl space-y-5 px-4 pb-10 pt-8">
-      <h1 className="page-title">Bengaluru ward gap map</h1>
-      <p className="text-sm text-gray-600">
-        {inside} places listed inside {wards.features.length} BBMP wards. {zero} wards have none listed yet. Pale wards are where we most need help.
+      <h1 className="page-title">Coverage gaps</h1>
+      <p className="text-[15px] text-ink-2">
+        {inside} places listed inside {wards.features.length} BBMP wards. {zero} wards have none listed yet. Pale wards need the most help.
         If you live or work in one, <Link className="font-medium text-accent-text hover:underline" href="/add">add your local masjid in 30 seconds</Link>.
       </p>
+      <Link href="/add" className="btn btn-primary inline-flex h-12 px-5 text-base">Add a place</Link>
       <GapMap wards={wards} />
       <section>
-        <h2 className="mb-2 text-lg font-bold">Wards with the fewest places</h2>
-        <ol className="grid grid-cols-1 gap-1 text-sm sm:grid-cols-2 md:grid-cols-3">
-          {sorted.slice(0, 60).map((w) => (
-            <li key={w.properties.no} className="flex justify-between rounded-xl bg-surface px-3 py-2 shadow-soft">
-              <span>{w.properties.no}. {w.properties.name}</span><b>{w.properties.count}</b>
+        <h2 className="mb-3 text-lg font-semibold">Empty or thin wards</h2>
+        <ul className="space-y-3">
+          {sorted.slice(0, 24).map((w) => (
+            <li key={w.properties.no} className="rounded-2xl border border-hairline bg-surface p-4">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="font-semibold">{w.properties.name}</p>
+                  <p className="mt-0.5 text-sm text-ink-2">Ward {w.properties.no} · Bengaluru</p>
+                </div>
+                <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${w.properties.count === 0 ? "bg-amber-500/15 text-amber-800 dark:text-amber-200" : "bg-surface-2 text-ink-2"}`}>
+                  {w.properties.count === 0 ? "0 listed" : `${w.properties.count} listed`}
+                </span>
+              </div>
+              <div className="mt-3 flex justify-end">
+                <Link href="/add" className="btn btn-primary h-11 px-4 text-sm">+ Add</Link>
+              </div>
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
       <p className="text-xs text-gray-500">Ward boundaries: BBMP 2023 wards (KGIS) via <a className="underline" href="https://github.com/datameet/Municipal_Spatial_Data">Datameet Municipal Spatial Data</a>. Counts refresh every 10 minutes.</p>
     </main>

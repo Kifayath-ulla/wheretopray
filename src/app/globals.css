@@ -121,7 +121,7 @@
   body { background: var(--bg); color: var(--text); font-feature-settings: "ss01", "cv11"; letter-spacing: -0.005em; }
   h1, h2, h3 { letter-spacing: -0.022em; }
   a, button, summary { transition: transform .18s cubic-bezier(.2,.8,.2,1), background-color .2s, color .2s, opacity .2s; }
-  html.app-lock, html.app-lock body { overflow: hidden; overscroll-behavior: none; height: 100%; }
+  html.app-lock, html.app-lock body { overflow: hidden; overscroll-behavior: none; height: 100%; height: 100dvh; }
   @media (min-width: 768px) { :root { --tabbar-h: 0px; } }
   button:not(:disabled):active, a.btn:active, .press:active { transform: scale(.97); }
   input:not([type=checkbox]):not([type=radio]):not([type=range]), select, textarea {
@@ -149,7 +149,7 @@
   .btn-secondary:hover { filter: brightness(0.97); }
   .btn-tinted { background: var(--accent-soft); color: var(--accent-text); }
   .btn:disabled { opacity: .4; cursor: default; }
-  .chip { display: inline-flex; align-items: center; border-radius: 999px; padding: .4rem .85rem; font-size: .8rem; font-weight: 500; background: var(--surface-2); color: var(--text); white-space: nowrap; }
+  .chip { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: .4rem .85rem; font-size: .8rem; font-weight: 500; background: var(--surface-2); color: var(--text); white-space: nowrap; }
   .chip[aria-pressed=true], .chip-on { background: var(--text); color: var(--bg); }
   .segmented { display: inline-flex; padding: 3px; border-radius: 10px; background: var(--surface-2); gap: 2px; }
   .segmented > button { border-radius: 8px; padding: .35rem .8rem; font-size: .8rem; font-weight: 500; color: var(--text-2); }
@@ -203,6 +203,9 @@
 /* Explore bottom sheet: moved with transform only, solid surface (no backdrop blur on large areas, it janks on iOS). */
 .sheet { background: var(--surface); will-change: transform; touch-action: none; transition: transform .32s cubic-bezier(.2,.8,.2,1); box-shadow: 0 -4px 24px rgba(0,0,0,.12); color: var(--text); }
 .sheet.dragging { transition: none; }
-.sheet .sheet-scroll { touch-action: pan-y; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-.sheet .sheet-x { touch-action: pan-x; }
-@media (min-width: 768px) { .sheet { transform: none !important; touch-action: auto; } }
+.sheet-scroll { touch-action: pan-y; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+.sheet .sheet-scroll { touch-action: pan-y; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
+.sheet .sheet-x { touch-action: pan-x; overscroll-behavior-x: contain; -webkit-overflow-scrolling: touch; }
+.sheet [data-sheet-chrome] { background: var(--surface); }
+@media (min-width: 768px) { .sheet { transform: none !important; touch-action: auto; } .sheet .sheet-scroll { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .sheet .sheet-scroll { scroll-behavior: auto; } }

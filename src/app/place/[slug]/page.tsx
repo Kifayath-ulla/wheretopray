@@ -60,14 +60,16 @@ export default async function PlacePage({ params }: Props) {
             <p className="mt-2 text-[15px] text-ink-2">{p.area ? `${p.area}, ` : ""}{p.city}{p.state ? `, ${p.state}` : ""}</p>
             {p.address && <p className="mt-1 text-sm text-ink-3">{p.address}</p>}
           </div>
-          <div className="grid grid-cols-2 gap-3">
+          <div className={`grid gap-3 ${p.phone && /^[+\d][\d\s()-]{4,20}$/.test(p.phone) ? "grid-cols-3" : "grid-cols-2"}`}>
             <a className="btn btn-primary py-3.5 text-base" href={ml.googleDir} target="_blank" rel="noreferrer"><IconDirections /> Directions</a>
             <Link className="btn btn-tinted py-3.5 text-base" href="/qibla"><IconCompass className="h-5 w-5" /> Qibla {qb.toFixed(0)}°</Link>
+            {p.phone && /^[+\d][\d\s()-]{4,20}$/.test(p.phone) && (
+              <a className="btn btn-secondary py-3.5 text-base" href={`tel:${p.phone.replace(/[^\d+]/g, "")}`}>Call</a>
+            )}
           </div>
           <div className="flex flex-wrap gap-2 text-sm">
             <a className="chip" href={ml.appleDir} target="_blank" rel="noreferrer">Apple Maps</a>
             <a className="chip" href={ml.osmDir} target="_blank" rel="noreferrer">OpenStreetMap</a>
-            {p.phone && /^[+\d][\d\s()-]{4,20}$/.test(p.phone) && <a className="chip" href={`tel:${p.phone.replace(/[^\d+]/g, "")}`}>Call</a>}
             {p.website && /^https?:\/\//i.test(p.website) && <a className="chip" href={p.website} target="_blank" rel="noopener noreferrer nofollow">Website</a>}
           </div>
         </div>

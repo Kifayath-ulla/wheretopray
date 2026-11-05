@@ -5,7 +5,7 @@ import { repo, citySlug, type CityCount } from "@/lib/data";
 export const revalidate = 60;
 export const metadata: Metadata = { title: "Directory of mosques, dargahs and prayer rooms in India", description: "Browse mosques, dargahs, idgahs, musallas and prayer rooms by state and city across India." };
 
-export default async function Directory({ searchParams }: { searchParams: Promise<{ state?: string }> }) {
+export default async function Directory({ searchParams }: { searchParams: Promise<{ state?: string; q?: string }> }) {
   const sp = await searchParams;
   const cities = (await repo.cities()).filter((c) => c.city && c.city !== "Unknown");
   const byState = new Map<string, CityCount[]>();
@@ -13,23 +13,55 @@ export default async function Directory({ searchParams }: { searchParams: Promis
   const states = [...byState.entries()].map(([s, cs]) => ({ s, cs: cs.sort((a, b) => b.n - a.n), n: cs.reduce((x, c) => x + c.n, 0) })).sort((a, b) => b.n - a.n);
   const total = states.reduce((x, s) => x + s.n, 0);
   const shown = sp.state ? states.filter((s) => s.s === sp.state) : states;
+  const bengaluru = cities.find((c) => /bengaluru|bangalore/i.test(c.city));
   return (
-    <main className="mx-auto max-w-4xl px-4 pb-10 pt-8">
+    <main className="mx-auto max-w-4xl px-4 pb-10 pt-6">
       <h1 className="page-title">Directory</h1>
-      <p className="mt-1 text-gray-600" data-testid="total">{total.toLocaleString("en-IN")} places in {cities.length.toLocaleString("en-IN")} cities and towns across {states.length} states and territories.</p>
-      <nav className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs">
-        {states.map((s) => <Link key={s.s} href={`/directory?state=${encodeURIComponent(s.s)}`} className={`hover:underline ${sp.state === s.s ? "font-bold text-emerald-900" : "text-emerald-800"}`}>{s.s} ({s.n})</Link>)}
-        {sp.state && <Link href="/directory" className="underline">All states</Link>}
-      </nav>
-      {shown.map(({ s, cs, n }) => (
-        <section key={s} className="mt-6">
-          <h2 className="font-semibold">{s} <span className="text-sm text-gray-500">({n})</span></h2>
-          <ul className="mt-1 grid gap-1 sm:grid-cols-3 text-sm">
-            {(sp.state ? cs : cs.slice(0, 24)).map((c) => <li key={c.city}><Link href={`/city/${citySlug(c.city)}`} className="text-emerald-800 hover:underline">{c.city}</Link> <span className="text-xs text-gray-500">({c.n})</span></li>)}
+      <form action="/directory" className="mt-4">
+        <label className="relative block">
+          <span className="sr-only">Search directory</span>
+          <input name="q" defaultValue={sp.q ?? ""} placeholder={`Search ${total.toLocaleString("en-IN")} places`} className="h-14 w-full rounded-2xl border border-hairline bg-surface px-4 text-base" />
+        </label>
+      </form>
+      {bengaluru && (
+        <Link href="/" className="mt-4 flex items-center justify-between gap-3 rounded-2xl bg-accent px-4 py-4 text-[var(--on-accent)]">
+          <span>
+            <span className="block text-base font-semibold">Near you: Bengaluru</span>
+            <span className="block text-sm opacity-90">{bengaluru.n.toLocaleString("en-IN")} places listed</span>
+          </span>
+          <span className="inline-flex min-h-11 items-center rounded-full bg-white/15 px-3 text-sm font-semibold">Explore ›</span>
+        </Link>
+      )}
+      <p className="mt-6 eyebrow">All India</p>
+      <ul className="mt-2 overflow-hidden rounded-2xl border border-hairline bg-surface">
+        {shown.map(({ s, n }) => (
+          <li key={s} className="border-b border-hairline last:border-0">
+            <Link href={`/directory?state=${encodeURIComponent(s)}`} className="flex min-h-14 items-center justify-between px-4 text-base font-medium">
+              <span>{s}</span>
+              <span className="font-semibold text-accent-text">{n.toLocaleString("en-IN")}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      {sp.state && shown[0] && (
+        <section className="mt-6">
+          <div className="mb-2 flex items-center justify-between">
+            <h2 className="text-lg font-semibold">{sp.state}</h2>
+            <Link href="/directory" className="text-sm font-semibold text-accent-text">All states</Link>
+          </div>
+          <ul className="overflow-hidden rounded-2xl border border-hairline bg-surface">
+            {shown[0].cs.map((c) => (
+              <li key={c.city} className="border-b border-hairline last:border-0">
+                <Link href={`/city/${citySlug(c.city)}`} className="flex min-h-14 items-center justify-between px-4 text-base">
+                  <span>{c.city}</span>
+                  <span className="text-sm font-semibold text-accent-text">{c.n.toLocaleString("en-IN")}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
-          {!sp.state && cs.length > 24 && <Link href={`/directory?state=${encodeURIComponent(s)}`} className="text-xs underline">All {cs.length} cities in {s}</Link>}
         </section>
-      ))}
+      )}
+      <p className="mt-4 text-sm text-ink-2" data-testid="total">{total.toLocaleString("en-IN")} places in {cities.length.toLocaleString("en-IN")} cities across {states.length} states and territories.</p>
     </main>
   );
 }

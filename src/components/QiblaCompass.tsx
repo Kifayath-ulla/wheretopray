@@ -99,11 +99,22 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
           {["N", "E", "S", "W"].map((d, i) => (
             <text key={d} x="0" y="-102" textAnchor="middle" dominantBaseline="middle" fontSize="18" fontWeight="700" fill={d === "N" ? "#ff3b30" : "var(--text-2)"} transform={`rotate(${i * 90}) rotate(${-i * 90 - dialRot} 0 -102)`}>{d}</text>
           ))}
-          {bearing != null && (
+          {bearing != null ? (
             <g transform={`rotate(${bearing})`} data-testid="needle">
-              <path d="M0,-118 L9,-30 L0,-38 L-9,-30 Z" fill="var(--accent)" />
-              <line x1="0" y1="-30" x2="0" y2="40" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" opacity=".35" />
-              <g transform="translate(0,-128)"><rect x="-8" y="-8" width="16" height="16" rx="2.5" fill="var(--text)" /><rect x="-8" y="-3.5" width="16" height="2.5" fill="#d4af37" /></g>
+              <path d="M0,-100 L8,-28 L0,-34 L-8,-28 Z" fill="var(--accent)" />
+              <line x1="0" y1="-28" x2="0" y2="42" stroke="var(--accent)" strokeWidth="3" strokeLinecap="round" opacity=".35" />
+              {/* Kaaba / Makkah marker at the qibla tip - rotates with the bearing so it always points to the Kaaba. */}
+              <g transform="translate(0,-122)" data-testid="kaaba">
+                <rect x="-14" y="-16" width="28" height="32" rx="3" fill="var(--text)" />
+                <rect x="-14" y="-6" width="28" height="4.5" fill="#d4af37" />
+                <rect x="-5" y="4" width="10" height="10" rx="1.2" fill="none" stroke="#d4af37" strokeWidth="1.6" />
+              </g>
+            </g>
+          ) : (
+            <g transform="translate(0,-122)" data-testid="kaaba" opacity="0.55" aria-hidden="true">
+              <rect x="-14" y="-16" width="28" height="32" rx="3" fill="var(--text)" />
+              <rect x="-14" y="-6" width="28" height="4.5" fill="#d4af37" />
+              <rect x="-5" y="4" width="10" height="10" rx="1.2" fill="none" stroke="#d4af37" strokeWidth="1.6" />
             </g>
           )}
           <circle r="7" fill="var(--surface)" stroke="var(--text)" strokeWidth="3" />
@@ -119,14 +130,14 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
       ) : <p className="text-center text-sm text-ink-2">Set your location to get the qibla direction.</p>}
       {!compact && (
         <>
-          <p className="text-center text-sm text-ink-2">
+          <div className="text-center text-sm text-ink-2">
             {sensor === "on" && (aligned ? <b className="text-lg text-accent-text">Facing the qibla</b> : "Turn until the Kaaba is at the top marker.")}
-            {sensor === "needs-permission" && <button onClick={enableIOS} className="btn btn-primary">Enable live compass</button>}
+            {sensor === "needs-permission" && <button type="button" onClick={enableIOS} className="btn btn-tinted h-14 w-full text-base">Enable live compass</button>}
             {sensor === "denied" && "Compass access was declined. Use the bearing above with a compass app, or reload to try again."}
             {sensor === "none" && "No compass sensor found (common on laptops). Use the bearing above: it is measured clockwise from true north."}
             {sensor === "idle" && "Starting compass..."}
-          </p>
-          <div className="flex justify-center"><button onClick={locate} className="btn btn-tinted">Use my location</button></div>
+          </div>
+          <button type="button" onClick={locate} className="btn btn-primary h-14 w-full text-base">Use my location</button>
           <form onSubmit={search} className="flex gap-2">
             <input value={manual} onChange={(e) => setManual(e.target.value)} aria-label="Or enter area, city or pincode" placeholder="Or enter area, city or pincode" className="h-11 flex-1 px-4 text-[15px]" />
             <button className="btn btn-secondary">Set</button>

@@ -6,15 +6,16 @@ import BottomSheet from "./ui/BottomSheet";
 import { PLACE_TYPES, type Place, type PlaceType } from "@/lib/types";
 import { distanceKm } from "@/lib/geo";
 import { qiblaBearing } from "@/lib/qibla";
+import { pickNextJamaat, fmtClock } from "@/lib/jamaatPick";
 const GoogleLookup = dynamic(() => import("./GoogleLookup"), { ssr: false });
-import { IconLocate, IconSearch } from "./ui/Icons";
+import { IconDirections, IconFilter, IconLocate, IconMap, IconPhone, IconPin, IconSearch } from "./ui/Icons";
 import { mapLinks, QUALITY_NOTE, SHORT_NOTE } from "@/lib/maplinks";
 import { TYPE_COLOR, TYPE_LABEL, fmtDistance } from "@/lib/typeStyle";
 
 const PlaceMap = dynamic(() => import("./PlaceMap"), { ssr: false, loading: () => <div className="h-full w-full animate-pulse bg-surface-2" /> });
 const RADII = [1, 2, 5, 10] as const;
 const MAX_LOADED = 6000;
-const ROW_H = 60;
+const ROW_H = 72;
 
 type Loc = { lat: number; lng: number; label: string; acc?: number; approx?: boolean; t?: number };
 
@@ -23,8 +24,12 @@ export function directionsLinks(p: { lat: number; lng: number; name: string }) {
   return { google: l.googleDir, apple: l.appleDir };
 }
 
+function telHref(phone?: string | null) {
+  if (!phone || !/^[+\d][\d\s()-]{4,20}$/.test(phone)) return null;
+  return `tel:${phone.replace(/[^\d+]/g, "")}`;
+}
+
 export default function Explorer({ places: initial, center }: { places: Place[]; center: [number, number] }) {
-  // Places loaded so far: the initial city list plus whatever the map view or "Near me" pulls from the server.
   const [places, setPlaces] = useState<Place[]>(initial);
   const loaded = useRef(new Map(initial.map((p) => [p.id, p])));
   const merge = useCallback((more: Place[]) => {
@@ -32,7 +37,6 @@ export default function Explorer({ places: initial, center }: { places: Place[];
     for (const p of more) if (!loaded.current.has(p.id)) { loaded.current.set(p.id, p); changed = true; }
     if (!changed) return;
     if (loaded.current.size > MAX_LOADED) {
-      // Keep memory and map work bounded while panning across India: drop the oldest entries.
       const keep = [...loaded.current.entries()].slice(-MAX_LOADED);
       loaded.current = new Map(keep);
     }
@@ -60,13 +64,19 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   const [locMsg, setLocMsg] = useState("");
   const [manual, setManual] = useState("");
   const [showManual, setShowManual] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [mobileMap, setMobileMap] = useState(false);
+  const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
     document.documentElement.classList.add("app-lock");
+    // List mode on mobile uses its own scroller; keep lock so the page chrome does not bounce.
     return () => document.documentElement.classList.remove("app-lock");
   }, []);
   useEffect(() => {
     try { const s = sessionStorage.getItem("wtp-loc"); if (s) { const l = JSON.parse(s) as Loc; if (l.acc == null || (l.t && Date.now() - l.t < 5 * 60000)) setLoc(l); } } catch {}
+    const id = setInterval(() => setNow(new Date()), 60_000);
+    return () => clearInterval(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   function setLoc(l: Loc | null) {
@@ -76,7 +86,6 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   }
 
   const areas = useMemo(() => [...new Set(places.map((p) => p.area).filter(Boolean) as string[])].sort(), [places]);
-
   const dq = useDeferredValue(q);
   const hay = useMemo(() => new Map(places.map((p) => [p.id, `${p.name} ${p.name_local ?? ""} ${p.address ?? ""} ${p.area ?? ""}`.toLowerCase()])), [places]);
   const filtered = useMemo(() => {
@@ -91,6 +100,8 @@ export default function Explorer({ places: initial, center }: { places: Place[];
     return r;
   }, [places, hay, dq, types, area, fac, me, radius]);
 
+  const jamaat = useMemo(() => (me ? pickNextJamaat(filtered, now) : null), [me, filtered, now]);
+
   async function nearMe() {
     if (!("geolocation" in navigator)) { setShowManual(true); return setLocMsg("Location is not available in this browser. Search for your area or pincode instead."); }
     try {
@@ -99,7 +110,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
     } catch {}
     setLocMsg("Finding you...");
     let best: GeolocationPosition | null = null, done = false;
-    const show = (p: GeolocationPosition) => { const a = Math.round(p.coords.accuracy); setLoc({ lat: p.coords.latitude, lng: p.coords.longitude, acc: a, t: Date.now(), label: `your location (±${a} m)` }); setShowManual(false); setLocMsg(a > 100 ? `Your phone reports ±${a} m. Turn on Precise Location for this browser and GPS / Wi-Fi, then tap Near me again.` : ""); };
+    const show = (p: GeolocationPosition) => { const a = Math.round(p.coords.accuracy); setLoc({ lat: p.coords.latitude, lng: p.coords.longitude, acc: a, t: Date.now(), label: `your location (±${a} m)` }); setShowManual(false); setLocMsg(a > 100 ? `Your phone reports ±${a} m. Turn on Precise Location for this browser and GPS / Wi-Fi, then tap Use my location again.` : ""); };
     const finish = () => { if (done) return; done = true; navigator.geolocation.clearWatch(id); clearTimeout(tm); };
     const id = navigator.geolocation.watchPosition(
       (p) => { if (!best || p.coords.accuracy < best.coords.accuracy) { best = p; show(p); } if (p.coords.accuracy <= 25) finish(); },
@@ -110,7 +121,7 @@ export default function Explorer({ places: initial, center }: { places: Place[];
         try {
           const r = await fetch("https://ipwho.is/");
           const j = await r.json();
-          if (j.success && j.latitude) { setLoc({ lat: j.latitude, lng: j.longitude, acc: 5000, approx: true, t: Date.now(), label: `approx. ${j.city || "your area"} (from your internet connection, not exact)` }); setLocMsg("Exact location is blocked, so this is only a rough area from your internet connection (can be km off). Allow Precise Location and tap Near me to retry."); return; }
+          if (j.success && j.latitude) { setLoc({ lat: j.latitude, lng: j.longitude, acc: 5000, approx: true, t: Date.now(), label: `approx. ${j.city || "your area"} (from your internet connection, not exact)` }); setLocMsg("Exact location is blocked, so this is only a rough area from your internet connection (can be km off). Allow Precise Location and tap Use my location to retry."); return; }
         } catch {}
         setLocMsg(err.code === err.PERMISSION_DENIED ? "You declined location access. Search for your area or pincode instead." : err.code === err.TIMEOUT ? "Location timed out. Try again or search for your area or pincode." : "Could not get your location. Search for your area or pincode instead.");
       },
@@ -137,115 +148,311 @@ export default function Explorer({ places: initial, center }: { places: Place[];
   const [snap, setSnap] = useState<"peek" | "half" | "full">("half");
   const [selSlug, setSelSlug] = useState<string | null>(null);
   const selected = useMemo(() => (selSlug ? places.find((p) => p.slug === selSlug) ?? null : null), [selSlug, places]);
-  const select = useCallback((slug: string) => { setSelSlug(slug); setSnap("peek"); (document.activeElement as HTMLElement | null)?.blur?.(); }, []);
+  const select = useCallback((slug: string) => { setSelSlug(slug); setSnap("half"); (document.activeElement as HTMLElement | null)?.blur?.(); }, []);
   const FAC = [["women", "Women's area"], ["wudu", "Wudu"], ["parking", "Parking"], ["wheelchair", "Wheelchair"]] as const;
+  const activeFacCount = FAC.filter(([k]) => fac[k]).length + (area ? 1 : 0) + types.length;
+  const cityCount = initial.length;
+
+  const filtersPanel = (
+    <div className="space-y-3">
+      <div className="sheet-x -mx-1 flex gap-2 overflow-x-auto px-1 pb-0.5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {PLACE_TYPES.map((t) => {
+          const on = types.includes(t.value);
+          return (
+            <button key={t.value} type="button" aria-pressed={on} onClick={() => setTypes((x) => (on ? x.filter((y) => y !== t.value) : [...x, t.value]))} className="chip min-h-12 gap-2 px-4 text-sm">
+              <span className="h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLOR[t.value] }} aria-hidden />
+              {TYPE_LABEL[t.value]}
+            </button>
+          );
+        })}
+      </div>
+      <label className="block text-sm font-medium text-ink-2" htmlFor="area-filter">Area</label>
+      <select id="area-filter" value={area} onChange={(e) => setArea(e.target.value)} className="h-12 w-full px-3 text-base" aria-label="Filter by area">
+        <option value="">All areas</option>
+        {areas.map((a) => <option key={a}>{a}</option>)}
+      </select>
+      <div className="flex flex-wrap gap-2">
+        {FAC.map(([k, label]) => (
+          <button key={k} type="button" aria-pressed={fac[k]} onClick={() => setFac({ ...fac, [k]: !fac[k] })} className="chip min-h-12 px-4 text-sm">{label}</button>
+        ))}
+      </div>
+      {activeFacCount > 0 && (
+        <button type="button" className="min-h-11 text-sm font-semibold text-accent-text" onClick={() => { setFac({ women: false, wudu: false, parking: false, wheelchair: false }); setArea(""); setTypes([]); }}>
+          Clear filters
+        </button>
+      )}
+    </div>
+  );
+
+  const listCards = (
+    <ul className="space-y-3">
+      {filtered.slice(0, 80).map((p) => <PlaceCard key={p.id} p={p} />)}
+    </ul>
+  );
 
   return (
-    <div className="fixed inset-x-0 bottom-[var(--tabbar-h)] top-[var(--header-h)] overflow-hidden">
-      <div className="absolute inset-0">
-        <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} meAcc={me?.acc} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} selected={selected} onSelect={select} />
-      </div>
-      <BottomSheet snap={snap} onSnap={setSnap}>
-        <div className="space-y-3 px-4 pb-3 pt-1 md:pt-4">
-          <div className="flex gap-2">
-            <label className="relative flex-1">
-              <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-ink-3"><IconSearch className="h-4 w-4" /></span>
-              <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setSnap("full")} onKeyDown={(e) => { if (e.key === "Enter" && filtered[0]) { e.preventDefault(); select(filtered[0].slug); } }} enterKeyHint="search" placeholder="Search mosques, areas" className="h-10 w-full pl-9 pr-3 text-[15px]" aria-label="Search" />
-            </label>
-            <button onClick={nearMe} className="btn btn-primary h-10 px-4 text-sm"><IconLocate className="h-4 w-4" />Near me</button>
+    <>
+      {/* Mobile list-first Explore (mockup). Single scroll; sticky search / location. */}
+      <div className={`fixed inset-x-0 bottom-[var(--tabbar-h)] top-[var(--header-h)] md:hidden ${mobileMap ? "hidden" : ""}`}>
+        <div className="sheet-scroll h-full overflow-y-auto overscroll-y-contain [-webkit-overflow-scrolling:touch]">
+          <div className="space-y-4 px-4 pb-8 pt-5">
+            <header className="space-y-2">
+              <h1 className="text-[1.75rem] font-bold leading-tight tracking-tight">Find a place to pray, near you</h1>
+              <p className="text-base text-ink-2">{cityCount.toLocaleString("en-IN")} mosques, dargahs, musallas and prayer rooms across Bengaluru.</p>
+            </header>
           </div>
-          {(showManual || me) && (
-            <form onSubmit={searchManual} className="flex gap-2">
-              <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Area, city or pincode, e.g. 560005" className="h-9 flex-1 px-3 text-sm" aria-label="Area or pincode" />
-              <button className="btn btn-secondary h-9 px-4 text-sm">Go</button>
-            </form>
-          )}
-          {!showManual && !me && <button onClick={() => setShowManual(true)} className="text-xs font-medium text-accent-text">Or enter an area or pincode</button>}
-          {locMsg && <p className="rounded-xl bg-amber-500/10 px-3 py-2 text-xs text-amber-700 dark:text-amber-300" role="status">{locMsg}</p>}
-          {me && (
-            <div className="space-y-2 rounded-2xl bg-accent-soft p-3 text-xs">
-              <div className="flex items-center justify-between gap-2"><span className="truncate">Near <b>{me.label}</b>{me.approx && <button onClick={nearMe} className="ml-2 font-semibold text-accent-text">Retry exact</button>}</span><button onClick={() => setLoc(null)} className="font-semibold text-accent-text">Clear</button></div>
-              <div className="flex items-center justify-between gap-2">
-                <div className="segmented" role="group" aria-label="Radius">
-                  {RADII.map((r) => <button key={r} aria-pressed={radius === r} onClick={() => setRadius(r)}>{r} km</button>)}
+
+          <div className="sticky top-0 z-20 space-y-3 border-b border-hairline bg-canvas/95 px-4 py-3 backdrop-blur-md">
+            {!me ? (
+              <button type="button" onClick={nearMe} className="btn btn-primary h-14 w-full text-base">
+                <IconPin className="h-5 w-5" /> Use my location
+              </button>
+            ) : (
+              <div className="flex items-center justify-between gap-2 rounded-2xl bg-accent-soft px-3 py-2.5 text-sm">
+                <span className="min-w-0 truncate">Near <b>{me.label}</b></span>
+                <div className="flex shrink-0 gap-2">
+                  <button type="button" onClick={nearMe} className="min-h-11 font-semibold text-accent-text">Update</button>
+                  <button type="button" onClick={() => setLoc(null)} className="min-h-11 font-semibold text-accent-text">Clear</button>
                 </div>
-                <Link href="/qibla" className="whitespace-nowrap font-semibold text-accent-text">Qibla {qiblaBearing(me.lat, me.lng).toFixed(0)}°</Link>
+              </div>
+            )}
+            <label className="relative block">
+              <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-3"><IconSearch className="h-5 w-5" /></span>
+              <input
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                onFocus={() => setShowManual(true)}
+                placeholder="Or search an area or pincode"
+                className="h-14 w-full pl-11 pr-3 text-base"
+                aria-label="Search mosques, areas or pincode"
+              />
+            </label>
+            {(showManual || (!me && manual)) && (
+              <form onSubmit={searchManual} className="flex gap-2">
+                <input value={manual} onChange={(e) => setManual(e.target.value)} placeholder="Area, city or pincode" className="h-12 flex-1 px-3 text-base" aria-label="Area or pincode" />
+                <button type="submit" className="btn btn-secondary h-12 px-5 text-base">Go</button>
+              </form>
+            )}
+            {locMsg && <p className="rounded-xl bg-amber-500/10 px-3 py-2.5 text-sm text-amber-700 dark:text-amber-300" role="status">{locMsg}</p>}
+            {me && (
+              <div className="segmented w-full" role="group" aria-label="Search radius">
+                {RADII.map((r) => (
+                  <button key={r} type="button" aria-pressed={radius === r} onClick={() => setRadius(r)} className="min-h-11 flex-1 text-sm">{r} km</button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="space-y-4 px-4 pb-10 pt-4">
+            {me && jamaat && (
+              <NearestJamaatCard jamaat={jamaat} radius={radius} />
+            )}
+
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="text-lg font-semibold tracking-tight">{me ? "Nearest to you" : "Places in Bengaluru"}</h2>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  aria-expanded={filtersOpen}
+                  onClick={() => setFiltersOpen((v) => !v)}
+                  className={`inline-flex min-h-12 items-center gap-1.5 rounded-full border border-hairline bg-surface px-3.5 text-sm font-semibold ${filtersOpen || activeFacCount ? "text-accent-text" : "text-ink"}`}
+                >
+                  <IconFilter className="h-4 w-4" /> Filters{activeFacCount ? ` · ${activeFacCount}` : ""}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMobileMap(true)}
+                  className="inline-flex min-h-12 items-center gap-1.5 rounded-full bg-accent-soft px-3.5 text-sm font-semibold text-accent-text"
+                >
+                  <IconMap className="h-4 w-4" /> Map
+                </button>
               </div>
             </div>
-          )}
-          <div className="sheet-x -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-0.5 [scrollbar-width:none]">
-            {PLACE_TYPES.map((t) => {
-              const on = types.includes(t.value);
-              return (
-                <button key={t.value} aria-pressed={on} onClick={() => setTypes((x) => (on ? x.filter((y) => y !== t.value) : [...x, t.value]))} className="chip gap-1.5">
-                  <span className="h-2 w-2 rounded-full" style={{ background: TYPE_COLOR[t.value] }} />{TYPE_LABEL[t.value]}
-                </button>
-              );
-            })}
-          </div>
-          <div className="sheet-x -mx-4 flex items-center gap-1.5 overflow-x-auto px-4 [scrollbar-width:none]">
-            <select value={area} onChange={(e) => setArea(e.target.value)} className="h-8 max-w-[9rem] px-2 text-xs" aria-label="Area">
-              <option value="">All areas</option>
-              {areas.map((a) => <option key={a}>{a}</option>)}
-            </select>
-            {FAC.map(([k, label]) => (
-              <button key={k} aria-pressed={fac[k]} onClick={() => setFac({ ...fac, [k]: !fac[k] })} className="chip">{label}</button>
-            ))}
-          </div>
-          {selected && <Selected p={selected} onClose={() => setSelSlug(null)} />}
-          <div className="flex items-center justify-between">
+
+            {filtersOpen && <div className="rounded-2xl border border-hairline bg-surface p-4">{filtersPanel}</div>}
+
             <p className="eyebrow">{filtered.length.toLocaleString("en-IN")} places{me ? ` within ${radius} km` : ""}</p>
-            <Link href="/about" className="grid h-6 w-6 place-items-center rounded-full bg-surface-2 text-[12px] font-semibold text-ink-2" aria-label="About and data credits" title="About and data credits">i</Link>
+            {me && filtered.length === 0 && <p className="rounded-2xl bg-surface p-5 text-center text-base text-ink-2">Nothing within {radius} km. Try a bigger radius.</p>}
+            {listCards}
+            <GoogleLookup bbox={view} q={q} />
+            <p className="pt-2 text-center text-sm">
+              <Link href="/bengaluru/gaps" className="font-medium text-accent-text">See coverage gaps</Link>
+              {" · "}
+              <Link href="/about" className="font-medium text-accent-text">About and data</Link>
+            </p>
           </div>
         </div>
-        <VirtualList items={filtered} me={!!me} radius={radius} onSelect={select} selSlug={selSlug} footer={<GoogleLookup bbox={view} q={q} />} />
-      </BottomSheet>
-    </div>
+      </div>
+
+      {/* Mobile map mode + desktop map/panel. */}
+      <div className={`fixed inset-x-0 bottom-[var(--tabbar-h)] top-[var(--header-h)] overflow-hidden overscroll-none ${mobileMap ? "" : "hidden md:block"}`}>
+        {mobileMap && (
+          <button
+            type="button"
+            onClick={() => setMobileMap(false)}
+            className="absolute left-3 top-3 z-20 inline-flex min-h-12 items-center rounded-full border border-hairline bg-surface px-4 text-sm font-semibold shadow-soft md:hidden"
+          >
+            List
+          </button>
+        )}
+        <div className="absolute inset-0">
+          <PlaceMap places={filtered} center={center} me={me ? [me.lat, me.lng] : null} meAcc={me?.acc} radiusKm={me ? radius : undefined} onMoveEnd={onMoveEnd} selected={selected} onSelect={select} />
+        </div>
+        <BottomSheet snap={snap} onSnap={setSnap}>
+          <div data-sheet-chrome className="shrink-0 space-y-2.5 border-b border-hairline px-4 pb-2.5 pt-0.5 md:space-y-3 md:pt-4">
+            <div className="flex gap-2">
+              <label className="relative min-w-0 flex-1">
+                <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-3"><IconSearch className="h-5 w-5" /></span>
+                <input value={q} onChange={(e) => setQ(e.target.value)} onFocus={() => setSnap("full")} onKeyDown={(e) => { if (e.key === "Enter" && filtered[0]) { e.preventDefault(); select(filtered[0].slug); } }} enterKeyHint="search" placeholder="Search mosques, areas" className="h-12 w-full pl-11 pr-3 text-base" aria-label="Search mosques, areas" />
+              </label>
+              <button type="button" onClick={nearMe} className="btn btn-primary h-12 min-w-[7.25rem] shrink-0 px-4 text-base"><IconLocate className="h-5 w-5" />Near me</button>
+            </div>
+            {me && (
+              <div className="flex items-center justify-between gap-2 text-sm">
+                <span className="truncate">Near <b>{me.label}</b></span>
+                <Link href="/qibla" className="font-semibold text-accent-text">Qibla {qiblaBearing(me.lat, me.lng).toFixed(0)}°</Link>
+              </div>
+            )}
+            <div className="hidden md:block">{filtersPanel}</div>
+            <div className="flex items-center justify-between">
+              <p className="eyebrow">{filtered.length.toLocaleString("en-IN")} places{me ? ` within ${radius} km` : ""}</p>
+              <Link href="/about" className="grid h-12 w-12 place-items-center rounded-full bg-surface-2 text-sm font-semibold text-ink-2" aria-label="About and data credits">i</Link>
+            </div>
+          </div>
+          <div className="flex min-h-0 flex-1 flex-col">
+            {selected && (
+              <div className="shrink-0 border-b border-hairline px-4 py-3">
+                <Selected p={selected} onClose={() => setSelSlug(null)} />
+              </div>
+            )}
+            <VirtualList items={filtered} me={!!me} radius={radius} onSelect={select} selSlug={selSlug} footer={<GoogleLookup bbox={view} q={q} />} />
+          </div>
+        </BottomSheet>
+      </div>
+    </>
+  );
+}
+
+function NearestJamaatCard({ jamaat, radius }: { jamaat: ReturnType<typeof pickNextJamaat>; radius: number }) {
+  const { pick, friday, withTimes } = jamaat;
+  if (pick) {
+    const p = pick.place;
+    const how = pick.reachableWalk ? `~${pick.walkMin} min walk` : `~${pick.driveMin} min drive`;
+    const title = friday && pick.slot.kind === "jumuah" ? "Best for Jumu'ah" : "Next jamaat you can reach";
+    const tel = telHref(p.phone);
+    const dir = mapLinks(p).googleDir;
+    return (
+      <section className="rounded-2xl border border-accent/25 bg-accent-soft p-4" data-testid="nearest-jamaat">
+        <p className="text-xs font-semibold uppercase tracking-wide text-accent-text">{title}</p>
+        <h3 className="mt-1 text-lg font-semibold tracking-tight">{p.name}</h3>
+        <p className="text-sm text-ink-2">
+          {pick.slot.label} at {fmtClock(pick.slot.mins)} · {fmtDistance(p._d)} · {how} · {pick.leftMin} min left
+        </p>
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {p.women_section && <span className="chip gap-1 text-xs text-accent-text">Women&apos;s area</span>}
+          {p.wudu && <span className="chip gap-1 text-xs text-accent-text">Wudu</span>}
+          {p.parking && <span className="chip gap-1 text-xs text-accent-text">Parking</span>}
+        </div>
+        <div className="mt-3 flex gap-2">
+          <a href={dir} target="_blank" rel="noreferrer" className="btn btn-primary h-12 flex-1 text-sm"><IconDirections className="h-4 w-4" /> Directions</a>
+          {tel ? <a href={tel} className="btn btn-secondary h-12 px-4 text-sm"><IconPhone className="h-4 w-4" /> Call</a> : <Link href={`/place/${p.slug}`} className="btn btn-secondary h-12 px-4 text-sm">Details</Link>}
+        </div>
+        <p className="mt-2 text-xs text-ink-3">Community-reported jamaat time. Confirm locally. Travel time is an estimate.</p>
+      </section>
+    );
+  }
+  return (
+    <section className="rounded-2xl border border-hairline bg-surface p-4" data-testid="nearest-jamaat-fallback">
+      <p className="text-sm font-semibold">{friday ? "Jumu'ah timings near you" : "Jamaat timings near you"}</p>
+      <p className="mt-1 text-sm text-ink-2">
+        {withTimes === 0
+          ? `No community jamaat times within ${radius} km yet. Open a nearby masjid and add or confirm the timing.`
+          : "No upcoming community jamaat you can still reach right now. Browse nearest places below, or add a timing."}
+      </p>
+      <Link href="/add" className="mt-3 inline-flex min-h-12 items-center font-semibold text-accent-text">Add or confirm timing</Link>
+    </section>
+  );
+}
+
+function PlaceCard({ p }: { p: Place & { _d?: number } }) {
+  const dir = mapLinks(p).googleDir;
+  const tel = telHref(p.phone);
+  return (
+    <li className="rounded-2xl border border-hairline bg-surface p-4 shadow-soft">
+      <Link href={`/place/${p.slug}`} className="block min-w-0">
+        <div className="text-lg font-semibold tracking-tight text-ink">{p.name}</div>
+        <div className="mt-0.5 text-sm text-ink-2">
+          {[p.area, p._d != null ? fmtDistance(p._d) : null].filter(Boolean).join(" · ")}
+          {p.location_quality && SHORT_NOTE[p.location_quality] ? ` · ${SHORT_NOTE[p.location_quality]}` : ""}
+        </div>
+      </Link>
+      <div className="mt-2.5 flex flex-wrap gap-1.5">
+        {p.women_section === true && <span className="inline-flex min-h-9 items-center rounded-full bg-accent-soft px-2.5 text-xs font-medium text-accent-text">Women&apos;s area</span>}
+        {p.women_section == null && <span className="inline-flex min-h-9 items-center rounded-full bg-surface-2 px-2.5 text-xs font-medium text-ink-3">Women&apos;s area - ask</span>}
+        {p.wudu === true && <span className="inline-flex min-h-9 items-center rounded-full bg-accent-soft px-2.5 text-xs font-medium text-accent-text">Wudu</span>}
+        {p.parking === true && <span className="inline-flex min-h-9 items-center rounded-full bg-accent-soft px-2.5 text-xs font-medium text-accent-text">Parking</span>}
+      </div>
+      <div className="mt-3 flex gap-2">
+        <a href={dir} target="_blank" rel="noreferrer" className="btn btn-primary h-12 flex-1 text-sm"><IconDirections className="h-4 w-4" /> Directions</a>
+        {tel ? (
+          <a href={tel} className="btn btn-secondary h-12 min-w-[5.5rem] px-4 text-sm"><IconPhone className="h-4 w-4" /> Call</a>
+        ) : (
+          <Link href={`/place/${p.slug}`} className="btn btn-secondary h-12 min-w-[5.5rem] px-4 text-sm">Details</Link>
+        )}
+      </div>
+    </li>
   );
 }
 
 function Selected({ p, onClose }: { p: Place; onClose: () => void }) {
   const l = mapLinks(p);
   const note = p.location_quality ? QUALITY_NOTE[p.location_quality] : undefined;
+  const tel = telHref(p.phone);
   return (
     <div className="rounded-2xl border border-hairline bg-surface p-3" data-testid="selected-place">
       <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0"><div className="flex items-center gap-1.5 text-xs font-medium text-ink-2"><span className="inline-block h-2 w-2 rounded-full" style={{ background: TYPE_COLOR[p.type] }} aria-hidden="true" />{TYPE_LABEL[p.type]}</div><div className="truncate text-[15px] font-semibold">{p.name}</div><div className="truncate text-xs text-ink-2">{[p.area, p.city].filter(Boolean).join(", ")} · <span className="font-mono">{p.lat.toFixed(5)}, {p.lng.toFixed(5)}</span></div></div>
-        <button onClick={onClose} className="text-xs font-semibold text-accent-text" aria-label="Close selected place">Close</button>
+        <div className="min-w-0">
+          <div className="flex items-center gap-1.5 text-sm font-medium text-ink-2">
+            <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLOR[p.type] }} aria-hidden="true" />
+            {TYPE_LABEL[p.type]}
+          </div>
+          <div className="truncate text-base font-semibold">{p.name}</div>
+          <div className="truncate text-sm text-ink-2">{[p.area, p.city].filter(Boolean).join(", ")}</div>
+        </div>
+        <button type="button" onClick={onClose} className="min-h-12 min-w-12 text-sm font-semibold text-accent-text" aria-label="Close selected place">Close</button>
       </div>
-      {note && (p.location_quality === "approximate" || p.location_quality === "listing") && <p className="mt-2 text-[11px] text-amber-700 dark:text-amber-300">{note}</p>}
-      <div className="mt-2 flex gap-2 text-xs">
-        <a href={l.googleDir} target="_blank" rel="noreferrer" className="btn btn-primary h-8 px-3 text-xs">Directions</a>
-        <a href={l.appleDir} target="_blank" rel="noreferrer" className="chip">Apple</a>
-        <Link href={`/place/${p.slug}`} className="chip">Details and timings</Link>
+      {note && (p.location_quality === "approximate" || p.location_quality === "listing") && <p className="mt-2 text-sm text-amber-700 dark:text-amber-300">{note}</p>}
+      <div className="mt-2 flex flex-wrap gap-2">
+        <a href={l.googleDir} target="_blank" rel="noreferrer" className="btn btn-primary h-12 px-4 text-sm">Directions</a>
+        {tel && <a href={tel} className="chip min-h-12 px-4 text-sm">Call</a>}
+        <Link href={`/place/${p.slug}`} className="chip min-h-12 px-4 text-sm">Details</Link>
       </div>
     </div>
   );
 }
 
-const Row = memo(function Row({ p, onSelect, active }: { p: Place & { _d?: number }; onSelect: (slug: string) => void; active: boolean }) {
+const Row = memo(function Row({ p, onSelect, active, top }: { p: Place & { _d?: number }; onSelect: (slug: string) => void; active: boolean; top?: number }) {
   const d = directionsLinks(p);
   return (
-    <li className={`flex items-center gap-3 rounded-2xl px-2 ${active ? "bg-surface-2" : ""}`} style={{ height: ROW_H }}>
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full" style={{ background: `${TYPE_COLOR[p.type]}1f` }} aria-hidden>
+    <li className={`flex items-center gap-3 rounded-2xl px-2 ${active ? "bg-surface-2" : ""}`} style={{ height: ROW_H, position: top == null ? undefined : "absolute", top, left: 0, right: 0 }}>
+      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full" style={{ background: `${TYPE_COLOR[p.type]}1f` }} aria-hidden>
         <span className="h-2.5 w-2.5 rounded-full" style={{ background: TYPE_COLOR[p.type] }} />
       </span>
-      <button type="button" onClick={() => onSelect(p.slug)} className="min-w-0 flex-1 text-left" aria-label={`Show ${p.name} on the map`} data-slug={p.slug}>
-        <div className="truncate text-[15px] font-medium">{p.name}</div>
-        <div className="truncate text-xs text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}{p.location_quality && SHORT_NOTE[p.location_quality] ? ` · ${SHORT_NOTE[p.location_quality]}` : ""}</div>
+      <button type="button" onClick={() => onSelect(p.slug)} className="min-h-12 min-w-0 flex-1 text-left" data-slug={p.slug}>
+        <div className="truncate text-base font-medium">{p.name}</div>
+        <div className="truncate text-sm text-ink-2">{TYPE_LABEL[p.type]}{p.area || p.city ? ` · ${[p.area, p.city].filter(Boolean).join(", ")}` : ""}</div>
       </button>
       <div className="flex shrink-0 flex-col items-end gap-1">
-        {p._d !== undefined && <span className="text-xs font-semibold text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
-        <span className="flex gap-1 text-[11px]">
-          <a href={d.google} target="_blank" rel="noreferrer" className="rounded-full bg-accent-soft px-2 py-0.5 font-medium text-accent-text" aria-label={`Google Maps directions to ${p.name}`}>Google</a>
-          <a href={d.apple} target="_blank" rel="noreferrer" className="rounded-full bg-surface-2 px-2 py-0.5 font-medium" aria-label={`Apple Maps directions to ${p.name}`}>Apple</a>
+        {p._d !== undefined && <span className="text-sm font-semibold text-accent-text" data-testid="distance">{fmtDistance(p._d)}</span>}
+        <span className="flex gap-1.5 text-xs">
+          <a href={d.google} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center rounded-full bg-accent-soft px-3 font-medium text-accent-text" aria-label={`Google Maps directions to ${p.name}`}>Google</a>
+          <a href={d.apple} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center rounded-full bg-surface-2 px-3 font-medium" aria-label={`Apple Maps directions to ${p.name}`}>Apple</a>
         </span>
       </div>
     </li>
   );
 });
 
-// Simple windowing: only the rows in view (plus overscan) are in the DOM.
 function VirtualList({ items, me, radius, footer, onSelect, selSlug }: { items: (Place & { _d?: number })[]; me: boolean; radius: number; footer: React.ReactNode; onSelect: (slug: string) => void; selSlug: string | null }) {
   const ref = useRef<HTMLDivElement>(null);
   const [top, setTop] = useState(0);
@@ -262,14 +469,15 @@ function VirtualList({ items, me, radius, footer, onSelect, selSlug }: { items: 
   useEffect(() => { if (ref.current) ref.current.scrollTop = 0; setTop(0); }, [items]);
   const start = Math.max(0, Math.floor(top / ROW_H) - 6);
   const end = Math.min(items.length, Math.ceil((top + h) / ROW_H) + 6);
+  const slice = items.slice(start, end);
   return (
-    <div ref={ref} className="sheet-scroll min-h-0 flex-1 overflow-y-auto border-t border-hairline px-2 pb-4" data-testid="results">
-      <ul style={{ height: items.length * ROW_H, position: "relative" }}>
-        <div style={{ transform: `translateY(${start * ROW_H}px)` }}>
-          {items.slice(start, end).map((p) => <Row key={p.id} p={p} onSelect={onSelect} active={p.slug === selSlug} />)}
-        </div>
+    <div ref={ref} className="sheet-scroll min-h-0 flex-1 overflow-y-auto overscroll-y-contain px-2 pb-4" data-testid="results" aria-label="Places near you">
+      <ul style={{ height: items.length * ROW_H, position: "relative" }} aria-label="Places">
+        {slice.map((p, i) => (
+          <Row key={p.id} p={p} onSelect={onSelect} active={p.slug === selSlug} top={(start + i) * ROW_H} />
+        ))}
       </ul>
-      {me && items.length === 0 && <p className="p-6 text-center text-sm text-ink-2">Nothing within {radius} km. Try a bigger radius.</p>}
+      {me && items.length === 0 && <p className="p-6 text-center text-base text-ink-2">Nothing within {radius} km. Try a bigger radius.</p>}
       {footer}
     </div>
   );

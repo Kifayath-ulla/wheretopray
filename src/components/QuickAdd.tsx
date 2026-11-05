@@ -75,19 +75,25 @@ export default function QuickAdd() {
   return (
     <form onSubmit={submit} className="space-y-3">
       {TS_KEY && <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" onLoad={renderTs} />}
-      <div className="rounded-2xl bg-surface-2 p-4 text-sm">
-        <p>{geoMsg}</p>
-        {geo && <a className="font-medium text-accent-text hover:underline" target="_blank" rel="noreferrer" href={`https://www.openstreetmap.org/?mlat=${geo.lat}&mlon=${geo.lng}#map=18/${geo.lat}/${geo.lng}`}>Check the pin</a>}
-        <button type="button" onClick={locate} className="ml-3 text-emerald-800 underline">Refresh location</button>
+      <button type="button" onClick={locate} className="btn btn-primary h-14 w-full text-base">Use my current location</button>
+      <p className="text-sm text-ink-2" role="status">{geoMsg}{geo ? " " : ""}{geo && <a className="font-medium text-accent-text hover:underline" target="_blank" rel="noreferrer" href={`https://www.openstreetmap.org/?mlat=${geo.lat}&mlon=${geo.lng}#map=18/${geo.lat}/${geo.lng}`}>Check the pin</a>}</p>
+      <label className="block space-y-1.5">
+        <span className="text-sm font-medium text-ink-2">Name</span>
+        <input required minLength={3} maxLength={150} value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Masjid-e-Noor" className={inp} autoFocus />
+      </label>
+      <div className="space-y-1.5">
+        <span className="text-sm font-medium text-ink-2">Type</span>
+        <div className="flex flex-wrap gap-2">
+          {PLACE_TYPES.map((t) => (
+            <button type="button" key={t.value} onClick={() => setType(t.value)} className={`chip min-h-11 px-4 text-sm ${type === t.value ? "!bg-accent !text-[var(--on-accent)]" : ""}`}>{t.label}</button>
+          ))}
+        </div>
       </div>
-      <input required minLength={3} maxLength={150} value={name} onChange={(e) => setName(e.target.value)} aria-label="Name, e.g. Masjid-e-Noor" placeholder="Name, e.g. Masjid-e-Noor" className={inp} autoFocus />
-      <div className="grid grid-cols-2 gap-2">
-        {PLACE_TYPES.map((t) => (
-          <button type="button" key={t.value} onClick={() => setType(t.value)} className={`rounded-2xl px-2 py-3 text-sm font-medium ${type === t.value ? "bg-accent text-white shadow-soft" : "bg-surface-2"}`}>{t.label}</button>
-        ))}
-      </div>
-      <label className="flex items-center gap-3 rounded-2xl bg-surface-2 px-4 py-3.5"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>
-      <input value={jumuah} onChange={(e) => setJumuah(e.target.value)} maxLength={60} aria-label="Jumu'ah time (optional), e.g. 1:30 PM" placeholder="Jumu'ah time (optional), e.g. 1:30 PM" className={inp} />
+      <label className="block space-y-1.5">
+        <span className="text-sm font-medium text-ink-2">Jumu&apos;ah time (optional)</span>
+        <input value={jumuah} onChange={(e) => setJumuah(e.target.value)} maxLength={60} placeholder="e.g. 1:30 PM" className={inp} />
+      </label>
+      <label className="flex min-h-12 items-center gap-3 text-base"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>
       <details className="text-sm">
         <summary className="cursor-pointer text-gray-600">Address {addr.city ? `(${[addr.area, addr.city].filter(Boolean).join(", ")})` : "(needed if location is off)"}</summary>
         <div className="mt-2 space-y-2">
