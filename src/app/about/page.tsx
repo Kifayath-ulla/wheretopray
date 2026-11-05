@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SummaryCard from "@/components/SummaryCard";
-export const metadata: Metadata = { title: "About and data credits" };
+import { META_DESC } from "@/lib/copy";
+export const metadata: Metadata = { title: "About and data credits", description: META_DESC };
 export default function About() {
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">

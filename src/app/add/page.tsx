@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import QuickAdd from "@/components/QuickAdd";
 import TimetableShare from "@/components/TimetableShare";
-export const metadata: Metadata = { title: "Quick add a masjid", description: "Add a missing mosque, dargah, idgah or prayer room in 30 seconds from your phone." };
+export const metadata: Metadata = { title: "Quick add a masjid", description: "Add a place to pray where none is nearby: mosque, dargah, idgah, musalla, prayer room, or a room that hosts prayer." };
 export default function Add() {
   return (
     <main className="mx-auto max-w-md space-y-4 px-4 pb-10 pt-6">

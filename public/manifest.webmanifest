@@ -1,7 +1,7 @@
 {
-  "name": "wheretopray - find a place to pray",
+  "name": "wheretopray - find or add a place to pray",
   "short_name": "wheretopray",
-  "description": "Mosques, dargahs, idgahs and prayer rooms near you, with qibla and prayer times.",
+  "description": "Free, not-for-profit map to find or add places to pray across India. Jamaat timings, Qibla, directions.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

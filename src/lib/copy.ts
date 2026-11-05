@@ -1,17 +1,20 @@
 export const TLDR =
-  "wheretopray is a free, not-for-profit map built so you can put your prayer first, wherever you are. Find a place to pray nearby, check jamaat timings, and face the Qibla. No ads. No fees.";
+  "wheretopray is a free, not-for-profit project built so people can put their prayer first, wherever they are. No ads. No fees. Its main feature: anyone can add a place to pray where there is no mosque or other place nearby. About 25,000 places across India are already listed.";
 export const META_DESC =
-  "Free, not-for-profit map built so you can put your prayer first, wherever you are. Find a place to pray nearby, check jamaat timings, and face the Qibla. No ads. No fees.";
-export const WHY = "Built so you can put your prayer first, wherever you are.";
+  "Free, not-for-profit map to find or add places to pray across India. Jamaat timings, Qibla, directions. Early stage, improving daily.";
+export const WHY =
+  "Add a place to pray where none is nearby, so people who cannot find a mosque can still find somewhere to pray.";
 export const FEATURES = [
-  "Nearby places to pray across India: mosques, dargahs, idgahs, musallas and prayer rooms",
-  "Jamaat and Jumu'ah timings, confirmed by the community",
+  "Add a place to pray where there is no mosque nearby: mosques, dargahs, idgahs, musallas, prayer rooms, and rooms or halls that host prayer. Reviewed before it goes live",
+  "About 25,000 places across India already listed to find nearby",
+  "Community-confirmed jamaat and Jumu'ah timings",
   "Directions in one tap",
   "Live Qibla compass",
   "Women's area, wudu and parking info where known",
-  "Add a missing place or fix details in seconds",
-  "Light and dark mode",
+  "Works in any phone browser, light and dark mode",
 ];
+export const EARLY =
+  "Early stage: the app is not fully ready yet. It is improved all the time and many updates are still to come.";
 export const CONTRIBUTE_TLDR =
   "wheretopray is free and not-for-profit. Help by engineering, design, adding places, sharing jamaat timetables, spreading the word, or translating. Fill the form and we will reach out.";
 export const GOOGLE_CONTRIBUTE_FORM =
