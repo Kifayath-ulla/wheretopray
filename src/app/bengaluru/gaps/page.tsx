@@ -58,7 +58,7 @@ export default async function Gaps() {
                   <p className="font-semibold">{w.properties.name}</p>
                   <p className="mt-0.5 text-sm text-ink-2">Ward {w.properties.no} · Bengaluru</p>
                 </div>
-                <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${w.properties.count === 0 ? "bg-amber-500/15 text-amber-800 dark:text-amber-200" : "bg-surface-2 text-ink-2"}`}>
+                <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${w.properties.count === 0 ? "bg-amber-100 text-amber-900 dark:bg-amber-500/15 dark:text-amber-200" : "bg-surface-2 text-ink-2"}`}>
                   {w.properties.count === 0 ? "0 listed" : `${w.properties.count} listed`}
                 </span>
               </div>

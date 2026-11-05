@@ -29,9 +29,13 @@ export default async function Directory({ searchParams }: { searchParams: Promis
             <span className="block text-base font-semibold">Near you: Bengaluru</span>
             <span className="block text-sm opacity-90">{bengaluru.n.toLocaleString("en-IN")} places listed</span>
           </span>
-          <span className="inline-flex min-h-11 items-center rounded-full bg-white/15 px-3 text-sm font-semibold">Explore ›</span>
+          <span className="inline-flex min-h-11 items-center rounded-full bg-black/20 px-3 text-sm font-semibold">Explore ›</span>
         </Link>
       )}
+      <Link href="/contribute" className="mt-4 flex min-h-14 items-center justify-between rounded-2xl border border-hairline bg-surface px-4 text-base">
+        <span><span className="block font-semibold">Help map your area</span><span className="block text-sm text-ink-2">Add places, share timings, or volunteer</span></span>
+        <span className="font-semibold text-accent-text">Contribute ›</span>
+      </Link>
       <p className="mt-6 eyebrow">All India</p>
       <ul className="mt-2 overflow-hidden rounded-2xl border border-hairline bg-surface">
         {shown.map(({ s, n }) => (

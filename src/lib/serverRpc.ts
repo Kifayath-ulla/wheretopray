@@ -7,7 +7,7 @@ export async function serverRpc<T>(fn: string, args: Record<string, unknown>): P
     headers: { apikey: KEY()!, Authorization: `Bearer ${KEY()}`, "content-type": "application/json" },
     body: JSON.stringify({ p_token: process.env.ADMIN_TOKEN ?? "", ...args }),
   });
-  if (!r.ok) throw new Error(`rpc ${fn} ${r.status}`);
+  if (!r.ok) throw new Error(`rpc ${fn} ${r.status}${(await r.text().catch(() => "")).includes("rate_limited") ? " rate_limited" : ""}`);
   const t = await r.text();
   return (t ? JSON.parse(t) : null) as T;
 }

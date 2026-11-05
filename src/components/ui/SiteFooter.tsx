@@ -9,7 +9,7 @@ export default function SiteFooter() {
   return (
     <footer className="mx-auto max-w-6xl px-4 py-8 text-[11px] leading-relaxed text-ink-3">
       Data © OpenStreetMap contributors (ODbL), Overture Maps Foundation (CDLA-Permissive-2.0), Wikidata (CC0), GeoNames (CC BY 4.0) and community submissions.{" "}
-      <Link href="/about" className="underline">Full credits</Link>
+      <Link href="/about" className="underline">About and credits</Link> · <Link href="/contribute" className="underline">Contribute</Link> · <Link href="/share" className="underline">Share</Link>
     </footer>
   );
 }

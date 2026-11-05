@@ -5,9 +5,9 @@ export const metadata: Metadata = { title: "Qibla direction finder", description
 
 export default function QiblaPage() {
   return (
-    <main className="mx-auto max-w-md space-y-5 px-4 pb-10 pt-6">
-      <h1 className="page-title">Qibla direction</h1>
-      <div className="card space-y-5 p-5">
+    <main className="mx-auto max-w-md space-y-4 px-4 pb-8 pt-4">
+      <h1 className="text-3xl font-bold tracking-tight">Qibla direction</h1>
+      <div className="card p-5 pt-6">
         <QiblaCompass />
       </div>
       <p className="text-sm text-ink-2">Bearing is the initial great-circle direction to the Kaaba (21.4225, 39.8262), measured clockwise from true north. Phone compasses can be off by several degrees near metal or electronics.</p>

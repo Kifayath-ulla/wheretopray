@@ -209,3 +209,5 @@
 .sheet [data-sheet-chrome] { background: var(--surface); }
 @media (min-width: 768px) { .sheet { transform: none !important; touch-action: auto; } .sheet .sheet-scroll { scroll-behavior: auto; } }
 @media (prefers-reduced-motion: reduce) { .sheet .sheet-scroll { scroll-behavior: auto; } }
+
+html { scroll-padding-top: var(--header-h); scroll-padding-bottom: var(--tabbar-h); }
