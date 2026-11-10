@@ -2,7 +2,13 @@
 
 Keep short. Newest first.
 
-## 2026-11-10 - branch `release-nov` (preview: https://release-nov--wheretopray.netlify.app)
+## 2026-11-11 - visitor access (live)
+
+- Migration 0018 applied in production via the Supabase SQL editor: places.access, access_notes, opening_hours, access_confirmed_at (all null for existing rows), approval copies the new submission fields, new RPC admin_set_access.
+- Place pages show who can pray here, how to get in and hours when known, and "Visitor access confirmed <date>" when an admin confirmed it. Admin > places edit has these fields and a confirm tick.
+- Verified: columns readable via REST, admin_set_access rejects a wrong token (401), set + display + revert on one real place (restored exactly).
+
+## 2026-11-10 - branch `release-nov` (live 2026-11-11) (preview: https://release-nov--wheretopray.netlify.app)
 
 Done
 - Pages no longer crash without WebGL2 (home, place, add, gaps were blank on production). `src/lib/safeMap.ts`.
@@ -13,9 +19,7 @@ Done
 
 Verified: typecheck, lint, build, `scripts/validate-test.mts`, `mobile-ux-test` (6 viewports, also on the preview), `drag-pin-test`, `qibla-contribute-test`, no-WebGL load of 4 pages locally and on the preview.
 
-Open (needs a decision)
-- New submission fields live only in the submission payload. Showing them on place pages needs columns (`access`, `access_notes`, `opening_hours`) - a production DB migration.
-- Every imported place has `status = verified`, which means "listed", not "access confirmed". A separate `access_confirmed_at` column would let the UI show confirmed places.
+Open
 - Branches not merged: `data-expansion` (1 commit, 26 behind main), `hallmark-redesign`, `hallmark-white` (design experiments).
 
 Decisions
