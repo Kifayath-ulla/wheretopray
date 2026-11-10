@@ -113,11 +113,13 @@ async function run() {
         await page.addScriptTag({ content: axeSource });
         await page.waitForTimeout(400);
         const axe = await page.evaluate(async () => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           const run = () => window.axe.run(document.body, {
             runOnly: { type: 'rule', values: ['color-contrast'] },
             exclude: [['.maplibregl-ctrl-attrib'], ['.maplibregl-ctrl-group'], ['.maplibregl-canvas'], ['.maplibregl-map'], ['.maplibregl-marker'], ['[class*="maplibre"]']],
           });
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           let r = await run();
           if (r.violations.length) { await new Promise((res) => setTimeout(res, 400)); r = await run(); }

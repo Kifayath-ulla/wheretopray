@@ -6,7 +6,7 @@ import { useTheme } from "@/lib/theme";
 
 // maplibre v6 ships its worker as a separate module; we copy it to /public at build time.
 if (typeof window !== "undefined") maplibregl.setWorkerUrl("/maplibre-gl-worker.mjs");
-import type { Place, PlaceType } from "@/lib/types";
+import type { Place } from "@/lib/types";
 import { TYPE_COLOR, TYPE_LABEL, fmtDistance } from "@/lib/typeStyle";
 import { distanceKm } from "@/lib/geo";
 

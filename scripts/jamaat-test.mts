@@ -1,4 +1,4 @@
-import { parseClock, slotsFor, pickNextJamaat, fmtClock } from "../src/lib/jamaatPick.ts";
+import { parseClock, pickNextJamaat, fmtClock } from "../src/lib/jamaatPick.ts";
 const assert = (c: unknown, m: string) => { if (!c) throw new Error(m); };
 assert(parseClock("13:30") === 13 * 60 + 30, "13:30");
 assert(parseClock("1:30 PM") === 13 * 60 + 30, "1:30 PM");

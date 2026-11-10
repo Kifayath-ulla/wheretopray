@@ -114,7 +114,7 @@ for (const theme of ['light', 'dark']) {
   await page.mouse.move(0, 0);
   await page.addScriptTag({ content: axeSource });
   const violations = await page.evaluate(async () => {
-    // eslint-disable-next-line no-undef
+     
     const r = await axe.run(document, {
       runOnly: ['color-contrast'],
       exclude: [['.maplibregl-ctrl-attrib'], ['.maplibregl-ctrl-group'], ['.maplibregl-canvas'], ['.maplibregl-map'], ['.maplibregl-marker'], ['[class*="maplibre"]']],
