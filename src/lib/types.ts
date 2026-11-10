@@ -23,6 +23,12 @@ export interface Place {
   jumuah_time?: string | null;
   iqama_times?: Record<string, string> | null;
   jamaat_confirmed_at?: string | null;
+  /** Who may pray here. null = not known. */
+  access?: "public" | "customers" | "ask" | "private" | null;
+  access_notes?: string | null;
+  opening_hours?: string | null;
+  /** Set only when an admin confirmed visitor access; being listed is not confirmation. */
+  access_confirmed_at?: string | null;
   /** exact = mapped point (OSM/admin); listing = business-listing pin; approximate = coarse/snapped */
   location_quality?: "exact" | "listing" | "approximate" | null;
   source: string;
@@ -32,6 +38,13 @@ export interface Place {
   last_verified: string;
   status: "pending" | "verified";
 }
+
+export const ACCESS_LABEL: Record<string, string> = {
+  public: "Anyone can walk in",
+  customers: "Customers or visitors of the venue",
+  ask: "Ask at reception or security first",
+  private: "Invited visitors only",
+};
 
 export const PLACE_TYPES: { value: PlaceType; label: string }[] = [
   { value: "mosque", label: "Mosque / Masjid" },

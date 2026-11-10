@@ -11,6 +11,7 @@ import { distanceKm } from "@/lib/geo";
 import { SOURCES } from "@/lib/sources";
 import { provenanceText } from "@/lib/trust";
 import { TYPE_COLOR, TYPE_LABEL } from "@/lib/typeStyle";
+import { ACCESS_LABEL } from "@/lib/types";
 import PlaceSpot from "@/components/PlaceSpotLazy";
 import { mapLinks } from "@/lib/maplinks";
 import DistanceFromMe from "@/components/DistanceFromMe";
@@ -80,6 +81,13 @@ export default async function PlacePage({ params }: Props) {
       <section className="card p-5 text-sm" data-testid="provenance">
         <h2 className="font-semibold">{prov.title}</h2>
         <p className="mt-1 text-ink-2">{prov.body}</p>
+        {(p.access || p.access_notes || p.opening_hours) && (
+          <dl className="mt-3 grid gap-2" data-testid="visiting">
+            <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Who can pray here</dt><dd className="font-medium">{p.access ? ACCESS_LABEL[p.access] : "Unknown"}</dd></div>
+            {p.access_notes && <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">How to get in</dt><dd className="whitespace-pre-line">{p.access_notes}</dd></div>}
+            <div className="rounded-2xl bg-surface-2 px-3 py-2.5"><dt className="text-xs text-ink-3">Opening hours</dt><dd className={p.opening_hours ? "font-medium" : "text-ink-3"}>{p.opening_hours || "Unknown"}</dd></div>
+          </dl>
+        )}
       </section>
 
       <PlaceSpot lat={p.lat} lng={p.lng} name={p.name} quality={p.location_quality} color={color} />

@@ -11,3 +11,5 @@ assert.equal(provenance({ source: "osm", sources: ["osm", "overture"] }), "impor
 assert.equal(provenance({ source: "user", sources: ["user"] }), "community");
 assert.equal(provenance({ source: "osm", sources: ["osm", "user"] }), "community");
 console.log("validation + provenance: 8/8 ok");
+assert.equal(provenance({ source: "osm", sources: ["osm"], access_confirmed_at: "2026-11-11T00:00:00Z" }), "confirmed");
+console.log("confirmed provenance ok");

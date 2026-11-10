@@ -36,9 +36,23 @@ async function PATCH_(req: Request) {
     patch.iqama_times = t;
   }
   if (patch.name === "") return NextResponse.json({ error: "Name required" }, { status: 400 });
-  const r = await repo.adminUpdate(tok(req), String(body.id), patch);
+  let r = await repo.adminUpdate(tok(req), String(body.id), patch);
   if (r === "unauthorized") return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   if (!r) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  // Visitor access lives in its own RPC so it can be confirmed (timestamped) separately.
+  const acc: Record<string, unknown> = {};
+  if ("access" in p) {
+    const a = String(p.access ?? "");
+    if (a && !["public", "customers", "ask", "private"].includes(a)) return NextResponse.json({ error: "Bad access" }, { status: 400 });
+    acc.access = a;
+  }
+  for (const [k, max] of [["access_notes", 600], ["opening_hours", 200]] as const) if (k in p) acc[k] = String(p[k] ?? "").trim().slice(0, max);
+  if (p.confirm_access === true || p.confirm_access === false) acc.confirm = String(p.confirm_access);
+  if (Object.keys(acc).length) {
+    const a = await repo.adminSetAccess(tok(req), String(body.id), acc);
+    if (a === "unauthorized") return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (a) r = a;
+  }
   refreshPlaces(r.slug);
   return NextResponse.json(r);
 }

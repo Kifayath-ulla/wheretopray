@@ -35,6 +35,7 @@ export interface PlaceRepository {
   adminSearch(token: string, q: string): Promise<Place[] | null>;
   adminUpdate(token: string, id: string, patch: Record<string, unknown>): Promise<Place | null | "unauthorized">;
   adminDelete(token: string, id: string): Promise<boolean | "unauthorized">;
+  adminSetAccess(token: string, id: string, patch: Record<string, unknown>): Promise<Place | null | "unauthorized">;
 }
 
 export class RateLimitError extends Error { constructor() { super("rate_limited"); } }
@@ -113,6 +114,7 @@ class JsonRepository implements PlaceRepository {
   }
   async adminUpdate(): Promise<Place | null | "unauthorized"> { return null; }
   async adminDelete(): Promise<boolean | "unauthorized"> { return false; }
+  async adminSetAccess(): Promise<Place | null | "unauthorized"> { return null; }
   private async readQueue(): Promise<Submission[]> {
     try { return JSON.parse(await fs.readFile(QUEUE, "utf8")); } catch { return []; }
   }
@@ -145,7 +147,7 @@ class JsonRepository implements PlaceRepository {
 const SB_URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SB_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const PLACE_COLS =
-  "id,slug,name,name_local,type,lat,lng,address,area,city,state,country,denomination,women_section,wudu,parking,wheelchair,phone,website,jumuah_time,iqama_times,jamaat_confirmed_at,location_quality,source,source_id,sources,source_ids,last_verified,status";
+  "id,slug,name,name_local,type,lat,lng,address,area,city,state,country,denomination,women_section,wudu,parking,wheelchair,phone,website,jumuah_time,iqama_times,jamaat_confirmed_at,location_quality,access,access_notes,opening_hours,access_confirmed_at,source,source_id,sources,source_ids,last_verified,status";
 
 class SupabaseRepository implements PlaceRepository {
   constructor(private url: string, private key: string) {}
@@ -211,6 +213,13 @@ class SupabaseRepository implements PlaceRepository {
     const res = await this.rpc("admin_delete_place", { p_token: token, p_id: id });
     if ("unauthorized" in res) return "unauthorized" as const;
     return res.data === true;
+  }
+  async adminSetAccess(token: string, id: string, patch: Record<string, unknown>) {
+    if (!token) return "unauthorized" as const;
+    const res = await this.rpc("admin_set_access", { p_token: token, p_id: id, p: patch });
+    if ("unauthorized" in res) return "unauthorized" as const;
+    const d = res.data as Place | null;
+    return d && d.id ? d : null;
   }
   async addSubmission(s: Omit<Submission, "id" | "status" | "created_at">, ipHash = "") {
     // Server-only RPC: it checks the server-held admin token, applies the per-IP rate limit and inserts.
