@@ -9,6 +9,7 @@ import TimetableShare from "@/components/TimetableShare";
 import { compassPoint, qiblaBearing, KAABA } from "@/lib/qibla";
 import { distanceKm } from "@/lib/geo";
 import { SOURCES } from "@/lib/sources";
+import { provenanceText } from "@/lib/trust";
 import { TYPE_COLOR, TYPE_LABEL } from "@/lib/typeStyle";
 import PlaceSpot from "@/components/PlaceSpotLazy";
 import { mapLinks } from "@/lib/maplinks";
@@ -43,6 +44,7 @@ export default async function PlacePage({ params }: Props) {
   const HM = /^([01]?\d|2[0-3]):[0-5]\d$/;
   const prefill: Record<string, string> = Object.fromEntries(Object.entries(p.iqama_times ?? {}).filter(([, v]) => HM.test(v)).map(([k, v]) => [k, v.padStart(5, "0")]));
   if (!prefill.jumuah && p.jumuah_time && HM.test(p.jumuah_time)) prefill.jumuah = p.jumuah_time.padStart(5, "0");
+  const prov = provenanceText(p);
   const hasJamaat = !!(p.jumuah_time || (p.iqama_times && Object.keys(p.iqama_times).length));
   return (
     <main className="mx-auto max-w-2xl space-y-5 px-4 pb-10 pt-4">
@@ -73,6 +75,11 @@ export default async function PlacePage({ params }: Props) {
             {p.website && /^https?:\/\//i.test(p.website) && <a className="chip" href={p.website} target="_blank" rel="noopener noreferrer nofollow">Website</a>}
           </div>
         </div>
+      </section>
+
+      <section className="card p-5 text-sm" data-testid="provenance">
+        <h2 className="font-semibold">{prov.title}</h2>
+        <p className="mt-1 text-ink-2">{prov.body}</p>
       </section>
 
       <PlaceSpot lat={p.lat} lng={p.lng} name={p.name} quality={p.location_quality} color={color} />
@@ -123,7 +130,7 @@ export default async function PlacePage({ params }: Props) {
           const u = meta.url(ids[0]);
           return <span key={s}>{i > 0 && "; "}{u ? <a href={u} className="underline" target="_blank" rel="noreferrer">{meta.label}</a> : meta.label} ({meta.license})</span>;
         })}
-        . Area names © OpenStreetMap contributors. Last verified {p.last_verified.slice(0, 10)}.
+        . Area names © OpenStreetMap contributors. {prov.dateLabel} {p.last_verified.slice(0, 10)}.
       </p>
     </main>
   );

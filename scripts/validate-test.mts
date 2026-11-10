@@ -1,0 +1,13 @@
+import { validatePayload } from "../src/lib/spam.ts";
+import { provenance } from "../src/lib/trust.ts";
+import assert from "node:assert/strict";
+const base = { name: "Factory prayer room", lat: "12.8", lng: "77.4", city: "Bengaluru" };
+assert.equal(validatePayload("new_place", base), null);
+assert.match(validatePayload("new_place", { ...base, access: "private" })!, /authorised/);
+assert.equal(validatePayload("new_place", { ...base, access: "private", authorized: "yes" }), null);
+assert.match(validatePayload("new_place", { ...base, access: "everyone!" })!, /invalid/);
+assert.match(validatePayload("new_place", { ...base, opening_hours: "x".repeat(201) })!, /too long/);
+assert.equal(provenance({ source: "osm", sources: ["osm", "overture"] }), "imported");
+assert.equal(provenance({ source: "user", sources: ["user"] }), "community");
+assert.equal(provenance({ source: "osm", sources: ["osm", "user"] }), "community");
+console.log("validation + provenance: 8/8 ok");

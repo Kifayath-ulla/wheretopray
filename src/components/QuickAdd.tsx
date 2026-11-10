@@ -22,6 +22,7 @@ export default function QuickAdd() {
   const [type, setType] = useState("mosque");
   const [women, setWomen] = useState(false);
   const [jumuah, setJumuah] = useState("");
+  const [visit, setVisit] = useState({ access: "", access_notes: "", opening_hours: "", authorized: false });
   const [hp, setHp] = useState("");
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState("");
@@ -94,6 +95,8 @@ export default function QuickAdd() {
       name, type, ...addr, country: "IN", website: hp,
       women_section: women ? "yes" : "", jumuah_time: jumuah,
       notes: noteBits.join("; "),
+      access: visit.access, access_notes: visit.access_notes, opening_hours: visit.opening_hours,
+      authorized: visit.authorized ? "yes" : "",
     };
     // location_quality is not in the submissions ALLOWED set, so we keep the existing mapping
     // (unset) and only send lat/lng. Admin review can treat a user-adjusted pin as exact.
@@ -108,7 +111,7 @@ export default function QuickAdd() {
     });
     const d = await r.json().catch(() => ({}));
     setBusy(false);
-    if (r.ok) { setDone(name); setName(""); setJumuah(""); setWomen(false); started.current = Date.now(); }
+    if (r.ok) { setDone(name); setName(""); setJumuah(""); setWomen(false); setVisit({ access: "", access_notes: "", opening_hours: "", authorized: false }); started.current = Date.now(); }
     else setErr(d.error ?? "Something went wrong. Please try again.");
   }
 
@@ -155,6 +158,26 @@ export default function QuickAdd() {
         <input value={jumuah} onChange={(e) => setJumuah(e.target.value)} maxLength={60} placeholder="e.g. 1:30 PM" className={inp} />
       </label>
       <label className="flex min-h-12 items-center gap-3 text-base"><input type="checkbox" className="h-5 w-5" checked={women} onChange={(e) => setWomen(e.target.checked)} /> Has a women&apos;s section</label>
+      <details className="text-sm" data-testid="visitor-access">
+        <summary className="cursor-pointer text-gray-600 dark:text-ink-3">Visitor access and hours (offices, factories, malls...)</summary>
+        <div className="mt-2 space-y-2">
+          <label className="block space-y-1.5">
+            <span className="text-sm font-medium text-ink-2">Who can pray here?</span>
+            <select value={visit.access} onChange={(e) => setVisit({ ...visit, access: e.target.value })} className={inp}>
+              <option value="">Not sure</option>
+              <option value="public">Anyone can walk in</option>
+              <option value="customers">Customers or visitors of the venue</option>
+              <option value="ask">Ask at reception or security first</option>
+              <option value="private">Invited visitors only</option>
+            </select>
+          </label>
+          <textarea value={visit.access_notes} onChange={(e) => setVisit({ ...visit, access_notes: e.target.value })} maxLength={600} rows={3} aria-label="How to get in" placeholder="How to get in, e.g. visitor gate 2, room is behind the canteen" className="w-full px-4 py-3 text-base" />
+          <input value={visit.opening_hours} onChange={(e) => setVisit({ ...visit, opening_hours: e.target.value })} maxLength={200} aria-label="Opening hours" placeholder="Opening hours, e.g. Mon-Sat 9am-7pm" className={inp} />
+          {(visit.access === "ask" || visit.access === "private") && (
+            <label className="flex items-start gap-3 text-sm"><input type="checkbox" className="mt-0.5 h-5 w-5" checked={visit.authorized} onChange={(e) => setVisit({ ...visit, authorized: e.target.checked })} /> I am the owner or authorised to invite visitors to pray here. Private spaces are only listed with this permission.</label>
+          )}
+        </div>
+      </details>
       <details className="text-sm">
         <summary className="cursor-pointer text-gray-600 dark:text-ink-3">Address {addr.city ? `(${[addr.area, addr.city].filter(Boolean).join(", ")})` : "(needed if location is off)"}</summary>
         <div className="mt-2 space-y-2">

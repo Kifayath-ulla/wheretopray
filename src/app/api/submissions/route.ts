@@ -4,7 +4,7 @@ import { repo, RateLimitError } from "@/lib/data";
 import { ipHash, validatePayload, verifyTurnstile } from "@/lib/spam";
 
 const MIN_FILL_MS = 3000;
-const ALLOWED = new Set(["name", "type", "address", "area", "city", "state", "country", "lat", "lng", "jumuah_time", "jamaat_fajr", "jamaat_zuhr", "jamaat_asr", "jamaat_maghrib", "jamaat_isha", "women_section", "wudu", "parking", "issue", "notes", "contact", "google_place_id"]);
+const ALLOWED = new Set(["name", "type", "address", "area", "city", "state", "country", "lat", "lng", "jumuah_time", "jamaat_fajr", "jamaat_zuhr", "jamaat_asr", "jamaat_maghrib", "jamaat_isha", "women_section", "wudu", "parking", "issue", "notes", "contact", "google_place_id", "access", "access_notes", "opening_hours", "authorized"]);
 
 export async function POST(req: Request) {
   if (!(req.headers.get("content-type") ?? "").includes("application/json")) return NextResponse.json({ error: "Invalid submission" }, { status: 415 });

@@ -50,7 +50,12 @@ export function validatePayload(kind: "new_place" | "fix", p: Record<string, str
     if (!p.city || p.city.trim().length < 2) return "Please enter the city.";
     if (p.country && !/^[A-Za-z]{2}$/.test(p.country)) return "Country must be a 2-letter code, e.g. IN.";
   } else if (!p.notes || p.notes.trim().length < 5) return "Please describe what should be corrected.";
-  for (const k of ["address", "notes"]) if (len(k, 1000)) return `${k} is too long.`;
+  if (p.access && !["public", "customers", "ask", "private"].includes(p.access)) return "Visitor access value is invalid.";
+  // Private or permission-only spaces are only listed by someone who can invite visitors.
+  if ((p.access === "ask" || p.access === "private") && p.authorized !== "yes")
+    return "Only someone authorised to invite visitors can list a private or permission-only space.";
+  if (len("opening_hours", 200)) return "Opening hours are too long.";
+  for (const k of ["address", "notes", "access_notes"]) if (len(k, 1000)) return `${k.replace("_", " ")} is too long.`;
   if (p.contact && (len("contact", 120) || !/^\S+@\S+\.\S+$/.test(p.contact))) return "Contact email looks invalid.";
   const links = Object.values(p).join(" ").match(URL_RE)?.length ?? 0;
   if (links > 2) return "Too many links.";
