@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import * as maplibregl from "maplibre-gl";
+import { tryMap } from "@/lib/safeMap";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useTheme } from "@/lib/theme";
 
@@ -52,7 +53,7 @@ export default function PinPicker({
   useEffect(() => {
     if (!el.current || map.current) return;
     const dark = themeRef.current === "dark";
-    const m = new maplibregl.Map({
+    const m = tryMap({
       container: el.current,
       style: `https://tiles.openfreemap.org/styles/${dark ? "dark" : "positron"}`,
       center: [value.lng, value.lat],
@@ -65,7 +66,8 @@ export default function PinPicker({
       dragRotate: false,
       pitchWithRotate: false,
       touchPitch: false,
-    });
+    }, "The map can't load on this device. Use your current location or type the address below.");
+    if (!m) return;
     map.current = m;
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     m.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");

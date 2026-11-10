@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import * as maplibregl from "maplibre-gl";
+import { tryMap } from "@/lib/safeMap";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useTheme } from "@/lib/theme";
 import { mapLinks, QUALITY_NOTE } from "@/lib/maplinks";
@@ -17,7 +18,8 @@ export default function PlaceSpot({ lat, lng, name, quality, color }: { lat: num
   useEffect(() => {
     if (!el.current) return;
     const dark = theme === "dark";
-    const m = new maplibregl.Map({ container: el.current, style: `https://tiles.openfreemap.org/styles/${dark ? "dark" : "liberty"}`, center: [lng, lat], zoom: 17.5, attributionControl: false, pixelRatio: Math.min(window.devicePixelRatio || 1, 2), fadeDuration: 0, cooperativeGestures: true });
+    const m = tryMap({ container: el.current, style: `https://tiles.openfreemap.org/styles/${dark ? "dark" : "liberty"}`, center: [lng, lat], zoom: 17.5, attributionControl: false, pixelRatio: Math.min(window.devicePixelRatio || 1, 2), fadeDuration: 0, cooperativeGestures: true });
+    if (!m) return;
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     m.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
     const pin = document.createElement("div");

@@ -17,7 +17,11 @@ export default function QiblaCompass({ initial, compact = false }: { initial?: L
 
   useEffect(() => {
     if (initial) return;
-    try { const s = sessionStorage.getItem("wtp-loc"); if (s) setLoc(JSON.parse(s)); } catch {}
+    let cached = false;
+    try { const s = sessionStorage.getItem("wtp-loc"); if (s) { setLoc(JSON.parse(s)); cached = true; } } catch {}
+    // Location already allowed: locate straight away instead of asking for another tap.
+    if (!cached) navigator.permissions?.query({ name: "geolocation" }).then((st) => { if (st.state === "granted") locate(); }).catch(() => {});
+     
   }, [initial]);
 
   useEffect(() => {

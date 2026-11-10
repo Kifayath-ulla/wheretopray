@@ -33,6 +33,8 @@ async function run() {
         viewport: { width: vp.width, height: vp.height },
         isMobile: true,
         hasTouch: true,
+        geolocation: { latitude: 12.9716, longitude: 77.5946, accuracy: 20 },
+        permissions: ["geolocation"],
         userAgent: devices['iPhone 12'].userAgent,
         colorScheme: theme === 'dark' ? 'dark' : 'light',
       });

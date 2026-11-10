@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import * as maplibregl from "maplibre-gl";
+import { tryMap } from "@/lib/safeMap";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useTheme } from "@/lib/theme";
 
@@ -37,7 +38,7 @@ export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusK
   useEffect(() => {
     if (!el.current) return;
     const dark = themeRef.current === "dark";
-    const m = new maplibregl.Map({
+    const m = tryMap({
       container: el.current,
       // OpenFreeMap: free vector tiles, no key, no limits. Attribution comes with the style.
       style: `https://tiles.openfreemap.org/styles/${dark ? "dark" : "positron"}`,
@@ -45,6 +46,7 @@ export default function PlaceMap({ places, center, zoom = 11, me, meAcc, radiusK
       // DPR 3 phones render 2.25x more pixels than needed for a map; cap at 2. No label fade animation.
       pixelRatio: Math.min(window.devicePixelRatio || 1, 2), fadeDuration: 0,
     });
+    if (!m) return;
     map.current = m;
     m.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
     // Credits stay visible above the bottom sheet (top-left), compact "i" style.

@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 import * as maplibregl from "maplibre-gl";
+import { tryMap } from "@/lib/safeMap";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useTheme } from "@/lib/theme";
 
@@ -13,11 +14,12 @@ export default function GapMap({ wards }: { wards: GeoJSON.FeatureCollection | {
   const el = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!el.current) return;
-    const m = new maplibregl.Map({
+    const m = tryMap({
       container: el.current,
       style: `https://tiles.openfreemap.org/styles/${theme === "dark" ? "dark" : "positron"}`,
       center: [77.59, 12.97], zoom: 10.3,
     });
+    if (!m) return;
     m.addControl(new maplibregl.NavigationControl(), "top-right");
     m.on("load", () => {
       m.addSource("wards", { type: "geojson", data: wards as GeoJSON.FeatureCollection });
